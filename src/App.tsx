@@ -4,6 +4,7 @@ import viteLogo from '/vite.svg';
 import './App.css';
 import Navbar from './components/Navbar/Navbar';
 import Cards from './components/Cards/Cards';
+import Beneficios from './components/Beneficios/Beneficios';
 
 function App() {
   const [count, setCount] = useState(0);
@@ -12,6 +13,7 @@ function App() {
     <>
       <Navbar />
       <Cards />
+      <Beneficios />
     </>
   );
 }
