@@ -4,36 +4,31 @@ import "./Beneficios.css" //importacion del css para la fuente
 
 const Beneficios: React.FC = () => {
   return (
-    <section className="py-14 bg-white">
+    <section className="bg-white px-[124px] my-[100px]">
+      <div className="container flex flex-col items-center text-center">
 
-      {/* Contenedor para centrar el contenido */}
-      <div className="container mx-auto md:mx-40 px-8 flex flex-col items-center text-center">
-
-        {/* HEADER o título */}
         <p className="text-orange-500 mb-2 fuentePersonalizada">Beneficios</p>
-        <h2 className="text-3xl font-bold text-gray-900 mb-8">
+        <h2 className="text-3xl font-bold text-gray-900 mb-[40px]">
           ¿Por qué comprar directo del productor?
         </h2>
 
-        {/* IMAGEN principal y texto, centrados en dispositivos grandes */}
         <div className="flex flex-col md:flex-row items-center justify-center md:items-start md:space-x-8">
           {/* Imagen */}
-          <div className="mb-6 md:mb-0 md:w-1/3 flex justify-center">
+          <div className="mb-6 md:mb-0">
             <img
               src={beneficiosImage}
               alt="BeneficiosProductor"
-              className="rounded-lg shadow-lg"
+              className="rounded-lg shadow-lg w-[400px]"
             />
           </div>
 
-          {/* Texto de la sección */}
+        
           <div className="md:w-1/2 text-left md:text-left">
             <p className="text-gray-700 mb-4">
               Comprar directo del productor te ofrece alimentos frescos, 
               de calidad, y la oportunidad de apoyar a 
               quienes cultivan de manera sostenible. Aquí te contamos por qué es la mejor opción:
             </p>
-                {/* ICONOS con descripcion */}
             <ul className="space-y-4">
               <li className="flex items-start">
                 <CheckCircleIcon style={{ color: '#FF9E2F' }} fontSize="large" />
@@ -64,8 +59,7 @@ const Beneficios: React.FC = () => {
               </li>
             </ul>
 
-            {/* BOTÓN */}
-            <button className="mt-6 px-6 py-2 bg-green-500 text-white font-semibold rounded hover:bg-green-600 transition duration-300">
+            <button className='rounded-[10px] bg-[#4BAF47] text-white mt-6'>
               Descubre más
             </button>
           </div>
