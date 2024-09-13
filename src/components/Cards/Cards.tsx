@@ -18,14 +18,14 @@ const Cards: React.FC = () => {
   ];
 
   return (
-    <div className="w-full flex flex-col items-center gap-10">
+    <section className="w-full mt-[100px] px-[124px]">
       <div className="text-center">
         <span className="text-[#FF9900] font-facuFont">Compra directa</span>
-        <h2 className="text-3xl font-manrope font-extrabold">
+        <h2 className="text-3xl font-manrope font-extrabold mb-[40px]">
           Agricultura de otros productores
         </h2>
       </div>
-      <div className="flex justify-center items-center gap-2">
+      <div className="flex justify-between items-center gap-2">
         {cards.map((card, index) => (
           <img
             className="w-[300px] h-[500px] "
@@ -35,7 +35,7 @@ const Cards: React.FC = () => {
           />
         ))}
       </div>
-    </div>
+    </section>
   );
 };
 
