@@ -1,19 +1,14 @@
-import { useState } from 'react';
-import Navbar from './components/Navbar/Navbar';
-import Cards from './components/Cards/Cards';
-import Beneficios from './components/Beneficios/Beneficios';
+import React from 'react';
 import './App.css';
-import Agriculture from './components/Agriculture/Agriculture';
+import Arboles from './components/Arboles/Arboles'; // Importar el componente de árboles
 
-function App() {
+const App: React.FC = () => {
   return (
-    <>
-      <Navbar />
-      <Cards />
-      <Beneficios />
-      <Agriculture />
-    </>
+    <div>
+      {/* Aquí renderizas el componente de árboles */}
+      <Arboles />
+    </div>
   );
-}
+};
 
 export default App;
