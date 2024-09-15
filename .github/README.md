@@ -1,3 +1,7 @@
+[![Deploy to Vercel](https://github.com/igrowker/i003-adoptree-front/actions/workflows/deploy.yml/badge.svg)](https://github.com/igrowker/i003-adoptree-front/actions/workflows/deploy.yml)
+[![Build](https://github.com/igrowker/i003-adoptree-front/actions/workflows/build.yml/badge.svg)](https://github.com/igrowker/i003-adoptree-front/actions/workflows/build.yml)
+[![Lint](https://github.com/igrowker/i003-adoptree-front/actions/workflows/lint.yml/badge.svg)](https://github.com/igrowker/i003-adoptree-front/actions/workflows/lint.yml)
+[![Deploy Preview to Vercel](https://github.com/igrowker/i003-adoptree-front/actions/workflows/deploy-merge.yml/badge.svg)](https://github.com/igrowker/i003-adoptree-front/actions/workflows/deploy-merge.yml)
 # Pipeline de CI para Build y Lint
 
 ## Descripción
