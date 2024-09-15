@@ -1,5 +1,5 @@
 ---
-title: '⚠️ {{ env.ACTION_TYPE }} Failed in {{ payload.repository.name }}'
+title: '⚠️🛑 {{ env.ACTION_TYPE }} Failed in {{ payload.repository.name }}'
 labels: 'bug, automation'
 ---
 
@@ -7,7 +7,7 @@ La acción **{{ env.ACTION_TYPE }}** falló en la ejecución del flujo de trabaj
 
 ### Detalles del error:
 
--   [Enlace al flujo de trabajo fallido]({{ env.URL_ACTION_RUN }})
+- [Enlace al flujo de trabajo fallido]({{ env.URL_ACTION_RUN }})
 
 ### Pasos a seguir:
 
