@@ -1,8 +1,8 @@
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useState } from 'react';
 import LoginIcon from '@mui/icons-material/Login';
-import AccountCircleIcon from '@mui/icons-material/AccountCircle';
-import CircleNotificationsIcon from '@mui/icons-material/CircleNotifications';
-import NotificationsIcon from '@mui/icons-material/Notifications';
+// import AccountCircleIcon from '@mui/icons-material/AccountCircle';
+// import CircleNotificationsIcon from '@mui/icons-material/CircleNotifications';
+// import NotificationsIcon from '@mui/icons-material/Notifications';
 
 import Logo from '../../assets/adoptree 1.png'
 
@@ -15,10 +15,10 @@ export interface AnchorProps
 
 const Navbar: React.FC = () => {
   const [scrollPosition, setScrollPosition] = useState(0);
-  const [showModal, setShowModal] = useState<boolean>(false);
-  const [notificationsModal, setNotificationsModal] = useState<boolean>(false);
-  const modalRef = useRef<HTMLDivElement | null>(null);
-  const currentClickRef = useRef<EventTarget | null>(null);
+  // const [showModal, setShowModal] = useState<boolean>(false);
+  // const [notificationsModal, setNotificationsModal] = useState<boolean>(false);
+  // const modalRef = useRef<HTMLDivElement | null>(null);
+  // const currentClickRef = useRef<EventTarget | null>(null);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -32,10 +32,10 @@ const Navbar: React.FC = () => {
     };
   }, []);
 
-  const styles = {
-    '--i': 5,
-    display: window.innerWidth < 780 ? 'block' : 'none',
-  };
+  // const styles = {
+  //   '--i': 5,
+  //   display: window.innerWidth < 780 ? 'block' : 'none',
+  // };
 
   return (
     <header
