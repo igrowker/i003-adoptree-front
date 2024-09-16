@@ -1,7 +1,6 @@
 name: Build
 
 on:
-  push: null
   pull_request:
     types: [opened, synchronize, reopened]
 
@@ -41,7 +40,7 @@ jobs:
         with:
           assignees: ${{ github.event.sender.login }}
       - name: Comment on PR if failed
-        if: failure() && github.event_name == 'pull_request'
+        if: failure()
         uses: unsplash/comment-on-pr@v1.3.0
         env:
           GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}
