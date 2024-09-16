@@ -4,6 +4,7 @@ import Beneficios from './components/Beneficios/Beneficios';
 import Banner from './components/Banner/Banner';
 import './App.css';
 import Agriculture from './components/Agriculture/Agriculture';
+import Footer from './components/Footer/Footer';
 
 function App() {
   return (
@@ -13,6 +14,7 @@ function App() {
       <Cards />
       <Beneficios />
       <Agriculture />
+      <Footer />
     </>
   );
 }
