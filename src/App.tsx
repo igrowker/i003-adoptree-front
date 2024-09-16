@@ -1,13 +1,21 @@
-import React from 'react';
+import Navbar from './components/Navbar/Navbar';
+import Cards from './components/Cards/Cards';
+import Beneficios from './components/Beneficios/Beneficios';
+import Banner from './components/Banner/Banner';
 import './App.css';
-import Arboles from './components/Arboles/Arboles'; // Importar el componente de árboles
+import Agriculture from './components/Agriculture/Agriculture';
+import Arboles from './components/Arboles/Arboles';
 
 const App: React.FC = () => {
   return (
-    <div>
-      {/* Aquí renderizas el componente de árboles */}
+    <>
+      <Navbar />
+      <Banner />
+      <Cards />
+      <Beneficios />
+      <Agriculture />
       <Arboles />
-    </div>
+    </>
   );
 };
 
