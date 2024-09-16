@@ -41,7 +41,7 @@ jobs:
         with:
           assignees: ${{ github.event.sender.login }}
       - name: Comment on PR if failed
-        if: failure()
+        if: failure() && github.event_name == 'pull_request'
         uses: unsplash/comment-on-pr@v1.3.0
         env:
           GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}
