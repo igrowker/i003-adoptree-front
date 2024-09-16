@@ -5,6 +5,7 @@ import Banner from './components/Banner/Banner';
 import './App.css';
 import Agriculture from './components/Agriculture/Agriculture';
 import Arboles from './components/Arboles/Arboles';
+import Footer from './components/Footer/Footer';
 
 const App: React.FC = () => {
   return (
@@ -15,6 +16,7 @@ const App: React.FC = () => {
       <Beneficios />
       <Agriculture />
       <Arboles />
+      <Footer />
     </>
   );
 };

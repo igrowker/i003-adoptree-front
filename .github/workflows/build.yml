@@ -1,7 +1,6 @@
 name: Build
 
 on:
-  push: null
   pull_request:
     types: [opened, synchronize, reopened]
 
