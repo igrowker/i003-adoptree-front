@@ -4,9 +4,10 @@ import Beneficios from './components/Beneficios/Beneficios';
 import Banner from './components/Banner/Banner';
 import './App.css';
 import Agriculture from './components/Agriculture/Agriculture';
+import Arboles from './components/Arboles/Arboles';
 import Footer from './components/Footer/Footer';
 
-function App() {
+const App: React.FC = () => {
   return (
     <>
       <Navbar />
@@ -14,9 +15,10 @@ function App() {
       <Cards />
       <Beneficios />
       <Agriculture />
+      <Arboles />
       <Footer />
     </>
   );
-}
+};
 
 export default App;
