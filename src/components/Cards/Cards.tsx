@@ -18,7 +18,7 @@ const Cards: React.FC = () => {
   ];
 
   return (
-    <section className="w-full mt-[100px] px-[124px]">
+    <section className="w-full my-[100px] px-[200px]">
       <div className="text-center">
         <span className="text-[#FF9900] font-facuFont">Compra directa</span>
         <h2 className="text-3xl font-manrope font-extrabold mb-[40px]">
@@ -28,7 +28,7 @@ const Cards: React.FC = () => {
       <div className="flex justify-between items-center gap-2">
         {cards.map((card, index) => (
           <img
-            className="w-[300px] h-[500px] "
+            className="w-[260px]"
             key={index}
             src={card.thumbnail}
             alt={`Card ${index}`}
