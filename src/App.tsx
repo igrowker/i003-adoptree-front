@@ -4,6 +4,7 @@ import Beneficios from './components/Beneficios/Beneficios';
 import Banner from './components/Banner/Banner';
 import './App.css';
 import Agriculture from './components/Agriculture/Agriculture';
+import Bienvenido from './components/Bienvenido/Bienvenido';
 import Arboles from './components/Arboles/Arboles';
 import Footer from './components/Footer/Footer';
 
@@ -11,6 +12,7 @@ const App: React.FC = () => {
   return (
     <>
       <Navbar />
+      <Bienvenido />
       <Banner />
       <Cards />
       <Beneficios />
