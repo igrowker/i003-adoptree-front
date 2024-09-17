@@ -36,7 +36,7 @@ const Bienvenido: React.FC = () => {
             <br />
             ¡Únete a Adoptree!
           </p>
-          <button className="rounded-[10px] w-[220px] bg-[#4BAF47] text-white">
+          <button className="rounded-[10px] w-[220px] bg-[#4BAF47] text-white hover:bg-[#3B8838]">
             Descubre cómo
           </button>
         </div>
