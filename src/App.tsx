@@ -6,7 +6,9 @@ import Agriculture from './components/Agriculture/Agriculture';
 import Bienvenido from './components/Bienvenido/Bienvenido';
 import Arboles from './components/Arboles/Arboles';
 import Footer from './components/Footer/Footer';
+import Agroadopcion from './components/Agroadopcion/Agroadopcion';
 import './App.css';
+
 
 const App: React.FC = () => {
   return (
@@ -17,6 +19,7 @@ const App: React.FC = () => {
       <Arboles />
       <Banner />
       <Cards />
+      <Agroadopcion />
       <Beneficios />
       <Footer />
     </>
