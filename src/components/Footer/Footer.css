@@ -1,4 +1,4 @@
-/* Estilos generales del footer */
+
 .footer {
   background-color: #2d2d2d;
   color: white;
@@ -8,26 +8,26 @@
 
 .footer-content {
   display: flex;
-  justify-content: space-around; /* Distribuye espacio alrededor de los contenedores de secciones */
+  justify-content: space-around; 
   width: 100%;
-  max-width: 75rem; /* 1200px convertido a rem */
+  max-width: 75rem; 
   margin: 0 auto;
   padding: 0 1rem;
 }
 
 .footer-section {
-  flex-basis: 20%; /* Cada sección ocupa el 20% del ancho */
+  flex-basis: 20%; 
 }
 
 .section-container {
   display: flex;
-  justify-content: center; /* Centra el contenedor b dentro del contenedor a */
+  justify-content: center; 
   width: 100%;
 }
 
 .section-content {
-  text-align: left; /* Alineación izquierda dentro del contenedor b */
-  max-width: 100%; /* Asegura que el contenido no exceda el ancho del contenedor */
+  text-align: left; 
+  max-width: 100%; 
 }
 
 .footer-section h3,
@@ -40,13 +40,13 @@
   color: rgba(255, 255, 255, 0.694);
 }
 
-/* Lista dentro de las secciones */
+
 .footer-section ul {
   list-style-type: none;
   padding: 0;
 }
 
-/* Footer bottom (debajo de todo) */
+
 .footer-bottom {
   text-align: center;
   margin-top: 2rem;
@@ -75,14 +75,14 @@
 }
 
 .logo-image {
-  width: auto; /* Tamaño de la imagen */
-  height: 3rem; /* Convertido desde 48px */
+  width: auto; 
+  height: 3rem; 
   margin-right: 1rem;
 }
 
 .footer-section h2 {
-  font-size: 0.75rem; /* 24px convertido a rem */
-  line-height: 3rem; /* 48px convertido a rem */
+  font-size: 0.75rem; 
+  line-height: 3rem; 
 }
 
 .social-icons {
