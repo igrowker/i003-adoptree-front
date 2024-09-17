@@ -4,7 +4,7 @@ import LoginIcon from '@mui/icons-material/Login';
 // import CircleNotificationsIcon from '@mui/icons-material/CircleNotifications';
 // import NotificationsIcon from '@mui/icons-material/Notifications';
 
-import Logo from '../../assets/adoptree 1.png'
+import Logo from '../../assets/adoptree 1.png';
 
 import './Navbar.css';
 
@@ -39,14 +39,14 @@ const Navbar: React.FC = () => {
 
   return (
     <header
-      className={`header py-4 xl:px-[124px] md:px-[60px] mobile:px-[30px] ${
+      className={`header py-4 xl:px-[200px] md:px-[60px] mobile:px-[30px] bg-white ${
         scrollPosition > 0 ? 'scrolled' : ''
       }`}
     >
       <div className="flex items-center">
         <div className="">
           <a href="/">
-            <img className='w-[60px]' src={Logo}></img>
+            <img className="w-[60px]" src={Logo}></img>
           </a>
         </div>
         <input type="checkbox" id="check" />
@@ -101,8 +101,8 @@ const Navbar: React.FC = () => {
             >
               Login
             </a>
-            <button className='rounded-[10px] bg-[#4BAF47] text-white'>
-                Adopta ahora
+            <button className="rounded-[10px] bg-[#4BAF47] text-white">
+              Adopta ahora
             </button>
           </div>
         </div>
