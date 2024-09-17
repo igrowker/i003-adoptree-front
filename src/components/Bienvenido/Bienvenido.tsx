@@ -1,5 +1,4 @@
 import React from 'react';
-import Button from '@mui/material/Button'; // Para usar el botón con MUI
 // import farmerImage from '../../assets/farmer.jpg'; // es la ruta de la img principal de fondo
 import video from '../../assets/AdobeStock_812746937.mov';
 import tituloPrincipal from '../../assets/titulo.png'; //img del titulo Portada con diseño en formato png

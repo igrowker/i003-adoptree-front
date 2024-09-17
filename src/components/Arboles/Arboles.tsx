@@ -1,4 +1,3 @@
-import { Button } from '@mui/material';
 import { Spa, LocalFlorist, Yard } from '@mui/icons-material'; // Importando íconos de MUI
 import naranjosImg from '../../assets/naranjos.jpg'; // Ejemplo de cómo importar imágenes
 import limonerosImg from '../../assets/limoneros.jpg';
