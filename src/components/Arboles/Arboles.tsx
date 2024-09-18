@@ -70,7 +70,7 @@ const Arboles: React.FC = () => {
                 </h3>
 
                 {/* Botón */}
-                <button className="rounded-[10px] bg-[#4BAF47] text-white transitio mt-4">
+                <button className="rounded-[10px] bg-[#4BAF47] text-white transitio mt-4 hover:bg-[#3B8838]">
                   Adoptar
                 </button>
               </div>
