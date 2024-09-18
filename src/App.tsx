@@ -1,22 +1,21 @@
+import { Routes, Route } from 'react-router-dom';
 import Navbar from './components/Navbar/Navbar';
-import Cards from './components/Cards/Cards';
-import Beneficios from './components/Beneficios/Beneficios';
-import Banner from './components/Banner/Banner';
-import './App.css';
-import Agriculture from './components/Agriculture/Agriculture';
+import Home from './pages/Home/Home';
 import Footer from './components/Footer/Footer';
+import './App.css';
 
-function App() {
+const App: React.FC = () => {
   return (
     <>
       <Navbar />
-      <Banner />
-      <Cards />
-      <Beneficios />
-      <Agriculture />
+
+      <Routes>
+        <Route path="/" element={<Home />} />
+      </Routes>
+
       <Footer />
     </>
   );
-}
+};
 
 export default App;

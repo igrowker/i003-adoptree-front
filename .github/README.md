@@ -1,7 +1,7 @@
 [![Deploy to Vercel](https://github.com/igrowker/i003-adoptree-front/actions/workflows/deploy.yml/badge.svg)](https://github.com/igrowker/i003-adoptree-front/actions/workflows/deploy.yml)
-[![Build](https://github.com/igrowker/i003-adoptree-front/actions/workflows/build.yml/badge.svg)](https://github.com/igrowker/i003-adoptree-front/actions/workflows/build.yml)
+[![Build](https://github.com/igrowker/i003-adoptree-front/actions/workflows/buildonpush.yml/badge.svg)](https://github.com/igrowker/i003-adoptree-front/actions/workflows/buildonpush.yml)
 [![Lint](https://github.com/igrowker/i003-adoptree-front/actions/workflows/lint.yml/badge.svg)](https://github.com/igrowker/i003-adoptree-front/actions/workflows/lint.yml)
-[![Deploy Preview to Vercel](https://github.com/igrowker/i003-adoptree-front/actions/workflows/deploy-merge.yml/badge.svg)](https://github.com/igrowker/i003-adoptree-front/actions/workflows/deploy-merge.yml)
+[![Build and Deploy to Dev](https://github.com/igrowker/i003-adoptree-front/actions/workflows/build-deploy-dev.yml/badge.svg)](https://github.com/igrowker/i003-adoptree-front/actions/workflows/build-deploy-dev.yml)
 # Pipeline de CI para Build y Lint
 
 ## Descripción
@@ -22,7 +22,7 @@ Esta pipeline de integración continua (CI) está diseñada para desplegar el c�
 
 ## Ejecución
 
-La ejecución de la pipeline de `Deploy Preview to Vercel` de CI se realiza automáticamente cada vez que se realiza una `Pull Request` en las ramas `main` o `develop`. Si se detecta un error en la despliegue, se creará un issue y un comentario en el repositorio para que se puedan revisar y solucionar los problemas. Además, si todo sale bien, se creará un comentario en el Pull Request para informar la `Url` del preview del entorno de desarrollo.
+La ejecución de la pipeline de `Build and Deploy to Dev` de CI/CD se realiza automáticamente cada vez que se realiza una `Pull Request` en las ramas `main` o `develop`. Si se detecta un error en la despliegue, se creará un issue y un comentario en el repositorio para que se puedan revisar y solucionar los problemas. Además, si todo sale bien, se creará un comentario en el Pull Request para informar la `Url` del entorno de desarrollo.
 
 # Pipeline de CI para Deploy del Production
 
