@@ -101,7 +101,7 @@ const Navbar: React.FC = () => {
             >
               Login
             </a>
-            <button className="rounded-[10px] bg-[#4BAF47] text-white">
+            <button className="rounded-[10px] bg-[#4BAF47] text-white hover:bg-[#3B8838]">
               Adopta ahora
             </button>
           </div>
