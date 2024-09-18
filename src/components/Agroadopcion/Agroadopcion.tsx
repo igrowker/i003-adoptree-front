@@ -9,14 +9,14 @@ const Agroadopcion: React.FC = () => {
         <p className="text-orange-500 mb-2 fuentePersonalizada">
           Agroadopcion ecologica
         </p>
-        <h2 className="text-5xl font-bold text-gray-900 mb-[40px]">
+        <h2 className="text-3xl font-bold text-gray-900 mb-[40px]">
           ¿En que consisté la adopción de un árbol?
         </h2>
 
-        <div className="bg-white rounded p-9 max-w-7xl">
-          <div className="grid grid-cols-1 md:grid-cols-12 gap-4">
-            <div className="md:col-span-9 mb-9 md:mb-0">
-              <p className="text-left text-gray-700 text-agro">
+        <div className="bg-white rounded px-[60px] py-[40px] max-w-7xl">
+          <div className="flex justify-between mb-[35px]">
+            <div className="md:col-span-9 mb-9 md:mb-0 w-[500px]">
+              <p className="text-left text-base   leading-[32px] text-gray-700">
                 Adoptá un cítrico de nuestro huerto de Entre Ríos. Vas a poder
                 verlo crecer a través de fotos en tu zona de usuario y recibir
                 tu cosecha de naranjas en tu casa. <br />
@@ -41,16 +41,16 @@ const Agroadopcion: React.FC = () => {
             </div>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-12 gap-4 mt-6">
-            <div className="md:col-span-3 mb-3 md:mb-0">
+          <div className="flex justify-between">
+            <div className="md:col-span-3 mb-3 md:mb-0 md:flex">
               <img
                 src={imgNaranjero}
                 alt="imgNaranjero"
                 className="shadow-lg w-[294px] h-[454px]"
               />
             </div>
-            <div className="md:col-span-9 mb-9 md:mb-0">
-              <p className="text-left text-gray-700 text-agro">
+            <div className="md:col-span-9 mb-9 md:mb-0 text-gray-700 ml-[25px] w-[500px]">
+              <p className="text-left text-gray-700 text-base   leading-[32px]">
                 La producción actual de naranjas está reservada para los dueños
                 de los árboles. De esta manera, podemos cultivar naranjas de
                 forma ecológica bajo demanda y enviarlas directamente del árbol
@@ -58,11 +58,11 @@ const Agroadopcion: React.FC = () => {
                 frío.
               </p>
 
-              <p className="text-left text-gray-700 text-agro mt-6 font-bold">
+              <p className="text-left text-gray-900   leading-[32px] mt-6 font-bold">
                 ¿Cómo podés llegar a ser dueño de un árbol?
               </p>
 
-              <ol className="list-decimal px-6">
+              <ol className="list-decimal px-6 text-base   leading-[32px]">
                 <li className="text-left">
                   Decidí cuántas naranjas querés reservar para la primera
                   temporada.
