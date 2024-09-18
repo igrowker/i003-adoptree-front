@@ -36,7 +36,7 @@ const Bienvenido: React.FC = () => {
             <br />
             ¡Únete a Adoptree!
           </p>
-          <button className="rounded-[10px] w-[220px] bg-[#4BAF47] text-white">
+          <button className="rounded-[10px] w-[220px] bg-[#4BAF47] text-white hover:bg-[#3B8838]">
             Descubre cómo
           </button>
         </div>
@@ -45,7 +45,7 @@ const Bienvenido: React.FC = () => {
       {/*SECCIÓN DE CARDS*/}
       <div className="absolute bottom-[-120px] left-0 right-0 hidden md:flex justify-center z-20">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6 px-4 md:px-0">
-          <div className="bg-white shadow-lg rounded-lg p-6 text-center">
+          <div className="bg-white shadow-lg rounded-lg p-6 text-center w-[250px]">
             <p className="text-orange-400 font-medium tipografiaCards">
               Adopta
             </p>
@@ -57,7 +57,7 @@ const Bienvenido: React.FC = () => {
             />
           </div>
 
-          <div className="bg-white shadow-lg rounded-lg p-6 text-center">
+          <div className="bg-white shadow-lg rounded-lg p-6 text-center w-[250px]">
             <p className="text-orange-400 font-medium tipografiaCards">
               Compra
             </p>
@@ -69,7 +69,7 @@ const Bienvenido: React.FC = () => {
             />
           </div>
 
-          <div className="bg-white shadow-lg rounded-lg p-6 text-center">
+          <div className="bg-white shadow-lg rounded-lg p-6 text-center w-[250px]">
             <p className="text-orange-400 font-medium tipografiaCards">
               Disfruta
             </p>

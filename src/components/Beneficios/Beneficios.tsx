@@ -77,7 +77,7 @@ const Beneficios: React.FC = () => {
               </li>
             </ul>
 
-            <button className="rounded-[10px] bg-[#4BAF47] text-white mt-6">
+            <button className="rounded-[10px] bg-[#4BAF47] text-white mt-6 hover:bg-[#3B8838]">
               Descubre más
             </button>
           </div>

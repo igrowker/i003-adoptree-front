@@ -3,7 +3,7 @@
   background-color: #2d2d2d;
   color: white;
   padding: 2rem 0;
-  /* width: 100vw; */
+  width: 100vw;
 }
 
 .footer-content {
@@ -50,7 +50,7 @@
 .footer-bottom {
   text-align: center;
   margin-top: 2rem;
-  border-top: 0.0625rem solid rgba(255, 255, 255, 0.1); /* 1px a rem */
+  border-top: 0.0625rem solid rgba(255, 255, 255, 0.1); 
   padding-top: 1rem;
   font-size: 14px;
 }
@@ -75,13 +75,13 @@
 }
 
 .logo-image {
-  width: auto; /* Tamaño de la imagen */
-  height: 3rem; /* Convertido desde 48px */
+  width: auto; 
+  height: 3rem; 
   /* margin-right: 1rem; */
 }
 
 .footer-section h2 {
-  line-height: 2rem; /* 48px convertido a rem */
+  line-height: 2rem; 
 }
 
 .social-icons {
