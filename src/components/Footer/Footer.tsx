@@ -27,7 +27,6 @@ const Footer: React.FC = () => {
                 nuestros ecosistemas.
               </p>
               <div className="social-icons">
-              
                 <div>
                   <a
                     href="https://twitter.com"
