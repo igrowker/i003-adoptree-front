@@ -4,7 +4,7 @@ import './Agroadopcion.css';
 
 const Agroadopcion: React.FC = () => {
   return (
-    <section className="bg-[#f8f7f0] py-20 px-[200px] my-[100px]">
+    <section className="bg-[#f8f7f0] py-20 px-[200px] my-[100px] flex justify-center">
       <div className="container flex flex-col items-center text-center">
         <p className="text-orange-500 mb-2 fuentePersonalizada">
           Agroadopcion ecologica

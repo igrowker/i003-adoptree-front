@@ -9,11 +9,11 @@ import './Agriculture.css';
 
 const Agriculture: React.FC = () => {
   return (
-    <section className="flex px-[200px] mt-[220px] mb-[6em] max-lg:flex-col max-lg:items-center">
-      <section className="w-[50%] mr-4 flex flex-col justify-center items-center">
+    <section className="flex px-[200px] mt-[220px] mb-[6em] max-lg:flex-col max-lg:items-center 4xl:justify-center">
+      <section className="w-[50%] 4xl:w-[30%] mr-4 flex flex-col justify-center items-center">
         <img className="w-[500px]" src={imgNaranjas} />
       </section>
-      <section className="w-[50%] max-lg:w-[100%] max-lg:ml-16 max-lg:mt-16">
+      <section className="w-[50%] 4xl:w-[30%] max-lg:w-[100%] max-lg:ml-16 max-lg:mt-16">
         <span className="text-[#FF9900] text-[20px] Typography">
           Crowdfarming
         </span>
