@@ -92,7 +92,7 @@ const Adoptar = () => {
 
 
   return (
-    <div className="container mx-auto p-4">
+    <div className="container mx-auto p-4 pt-20">
       <h1 className="text-5xl text-center font-bold mb-12 mt-10 text-orange-400 fuentePersonalizada">Adoptar un Árbol: </h1>
       <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
         {/*!! iterar sobre una lista de árboles si tienes más de uno !!*/}
