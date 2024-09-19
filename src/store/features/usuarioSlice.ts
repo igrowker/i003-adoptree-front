@@ -7,7 +7,7 @@ export interface Usuario {
     direccionEnvio: string;
 }
 
-interface UsuarioState {
+export interface UsuarioState {
     usuarios: Usuario[];
 }
 
