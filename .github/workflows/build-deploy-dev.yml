@@ -111,3 +111,4 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}
         with:
           msg: 'El despliegue del Enrtorno de desarrollo ha sido exitoso :+1: :thumbsup:. Url: [Dev](https://dev-adoptree.onrender.com/)'
+          check_for_duplicate_msg: false
