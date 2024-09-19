@@ -27,7 +27,7 @@ const Cards: React.FC = () => {
           Agricultura de otros productores
         </h2>
       </div>
-      <div className="flex justify-between items-center gap-2">
+      <div className="flex justify-center items-center gap-6">
         {cards.map((card, index) => (
           <img
             className="w-[260px]"

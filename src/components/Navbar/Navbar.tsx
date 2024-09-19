@@ -46,7 +46,7 @@ const Navbar: React.FC = () => {
       <div className="flex items-center">
         <div className="">
           <a href="/">
-            <img className="w-[60px]" src={Logo}></img>
+            <img className="w-[60px] 4xl:w-[80px]" src={Logo}></img>
           </a>
         </div>
         <input type="checkbox" id="check" />
@@ -60,28 +60,28 @@ const Navbar: React.FC = () => {
         </label>
         <nav className="navbar">
           <a
-            className="text-sm"
+            className="text-sm 4xl:text-[20px]"
             href="/users"
             style={{ '--i': 1 } as AnchorProps}
           >
             Sobre nosotros
           </a>
           <a
-            className="text-sm"
+            className="text-sm 4xl:text-[20px]"
             href="/blog"
             style={{ '--i': 3 } as AnchorProps}
           >
             Adoptar
           </a>
           <a
-            className="text-sm"
+            className="text-sm 4xl:text-[20px]"
             href="/contact"
             style={{ '--i': 4 } as AnchorProps}
           >
             Árboles
           </a>
           <a
-            className="text-sm"
+            className="text-sm 4xl:text-[20px]"
             href="/contact"
             style={{ '--i': 4 } as AnchorProps}
           >
@@ -97,11 +97,11 @@ const Navbar: React.FC = () => {
             <a
               href="/api/auth/login"
               style={{ '--i': 6, margin: 0 } as AnchorProps}
-              className="text-[#05264E] mobile:font-[500] mobile:text-[1.1rem] desktop:font-normal desktop:text-base"
+              className="text-[#05264E] mobile:font-[500] mobile:text-[1.1rem] desktop:font-normal desktop:text-base 4xl:text-[20px]"
             >
               Login
             </a>
-            <button className="rounded-[10px] bg-[#4BAF47] text-white hover:bg-[#3B8838]">
+            <button className="rounded-[10px] bg-[#4BAF47] text-white hover:bg-[#3B8838] 4xl:text-[20px]">
               Adopta ahora
             </button>
           </div>
