@@ -4,7 +4,8 @@
 @tailwind utilities;
 
 a {
-  font-weight: 500;
+  /* font-weight: 500; */
+  cursor: pointer;
   color: #646cff;
   text-decoration: inherit;
 }

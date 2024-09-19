@@ -1,5 +1,5 @@
 import { Routes, Route, Navigate } from 'react-router-dom';
-import AdoptreeRoutes from '../routes/AdoptreeRoutes'
+import AdoptreeRoutes from '../routes/AdoptreeRoutes';
 
 export const AppRouter = () => {
   // Antes de mostrar mis rutas, es decir, antes de hacer cualquier cosa en mi aplicación voy a hacer una evaluación
