@@ -4,7 +4,7 @@ on:
   push: null
 
 concurrency:
-  group: ci-${{ github.ref }}
+  group: lint-${{ github.ref }}
   cancel-in-progress: true
 
 permissions: {}

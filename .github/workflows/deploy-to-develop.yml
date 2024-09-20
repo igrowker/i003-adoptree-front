@@ -6,7 +6,7 @@ on:
       - develop
 
 concurrency:
-  group: ci-${{ github.ref }}
+  group: deploy-dev-${{ github.ref }}
   cancel-in-progress: true
 
 jobs:
