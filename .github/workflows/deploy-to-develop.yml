@@ -1,10 +1,8 @@
-name: Build and Deploy to Dev
+name: Deploy to Dev
 
 on:
-  pull_request:
-    types: [opened, synchronize, reopened]
+  push:
     branches:
-      - main
       - develop
 
 concurrency:
@@ -46,20 +44,6 @@ jobs:
           BRANCH: ${{ github.ref }}
         with:
           assignees: ${{ github.event.sender.login }}
-      - name: Comment on PR if failed
-        if: failure()
-        uses: unsplash/comment-on-pr@v1.3.0
-        env:
-          GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}
-        with:
-          msg: 'Falló el build de la rama :disappointed:. Por favor revisa los errores y toma las medidas necesarias. Action Run: [Action](${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }})'
-      - name: Comment on PR
-        uses: unsplash/comment-on-pr@v1.3.0
-        env:
-          GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}
-        with:
-          msg: 'El build ha sido exitoso :+1: :thumbsup:.'
-          check_for_duplicate_msg: false
 
   lint:
     name: Lint
@@ -96,23 +80,8 @@ jobs:
           BRANCH: ${{ github.ref }}
         with:
           assignees: ${{ github.event.sender.login }}
-      - name: Comment on PR if failed
-        if: failure()
-        uses: unsplash/comment-on-pr@v1.3.0
-        env:
-          GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}
-        with:
-          msg: 'Falló la verificación del Lint :dissapointed:. Por favor revisa los errores y toma las medidas necesarias. Action Run: [Action](${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }})'
-      - name: Comment on PR
-        uses: unsplash/comment-on-pr@v1.3.0
-        env:
-          GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}
-        with:
-          msg: 'El linter ha verificado el código :+1: :thumbsup:.'
-          check_for_duplicate_msg: false
 
   deploy:
-    if: github.event.pull_request.base.ref == 'develop'
     runs-on: ubuntu-latest
     needs: [build, lint]
     steps:
@@ -153,18 +122,3 @@ jobs:
           BRANCH: ${{ github.ref }}
         with:
           assignees: ${{ github.event.sender.login }}
-
-      - name: Comment on PR if failed
-        if: failure()
-        uses: unsplash/comment-on-pr@v1.3.0
-        env:
-          GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}
-        with:
-          msg: 'Ocurrió un error al desplegar la rama. Por favor revisa los errores y toma las medidas necesarias. Action Run: [Action](${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}).'
-      - name: Comment on PR
-        uses: unsplash/comment-on-pr@v1.3.0
-        env:
-          GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}
-        with:
-          msg: 'El despliegue del entorno de desarrollo ha sido exitoso :+1: . Url: [Development](https://dev-adoptree.onrender.com/)'
-          check_for_duplicate_msg: false
