@@ -1,0 +1,88 @@
+.finca-info-container {
+    display: flex;
+    align-items: center;
+    background-color: #f9f9f9;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+    height: 90vh;
+    margin-top: 7rem;
+    padding-left: 10rem;
+    padding-right: 10rem;
+  }
+
+  .finca-info-image {
+    flex: 1;
+    margin-right: 20px;
+    background-color: #2b8a3e;
+    height: 30rem;
+    overflow: hidden;
+  }
+
+  .finca-info-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 10px;
+  }
+
+  .finca-info-details {
+    flex: 1.5;
+    color: #333;
+  }
+  
+  .finca-info-details h2 {
+    color: #2b8a3e;
+    font-size: 24px;
+    margin-bottom: 10px;
+  }
+  
+  .finca-info-details p {
+    font-size: 16px;
+    margin-bottom: 20px;
+    color: #666;
+  }
+
+  .finca-info-practices {
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+    flex-wrap: wrap;
+  }
+  
+  .finca-info-practice {
+    flex: 1 1 calc(33.33% - 20px);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    background-color: #fff;
+    padding: 15px;
+    border-radius: 8px;
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+  }
+
+  .finca-info-practice img {
+    width: 50px;
+    height: 50px;
+    margin-bottom: 10px;
+  }
+  
+  .finca-info-practice h3 {
+    font-size: 18px;
+    margin-bottom: 10px;
+  }
+  
+  .finca-info-practice p {
+    font-size: 14px;
+    color: #555;
+  }
+
+  .slick-dots {
+    bottom: -30px;
+  }
+
+  .slick-dots li button:before {
+    color: #2b8a3e;
+  }
+  
