@@ -3,7 +3,22 @@ import GiteIcon from '@mui/icons-material/Gite';
 import { GiFruitTree, GiFruitBowl } from 'react-icons/gi';
 import './AdoptarArbol.css'; // Asegúrate de ajustar este archivo
 
-const AdoptarArbol = ({ datos, onAdopt }: any) => {
+//!! SE ESTABLECIO ESTOS TIPOS PARA QUE NO GENERE ERROR DE ESLINT DURANTE LA COMPROBACION 
+//!! CON ESTO SE INDICA LOS TIPOS ESPECIFICOS QUE RECIBE ESTE COMPONENTE PARA NO COLOCAR "ANY" 
+interface ArbolData { //TIPO DE LA DATA ESTATICA
+  id: number;
+  name: string;
+  type: string;
+  location: string;
+  productor: string;
+  price: number;
+  imageUrl: string;
+}
+
+type OnAdoptType = (id: number) => void; //TIPO DE LA FUNCION
+//!!--------------------------------------------------------------------------------------------
+
+const AdoptarArbol = ({ datos, onAdopt }: { datos: ArbolData; onAdopt: OnAdoptType }) => {
   return (
     <div className="flex justify-center gap-6">
       <div
