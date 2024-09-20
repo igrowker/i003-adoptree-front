@@ -19,7 +19,7 @@ const Adoptar = () => {
       type: "Naranja",
       location: "Tucumán, Argentina",
       imageUrl: "https://i.pinimg.com/564x/3c/bf/ec/3cbfec1259635898efae5b57ea3ddea3.jpg", 
-      productor:"",
+      productor:"Anita Minisci",
       price: 100
     },
 
@@ -28,7 +28,7 @@ const Adoptar = () => {
       type: "Mandarino",
       location: "Mendoza, Argentina",
       imageUrl: "https://i.pinimg.com/564x/64/9f/a5/649fa54b28b8539c1ae306e98a5673c0.jpg", 
-      productor:"",
+      productor:"Angelo Gibilisco",
       price: 600
     },
 
@@ -38,17 +38,7 @@ const Adoptar = () => {
     type: "Limon",
     location: "Corrientes, Argentina",
     imageUrl: "https://i.pinimg.com/564x/35/96/8f/35968f335d21465253afe8c96b9af31e.jpg", 
-    productor:"",
-    price: 150
-      },
-
-      {
-        id: 3,
-    name: "Arbol de Limon ",
-    type: "Limon",
-    location: "Corrientes, Argentina",
-    imageUrl: "https://i.pinimg.com/564x/35/96/8f/35968f335d21465253afe8c96b9af31e.jpg", 
-    productor:"",
+    productor:"Antonio Bonillo",
     price: 150
       },
 
@@ -58,7 +48,7 @@ const Adoptar = () => {
     type: "Limon",
     location: "Corrientes, Argentina",
     imageUrl: "https://i.pinimg.com/564x/35/96/8f/35968f335d21465253afe8c96b9af31e.jpg", 
-    productor:"",
+    productor:"Juan Bonillo",
     price: 150
       },
 
@@ -68,7 +58,7 @@ const Adoptar = () => {
     type: "Limon",
     location: "Corrientes, Argentina",
     imageUrl: "https://i.pinimg.com/564x/35/96/8f/35968f335d21465253afe8c96b9af31e.jpg", 
-    productor:"",
+    productor:"Joaquin Gine",
     price: 150
       },
 
@@ -78,7 +68,17 @@ const Adoptar = () => {
     type: "Limon",
     location: "Corrientes, Argentina",
     imageUrl: "https://i.pinimg.com/564x/35/96/8f/35968f335d21465253afe8c96b9af31e.jpg", 
-    productor:"",
+    productor:"Danilo Magnano",
+    price: 150
+      },
+
+      {
+        id: 7,
+    name: "Arbol de Limon ",
+    type: "Limon",
+    location: "Corrientes, Argentina",
+    imageUrl: "https://i.pinimg.com/564x/35/96/8f/35968f335d21465253afe8c96b9af31e.jpg", 
+    productor:"Angelo Dipiero",
     price: 150
       },
   ];
@@ -92,9 +92,9 @@ const Adoptar = () => {
 
 
   return (
-    <div className="container mx-auto p-4 pt-20">
+    <div className="container mx-auto md:mx-80 p-4 pt-20">
       <h1 className="text-5xl text-center font-bold mb-12 mt-10 text-orange-400 fuentePersonalizada">Adoptar un Árbol: </h1>
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+      <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
         {/*!! iterar sobre una lista de árboles si tienes más de uno !!*/}
         {datos.map((dat) => (
           <AdoptarArbol

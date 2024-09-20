@@ -1,32 +1,61 @@
-//import compraImage from '../../assets/compra.jpg'
-import "./AdoptarArbol.css"
 import AgricultureIcon from '@mui/icons-material/Agriculture';
 import GiteIcon from '@mui/icons-material/Gite';
-import { GiFruitTree } from "react-icons/gi";
+import { GiFruitTree, GiFruitBowl } from 'react-icons/gi';
+import './AdoptarArbol.css'; // Asegúrate de ajustar este archivo
 
 const AdoptarArbol = ({ datos, onAdopt }: any) => {
-
-
-
   return (
-    
-    <div className=" max-w-sm rounded overflow-hidden shadow-lg bg-orange-300 mt-5 ml-5">
-      <img className="w-full h-48 object-cover" src={datos.imageUrl} alt="{datos.name}" />
-      <div className="px-12 py-4">
-        <div className="font-bold  text-xl mb-2 text-green-700"> {datos.name} </div>
-        <p className="text-gray-700 text-base pb-2"><GiFruitTree size={22} style={{ color: '#FFF', display:"inline" }}/>  Tipo: {datos.type} </p>
-        <p className="text-gray-700 text-base pb-2"> <GiteIcon style={{ color: '#FFF' }} />  Finca: {datos.location} </p>
-        <p className="text-gray-700 text-base pb-2"><AgricultureIcon style={{ color: '#FFF' }} /> Productor: "datos.productor" </p>
-        <p className="text-orange-700 font-semibold text-lg">Precio: $ {datos.price} / año</p>
-        <button
-          onClick={() => onAdopt(datos.id)}
-          className="mt-4 w-full bg-green-700 hover:bg-green-600 text-white font-bold py-2 px-4 rounded transition duration-200"
-        >
-          Adoptar este árbol
-        </button>
+    <div className="flex justify-center gap-6">
+      <div
+        className="group bg-white rounded-xl overflow-hidden shadow-lg max-w-sm md:h-[29rem] md:w-[17rem] transform transition-transform duration-300 hover:scale-105 hover:shadow-2xl"
+      >
+        {/* Imagen con filtro tenue */}
+        <img
+          src={datos.imageUrl}
+          alt="imageArbol"
+          className="w-full h-48 object-cover transition duration-300 group-hover:brightness-90"
+        />
+
+        {/* Contenido de la Tarjeta */}
+        <div className="relative -mt-6 py-6 bg-white rounded-t-xl text-center">
+          {/* Ícono en la parte superior */}
+          <div className="absolute top-0 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-orange-500 rounded-full p-3">
+            <GiFruitBowl size={22} style={{ color: '#FFF', display: 'inline' }} />
+          </div>
+
+          {/* Título */}
+          <h3 className="mt-6 text-xl font-semibold text-gray-900 mb-2">
+            {datos.name}
+          </h3>
+
+          {/* Texto */}
+          <div className="ml-3 fuenteParrafos">
+            <p className="text-gray-700 text-base pb-2">
+              <GiFruitTree size={22} style={{ color: '#FF9E2F', display: 'inline' }} /> Tipo: <span style={{ color: '#00BF62' }}>{datos.type}</span>
+            </p>
+            <p className="text-gray-700 text-base pb-2">
+              <GiteIcon style={{ color: '#FF9E2F' }} /> Finca: <span style={{ color: '#00BF62' }}>{datos.location}</span>
+            </p>
+            <p className="text-gray-700 text-base pb-2">
+              <AgricultureIcon style={{ color: '#FF9E2F' }} /> Productor: <span style={{ color: '#00BF62' }}>{datos.productor}</span>
+            </p>
+          </div>
+
+          <p className="font-semibold text-lg" style={{ color: '#FF9E2F' }}>
+            Precio: $ {datos.price} / año
+          </p>
+
+          {/* Botón */}
+          <button
+            onClick={() => onAdopt(datos.id)}
+            className="rounded-[10px] bg-[#4BAF47] text-white transition mt-4 hover:bg-[#3B8838] py-2 px-4"
+          >
+            Adoptar este árbol
+          </button>
+        </div>
       </div>
     </div>
-  ); 
+  );
 };
 
 export default AdoptarArbol;
