@@ -16,7 +16,7 @@ export const AppRouter = () => {
 
   return (
     <Routes>
-      {status !== 'authenticated' ? (
+      {status === 'authenticated' ? (
         <Route path="/*" element={<AdoptreeRoutes />} />
       ) : (
         <>
