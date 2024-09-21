@@ -12,7 +12,6 @@ const initialState: UserState = {
 
 export const userSlice = createSlice({
   name: 'user',
-  name: 'user',
   initialState,
   reducers: {
     login: (state, action: PayloadAction<Record<string, string>>) => {
@@ -27,7 +26,7 @@ export const userSlice = createSlice({
     },
     },
   },
-});
+);
 
 // Exportar las acciones
 export const { login, setAuthenticated, logout } = userSlice.actions;
