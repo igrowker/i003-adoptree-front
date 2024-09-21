@@ -1,5 +1,6 @@
 import AdoptarArbol from '../../components/AdoptarArbol/AdoptarArbol'; //lamado al componente hijo
-
+import { InputAdornment, TextField } from '@mui/material';
+import SearchIcon from '@mui/icons-material/Search';
 import './Adoptar.css';
 
 const Adoptar = () => {
@@ -97,11 +98,44 @@ const Adoptar = () => {
   //-----------------------------------------------------------------------------------------
 
   return (
-    <div className="container mx-auto md:mx-80 p-4 pt-20">
-      <h1 className="text-5xl text-center font-bold mb-12 mt-10 text-orange-400 fuentePersonalizada">
-        Adoptar un Árbol:{' '}
+    <div className="px-[200px] my-[116px]">
+      <h1 className="text-4xl font-bold mb-2 mt-10">
+        Adopciones
       </h1>
-      <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
+      <p className='text-gray-500 mb-7 w-[650px]'>
+        Adopta un árbol para apoyar a un agricultor y recibe tu cosecha a lo largo de la temporada.
+      </p>
+      <TextField 
+        className='w-[650px]' 
+        id="outlined-basic" 
+        label="Busca un árbol" 
+        variant="outlined" 
+        sx={{
+          '& .MuiFormLabel-root': {
+            color: '#8F8F8F', // Color normal del label
+            '&:hover': {
+              color: '#8F8F8F', // Color del label al pasar el mouse
+            },
+          },
+          '& .MuiOutlinedInput-root': {
+            '&:hover fieldset': {
+              borderColor: '#4BAF47', // Cambia el color del borde al pasar el mouse
+            },
+            '&.Mui-focused fieldset': {
+              borderColor: '#4BAF47', // Cambia el color del borde al enfocar
+            },
+          },
+          '& .MuiInputBase-input': {
+            color: '#4BAF47', // Cambia el color del texto
+          },
+        }}
+        slotProps={{
+          input: {
+            endAdornment: <InputAdornment position="end"><SearchIcon /></InputAdornment>,
+          },
+        }}
+      />
+      <div className="grid grid-cols-1 md:grid-cols-4 gap-6 mt-10">
         {/*!! iterar sobre una lista de árboles si tienes más de uno !!*/}
         {datos.map((dat) => (
           <AdoptarArbol key={dat.id} datos={dat} onAdopt={handleAdopt} />
