@@ -1,7 +1,14 @@
 import { useAppSelector } from '../../store/store';
 
+interface Usuario {
+  id: number;
+  nombre: string;
+  correo: string;
+  direccionEnvio: string;
+}
+
 const List = () => {
-  const usuarios = useAppSelector((state) => state.usuario.usuarios);
+  const usuarios = useAppSelector((state) => state.usuario.usuarios) as Usuario[];
   return (
     <div className='rounded-md shadow border m-2 p-2'>
       <h1>Lista de usuarios</h1>
