@@ -1,6 +1,6 @@
 import { useRef } from 'react'
 import { useAppDispatch } from '../../store/store';
-import { addUsuario } from '../../store/features/usuarioSlice';
+import { setUser } from '../../store/features/userSlice';
 
 const Add = () => {
     const nombre = useRef<string>(''); 
@@ -10,7 +10,7 @@ const Add = () => {
 
     const handleSubmit = (e: React.FormEvent) => {
         e.preventDefault();
-        dispatch(addUsuario({nombre: nombre.current, correo: correo.current, direccionEnvio: direccion.current}));
+        dispatch(setUser({nombre: nombre.current, correo: correo.current, direccionEnvio: direccion.current}));
     }
     
   return (
