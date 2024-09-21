@@ -61,28 +61,28 @@ const Navbar: React.FC = () => {
         <nav className="navbar">
           <a
             className="text-sm 4xl:text-[20px]"
-            href="/users"
+            href="/about"
             style={{ '--i': 1 } as AnchorProps}
           >
             Sobre nosotros
           </a>
           <a
             className="text-sm 4xl:text-[20px]"
-            href="/blog"
+            href="/adopta-un-arbol"
             style={{ '--i': 3 } as AnchorProps}
           >
             Adoptar
           </a>
           <a
             className="text-sm 4xl:text-[20px]"
-            href="/contact"
+            href="/impacto-ambiental"
             style={{ '--i': 4 } as AnchorProps}
           >
-            Árboles
+            Impacto
           </a>
           <a
             className="text-sm 4xl:text-[20px]"
-            href="/contact"
+            href="/contacto"
             style={{ '--i': 4 } as AnchorProps}
           >
             Contacto
