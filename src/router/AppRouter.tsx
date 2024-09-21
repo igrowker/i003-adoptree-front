@@ -1,5 +1,5 @@
 import { Routes, Route, Navigate } from 'react-router-dom';
-import AdoptreeRoutes from '../routes/AdoptreeRoutes';;
+import AdoptreeRoutes from '../routes/AdoptreeRoutes';
 import Login from '../components/Login/Login';
 import Registro from '../components/Login/Registro'
 
