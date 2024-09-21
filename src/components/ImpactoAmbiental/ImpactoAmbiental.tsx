@@ -1,5 +1,8 @@
 import React from 'react';
 
+const cardStyle = "bg-white rounded-lg shadow-md p-4 flex flex-col items-center text-center hover:scale-105 transition-transform duration-300";
+const sectionContainer = "flex flex-col items-center gap-10 py-20";
+const sectionTitle = "text-3xl font-bold";
 // Componente principal
 const ImpactoAmbiental: React.FC = () => {
   return (
@@ -70,7 +73,7 @@ const ImpactoAmbiental: React.FC = () => {
 const Section: React.FC<{ title: string; content: string; imageSrc: string; imageAlt: string }> = ({ title, content, imageSrc, imageAlt }) => (
   <section className="flex flex-col items-center gap-10 lg:flex-row py-10">
     <div className="flex-1 mb-4 lg:mb-0">
-      <h1 className="text-3xl font-bold mb-4">{title}</h1>
+      <h1 className="text-6xlxl font-bold mb-4">{title}</h1>
       <p className="text-lg opacity-75">{content}</p>
     </div>
     <div className="flex-1 flex justify-center">
@@ -81,8 +84,8 @@ const Section: React.FC<{ title: string; content: string; imageSrc: string; imag
 
 // Componente de Métricas
 const MetricSection: React.FC<{ title: string; content: string; metrics: { thumbnail: string; value: string; title?: string }[] }> = ({ title, content, metrics }) => (
-  <section className="flex flex-col items-center gap-10 py-10 ">
-    <h2 className="text-2xl font-semibold">{title}</h2>
+  <section className={sectionContainer}>
+    <h2 className={sectionTitle}>{title}</h2>
     <p className="text-center">{content}</p>
     <div className="flex flex-col gap-4 items-center justify-center md:flex-row">
       {metrics.map((metric, index) => (
@@ -96,14 +99,14 @@ const MetricSection: React.FC<{ title: string; content: string; metrics: { thumb
 const MetricItem: React.FC<{ thumbnail: string; value: string; title?: string }> = ({ thumbnail, value, title }) => (
   <div className="bg-white rounded-lg shadow-md p-4 flex flex-col items-center text-center">
     <img className="w-20 h-20 object-cover" src={thumbnail} alt={title} />
-    {title && <h3 className="mt-2 font-semibold">{title}</h3>}
+    {title && <h3 className={`mt-2 text-md`}>{title}</h3>}
     <p className="text-sm opacity-60">{value}</p>
   </div>
 );
 
 // Componente para la sección de Testimonios
 const SectionQuote: React.FC = () => (
-  <section className="flex flex-col lg:flex-row py-10 p-5 rounded-lg shadow-md">
+  <section className="flex flex-col lg:flex-row py-20 p-5 rounded-lg shadow-md">
     <div className="flex-1 mb-4 lg:mb-0">
       <p className="text-lg opacity-75">
         "Vamos a iniciar la aventura de mejorar lo ecológico con prácticas regenerativas. Creemos que estas prácticas nos pueden ayudar económicamente en la finca y en la mejora del cultivo si conseguimos simbiosis entre animales, la hierba y los árboles."
@@ -118,15 +121,15 @@ const SectionQuote: React.FC = () => (
 
 // Componente para la Sección de Interés
 const SectionInteres: React.FC = () => (
-  <section className="flex flex-col items-center gap-10 py-10">
-    <h2 className="text-4xl font-bold">También podría interesarte</h2>
+  <section className={sectionContainer}>
+    <h2 className="text-3xl font-bold md:text-4xl">También podría interesarte</h2>
     <div className="flex flex-col gap-10 justify-center cursor-pointer md:flex-row">
       {[
         { imgSrc: './tallerAgro.png', title: '¡Completamos el segundo taller del año!' },
         { imgSrc: './radioAgro.png', title: '¡Estuvimos en la radio!' },
         { imgSrc: './pasantesAgro.png', title: 'Regenerando el paisaje con árboles: Adoptree' },
       ].map((item, index) => (
-        <div key={index} className="bg-white rounded-lg shadow-md p-4 flex flex-col items-center text-center">
+        <div key={index} className={cardStyle}>
           <img className="w-72 h-auto rounded-lg" src={item.imgSrc} alt={item.title} />
           <h3 className="mt-2">{item.title}</h3>
         </div>
