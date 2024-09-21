@@ -3,6 +3,10 @@ name: Build
 on:
   push: null
 
+concurrency:
+  group: build-${{ github.ref }}
+  cancel-in-progress: true
+
 jobs:
   build:
     name: Build
