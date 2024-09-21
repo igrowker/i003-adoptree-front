@@ -4,7 +4,7 @@ import Footer from '../components/Footer/Footer';
 import Home from '../pages/Home/Home';
 import Checkout from '../pages/Checkout/Checkout';
 import Adoptar from '../pages/Adoptar/Adoptar';
-
+import PrivacyPolicy from '../pages/PrivacyPolicy/PrivacyPolicy';
 
 const AdoptreeRoutes = () => {
   return (
@@ -16,6 +16,7 @@ const AdoptreeRoutes = () => {
         <Route path="/fincas" element="" />
         <Route path="/adopta-un-arbol" element={<Adoptar />} />
         <Route path="/checkout" element={<Checkout />} />
+        <Route path="/privacy-policy" element={<PrivacyPolicy />} />
       </Routes>
 
       <Footer />
