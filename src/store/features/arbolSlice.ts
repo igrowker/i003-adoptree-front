@@ -1,11 +1,11 @@
-import { createSlice } from "@reduxjs/toolkit";
+import { createSlice } from '@reduxjs/toolkit';
 
 const initialState = {
   arboles: [],
 };
 
 export const ArbolSlice = createSlice({
-  name: "arboles",
+  name: 'arboles',
   initialState,
   reducers: {
     setArboles: (state, action) => {

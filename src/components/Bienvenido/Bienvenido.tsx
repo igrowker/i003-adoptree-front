@@ -28,14 +28,18 @@ const Bienvenido: React.FC = () => {
       {/* Contenido */}
       <div className="relative z-10 text-center text-white">
         <p className="text-lg mb-5 flex">BIENVENIDO A ADOPTREE</p>
-        <img className="w-[400px] 4xl:w-[700px]" src={tituloPrincipal} alt="titulo" />
+        <img
+          className="w-[400px] 4xl:w-[700px]"
+          src={tituloPrincipal}
+          alt="titulo"
+        />
         <div className="w-1/2 flex flex-col">
           <p className="text-lg 4xl:text-[30px] md:text-[18px] mb-6 anchoPersonalizado tipografiaPersonalizada w-[500px] 4xl:w-[700px]">
             Descubre cómo puedes adoptar un árbol cítrico, apoyar a productores
             locales y recibir fruta fresca en casa.
             <br />
-            <br className='hidden 4xl:block' />
-            <span className='4xl:mt-[15px]'>¡Únete a Adoptree!</span>
+            <br className="hidden 4xl:block" />
+            <span className="4xl:mt-[15px]">¡Únete a Adoptree!</span>
           </p>
           <button className="rounded-[10px] w-[220px] bg-[#4BAF47] text-white hover:bg-[#3B8838]">
             Descubre cómo
@@ -50,7 +54,9 @@ const Bienvenido: React.FC = () => {
             <p className="text-orange-400 font-medium tipografiaCards 4xl:text-[35px]">
               Adopta
             </p>
-            <h3 className="text-xl font-semibold mb-4 4xl:text-[22px]">Naranjos en adopción</h3>
+            <h3 className="text-xl font-semibold mb-4 4xl:text-[22px]">
+              Naranjos en adopción
+            </h3>
             <img
               src={adoptionImage}
               alt="Naranjos en adopción"
@@ -62,7 +68,9 @@ const Bienvenido: React.FC = () => {
             <p className="text-orange-400 font-medium tipografiaCards 4xl:text-[35px]">
               Compra
             </p>
-            <h3 className="text-xl font-semibold mb-4 4xl:text-[22px]">Naranjos en adopción</h3>
+            <h3 className="text-xl font-semibold mb-4 4xl:text-[22px]">
+              Naranjos en adopción
+            </h3>
             <img
               src={compraImage}
               alt="Naranjos en adopción"
@@ -74,7 +82,9 @@ const Bienvenido: React.FC = () => {
             <p className="text-orange-400 font-medium tipografiaCards 4xl:text-[35px]">
               Disfruta
             </p>
-            <h3 className="text-xl font-semibold mb-4 4xl:text-[22px]">Naranjos en adopción</h3>
+            <h3 className="text-xl font-semibold mb-4 4xl:text-[22px]">
+              Naranjos en adopción
+            </h3>
             <img
               src={disfrutaImage}
               alt="Naranjos en adopción"

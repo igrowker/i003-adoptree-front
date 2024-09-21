@@ -4,7 +4,7 @@ import logo from '../../assets/AdopLogo.png';
 import facebookIcon from '../../assets/facebook.svg';
 import instagramIcon from '../../assets/instagram.svg';
 import twitterIcon from '../../assets/twitter.svg';
-import './Registro.css';  
+import './Registro.css';
 
 const Registro: React.FC = () => {
   const [formData, setFormData] = useState({
@@ -27,7 +27,7 @@ const Registro: React.FC = () => {
     e.preventDefault();
     console.log('Formulario enviado');
     if (formData.password !== formData.confirmarPassword) {
-      alert("Las contraseñas no coinciden");
+      alert('Las contraseñas no coinciden');
       return;
     }
     console.log('Datos del formulario:', formData);
@@ -39,51 +39,53 @@ const Registro: React.FC = () => {
         <img src={backgroundImage} alt="Background" />
       </div>
       <div className="registro-form">
-      <img src={logo} alt="Adoptree Logo" className="logo" />
+        <img src={logo} alt="Adoptree Logo" className="logo" />
         <h2>Crear una cuenta</h2>
         <p>Completa el formulario para registrarte.</p>
         <form onSubmit={handleSubmit}>
-          <input 
-            type="text" 
-            name="nombres" 
-            placeholder="Nombres" 
-            value={formData.nombres} 
-            onChange={handleChange} 
-            required 
+          <input
+            type="text"
+            name="nombres"
+            placeholder="Nombres"
+            value={formData.nombres}
+            onChange={handleChange}
+            required
           />
-          <input 
-            type="text" 
-            name="apellidos" 
-            placeholder="Apellidos" 
-            value={formData.apellidos} 
-            onChange={handleChange} 
-            required 
+          <input
+            type="text"
+            name="apellidos"
+            placeholder="Apellidos"
+            value={formData.apellidos}
+            onChange={handleChange}
+            required
           />
-          <input 
-            type="email" 
-            name="email" 
-            placeholder="Email" 
-            value={formData.email} 
-            onChange={handleChange} 
-            required 
+          <input
+            type="email"
+            name="email"
+            placeholder="Email"
+            value={formData.email}
+            onChange={handleChange}
+            required
           />
-          <input 
-            type="password" 
-            name="password" 
-            placeholder="Contraseña" 
-            value={formData.password} 
-            onChange={handleChange} 
-            required 
+          <input
+            type="password"
+            name="password"
+            placeholder="Contraseña"
+            value={formData.password}
+            onChange={handleChange}
+            required
           />
-          <input 
-            type="password" 
-            name="confirmarPassword" 
-            placeholder="Confirmar Contraseña" 
-            value={formData.confirmarPassword} 
-            onChange={handleChange} 
-            required 
+          <input
+            type="password"
+            name="confirmarPassword"
+            placeholder="Confirmar Contraseña"
+            value={formData.confirmarPassword}
+            onChange={handleChange}
+            required
           />
-          <button type="submit" className="registro-button">Registrar</button>
+          <button type="submit" className="registro-button">
+            Registrar
+          </button>
         </form>
 
         <div className="social-login">

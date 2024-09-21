@@ -1,10 +1,10 @@
-import { createSlice, PayloadAction } from "@reduxjs/toolkit";
+import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 
 // Definir el tipo del estado
-interface UserState {
-  user: Record<string, any>;  // Puedes cambiar el tipo de 'any' si conoces la estructura del usuario
+export interface UserState {
+  user: Record<string, any>; // Puedes cambiar el tipo de 'any' si conoces la estructura del usuario
   authenticated: boolean;
-  userAppointments: any[];    // Si sabes la estructura de las citas, cambia 'any' por el tipo adecuado
+  userAppointments: any[]; // Si sabes la estructura de las citas, cambia 'any' por el tipo adecuado
 }
 
 const initialState: UserState = {
@@ -14,28 +14,24 @@ const initialState: UserState = {
 };
 
 export const userSlice = createSlice({
-  name: "user",
+  name: 'user',
   initialState,
   reducers: {
-    setUser: (state, action: PayloadAction<Record<string, any>>) => {
+    login: (state, action: PayloadAction<Record<string, any>>) => {
       state.user = action.payload;
     },
     setAuthenticated: (state) => {
       state.authenticated = true;
     },
-    setUnAuthenticated: (state) => {
+    logout: (state) => {
       state.user = {};
       state.authenticated = false;
-    }
+    },
   },
 });
 
 // Exportar las acciones
-export const {
-  setUser,
-  setAuthenticated,
-  setUnAuthenticated,
-} = userSlice.actions;
+export const { login, setAuthenticated, logout } = userSlice.actions;
 
 // Exportar el reducer
 export default userSlice.reducer;

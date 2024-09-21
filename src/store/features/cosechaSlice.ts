@@ -1,11 +1,11 @@
-import { createSlice } from "@reduxjs/toolkit";
+import { createSlice } from '@reduxjs/toolkit';
 
 const initialState = {
   cosechas: [],
 };
 
 export const cosechaSlice = createSlice({
-  name: "cosechas",
+  name: 'cosechas',
   initialState,
   reducers: {
     setCosechas: (state, action) => {
