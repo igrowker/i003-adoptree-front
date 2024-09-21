@@ -1,23 +1,20 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 
-// Definir el tipo del estado
 export interface UserState {
-  user: Record<string, any>; // Puedes cambiar el tipo de 'any' si conoces la estructura del usuario
+  user: Record<string, string>; 
   authenticated: boolean;
-  userAppointments: any[]; // Si sabes la estructura de las citas, cambia 'any' por el tipo adecuado
 }
 
 const initialState: UserState = {
   user: {},
-  authenticated: false,
-  userAppointments: [],
+  authenticated: false
 };
 
 export const userSlice = createSlice({
   name: 'user',
   initialState,
   reducers: {
-    login: (state, action: PayloadAction<Record<string, any>>) => {
+    login: (state, action: PayloadAction<Record<string, string>>) => {
       state.user = action.payload;
     },
     setAuthenticated: (state) => {

@@ -11,7 +11,7 @@ type FormValidationState<T> = {
 };
 
 // Hook tipado para cualquier formulario
-export const useForm = <T extends Record<string, any>>(
+export const useForm = <T extends Record<string, unknown>>(
   initialForm: T,
   formValidations: FormValidations<T> = {}
 ) => {
