@@ -4,6 +4,8 @@ import Footer from '../components/Footer/Footer';
 import Home from '../pages/Home/Home';
 import Checkout from '../pages/Checkout/Checkout';
 import Adoptar from '../pages/Adoptar/Adoptar';
+import Impacto from '../pages/Impacto/Impacto';
+import Contacto from '../components/Contacto/Contacto';
 import PrivacyPolicy from '../pages/PrivacyPolicy/PrivacyPolicy';
 
 const AdoptreeRoutes = () => {
@@ -16,6 +18,8 @@ const AdoptreeRoutes = () => {
         <Route path="/fincas" element="" />
         <Route path="/adopta-un-arbol" element={<Adoptar />} />
         <Route path="/checkout" element={<Checkout />} />
+        <Route path="/impacto-ambiental" element={<Impacto />} />
+        <Route path='/contacto' element={<Contacto/>} />
         <Route path="/privacy-policy" element={<PrivacyPolicy />} />
       </Routes>
 

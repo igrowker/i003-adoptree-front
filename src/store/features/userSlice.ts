@@ -12,6 +12,7 @@ const initialState: UserState = {
 
 export const userSlice = createSlice({
   name: 'user',
+  name: 'user',
   initialState,
   reducers: {
     login: (state, action: PayloadAction<Record<string, string>>) => {
@@ -23,6 +24,7 @@ export const userSlice = createSlice({
     logout: (state) => {
       state.user = {};
       state.authenticated = false;
+    },
     },
   },
 });
