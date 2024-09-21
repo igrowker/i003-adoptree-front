@@ -6,78 +6,72 @@ import './AdoptarArbol.css'; // Asegúrate de ajustar este archivo
 //!! SE ESTABLECIO ESTOS TIPOS PARA QUE NO GENERE ERROR DE ESLINT DURANTE LA COMPROBACION
 //!! CON ESTO SE INDICA LOS TIPOS ESPECIFICOS QUE RECIBE ESTE COMPONENTE PARA NO COLOCAR "ANY"
 interface ArbolData {
-  //TIPO DE LA DATA ESTATICA
   id: number;
   name: string;
   type: string;
   location: string;
+  imageUrl: string;
   productor: string;
   price: number;
-  imageUrl: string;
 }
 
-type OnAdoptType = (id: number) => void; //TIPO DE LA FUNCION
-//!!--------------------------------------------------------------------------------------------
+type OnAdoptType = (id: number) => void;
 
-const AdoptarArbol = ({
-  datos,
-  onAdopt,
-}: {
+interface AdoptarArbolProps {
   datos: ArbolData;
   onAdopt: OnAdoptType;
-}) => {
+}
+
+const AdoptarArbol: React.FC<AdoptarArbolProps> = ({ datos, onAdopt }) => {
   return (
     <div className="flex justify-center gap-6">
-      <div className="group bg-white rounded-xl overflow-hidden shadow-lg max-w-sm md:h-[29rem] md:w-[17rem] transform transition-transform duration-300 hover:scale-105 hover:shadow-2xl">
-        {/* Imagen con filtro tenue */}
-        <img
-          src={datos.imageUrl}
-          alt="imageArbol"
-          className="w-full h-48 object-cover transition duration-300 group-hover:brightness-90"
-        />
+      <div className="group bg-white rounded-xl overflow-hidden shadow-lg max-w-sm md:h-[29rem] md:w-[17rem] transform transition-all duration-300 hover:scale-105 hover:shadow-2xl">
+        <div className="relative">
+          <img
+            src={datos.imageUrl}
+            alt={`Árbol de ${datos.name}`}
+            className="w-full h-48 object-cover transition-all duration-300 group-hover:brightness-95"
+          />
+          <div className="absolute top-2 right-2 bg-white bg-opacity-90 rounded-full px-3 py-1 text-sm font-bold text-[#4BAF47]">
+            ${datos.price}/año
+          </div>
+        </div>
 
-        {/* Contenido de la Tarjeta */}
         <div className="relative -mt-6 py-6 bg-white rounded-t-xl text-center">
-          {/* Ícono en la parte superior */}
-          <div className="absolute top-0 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-orange-500 rounded-full p-3">
+          <div className="absolute top-0 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-orange-500 rounded-full p-3 shadow-md">
             <GiFruitBowl
               size={22}
-              style={{ color: '#FFF', display: 'inline' }}
+              className="text-white"
+              aria-hidden="true"
             />
           </div>
 
-          {/* Título */}
-          <h3 className="mt-6 text-xl font-semibold text-gray-900 mb-2">
+          <h3 className="mt-6 text-xl font-semibold text-gray-900 mb-4">
             {datos.name}
           </h3>
 
-          {/* Texto */}
-          <div className="ml-3 fuenteParrafos">
-            <p className="text-gray-700 text-base pb-2">
+          <div className="px-4 space-y-2">
+            <p className="flex items-center text-gray-700 text-sm">
               <GiFruitTree
-                size={22}
-                style={{ color: '#FF9E2F', display: 'inline' }}
-              />{' '}
-              Tipo: <span style={{ color: '#00BF62' }}>{datos.type}</span>
+                size={20}
+                className="text-[#FF9E2F] mr-2 flex-shrink-0"
+                aria-hidden="true"
+              />
+              <span>Tipo: <span className="text-[#00BF62] font-medium">{datos.type}</span></span>
             </p>
-            <p className="text-gray-700 text-base pb-2">
-              <GiteIcon style={{ color: '#FF9E2F' }} /> Finca:{' '}
-              <span style={{ color: '#00BF62' }}>{datos.location}</span>
+            <p className="flex items-center text-gray-700 text-sm">
+              <GiteIcon className="text-[#FF9E2F] mr-2 flex-shrink-0" aria-hidden="true" />
+              <span>Finca: <span className="text-[#00BF62] font-medium">{datos.location}</span></span>
             </p>
-            <p className="text-gray-700 text-base pb-2">
-              <AgricultureIcon style={{ color: '#FF9E2F' }} /> Productor:{' '}
-              <span style={{ color: '#00BF62' }}>{datos.productor}</span>
+            <p className="flex items-center text-gray-700 text-sm">
+              <AgricultureIcon className="text-[#FF9E2F] mr-2 flex-shrink-0" aria-hidden="true" />
+              <span>Productor: <span className="text-[#00BF62] font-medium">{datos.productor}</span></span>
             </p>
           </div>
 
-          <p className="font-semibold text-lg" style={{ color: '#FF9E2F' }}>
-            Precio: $ {datos.price} / año
-          </p>
-
-          {/* Botón */}
           <button
             onClick={() => onAdopt(datos.id)}
-            className="rounded-[10px] bg-[#4BAF47] text-white transition mt-4 hover:bg-[#3B8838] py-2 px-4"
+            className="mt-6 w-11/12 rounded-lg bg-[#4BAF47] text-white transition-all duration-300 hover:bg-[#3B8838] py-2 px-4 font-medium shadow-md hover:shadow-lg focus:outline-none focus:ring-2 focus:ring-[#4BAF47] focus:ring-opacity-50"
           >
             Adoptar este árbol
           </button>
