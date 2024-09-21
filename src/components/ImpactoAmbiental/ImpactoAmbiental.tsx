@@ -3,6 +3,7 @@ import React from 'react';
 const cardStyle = "bg-white rounded-lg shadow-md p-4 flex flex-col items-center text-center hover:scale-105 transition-transform duration-300";
 const sectionContainer = "flex flex-col items-center gap-10 py-20";
 const sectionTitle = "text-3xl font-bold";
+
 // Componente principal
 const ImpactoAmbiental: React.FC = () => {
   return (
