@@ -1,0 +1,21 @@
+@import url('https://fonts.googleapis.com/css2?family=Lato:wght@400;700&family=Nunito:wght@900&display=swap');
+
+.font-nunito-black {
+  font-family: 'Nunito', sans-serif;
+  font-weight: 900;
+}
+
+.font-lato {
+  font-family: 'Lato', sans-serif;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .text-4xl {
+    font-size: 2rem;
+  }
+
+  .text-3xl {
+    font-size: 1.75rem;
+  }
+}
