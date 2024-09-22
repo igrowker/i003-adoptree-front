@@ -46,7 +46,7 @@ const Navbar: React.FC = () => {
       <div className="flex items-center">
         <div className="">
           <a href="/">
-            <img className="w-[60px] 4xl:w-[80px]" src={Logo}></img>
+            <img className="w-[60px] 4xl:w-[80px]" src={Logo} alt="Logo de Adoptree"/>
           </a>
         </div>
         <input type="checkbox" id="check" />
@@ -87,13 +87,20 @@ const Navbar: React.FC = () => {
           >
             Contacto
           </a>
+          <a
+            className="text-sm 4xl:text-[20px]"
+            href="/donaciones-patrocinios"
+            style={{ '--i': 5 } as AnchorProps}  
+          >
+            Donaciones y Patrocinios
+          </a>
         </nav>
       </div>
       <div className="flex items-center gap-3 text-sm">
         <div className="hidden md:flex md:items-center active:text-[#00bf62]">
           <div className="flex items-center gap-3">
             <LoginIcon className="text-[#05264ebf] text-base font-light" />
-
+            
             <a
               href="/api/auth/login"
               style={{ '--i': 6, margin: 0 } as AnchorProps}
