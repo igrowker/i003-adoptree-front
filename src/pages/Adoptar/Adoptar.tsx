@@ -99,17 +99,16 @@ const Adoptar = () => {
 
   return (
     <div className="px-[200px] my-[116px]">
-      <h1 className="text-4xl font-bold mb-2 mt-10">
-        Adopciones
-      </h1>
-      <p className='text-gray-500 mb-7 w-[650px]'>
-        Adopta un árbol para apoyar a un agricultor y recibe tu cosecha a lo largo de la temporada.
+      <h1 className="text-4xl font-bold mb-2 mt-10">Adopciones</h1>
+      <p className="text-gray-500 mb-7 w-[650px]">
+        Adopta un árbol para apoyar a un agricultor y recibe tu cosecha a lo
+        largo de la temporada.
       </p>
-      <TextField 
-        className='w-[650px]' 
-        id="outlined-basic" 
-        label="Busca un árbol" 
-        variant="outlined" 
+      <TextField
+        className="w-[650px]"
+        id="outlined-basic"
+        label="Busca un árbol"
+        variant="outlined"
         sx={{
           '& .MuiFormLabel-root': {
             color: '#8F8F8F', // Color normal del label
@@ -131,7 +130,11 @@ const Adoptar = () => {
         }}
         slotProps={{
           input: {
-            endAdornment: <InputAdornment position="end"><SearchIcon /></InputAdornment>,
+            endAdornment: (
+              <InputAdornment position="end">
+                <SearchIcon />
+              </InputAdornment>
+            ),
           },
         }}
       />
