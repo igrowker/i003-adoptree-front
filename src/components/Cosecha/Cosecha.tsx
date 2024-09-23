@@ -39,12 +39,15 @@ const Cosecha = () => {
   };
 */
 
-let envioEstatus="En Camino"; //VARIABLE ESTATICA DEF. PARA PROBAR EL COMPONENTE !!ELIMINAR LUEGO
+const envioEstatus={
+    id:1,
+    estado:"En Camino"
+} //VARIABLE ESTATICA DEF. PARA PROBAR EL COMPONENTE !!ELIMINAR LUEGO
 
 
   //CAMBIA EL ESTADO Y PINTA LA BARRA DE ESTADO 
   const getPasoIndex = () => {
-    switch (envioEstatus) {
+    switch (envioEstatus.estado) {
       case 'Procesada':
         return 0;
       case 'Preparada':
