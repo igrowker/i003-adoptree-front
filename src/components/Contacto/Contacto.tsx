@@ -10,13 +10,15 @@ const ContactForm: React.FC = () => {
   const [formData, setFormData] = useState<FormData>({
     name: '',
     email: '',
-    message: ''
+    message: '',
   });
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+  const handleChange = (
+    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+  ) => {
     setFormData({
       ...formData,
-      [e.target.name]: e.target.value
+      [e.target.name]: e.target.value,
     });
   };
 
@@ -27,11 +29,13 @@ const ContactForm: React.FC = () => {
   };
 
   return (
-    <div className='mt-24'> 
+    <div className="mt-24">
       <h2 className="text-black font-bold mb-4 text-center">Contacto</h2>
       <form onSubmit={handleSubmit} className="opacity-0 animate-fadeIn">
         <div className="mb-4">
-          <label htmlFor="name" className="text-black font-medium">Nombre</label>
+          <label htmlFor="name" className="text-black font-medium">
+            Nombre
+          </label>
           <input
             type="text"
             id="name"
@@ -43,7 +47,9 @@ const ContactForm: React.FC = () => {
           />
         </div>
         <div className="mb-4">
-          <label htmlFor="email" className="text-black font-medium">Correo Electrónico</label>
+          <label htmlFor="email" className="text-black font-medium">
+            Correo Electrónico
+          </label>
           <input
             type="email"
             id="email"
@@ -55,7 +61,9 @@ const ContactForm: React.FC = () => {
           />
         </div>
         <div className="mb-4">
-          <label htmlFor="message" className="text-black font-medium">Mensaje</label>
+          <label htmlFor="message" className="text-black font-medium">
+            Mensaje
+          </label>
           <textarea
             id="message"
             name="message"
@@ -65,7 +73,10 @@ const ContactForm: React.FC = () => {
             className="w-full p-3 mb-4 border border-gray-300 rounded-lg text-black focus:border-orange-500 focus:outline-none"
           />
         </div>
-        <button type="submit" className="w-full p-3 bg-gradient-to-r from-orange-500 to-green-500 text-white rounded-3xl font-medium hover:bg-gradient-to-r hover:from-green-500 hover:to-orange-500 transition-colors">
+        <button
+          type="submit"
+          className="w-full p-3 bg-gradient-to-r from-orange-500 to-green-500 text-white rounded-3xl font-medium hover:bg-gradient-to-r hover:from-green-500 hover:to-orange-500 transition-colors"
+        >
           Enviar
         </button>
       </form>

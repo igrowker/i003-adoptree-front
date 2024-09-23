@@ -40,7 +40,7 @@
 
 .contact-form input:focus,
 .contact-form textarea:focus {
-  border-color: #FFA500; /* Naranja */
+  border-color: #ffa500; /* Naranja */
   outline: none;
 }
 
@@ -52,7 +52,11 @@
 .submit-button {
   width: 100%;
   padding: 0.75rem;
-  background: linear-gradient(45deg, #FFA500 30%, #28a745 90%); /* Naranja a Verde */
+  background: linear-gradient(
+    45deg,
+    #ffa500 30%,
+    #28a745 90%
+  ); /* Naranja a Verde */
   color: #ffffff; /* Blanco */
   border: none;
   border-radius: 25px;
@@ -62,7 +66,11 @@
 }
 
 .submit-button:hover {
-  background: linear-gradient(45deg, #28a745 30%, #FFA500 90%); /* Verde a Naranja */
+  background: linear-gradient(
+    45deg,
+    #28a745 30%,
+    #ffa500 90%
+  ); /* Verde a Naranja */
 }
 
 .volunteer-section {
@@ -95,7 +103,7 @@
 }
 
 .volunteer-icon {
-  color: #FFA500; /* Naranja */
+  color: #ffa500; /* Naranja */
   margin-bottom: 0.75rem;
 }
 
