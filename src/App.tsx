@@ -6,6 +6,7 @@ import './App.css';
 import FincaInfo from './pages/FincaInfo/FincaInfo';
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
+import BlogPage from './pages/Blog/BlogPage';
 
 
 const App: React.FC = () => {
@@ -15,7 +16,8 @@ const App: React.FC = () => {
 
       <Routes>
         <Route path="/" element={<Home />} />
-        <Route path="/contact" element={<FincaInfo />} />
+        <Route path="/fincainfo" element={<FincaInfo />} />
+        <Route path="/blog" element={<BlogPage />} />
       </Routes>
 
       <Footer />
