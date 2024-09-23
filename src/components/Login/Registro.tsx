@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import backgroundImage from '../../assets/Hojas.png';
 import logo from '../../assets/Header.png';
 import { Link, useNavigate } from 'react-router-dom';
-import { useDispatch, useSelector } from 'react-redux';
+// import { useDispatch, useSelector } from 'react-redux';
 import './Login.css';
 import { validateForm } from '../../helpers/validateForm';
 import { ErrorsRegister, FormDataRegister } from '../../types/types';
@@ -26,11 +26,11 @@ const Login: React.FC = () => {
     googleId: '',  // Opcional
     avatar: null,   // Opcional
   });
-  const [success, setSuccess] = useState<boolean>(false);
-  const [failed, setFailed] = useState<boolean>(false);
+  // const [success, setSuccess] = useState<boolean>(false);
+  // const [failed, setFailed] = useState<boolean>(false);
 
-  const dispatch = useDispatch();
-  const user = useSelector((state: any) => state.user.user);
+  // const dispatch = useDispatch();
+  // const user = useSelector((state: any) => state.user.user);
   const navigate = useNavigate();
 
   // const [userSession, setUserSession] = useState<any>(null);
@@ -105,7 +105,7 @@ const Login: React.FC = () => {
         );
 
         if (!response.ok) {
-          setFailed(true);
+          // setFailed(true);
           throw new Error('Error en la petición'); // Si la respuesta no es exitosa, lanzamos un error
         }
 
@@ -121,7 +121,7 @@ const Login: React.FC = () => {
           googleId: '', 
           avatar: null,   
         });
-        setSuccess(true);
+        // setSuccess(true);
 
         setTimeout(() => {
           navigate("/auth/login")

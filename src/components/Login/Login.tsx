@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import backgroundImage from '../../assets/Hojas.png';
 import logo from '../../assets/Header.png';
 import { Link, useNavigate } from 'react-router-dom';
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import GoogleSignIn from '../GoogleSignIn/GoogleSignIn';
 import './Login.css';
 import { validateForm } from '../../helpers/validateForm';
@@ -18,11 +18,11 @@ const Login: React.FC = () => {
     email: '',
     password: '',
   });
-  const [success, setSuccess] = useState<boolean>(false);
-  const [failed, setFailed] = useState<boolean>(false);
+  // const [success, setSuccess] = useState<boolean>(false);
+  // const [failed, setFailed] = useState<boolean>(false);
 
   const dispatch = useDispatch();
-  const user = useSelector((state: any) => state.user.user);
+  // const user = useSelector((state: any) => state.user.user);
   const navigate = useNavigate();
 
   // const [userSession, setUserSession] = useState<any>(null);
@@ -97,13 +97,13 @@ const Login: React.FC = () => {
         );
 
         if (!response.ok) {
-          setFailed(true);
+          // setFailed(true);
           throw new Error('Error en la petición'); // Si la respuesta no es exitosa, lanzamos un error
         }
 
         const data = await response.json();
         localStorage.setItem('token', data.token);
-        setSuccess(true);
+        // setSuccess(true);
         // Redirige al usuario o actualiza el estado de la aplicación
         dispatch(login(data.user));
         dispatch(setAuthenticated());
@@ -113,7 +113,7 @@ const Login: React.FC = () => {
           email: '',
           password: '',
         });
-        setSuccess(true);
+        // setSuccess(true);
 
         setTimeout(() => {
           // router.push("/");
@@ -142,7 +142,7 @@ const Login: React.FC = () => {
         const data = await res.json();
         console.log(data);
         localStorage.setItem('token', data.token);
-        setSuccess(true);
+        // setSuccess(true);
         // Redirige al usuario o actualiza el estado de la aplicación
         dispatch(login(data.user));
         dispatch(setAuthenticated());

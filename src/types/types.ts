@@ -27,3 +27,17 @@ export interface FormDataRegister {
   googleId: string,  // Opcional
   avatar: null,   // Opcional
 }
+
+
+export interface RootState {
+  user: {
+    user: User;
+  };
+}
+
+export interface User {
+  id: string;
+  name: string;
+  email: string;
+  // ... otras propiedades del usuario
+}
