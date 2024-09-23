@@ -8,7 +8,6 @@ import Impacto from '../pages/Impacto/Impacto';
 import Contacto from '../components/Contacto/Contacto';
 import PrivacyPolicy from '../pages/PrivacyPolicy/PrivacyPolicy';
 import DonacionesPatrocinios from '../components/DonacionesPatrocinios/DonacionesPatrocinios';
-import Cosecha from '../components/Cosecha/Cosecha';
 
 const AdoptreeRoutes = () => {
   return (
@@ -16,7 +15,7 @@ const AdoptreeRoutes = () => {
       <Navbar />
 
       <Routes>
-        <Route path="/" element={<Cosecha />} />
+        <Route path="/" element={<Home />} />
         <Route path="/fincas" element="" />
         <Route path="/adopta-un-arbol" element={<Adoptar />} />
         <Route path="/checkout" element={<Checkout />} />
