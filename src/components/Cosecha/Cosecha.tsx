@@ -1,15 +1,14 @@
-import { useState, useEffect } from 'react';
+//import { useState, useEffect } from 'react'; 
 import CheckCircleIcon from '@mui/icons-material/CheckCircle';
 import LocalShippingIcon from '@mui/icons-material/LocalShipping';
 import { GiFruitBowl } from "react-icons/gi";
 import { GiPlantSeed } from "react-icons/gi";
 import { FaShippingFast } from "react-icons/fa";
 import { GiFruiting } from "react-icons/gi";
-
 import "./Cosecha.css" //importacion de estilos
 import imgCosecha from "../../assets/cosecha.png"; //img de "cosecha" (se puede cambiar)
 
-//
+//array de obj que tiene la info dependiendo del paso que este 
 const pasos = [
   { label: "Orden Procesada", icon: <GiFruiting size={34} style={{ display: "inline" }} /> },
   { label: "Orden Preparada", icon: <GiPlantSeed size={34} style={{ display: "inline" }} /> },
@@ -18,7 +17,12 @@ const pasos = [
   { label: "Orden Llego", icon: <GiFruitBowl size={34} style={{ display: "inline" }} /> },
 ];
 
-const Cosecha = ({ envioId }: { envioId: string }) => {
+
+const Cosecha = () => {
+
+    //--> dentro de los () de cosecha debe ir : " { envioId }: { envioId: string } " para hacer la consulta al determinado ID de arbol
+
+    /* LOGICA PARA EL MANEJO DE ESTADOS 
   const [envioEstatus, setEnvioEstatus] = useState<string>('');
   const [progress, setProgress] = useState<number>(0);
   const [estimatedArrival, setEstimatedArrival] = useState<string>('');
@@ -33,6 +37,10 @@ const Cosecha = ({ envioId }: { envioId: string }) => {
     setProgress(envioData.progress);
     setEstimatedArrival(envioData.estimatedArrival);
   };
+*/
+
+let envioEstatus="En Camino"; //VARIABLE ESTATICA DEF. PARA PROBAR EL COMPONENTE !!ELIMINAR LUEGO
+
 
   //CAMBIA EL ESTADO Y PINTA LA BARRA DE ESTADO 
   const getPasoIndex = () => {
@@ -98,10 +106,10 @@ const Cosecha = ({ envioId }: { envioId: string }) => {
 
         {/* Información de envío */}
         <p className="text-gray-700 text-start pt-5">
-          Estado del Envío: <span className="font-bold text-green-500">{envioEstatus}</span>
+          Estado del Envío: <span className="font-bold text-green-500">envioEstatus</span>
         </p>
         <p className="text-gray-700 text-start">
-          Fecha Estimada de Llegada: <span className="font-bold text-green-500">{estimatedArrival}</span>
+          Fecha Estimada de Llegada: <span className="font-bold text-green-500">estimatedArrival</span>
         </p>
       </div>
 
@@ -112,8 +120,9 @@ const Cosecha = ({ envioId }: { envioId: string }) => {
 };
 
 
-// Simulación de la API (SOLO para probar funcionamiento)
+// Simulación de la API (SOLO para probar funcionamiento) - SE COMENTO DE MOMENTO POR ERROR EN EL ANALIZADOR ESLINT
 //!!ELIMINAR ESTA LOGICA LUEGO
+/*
 const fakeApiCall = async (id: string) => {
   return new Promise((resolve) => {
     setTimeout(() => {
@@ -125,5 +134,6 @@ const fakeApiCall = async (id: string) => {
     }, 1000);
   });
 };
+*/
 
 export default Cosecha;
