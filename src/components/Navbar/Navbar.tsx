@@ -1,11 +1,17 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import LoginIcon from '@mui/icons-material/Login';
-// import AccountCircleIcon from '@mui/icons-material/AccountCircle';
-// import CircleNotificationsIcon from '@mui/icons-material/CircleNotifications';
-// import NotificationsIcon from '@mui/icons-material/Notifications';
+import PersonIcon from '@mui/icons-material/Person';
+import NotificationsIcon from '@mui/icons-material/Notifications';
+import { MdOutlineLightMode } from 'react-icons/md';
+import { MdKeyboardArrowDown } from 'react-icons/md';
+import { MdOutlineLogout } from 'react-icons/md';
+import { MdOutlineSpaceDashboard } from 'react-icons/md';
 
 import Logo from '../../assets/adoptree 1.png';
 
+import { useSelector, useDispatch } from 'react-redux';
+import { Link, useNavigate } from 'react-router-dom';
+import { logout } from '../../store/features/userSlice';
 import './Navbar.css';
 
 export interface AnchorProps
@@ -15,10 +21,30 @@ export interface AnchorProps
 
 const Navbar: React.FC = () => {
   const [scrollPosition, setScrollPosition] = useState(0);
-  // const [showModal, setShowModal] = useState<boolean>(false);
+  const [showModal, setShowModal] = useState<boolean>(false);
   // const [notificationsModal, setNotificationsModal] = useState<boolean>(false);
-  // const modalRef = useRef<HTMLDivElement | null>(null);
-  // const currentClickRef = useRef<EventTarget | null>(null);
+
+  const modalRef = useRef<HTMLDivElement | null>(null);
+  const currentClickRef = useRef<EventTarget | null>(null);
+
+  const user = useSelector((state: any) => state.user.user);
+  const dispatch = useDispatch();
+
+  const navigate = useNavigate();
+
+  const handleShowModal = (event: React.MouseEvent<HTMLElement>) => {
+    currentClickRef.current = event.target;
+    setShowModal((prevShowModal) => !prevShowModal);
+  };
+
+  const handleCloseModal = () => {
+    setShowModal(false);
+  };
+
+  const handleLogout = () => {
+    dispatch(logout());
+    navigate('/auth/login');
+  };
 
   useEffect(() => {
     const handleScroll = () => {
@@ -36,6 +62,8 @@ const Navbar: React.FC = () => {
   //   '--i': 5,
   //   display: window.innerWidth < 780 ? 'block' : 'none',
   // };
+
+  console.log(user);
 
   return (
     <header
@@ -92,18 +120,80 @@ const Navbar: React.FC = () => {
       <div className="flex items-center gap-3 text-sm">
         <div className="hidden md:flex md:items-center active:text-[#00bf62]">
           <div className="flex items-center gap-3">
-            <LoginIcon className="text-[#05264ebf] text-base font-light" />
-
-            <a
-              href="/api/auth/login"
-              style={{ '--i': 6, margin: 0 } as AnchorProps}
-              className="text-[#05264E] mobile:font-[500] mobile:text-[1.1rem] desktop:font-normal desktop:text-base 4xl:text-[20px]"
-            >
-              Login
-            </a>
+            {!user && (
+              <div className="flex items-center gap-[5px]">
+                <LoginIcon className="text-[#05264ebf] text-base font-light" />
+                <a
+                  href="auth/login"
+                  style={{ '--i': 6, margin: 0 } as AnchorProps}
+                  className="text-[#05264E] mobile:font-[500] mobile:text-[1.1rem] desktop:font-normal desktop:text-base 4xl:text-[20px]"
+                >
+                  Inicia sesión
+                </a>
+              </div>
+            )}
             <button className="rounded-[10px] bg-[#4BAF47] text-white hover:bg-[#3B8838] 4xl:text-[20px]">
               Adopta ahora
             </button>
+
+            {user && (
+              <div className="md:flex items-center mobile:hidden ">
+                <div
+                  onClick={handleShowModal}
+                  className="p-[6px] bg-white border border-gray-300 rounded-full cursor-pointer"
+                >
+                  <PersonIcon className="text-[#4BAF47] text[20px]" />
+                </div>
+                <div className="p-[6px] bg-white border border-gray-300 rounded-full ml-2 cursor-pointer">
+                  <NotificationsIcon className="text-[#4BAF47] text[20px]" />
+                </div>
+
+                {showModal && (
+                  <div
+                    className="absolute md:top-[3.8rem] desktop:top-[4.1rem] bg-white gap-4 md:right-[96px] desktop:right-[230px] p-5 rounded shadow-md"
+                    ref={modalRef}
+                  >
+                    <div>
+                      <ul className="flex flex-col gap-3">
+                        <li
+                          onClick={handleCloseModal}
+                          className="flex justify-between"
+                        >
+                          <Link
+                            to=""
+                            className="text-[#05264E] flex items-center gap-2"
+                          >
+                            <MdOutlineLightMode className="text-base text-[#05264E]" />{' '}
+                            Theme: Light mode
+                          </Link>
+                          <MdKeyboardArrowDown className="text-base text-[#05264E]" />
+                        </li>
+                        <li
+                          onClick={handleCloseModal}
+                          className="flex items-center gap-2"
+                        >
+                          <MdOutlineSpaceDashboard className="text-[#05264E] text-base" />
+                          <Link to="" className="text-[#05264E]">
+                            {user ? 'Dashboard' : 'Inicia sesión'}
+                          </Link>
+                        </li>
+                        {user && (
+                          <li onClick={handleLogout}>
+                            <Link
+                              to=""
+                              className="flex items-center gap-2 text-[#05264e]"
+                            >
+                              <MdOutlineLogout className="text-[#05264E] text-base" />
+                              Logout
+                            </Link>
+                          </li>
+                        )}
+                      </ul>
+                    </div>
+                  </div>
+                )}
+              </div>
+            )}
           </div>
         </div>
 
