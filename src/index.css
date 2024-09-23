@@ -4,7 +4,8 @@
 @tailwind utilities;
 
 a {
-  font-weight: 500;
+  /* font-weight: 500; */
+  cursor: pointer;
   color: #646cff;
   text-decoration: inherit;
 }
@@ -15,6 +16,7 @@ a {
 body {
   margin: 0;
   padding: 0;
+  color: #1C1C1C;
 }
 
 h1 {

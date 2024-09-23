@@ -43,7 +43,7 @@ const Arboles: React.FC = () => {
         </div>
 
         {/* Cards de árboles */}
-        <div className="flex justify-between">
+        <div className="flex justify-center gap-6">
           {arboles.map((arbol) => (
             <div
               key={arbol.id}

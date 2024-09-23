@@ -1,7 +1,4 @@
-import { Routes, Route } from 'react-router-dom';
-import Navbar from './components/Navbar/Navbar';
-import Home from './pages/Home/Home';
-import Footer from './components/Footer/Footer';
+import { AppRouter } from './router/AppRouter';
 import './App.css';
 import FincaInfo from './pages/FincaInfo/FincaInfo';
 import "slick-carousel/slick/slick.css";

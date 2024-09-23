@@ -46,7 +46,7 @@ const Navbar: React.FC = () => {
       <div className="flex items-center">
         <div className="">
           <a href="/">
-            <img className="w-[60px]" src={Logo}></img>
+            <img className="w-[60px] 4xl:w-[80px]" src={Logo} alt="Logo de Adoptree"/>
           </a>
         </div>
         <input type="checkbox" id="check" />
@@ -60,32 +60,39 @@ const Navbar: React.FC = () => {
         </label>
         <nav className="navbar">
           <a
-            className="text-sm"
-            href="/users"
+            className="text-sm 4xl:text-[20px]"
+            href="/about"
             style={{ '--i': 1 } as AnchorProps}
           >
             Sobre nosotros
           </a>
           <a
-            className="text-sm"
-            href="/blog"
+            className="text-sm 4xl:text-[20px]"
+            href="/adopta-un-arbol"
             style={{ '--i': 3 } as AnchorProps}
           >
             Adoptar
           </a>
           <a
-            className="text-sm"
-            href="/contact"
+            className="text-sm 4xl:text-[20px]"
+            href="/impacto-ambiental"
             style={{ '--i': 4 } as AnchorProps}
           >
-            Árboles
+            Impacto
           </a>
           <a
-            className="text-sm"
-            href="/contact"
+            className="text-sm 4xl:text-[20px]"
+            href="/contacto"
             style={{ '--i': 4 } as AnchorProps}
           >
             Contacto
+          </a>
+          <a
+            className="text-sm 4xl:text-[20px]"
+            href="/donaciones-patrocinios"
+            style={{ '--i': 5 } as AnchorProps}  
+          >
+            Donaciones y Patrocinios
           </a>
         </nav>
       </div>
@@ -93,15 +100,15 @@ const Navbar: React.FC = () => {
         <div className="hidden md:flex md:items-center active:text-[#00bf62]">
           <div className="flex items-center gap-3">
             <LoginIcon className="text-[#05264ebf] text-base font-light" />
-
+            
             <a
               href="/api/auth/login"
               style={{ '--i': 6, margin: 0 } as AnchorProps}
-              className="text-[#05264E] mobile:font-[500] mobile:text-[1.1rem] desktop:font-normal desktop:text-base"
+              className="text-[#05264E] mobile:font-[500] mobile:text-[1.1rem] desktop:font-normal desktop:text-base 4xl:text-[20px]"
             >
               Login
             </a>
-            <button className="rounded-[10px] bg-[#4BAF47] text-white hover:bg-[#3B8838]">
+            <button className="rounded-[10px] bg-[#4BAF47] text-white hover:bg-[#3B8838] 4xl:text-[20px]">
               Adopta ahora
             </button>
           </div>

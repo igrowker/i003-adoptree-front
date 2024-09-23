@@ -4,7 +4,7 @@ import './Beneficios.css'; //importacion del css para la fuente
 
 const Beneficios: React.FC = () => {
   return (
-    <section className="bg-white px-[200px] my-[100px]">
+    <section className="bg-white px-[200px] my-[116px] flex justify-center">
       <div className="container flex flex-col items-center text-center">
         <p className="text-orange-500 mb-2 fuentePersonalizada">Beneficios</p>
         <h2 className="text-3xl font-bold text-gray-900 mb-[40px]">
