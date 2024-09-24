@@ -238,8 +238,8 @@ const SectionInteres: React.FC = () => (
         </motion.div>
       ))}
     </div>
-    <button className="rounded-[10px] bg-[#4BAF47] text-white hover:bg-[#3B8838] 4xl:text-[20px] mt-[24px]">
-      <Link className="text-white" to="/blogs">
+    <button className="rounded-[10px] bg-[#4BAF47] text-white hover:bg-[#3B8838] hover:5tex 4xl:text-[20px] mt-[24px]">
+      <Link className="text-white hover:text-white" to="/blogs">
         Ver más blogs
       </Link>
     </button>
