@@ -5,9 +5,10 @@ import { Link, useNavigate } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import GoogleSignIn from '../GoogleSignIn/GoogleSignIn';
 import { validateForm } from '../../helpers/validateForm';
-import { CredentialResponse, ErrorsLogin, FormDataLogin, GoogleAuthError } from '../../types/types';
+import { ErrorsLogin, FormDataLogin, GoogleAuthError } from '../../types/types';
 import { login, setAuthenticated } from '../../store/features/userSlice';
 import './Login.css';
+import { CredentialResponse } from '@react-oauth/google';
 
 const Login: React.FC = () => {
   const [formData, setFormData] = useState<FormDataLogin>({
