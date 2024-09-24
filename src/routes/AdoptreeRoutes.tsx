@@ -7,7 +7,7 @@ import Adoptar from '../pages/Adoptar/Adoptar';
 import Impacto from '../pages/Impacto/Impacto';
 import Contacto from '../components/Contacto/Contacto';
 import PrivacyPolicy from '../pages/PrivacyPolicy/PrivacyPolicy';
-import DonacionesPatrocinios from '../components/DonacionesPatrocinios/DonacionesPatrocinios';
+// import DonacionesPatrocinios from '../components/DonacionesPatrocinios/DonacionesPatrocinios';
 
 const AdoptreeRoutes = () => {
   return (

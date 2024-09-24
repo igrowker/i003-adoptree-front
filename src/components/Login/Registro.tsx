@@ -12,19 +12,19 @@ const Login: React.FC = () => {
     name: '',
     email: '',
     password: '',
-    direccionEnvio: '', 
+    direccionEnvio: '',
     role: 'USER',
-    googleId: '',  // Opcional
-    avatar: null,   // Opcional
+    googleId: '', // Opcional
+    avatar: null, // Opcional
   });
   const [errors, setErrors] = useState<ErrorsRegister>({
     name: '',
     email: '',
     password: '',
-    direccionEnvio: '',   
+    direccionEnvio: '',
     role: '',
-    googleId: '',  // Opcional
-    avatar: null,   // Opcional
+    googleId: '', // Opcional
+    avatar: null, // Opcional
   });
   // const [success, setSuccess] = useState<boolean>(false);
   // const [failed, setFailed] = useState<boolean>(false);
@@ -71,7 +71,7 @@ const Login: React.FC = () => {
 
     try {
       //* Validar que todos los campos obligatorios estén llenos
-      let isFormValid = true;
+      const isFormValid = true;
       // const newErrors: Partial<ErrorsRegister> = {};
       // for (const field in formData) {
       //   if (!formData[field as keyof FormDataRegister]) {
@@ -116,15 +116,15 @@ const Login: React.FC = () => {
           name: '',
           email: '',
           password: '',
-          direccionEnvio: '',   
+          direccionEnvio: '',
           role: '',
-          googleId: '', 
-          avatar: null,   
+          googleId: '',
+          avatar: null,
         });
         // setSuccess(true);
 
         setTimeout(() => {
-          navigate("/auth/login")
+          navigate('/auth/login');
         }, 1000);
       } else {
         alert('Todos los campos son obligatorios');

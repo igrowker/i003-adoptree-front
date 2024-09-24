@@ -13,6 +13,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import { Link, useNavigate } from 'react-router-dom';
 import { logout } from '../../store/features/userSlice';
 import './Navbar.css';
+import { RootState } from '../../types/types';
 
 export interface AnchorProps
   extends React.AnchorHTMLAttributes<HTMLAnchorElement> {
@@ -27,7 +28,7 @@ const Navbar: React.FC = () => {
   const modalRef = useRef<HTMLDivElement | null>(null);
   const currentClickRef = useRef<EventTarget | null>(null);
 
-  const user = useSelector((state: any) => state.user.user);
+  const user = useSelector((state: RootState) => state.user.user);
   const dispatch = useDispatch();
 
   const navigate = useNavigate();
@@ -63,8 +64,6 @@ const Navbar: React.FC = () => {
   //   display: window.innerWidth < 780 ? 'block' : 'none',
   // };
 
-  console.log(user);
-
   return (
     <header
       className={`header py-4 xl:px-[200px] md:px-[60px] mobile:px-[30px] bg-white ${
@@ -74,7 +73,11 @@ const Navbar: React.FC = () => {
       <div className="flex items-center">
         <div className="">
           <a href="/">
-            <img className="w-[60px] 4xl:w-[80px]" src={Logo} alt="Logo de Adoptree"/>
+            <img
+              className="w-[60px] 4xl:w-[80px]"
+              src={Logo}
+              alt="Logo de Adoptree"
+            />
           </a>
         </div>
         <input type="checkbox" id="check" />
@@ -118,7 +121,7 @@ const Navbar: React.FC = () => {
           <a
             className="text-sm 4xl:text-[20px]"
             href="/donaciones-patrocinios"
-            style={{ '--i': 5 } as AnchorProps}  
+            style={{ '--i': 5 } as AnchorProps}
           >
             Donaciones y Patrocinios
           </a>
