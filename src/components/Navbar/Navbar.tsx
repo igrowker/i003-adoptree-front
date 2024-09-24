@@ -113,17 +113,17 @@ const Navbar: React.FC = () => {
           </a>
           <a
             className="text-sm 4xl:text-[20px]"
-            href="/contacto"
+            href="/fincas"
             style={{ '--i': 4 } as AnchorProps}
           >
-            Contacto
+            Fincas
           </a>
           <a
             className="text-sm 4xl:text-[20px]"
-            href="/donaciones-patrocinios"
+            href="/donaciones"
             style={{ '--i': 5 } as AnchorProps}
           >
-            Donaciones y Patrocinios
+            Donaciones
           </a>
         </nav>
       </div>
