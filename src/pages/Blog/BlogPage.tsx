@@ -40,10 +40,10 @@ const BlogPage: React.FC = () => {
               className="w-full md:w-1/2 h-64 object-cover rounded-tl-[100px] shadow-lg"
             />
             <div className="w-full md:w-1/2">
-              <h2 className="text-3xl font-bold text-green-700 mb-4">
+              <h2 className="text-3xl font-bold mb-4">
                 Evolución del proyecto
               </h2>
-              <p className="text-gray-700 leading-relaxed">
+              <p className="text-gray-600 leading-relaxed">
                 Nuestro proyecto ha evolucionado significativamente desde su
                 inicio. Hemos implementado prácticas sostenibles, introducido
                 nuevas especies y trabajado en estrecha colaboración con la
@@ -61,10 +61,10 @@ const BlogPage: React.FC = () => {
               className="w-full md:w-1/2 h-64 object-cover rounded-br-[100px] shadow-lg"
             />
             <div className="w-full md:w-1/2 text-right">
-              <h2 className="text-3xl font-bold text-green-700 mb-4">
+              <h2 className="text-3xl font-bold mb-4">
                 Importancia de la reforestación
               </h2>
-              <p className="text-gray-700 leading-relaxed">
+              <p className="text-gray-600 leading-relaxed">
                 La reforestación juega un papel crucial en la lucha contra el
                 cambio climático y la preservación de la biodiversidad. Nuestros
                 esfuerzos se centran en plantar especies nativas que restauran
@@ -76,7 +76,7 @@ const BlogPage: React.FC = () => {
           </div>
         </div>
 
-        <h1 className="text-4xl font-bold text-green-800 text-center mb-12">
+        <h1 className="text-4xl font-bold text-center mb-12">
           Publicaciones Recientes
         </h1>
 
@@ -87,7 +87,7 @@ const BlogPage: React.FC = () => {
               className="bg-white rounded-lg shadow-lg overflow-hidden transition-transform hover:scale-105"
             >
               <div className="p-6">
-                <h3 className="text-xl font-semibold text-green-700 mb-2">
+                <h3 className="text-xl font-semibold mb-2">
                   {post.title}
                 </h3>
                 <div className="flex items-center text-sm text-gray-500 mb-2">

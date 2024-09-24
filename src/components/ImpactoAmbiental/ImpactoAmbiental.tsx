@@ -3,7 +3,7 @@ import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
 
 // Estilos comunes
-const sectionContainer = 'flex flex-col items-center gap-12 py-24';
+const sectionContainer = 'flex flex-col items-center gap-4 py-24';
 const sectionTitle = 'text-4xl font-bold text-gray-800 mb-6 text-center';
 const sectionContent = 'text-lg text-gray-600 max-w-3xl text-center mb-10';
 
@@ -163,7 +163,7 @@ const MetricItem: React.FC<{
   title?: string;
 }> = ({ thumbnail, value, title }) => (
   <motion.div
-    className="bg-white rounded-lg shadow-lg p-6 flex flex-col items-center text-center hover:shadow-xl transition-shadow duration-300 transform hover:-translate-y-1"
+    className="bg-white min-w-[250px] rounded-lg shadow-lg p-6 flex flex-col items-center text-center hover:shadow-xl transition-shadow duration-300 transform hover:-translate-y-1"
     whileHover={{ scale: 1.05 }}
     whileTap={{ scale: 0.95 }}
   >
@@ -238,7 +238,7 @@ const SectionInteres: React.FC = () => (
         </motion.div>
       ))}
     </div>
-    <button className="rounded-[10px] bg-[#4BAF47] text-white hover:bg-[#3B8838] 4xl:text-[20px]">
+    <button className="rounded-[10px] bg-[#4BAF47] text-white hover:bg-[#3B8838] 4xl:text-[20px] mt-[24px]">
       <Link className="text-white" to="/blogs">
         Ver más blogs
       </Link>
