@@ -1,9 +1,15 @@
-import { GoogleLogin } from '@react-oauth/google';
+import React from 'react';
+import { GoogleLogin, CredentialResponse } from '@react-oauth/google';
 
-const GoogleSignIn = ({ onSuccess, onFailure }) => {
+interface GoogleSignInProps {
+  onSuccess: (response: CredentialResponse) => void;
+  onFailure: (error: string) => void;
+}
+
+const GoogleSignIn: React.FC<GoogleSignInProps> = ({ onSuccess, onFailure }) => {
   return (
     <GoogleLogin
-      onSuccess={(credentialResponse) => {
+      onSuccess={(credentialResponse: CredentialResponse) => {
         onSuccess(credentialResponse);
       }}
       onError={() => {
