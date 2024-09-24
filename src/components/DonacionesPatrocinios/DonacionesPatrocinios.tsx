@@ -31,9 +31,9 @@ const DonacionesPatrocinios: React.FC = () => {
             </h2>
           </div>
           <p className="text-gray-700 text-lg mb-8 leading-relaxed">
-            Con tu donación, puedes apoyar directamente proyectos de sostenibilidad
-            sin necesidad de adoptar un árbol. Contribuye al bienestar del medio
-            ambiente y a la agricultura sostenible.
+            Con tu donación, puedes apoyar directamente proyectos de
+            sostenibilidad sin necesidad de adoptar un árbol. Contribuye al
+            bienestar del medio ambiente y a la agricultura sostenible.
           </p>
           <button
             onClick={handleDonarAhora}
@@ -53,9 +53,9 @@ const DonacionesPatrocinios: React.FC = () => {
           </div>
           <p className="text-gray-700 text-lg mb-8 leading-relaxed">
             Las empresas tienen la oportunidad de contribuir al medio ambiente
-            patrocinando árboles en nombre de sus empleados o clientes. Este gesto
-            promueve la responsabilidad social corporativa y ayuda a crear un
-            impacto positivo en el planeta.
+            patrocinando árboles en nombre de sus empleados o clientes. Este
+            gesto promueve la responsabilidad social corporativa y ayuda a crear
+            un impacto positivo en el planeta.
           </p>
           <button
             onClick={handleConocerMas}

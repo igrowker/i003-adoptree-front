@@ -43,19 +43,23 @@ const ImpactoAmbiental: React.FC = () => {
         metrics={[
           {
             thumbnail: './suelosDegradados.webp',
-            value: 'Entre un 60% y 70% de los suelos de la Argentina están degradados',
+            value:
+              'Entre un 60% y 70% de los suelos de la Argentina están degradados',
           },
           {
             thumbnail: './emisionesTotales.webp',
-            value: 'El sistema alimentario es responsable de más del 30% de las emisiones totales del cambio climático',
+            value:
+              'El sistema alimentario es responsable de más del 30% de las emisiones totales del cambio climático',
           },
           {
             thumbnail: './biodiversidad.webp',
-            value: 'Se ha reducido la biodiversidad un 60% a nivel mundial por nuestro sistema alimentario',
+            value:
+              'Se ha reducido la biodiversidad un 60% a nivel mundial por nuestro sistema alimentario',
           },
           {
             thumbnail: './aguaDulce.webp',
-            value: 'El 70% del agua dulce que se extrae en el mundo va destinada a la agricultura',
+            value:
+              'El 70% del agua dulce que se extrae en el mundo va destinada a la agricultura',
           },
         ]}
       />
@@ -69,22 +73,26 @@ const ImpactoAmbiental: React.FC = () => {
           {
             thumbnail: './microorganismos.webp',
             title: 'Mayor biodiversidad y captura de carbono',
-            value: '¡Se podría absorber más del 100% de las emisiones actuales de CO₂!',
+            value:
+              '¡Se podría absorber más del 100% de las emisiones actuales de CO₂!',
           },
           {
             thumbnail: './plagas.webp',
             title: 'Resistencia natural a plagas y sequías',
-            value: 'Mejora los mecanismos de defensa de las plantas y la capacidad del suelo de absorber agua.',
+            value:
+              'Mejora los mecanismos de defensa de las plantas y la capacidad del suelo de absorber agua.',
           },
           {
             thumbnail: './estabilidadFinanciera.webp',
             title: 'Estabilidad financiera para los agricultores',
-            value: 'Reduce la dependencia de insumos mientras mejora los volúmenes de producción.',
+            value:
+              'Reduce la dependencia de insumos mientras mejora los volúmenes de producción.',
           },
           {
             thumbnail: './alimentoNutritivo.webp',
             title: 'Alimentos más nutritivos y saludables',
-            value: 'El 70% del agua dulce que se extrae en el mundo va destinada a la agricultura.',
+            value:
+              'El 70% del agua dulce que se extrae en el mundo va destinada a la agricultura.',
           },
         ]}
       />
@@ -102,7 +110,7 @@ const Section: React.FC<{
   imageAlt: string;
 }> = ({ title, content, imageSrc, imageAlt }) => (
   <section className="flex flex-col items-center lg:flex-row px-[30px] py-20">
-    <motion.div 
+    <motion.div
       className="flex-1 mb-8 lg:mb-0"
       initial={{ opacity: 0, y: 50 }}
       animate={{ opacity: 1, y: 0 }}
@@ -111,13 +119,17 @@ const Section: React.FC<{
       <h1 className="text-[3.5rem] font-bold mb-6 text-gray-800">{title}</h1>
       <p className="text-xl text-gray-600">{content}</p>
     </motion.div>
-    <motion.div 
+    <motion.div
       className="flex-1 flex justify-end"
       initial={{ opacity: 0, scale: 0.8 }}
       animate={{ opacity: 1, scale: 1 }}
       transition={{ duration: 0.5, delay: 0.2 }}
     >
-      <img className="max-w-[400px] h-auto rounded-lg" src={imageSrc} alt={imageAlt} />
+      <img
+        className="max-w-[400px] h-auto rounded-lg"
+        src={imageSrc}
+        alt={imageAlt}
+      />
     </motion.div>
   </section>
 );
@@ -150,15 +162,21 @@ const MetricItem: React.FC<{
   value: string;
   title?: string;
 }> = ({ thumbnail, value, title }) => (
-  <motion.div 
+  <motion.div
     className="bg-white rounded-lg shadow-lg p-6 flex flex-col items-center text-center hover:shadow-xl transition-shadow duration-300 transform hover:-translate-y-1"
     whileHover={{ scale: 1.05 }}
     whileTap={{ scale: 0.95 }}
   >
     <div className="w-24 h-24 mb-4 rounded-full bg-green-100 flex items-center justify-center">
-      <img className="w-16 h-16 object-contain" src={thumbnail} alt={title || value} />
+      <img
+        className="w-16 h-16 object-contain"
+        src={thumbnail}
+        alt={title || value}
+      />
     </div>
-    {title && <h3 className="text-xl font-semibold mb-2 text-gray-800">{title}</h3>}
+    {title && (
+      <h3 className="text-xl font-semibold mb-2 text-gray-800">{title}</h3>
+    )}
     <p className="text-base text-gray-600 font-medium">{value}</p>
   </motion.div>
 );
@@ -169,7 +187,10 @@ const SectionQuote: React.FC = () => (
     <div className="max-w-4xl mx-auto flex flex-col lg:flex-row items-center">
       <div className="flex-1 mb-8 lg:mb-0 lg:pr-12">
         <blockquote className="text-xl italic text-gray-700">
-          "Vamos a iniciar la aventura de mejorar lo ecológico con prácticas regenerativas. Creemos que estas prácticas nos pueden ayudar económicamente en la finca y en la mejora del cultivo si conseguimos simbiosis entre animales, la hierba y los árboles."
+          "Vamos a iniciar la aventura de mejorar lo ecológico con prácticas
+          regenerativas. Creemos que estas prácticas nos pueden ayudar
+          económicamente en la finca y en la mejora del cultivo si conseguimos
+          simbiosis entre animales, la hierba y los árboles."
         </blockquote>
         <p className="mt-4 text-right font-semibold text-gray-800">
           Paco Marín - Finca Refijo y Marroquino
@@ -192,12 +213,18 @@ const SectionInteres: React.FC = () => (
     <h2 className={sectionTitle}>También podría interesarte</h2>
     <div className="grid grid-cols-1 md:grid-cols-3 gap-10">
       {[
-        { imgSrc: './tallerAgro.png', title: '¡Completamos el segundo taller del año!' },
+        {
+          imgSrc: './tallerAgro.png',
+          title: '¡Completamos el segundo taller del año!',
+        },
         { imgSrc: './radioAgro.png', title: '¡Estuvimos en la radio!' },
-        { imgSrc: './pasantesAgro.png', title: 'Regenerando el paisaje con árboles: Adoptree' },
+        {
+          imgSrc: './pasantesAgro.png',
+          title: 'Regenerando el paisaje con árboles: Adoptree',
+        },
       ].map((item, index) => (
-        <motion.div 
-          key={index} 
+        <motion.div
+          key={index}
           className="bg-white rounded-lg shadow-md p-6 flex flex-col items-center text-center cursor-pointer hover:shadow-xl transition-shadow duration-300"
           whileHover={{ scale: 1.05 }}
           whileTap={{ scale: 0.95 }}
@@ -212,7 +239,7 @@ const SectionInteres: React.FC = () => (
       ))}
     </div>
     <button className="rounded-[10px] bg-[#4BAF47] text-white hover:bg-[#3B8838] 4xl:text-[20px]">
-      <Link className='text-white' to="/blogs">
+      <Link className="text-white" to="/blogs">
         Ver más blogs
       </Link>
     </button>

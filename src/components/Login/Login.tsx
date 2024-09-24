@@ -73,7 +73,7 @@ const Login: React.FC = () => {
 
         const data = await response.json();
         localStorage.setItem('token', data.token);
- 
+
         // Redirige al usuario o actualiza el estado de la aplicación
         dispatch(login(data.user));
         dispatch(setAuthenticated());
@@ -98,7 +98,7 @@ const Login: React.FC = () => {
   const handleSuccess = async (credentialResponse: CredentialResponse) => {
     const { credential } = credentialResponse;
 
-    console.log(credentialResponse)
+    console.log(credentialResponse);
 
     try {
       const res = await fetch('http://localhost:3000/auth/google', {

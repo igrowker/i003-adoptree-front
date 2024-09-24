@@ -6,7 +6,10 @@ interface GoogleSignInProps {
   onFailure: (error: string) => void;
 }
 
-const GoogleSignIn: React.FC<GoogleSignInProps> = ({ onSuccess, onFailure }) => {
+const GoogleSignIn: React.FC<GoogleSignInProps> = ({
+  onSuccess,
+  onFailure,
+}) => {
   return (
     <GoogleLogin
       onSuccess={(credentialResponse: CredentialResponse) => {
