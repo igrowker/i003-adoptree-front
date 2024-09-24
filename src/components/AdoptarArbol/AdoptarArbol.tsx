@@ -39,11 +39,7 @@ const AdoptarArbol: React.FC<AdoptarArbolProps> = ({ datos, onAdopt }) => {
 
         <div className="relative -mt-6 py-6 bg-white rounded-t-xl text-center">
           <div className="absolute top-0 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-orange-500 rounded-full p-3 shadow-md">
-            <GiFruitBowl
-              size={22}
-              className="text-white"
-              aria-hidden="true"
-            />
+            <GiFruitBowl size={22} className="text-white" aria-hidden="true" />
           </div>
 
           <h3 className="mt-6 text-xl font-semibold text-gray-900 mb-4">
@@ -57,15 +53,34 @@ const AdoptarArbol: React.FC<AdoptarArbolProps> = ({ datos, onAdopt }) => {
                 className="text-[#FF9E2F] mr-2 flex-shrink-0"
                 aria-hidden="true"
               />
-              <span>Tipo: <span className="text-[#00BF62] font-medium">{datos.type}</span></span>
+              <span>
+                Tipo:{' '}
+                <span className="text-[#00BF62] font-medium">{datos.type}</span>
+              </span>
             </p>
             <p className="flex items-center text-gray-700 text-sm">
-              <GiteIcon className="text-[#FF9E2F] mr-2 flex-shrink-0" aria-hidden="true" />
-              <span>Finca: <span className="text-[#00BF62] font-medium">{datos.location}</span></span>
+              <GiteIcon
+                className="text-[#FF9E2F] mr-2 flex-shrink-0"
+                aria-hidden="true"
+              />
+              <span>
+                Finca:{' '}
+                <span className="text-[#00BF62] font-medium">
+                  {datos.location}
+                </span>
+              </span>
             </p>
             <p className="flex items-center text-gray-700 text-sm">
-              <AgricultureIcon className="text-[#FF9E2F] mr-2 flex-shrink-0" aria-hidden="true" />
-              <span>Productor: <span className="text-[#00BF62] font-medium">{datos.productor}</span></span>
+              <AgricultureIcon
+                className="text-[#FF9E2F] mr-2 flex-shrink-0"
+                aria-hidden="true"
+              />
+              <span>
+                Productor:{' '}
+                <span className="text-[#00BF62] font-medium">
+                  {datos.productor}
+                </span>
+              </span>
             </p>
           </div>
 

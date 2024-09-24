@@ -1,24 +1,12 @@
 import { AppRouter } from './router/AppRouter';
 import './App.css';
-import FincaInfo from './pages/FincaInfo/FincaInfo';
-import "slick-carousel/slick/slick.css";
-import "slick-carousel/slick/slick-theme.css";
-import BlogPage from './pages/Blog/BlogPage';
-
+import { GoogleOAuthProvider } from '@react-oauth/google';
 
 const App: React.FC = () => {
   return (
-    <>
-      <Navbar />
-
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/fincainfo" element={<FincaInfo />} />
-        <Route path="/blog" element={<BlogPage />} />
-      </Routes>
-
-      <Footer />
-    </>
+    <GoogleOAuthProvider clientId="320850219602-da35nosbb61qld5h0n2t254usmq207ia.apps.googleusercontent.com">
+      <AppRouter />
+    </GoogleOAuthProvider>
   );
 };
 

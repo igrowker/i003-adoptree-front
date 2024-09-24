@@ -7,7 +7,7 @@ import Adoptar from '../pages/Adoptar/Adoptar';
 import Impacto from '../pages/Impacto/Impacto';
 import Contacto from '../components/Contacto/Contacto';
 import PrivacyPolicy from '../pages/PrivacyPolicy/PrivacyPolicy';
-import DonacionesPatrocinios from '../components/DonacionesPatrocinios/DonacionesPatrocinios';
+// import DonacionesPatrocinios from '../components/DonacionesPatrocinios/DonacionesPatrocinios';
 
 const AdoptreeRoutes = () => {
   return (
@@ -20,8 +20,7 @@ const AdoptreeRoutes = () => {
         <Route path="/adopta-un-arbol" element={<Adoptar />} />
         <Route path="/checkout" element={<Checkout />} />
         <Route path="/impacto-ambiental" element={<Impacto />} />
-        <Route path='/contacto' element={<Contacto/>} />
-        <Route path='/donaciones-patrocinios' element={<DonacionesPatrocinios/>} />
+        <Route path="/contacto" element={<Contacto />} />
         <Route path="/privacy-policy" element={<PrivacyPolicy />} />
       </Routes>
 
