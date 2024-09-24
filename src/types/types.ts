@@ -14,8 +14,8 @@ export interface ErrorsRegister {
   password: string;
   direccionEnvio: string;
   role: string;
-  googleId: string,  // Opcional
-  avatar: null,   // Opcional
+  googleId: string; // Opcional
+  avatar: null; // Opcional
 }
 
 export interface FormDataRegister {
@@ -24,10 +24,9 @@ export interface FormDataRegister {
   password: string;
   direccionEnvio: string;
   role: string;
-  googleId: string,  // Opcional
-  avatar: null,   // Opcional
+  googleId: string; // Opcional
+  avatar: null; // Opcional
 }
-
 
 export interface RootState {
   user: {
@@ -36,8 +35,29 @@ export interface RootState {
 }
 
 export interface User {
-  id: string;
-  name: string;
+  id: number;
   email: string;
-  // ... otras propiedades del usuario
+  name: string;
+  direccionEnvio: string;
+  role: string | null;
+  arbolId: string | null;
+  password: string;
+  googleId: string | null;
+  avatar: string | null;
 }
+
+export interface CredentialResponse {
+  clientId: string;
+  credential: string;
+  select_by: string;
+}
+
+export type GoogleAuthError = {
+  error: string;
+  details?: string;
+  // Definimos propiedades adicionales conocidas
+  errorCode?: number;
+  errorMessage?: string;
+  // Para propiedades desconocidas, usamos un tipo de unión
+  [key: string]: string | number | undefined;
+};
