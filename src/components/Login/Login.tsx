@@ -5,7 +5,7 @@ import { Link, useNavigate } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import GoogleSignIn from '../GoogleSignIn/GoogleSignIn';
 import { validateForm } from '../../helpers/validateForm';
-import { ErrorsLogin, FormDataLogin, GoogleAuthError } from '../../types/types';
+import { ErrorsLogin, FormDataLogin } from '../../types/types';
 import { login, setAuthenticated } from '../../store/features/userSlice';
 import './Login.css';
 import { CredentialResponse } from '@react-oauth/google';
@@ -128,7 +128,7 @@ const Login: React.FC = () => {
     }
   };
 
-  const handleFailure = (error: GoogleAuthError) => {
+  const handleFailure = (error: string) => {
     console.error('Error de inicio de sesión con Google:', error);
     // Muestra un mensaje de error al usuario
   };

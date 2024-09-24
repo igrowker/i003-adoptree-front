@@ -61,3 +61,4 @@ export type GoogleAuthError = {
   // Para propiedades desconocidas, usamos un tipo de unión
   [key: string]: string | number | undefined;
 };
+

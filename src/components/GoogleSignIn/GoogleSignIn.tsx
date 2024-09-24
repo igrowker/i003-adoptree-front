@@ -3,7 +3,7 @@ import { GoogleLogin, CredentialResponse } from '@react-oauth/google';
 
 interface GoogleSignInProps {
   onSuccess: (credentialResponse: CredentialResponse) => void | Promise<void>;
-  onFailure: (error: any) => void;
+  onFailure: (error: string) => void;
 }
 
 const GoogleSignIn: React.FC<GoogleSignInProps> = ({ onSuccess, onFailure }) => {
