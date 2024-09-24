@@ -4,10 +4,10 @@ import logo from '../../assets/Header.png';
 import { Link, useNavigate } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import GoogleSignIn from '../GoogleSignIn/GoogleSignIn';
-import './Login.css';
 import { validateForm } from '../../helpers/validateForm';
-import { ErrorsLogin, FormDataLogin } from '../../types/types';
+import { CredentialResponse, ErrorsLogin, FormDataLogin, GoogleAuthError } from '../../types/types';
 import { login, setAuthenticated } from '../../store/features/userSlice';
+import './Login.css';
 
 const Login: React.FC = () => {
   const [formData, setFormData] = useState<FormDataLogin>({
@@ -18,25 +18,9 @@ const Login: React.FC = () => {
     email: '',
     password: '',
   });
-  // const [success, setSuccess] = useState<boolean>(false);
-  // const [failed, setFailed] = useState<boolean>(false);
 
   const dispatch = useDispatch();
-  // const user = useSelector((state: any) => state.user.user);
   const navigate = useNavigate();
-
-  // const [userSession, setUserSession] = useState<any>(null);
-
-  // Efecto para obtener datos de localStorage al montar el componente
-  // useEffect(() => {
-
-  //   const session = localStorage.getItem("userSession");
-  //   setUserSession(session);
-
-  //   if (session) {
-  //     router.push("/");
-  //   }
-  // }, [router]);
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
@@ -63,22 +47,7 @@ const Login: React.FC = () => {
 
     try {
       //* Validar que todos los campos obligatorios estén llenos
-      let isFormValid = true;
-      // const newErrors: Partial<ErrorsLogin> = {};
-      // for (const field in formData) {
-      //   if (!formData[field as keyof FormDataLogin]) {
-      //     newErrors[field as keyof ErrorsLogin] = `${field} es requerido.`;
-      //     isFormValid = false;
-      //   }
-      // }
-
-      // const updatedErrors: ErrorsLogin = Object.assign(
-      //   {},
-      //   { email: '', password: '', name: '', address: '', phone: '' },
-      //   newErrors
-      // );
-
-      // setErrors(updatedErrors);
+      const isFormValid = true;
 
       if (isFormValid) {
         //* HAPPY PATH
@@ -103,7 +72,7 @@ const Login: React.FC = () => {
 
         const data = await response.json();
         localStorage.setItem('token', data.token);
-        // setSuccess(true);
+ 
         // Redirige al usuario o actualiza el estado de la aplicación
         dispatch(login(data.user));
         dispatch(setAuthenticated());
@@ -113,7 +82,6 @@ const Login: React.FC = () => {
           email: '',
           password: '',
         });
-        // setSuccess(true);
 
         setTimeout(() => {
           // router.push("/");
@@ -126,8 +94,10 @@ const Login: React.FC = () => {
     }
   };
 
-  const handleSuccess = async (credentialResponse: any) => {
+  const handleSuccess = async (credentialResponse: CredentialResponse) => {
     const { credential } = credentialResponse;
+
+    console.log(credentialResponse)
 
     try {
       const res = await fetch('http://localhost:3000/auth/google', {
@@ -142,7 +112,6 @@ const Login: React.FC = () => {
         const data = await res.json();
         console.log(data);
         localStorage.setItem('token', data.token);
-        // setSuccess(true);
         // Redirige al usuario o actualiza el estado de la aplicación
         dispatch(login(data.user));
         dispatch(setAuthenticated());
@@ -158,7 +127,7 @@ const Login: React.FC = () => {
     }
   };
 
-  const handleFailure = (error: any) => {
+  const handleFailure = (error: GoogleAuthError) => {
     console.error('Error de inicio de sesión con Google:', error);
     // Muestra un mensaje de error al usuario
   };
