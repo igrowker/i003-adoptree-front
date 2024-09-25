@@ -1,4 +1,4 @@
-// notifications.ts
+
 import { messaging } from "./../../firebase-config"
 import { getToken } from "firebase/messaging";
 
