@@ -16,7 +16,6 @@ concurrency:
 
 jobs:
   build:
-    if: github.event.pull_request.base.ref == 'develop' || github.event.pull_request.base.ref == 'main'
     name: Build
     runs-on: ubuntu-latest
     permissions:
@@ -51,7 +50,7 @@ jobs:
         with:
           assignees: ${{ github.event.sender.login }}
       - name: Comment on PR if failed
-        if: failure()
+        if: failure() && (github.event.pull_request.base.ref == 'develop' || github.event.pull_request.base.ref == 'main')
         uses: unsplash/comment-on-pr@v1.3.0
         env:
           GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}
@@ -66,7 +65,6 @@ jobs:
           check_for_duplicate_msg: false
 
   lint:
-    if: github.event.pull_request.base.ref == 'develop' || github.event.pull_request.base.ref == 'main'
     name: Lint
     runs-on: ubuntu-latest
 
@@ -102,7 +100,7 @@ jobs:
         with:
           assignees: ${{ github.event.sender.login }}
       - name: Comment on PR if failed
-        if: failure()
+        if: failure() && (github.event.pull_request.base.ref == 'develop' || github.event.pull_request.base.ref == 'main')
         uses: unsplash/comment-on-pr@v1.3.0
         env:
           GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}
@@ -123,23 +121,23 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
-      - name: Set up Node.js
-        uses: actions/setup-node@v4
-        with:
-          node-version: 18
-          cache: npm
-          cache-dependency-path: '**/package-lock.json'
+      # - name: Set up Node.js
+      #   uses: actions/setup-node@v4
+      #   with:
+      #     node-version: 18
+      #     cache: npm
+      #     cache-dependency-path: '**/package-lock.json'
 
-      - name: Install dependencies
-        run: npm ci --no-audit --no-fund
+      # - name: Install dependencies
+      #   run: npm ci --no-audit --no-fund
 
-      - name: Build
-        run: npm run build
+      # - name: Build
+      #   run: npm run build
 
       - name: Deploy to Netlify
         uses: nwtgck/actions-netlify@v3.0
         with:
-          publish-dir: './dist'
+          publish-dir: './'
           production-branch: develop
           github-token: ${{ secrets.GH_TOKEN }}
           deploy-message: 'Deploy from GitHub Actions'
