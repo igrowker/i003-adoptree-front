@@ -16,7 +16,6 @@ concurrency:
 
 jobs:
   build:
-    if: github.event.pull_request.base.ref == 'develop' || github.event.pull_request.base.ref == 'main'
     name: Build
     runs-on: ubuntu-latest
     permissions:
@@ -51,7 +50,7 @@ jobs:
         with:
           assignees: ${{ github.event.sender.login }}
       - name: Comment on PR if failed
-        if: failure()
+        if: failure() && (github.event.pull_request.base.ref == 'develop' || github.event.pull_request.base.ref == 'main')
         uses: unsplash/comment-on-pr@v1.3.0
         env:
           GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}
@@ -66,7 +65,6 @@ jobs:
           check_for_duplicate_msg: false
 
   lint:
-    if: github.event.pull_request.base.ref == 'develop' || github.event.pull_request.base.ref == 'main'
     name: Lint
     runs-on: ubuntu-latest
 
@@ -102,7 +100,7 @@ jobs:
         with:
           assignees: ${{ github.event.sender.login }}
       - name: Comment on PR if failed
-        if: failure()
+        if: failure() && (github.event.pull_request.base.ref == 'develop' || github.event.pull_request.base.ref == 'main')
         uses: unsplash/comment-on-pr@v1.3.0
         env:
           GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}
@@ -118,6 +116,16 @@ jobs:
 
   deploy:
     runs-on: ubuntu-latest
+    env:
+      VITE_FIREBASE_API_KEY: ${{ secrets.VITE_FIREBASE_API_KEY }}
+      VITE_FIREBASE_AUTH_DOMAIN: ${{ secrets.VITE_FIREBASE_AUTH_DOMAIN }}
+      VITE_FIREBASE_PROJECT_ID: ${{ secrets.VITE_FIREBASE_PROJECT_ID }}
+      VITE_FIREBASE_STORAGE_BUCKET: ${{ secrets.VITE_FIREBASE_STORAGE_BUCKET }}
+      VITE_FIREBASE_MESSAGING_SENDER_ID: ${{ secrets.VITE_FIREBASE_MESSAGING_SENDER_ID }}
+      VITE_FIREBASE_APP_ID: ${{ secrets.VITE_FIREBASE_APP_ID }}
+      VITE_FIREBASE_MEASUREMENT_ID: ${{ secrets.VITE_FIREBASE_MEASUREMENT_ID }}
+      VITE_FIREBASE_VAPID_KEY: ${{ secrets.VITE_FIREBASE_VAPID_KEY }}
+      VITE_GOOGLE_CLIENT_ID: ${{ secrets.VITE_GOOGLE_CLIENT_ID }}
     needs: [build, lint]
     steps:
       - name: Checkout
