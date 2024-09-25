@@ -25,7 +25,7 @@ Esta pipeline de integración continua (CI) está diseñada para desplegar el c�
 
 La ejecución de la pipeline de `Build and Deploy to Dev` de CI/CD se realiza automáticamente cada vez que se realiza una `Pull Request` en las ramas `main` o `develop`. Si se detecta un error en la despliegue, se creará un issue y un comentario en el repositorio para que se puedan revisar y solucionar los problemas. Además, si todo sale bien, se creará un comentario en el Pull Request para informar la `Url` del entorno de desarrollo.
 
-La ejecución de la pipeline de `Deploy to Dev` de CI/CD se realiza automáticamente cada vez que se realiza una `Merge` en las ramas `develop`. Si se detecta un error en la despliegue, se creará un issue para que se puedan revisar y solucionar los problemas.
+A su vez, también se ejecuta la actions cuando se fusiona con la rama `develop`.
 
 # Pipeline de CI para Deploy del Production
 
