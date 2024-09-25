@@ -2,10 +2,14 @@ import { Routes, Route } from 'react-router-dom';
 import AdoptreeRoutes from '../routes/AdoptreeRoutes';
 import Login from '../components/Login/Login';
 import Registro from '../components/Login/Registro';
-import AboutUsSection from '../components/AboutUs/AboutUsSection';
+import AboutUs from '../pages/About/AboutUs';
 import { useEffect } from 'react';
 import axios from 'axios';
  
+
+
+
+
 export const AppRouter = () => {
   useEffect(() => {
     const fetchData = async () => {
@@ -21,13 +25,15 @@ export const AppRouter = () => {
   }, []);
  
   return (
-<Routes>
-<>
-<Route path="/auth/register" element={<Registro />} />
-<Route path="/auth/login" element={<Login />} />
-<Route path="/*" element={<AdoptreeRoutes />} />
-<Route path="/about" element={<AboutUsSection />} />
-</>
-</Routes>
+
+    <Routes>
+      <>
+        <Route path="/auth/register" element={<Registro />} />
+        <Route path="/auth/login" element={<Login />} />
+        <Route path="/*" element={<AdoptreeRoutes />} />
+        <Route path="/about" element={<AboutUs />} />
+      </>
+    </Routes>
+
   );
 };
