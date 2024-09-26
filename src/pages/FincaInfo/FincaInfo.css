@@ -3,7 +3,7 @@
   margin: 100px 200px;
   margin-top: 150px;
   /* padding: 2rem; */
-  font-family: Arial, sans-serif;
+  /* font-family: Arial, sans-serif; */
 }
 
 .finca-info-content {
@@ -60,10 +60,9 @@
 }
 
 .finca-info-details h2 {
-  color: #2b8a3e;
   font-size: 1.8rem;
+  font-weight: 700;
   margin-bottom: 1rem;
-  font-weight: 600;
 }
 
 .finca-info-details > p {

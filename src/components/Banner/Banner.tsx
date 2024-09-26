@@ -14,7 +14,7 @@ const Banner: React.FC = () => {
             sostenible.
           </h1>
           <button className="rounded-[10px] bg-[#4BAF47] text-white hover:bg-[#3B8838] 4xl:text-[20px]">
-              Adopta ahora
+            Adopta ahora
           </button>
         </div>
       </div>

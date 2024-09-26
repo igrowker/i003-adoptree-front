@@ -87,9 +87,7 @@ const BlogPage: React.FC = () => {
               className="bg-white rounded-lg shadow-lg overflow-hidden transition-transform hover:scale-105"
             >
               <div className="p-6">
-                <h3 className="text-xl font-semibold mb-2">
-                  {post.title}
-                </h3>
+                <h3 className="text-xl font-semibold mb-2">{post.title}</h3>
                 <div className="flex items-center text-sm text-gray-500 mb-2">
                   <Calendar className="w-4 h-4 mr-2" />
                   <span>{post.date}</span>
