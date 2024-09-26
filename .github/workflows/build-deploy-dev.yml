@@ -6,6 +6,9 @@ on:
     branches:
       - main
       - develop
+  push:
+    branches:
+      - develop
 
 concurrency:
   group: build-deploy-dev-${{ github.ref }}
@@ -47,13 +50,14 @@ jobs:
         with:
           assignees: ${{ github.event.sender.login }}
       - name: Comment on PR if failed
-        if: failure()
+        if: failure() && (github.event.pull_request.base.ref == 'develop' || github.event.pull_request.base.ref == 'main')
         uses: unsplash/comment-on-pr@v1.3.0
         env:
           GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}
         with:
           msg: 'Falló el build de la rama :disappointed: . Por favor revisa los errores y toma las medidas necesarias. Action Run: [Action](${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }})'
       - name: Comment on PR
+        if: github.event.pull_request.base.ref == 'develop' || github.event.pull_request.base.ref == 'main'
         uses: unsplash/comment-on-pr@v1.3.0
         env:
           GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}
@@ -97,13 +101,14 @@ jobs:
         with:
           assignees: ${{ github.event.sender.login }}
       - name: Comment on PR if failed
-        if: failure()
+        if: failure() && (github.event.pull_request.base.ref == 'develop' || github.event.pull_request.base.ref == 'main')
         uses: unsplash/comment-on-pr@v1.3.0
         env:
           GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}
         with:
-          msg: 'Falló la verificación del Lint :dissapointed:. Por favor revisa los errores y toma las medidas necesarias. Action Run: [Action](${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }})'
+          msg: 'Falló la verificación del Lint :dissapointed: . Por favor revisa los errores y toma las medidas necesarias. Action Run: [Action](${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }})'
       - name: Comment on PR
+        if: github.event.pull_request.base.ref == 'develop' || github.event.pull_request.base.ref == 'main'
         uses: unsplash/comment-on-pr@v1.3.0
         env:
           GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}
@@ -112,36 +117,49 @@ jobs:
           check_for_duplicate_msg: false
 
   deploy:
-    if: github.event.pull_request.base.ref == 'develop'
     runs-on: ubuntu-latest
+    env:
+      VITE_FIREBASE_API_KEY: ${{ secrets.VITE_FIREBASE_API_KEY }}
+      VITE_FIREBASE_AUTH_DOMAIN: ${{ secrets.VITE_FIREBASE_AUTH_DOMAIN }}
+      VITE_FIREBASE_PROJECT_ID: ${{ secrets.VITE_FIREBASE_PROJECT_ID }}
+      VITE_FIREBASE_STORAGE_BUCKET: ${{ secrets.VITE_FIREBASE_STORAGE_BUCKET }}
+      VITE_FIREBASE_MESSAGING_SENDER_ID: ${{ secrets.VITE_FIREBASE_MESSAGING_SENDER_ID }}
+      VITE_FIREBASE_APP_ID: ${{ secrets.VITE_FIREBASE_APP_ID }}
+      VITE_FIREBASE_MEASUREMENT_ID: ${{ secrets.VITE_FIREBASE_MEASUREMENT_ID }}
+      VITE_FIREBASE_VAPID_KEY: ${{ secrets.VITE_FIREBASE_VAPID_KEY }}
+      VITE_GOOGLE_CLIENT_ID: ${{ secrets.VITE_GOOGLE_CLIENT_ID }}
     needs: [build, lint]
     steps:
       - name: Checkout
         uses: actions/checkout@v4
-      - name: Login to Docker hub
-        uses: docker/login-action@v3
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
         with:
-          username: ${{ secrets.DOCKERHUB_USERNAME }}
-          password: ${{ secrets.DOCKERHUB_TOKEN }}
-      - name: Get repository name
-        id: repo-name
-        uses: MariachiBear/get-repo-name-action@v1.1.0
-      - name: Set up Docker Buildx
-        uses: docker/setup-buildx-action@v3
-      - name: Build and push
-        uses: docker/build-push-action@v5
+          node-version: 18
+          cache: npm
+          cache-dependency-path: '**/package-lock.json'
+
+      - name: Install dependencies
+        run: npm ci --no-audit --no-fund
+
+      - name: Build
+        run: npm run build
+
+      - name: Deploy to Netlify
+        uses: nwtgck/actions-netlify@v3.0
         with:
-          context: .
-          file: ./Dockerfile
-          push: true
-          tags: |
-            ${{ secrets.DOCKERHUB_USERNAME }}/${{steps.repo-name.outputs.repository-name}}:latest
-            ${{ secrets.DOCKERHUB_USERNAME }}/${{steps.repo-name.outputs.repository-name}}:${{github.sha}}
-      - name: Deploy to Dev - Render
-        uses: fjogeleit/http-request-action@v1
-        with:
-          url: ${{ secrets.RENDER_DEPLOY_HOOK }}
-          method: GET
+          publish-dir: './dist'
+          production-branch: develop
+          github-token: ${{ secrets.GH_TOKEN }}
+          deploy-message: 'Deploy from GitHub Actions'
+          enable-pull-request-comment: true
+          enable-commit-comment: true
+          overwrites-pull-request-comment: true
+        env:
+          NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
+          NETLIFY_SITE_ID: ${{ secrets.NETLIFY_SITE_ID }}
+        timeout-minutes: 1
 
       - name: Create issue if build fails
         if: failure()
@@ -155,16 +173,10 @@ jobs:
           assignees: ${{ github.event.sender.login }}
 
       - name: Comment on PR if failed
-        if: failure()
+        if: failure() && (github.event.pull_request.base.ref == 'develop' || github.event.pull_request.base.ref == 'main')
         uses: unsplash/comment-on-pr@v1.3.0
         env:
           GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}
         with:
           msg: 'Ocurrió un error al desplegar la rama. Por favor revisa los errores y toma las medidas necesarias. Action Run: [Action](${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}).'
-      - name: Comment on PR
-        uses: unsplash/comment-on-pr@v1.3.0
-        env:
-          GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}
-        with:
-          msg: 'El despliegue del entorno de desarrollo ha sido exitoso :+1: . Url: [Development](https://dev-adoptree.onrender.com/)'
           check_for_duplicate_msg: false
