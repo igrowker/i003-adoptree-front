@@ -1,7 +1,5 @@
 import React, { useState } from 'react';
 import CreditCardIcon from '@mui/icons-material/CreditCard';
-import PaymentIcon from '@mui/icons-material/Payment';
-import { SiMercadopago } from "react-icons/si";
 import Mp from '../../assets/mp.png'
 
 const PaymentMethodSection: React.FC = () => {
@@ -13,11 +11,11 @@ const PaymentMethodSection: React.FC = () => {
     cvv: ''
   });
 
-  const handlePaymentMethodChange = (method: any) => {
+  const handlePaymentMethodChange = (method: string) => {
     setPaymentMethod(method);
   };
 
-  const handleCardInfoChange = (e: any) => {
+  const handleCardInfoChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
     setCardInfo(prevState => ({
       ...prevState,
@@ -25,7 +23,7 @@ const PaymentMethodSection: React.FC = () => {
     }));
   };
 
-  const handleSubmit = (e: any) => {
+  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     // Aquí puedes manejar el envío de la información de pago
     console.log('Método de pago:', paymentMethod);

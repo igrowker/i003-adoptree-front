@@ -25,7 +25,7 @@ const Checkout = () => {
     setActiveStep((prevActiveStep) => prevActiveStep + 1);
   };
 
-  const handleQuantityChange = (delta:any) => {
+  const handleQuantityChange = (delta: number) => {
     setQuantity((prev) => Math.max(1, prev + delta));
   };
 

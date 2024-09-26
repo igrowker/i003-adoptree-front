@@ -11,7 +11,7 @@ const ShippingSection: React.FC = () => {
     phone: ''
   });
 
-  const handleInputChange = (e: any) => {
+  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
     const { name, value } = e.target;
     setShippingInfo(prevState => ({
       ...prevState,
@@ -19,7 +19,7 @@ const ShippingSection: React.FC = () => {
     }));
   };
 
-  const handleSubmit = (e: any) => {
+  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     // Aquí puedes manejar el envío de la información, por ejemplo:
     console.log('Información de envío:', shippingInfo);
