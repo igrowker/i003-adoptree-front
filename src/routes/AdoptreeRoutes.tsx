@@ -10,6 +10,7 @@ import PrivacyPolicy from '../pages/PrivacyPolicy/PrivacyPolicy';
 import BlogPage from '../pages/Blog/BlogPage';
 import FincaInfo from '../pages/FincaInfo/FincaInfo';
 import DonacionesPatrocinios from '../components/DonacionesPatrocinios/DonacionesPatrocinios';
+import AboutUs from '../pages/About/AboutUs';
 // import DonacionesPatrocinios from '../components/DonacionesPatrocinios/DonacionesPatrocinios';
 
 const AdoptreeRoutes = () => {
@@ -25,6 +26,7 @@ const AdoptreeRoutes = () => {
         <Route path="/impacto-ambiental" element={<Impacto />} />
         <Route path="/blogs" element={<BlogPage />} />
         <Route path="/donaciones" element={<DonacionesPatrocinios />} />
+        <Route path="/about" element={<AboutUs />} />
         <Route path="/contacto" element={<Contacto />} />
         <Route path="/privacy-policy" element={<PrivacyPolicy />} />
       </Routes>
