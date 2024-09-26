@@ -19,20 +19,21 @@ const AboutUs: React.FC = () => {
           con los productores de cítricos en Argentina, promoviendo la agricultura sostenible.
         </p>
 
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-4 mb-12 about-image-container">
-          <div className="about-image">
-            <img src={img1} alt="Imagen 1" className="w-full h-auto object-cover" />
-          </div>
-          <div className="about-image">
-            <img src={img2} alt="Imagen 2" className="w-full h-auto object-cover" />
-          </div>
-          <div className="about-image">
-            <img src={img3} alt="Imagen 3" className="w-full h-auto object-cover" />
-          </div>
-          <div className="about-image">
-            <img src={img4} alt="Imagen 4" className="w-full h-auto object-cover" />
-          </div>
-        </div>
+<div className="grid grid-cols-1 md:grid-cols-4 gap-4 mb-12 about-image-container">
+  <div className="about-image h-80 overflow-hidden">
+    <img src={img1} alt="Limonero" className="w-full h-full object-cover" />
+  </div>
+  <div className="about-image h-80 overflow-hidden">
+    <img src={img2} alt="Naranjas" className="w-full h-full object-cover" />
+  </div>
+  <div className="about-image h-80 overflow-hidden">
+    <img src={img3} alt="Naranjo" className="w-full h-full object-cover" />
+  </div>
+  <div className="about-image h-80 overflow-hidden">
+    <img src={img4} alt="Naranjo" className="w-full h-full object-cover" />
+  </div>
+</div>
+
 
         <h3 className="text-[30px] font-[800] text-center mb-4">Nos aseguramos de que tu idea y creación se entreguen correctamente</h3>
 
