@@ -55,14 +55,14 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}
         with:
-          msg: 'Falló el build de la rama :disappointed: . Por favor revisa los errores y toma las medidas necesarias. Action Run: [Action](${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }})'
+          msg: '🔴 Falló el build de la rama :disappointed: ⚠️🛑. Por favor revisa los errores y toma las medidas necesarias. Action Run: [Action](${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }})'
       - name: Comment on PR
         if: github.event.pull_request.base.ref == 'develop' || github.event.pull_request.base.ref == 'main'
         uses: unsplash/comment-on-pr@v1.3.0
         env:
           GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}
         with:
-          msg: 'El build ha sido exitoso :+1: :thumbsup:.'
+          msg: '🟢 El build ha sido exitoso :+1: :thumbsup:.'
           check_for_duplicate_msg: false
 
   lint:
@@ -106,14 +106,14 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}
         with:
-          msg: 'Falló la verificación del Lint :dissapointed: . Por favor revisa los errores y toma las medidas necesarias. Action Run: [Action](${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }})'
+          msg: '🔴 Falló la verificación del Lint :dissapointed: ⚠️🛑. Por favor revisa los errores y toma las medidas necesarias. Action Run: [Action](${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }})'
       - name: Comment on PR
         if: github.event.pull_request.base.ref == 'develop' || github.event.pull_request.base.ref == 'main'
         uses: unsplash/comment-on-pr@v1.3.0
         env:
           GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}
         with:
-          msg: 'El linter ha verificado el código :+1: :thumbsup:.'
+          msg: '🟢 El linter ha verificado el código :+1: :thumbsup:.'
           check_for_duplicate_msg: false
 
   deploy:
@@ -178,5 +178,5 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}
         with:
-          msg: 'Ocurrió un error al desplegar la rama. Por favor revisa los errores y toma las medidas necesarias. Action Run: [Action](${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}).'
+          msg: '🔴 Ocurrió un error al desplegar la rama ⚠️🛑. Por favor revisa los errores y toma las medidas necesarias. Action Run: [Action](${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}).'
           check_for_duplicate_msg: false
