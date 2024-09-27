@@ -12,17 +12,17 @@ const App: React.FC = () => {
   useEffect(() => {
     requestNotificationPermission();
   }, []);
-  
-  if ("serviceWorker" in navigator) {
+
+  if ('serviceWorker' in navigator) {
     navigator.serviceWorker
-      .register("/firebase-messaging-sw.js")
+      .register('/firebase-messaging-sw.js')
       .then((registration) => {
         console.log("Service Worker registrado con éxito:", registration);
         // Se envian las configuraciones de firebase al SW 👇
         registration.active?.postMessage({ firebaseConfig });
       })
       .catch((error) => {
-        console.log("Error al registrar el Service Worker:", error);
+        console.log('Error al registrar el Service Worker:', error);
       });
   }
   return (

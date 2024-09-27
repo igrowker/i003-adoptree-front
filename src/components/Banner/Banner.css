@@ -9,8 +9,8 @@
   align-items: center;
   margin-bottom: 80px;
   margin-top: 50px;
-  }
-  .banner-overlay {
+}
+.banner-overlay {
   position: absolute;
   top: 0;
   left: 0;
@@ -20,21 +20,21 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  }
-  .banner-text {
+}
+.banner-text {
   text-align: center;
   color: white;
   max-width: 800px;
   padding: 0 20px;
-  }
-  .banner h1 {
+}
+.banner h1 {
   font-size: 48px;
   font-weight: bold;
   line-height: 1.3;
   margin-bottom: 24px;
-  }
-  .banner-cta {
-  background-color: #4CAF50;
+}
+.banner-cta {
+  background-color: #4caf50;
   color: white;
   border: none;
   padding: 12px 24px;
@@ -42,7 +42,7 @@
   border-radius: 4px;
   cursor: pointer;
   transition: background-color 0.3s ease;
-  }
-  .banner-cta:hover {
+}
+.banner-cta:hover {
   background-color: #45a049;
-  }
+}

@@ -1,6 +1,7 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
+import '../../pages/About/AboutUsSection.css'
 
 // Estilos comunes
 const sectionContainer = 'flex flex-col items-center gap-4 py-24';
@@ -163,7 +164,7 @@ const MetricItem: React.FC<{
   title?: string;
 }> = ({ thumbnail, value, title }) => (
   <motion.div
-    className="bg-white min-w-[250px] rounded-lg shadow-lg p-6 flex flex-col items-center text-center hover:shadow-xl transition-shadow duration-300 transform hover:-translate-y-1"
+    className="value-card flex flex-col justify-center items-center"
     whileHover={{ scale: 1.05 }}
     whileTap={{ scale: 0.95 }}
   >
@@ -177,7 +178,7 @@ const MetricItem: React.FC<{
     {title && (
       <h3 className="text-xl font-semibold mb-2 text-gray-800">{title}</h3>
     )}
-    <p className="text-base text-gray-600 font-medium">{value}</p>
+    <p className="text-base text-gray-600">{value}</p>
   </motion.div>
 );
 

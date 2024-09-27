@@ -5,7 +5,7 @@ import { BrowserRouter } from 'react-router-dom';
 import { Provider } from 'react-redux';
 import { PersistGate } from 'redux-persist/integration/react';
 import { store, persistor } from './store/store.ts';
-import ScrollToTop from './components/ScrollToTop/ScrollToTop.tsx'
+import ScrollToTop from './components/ScrollToTop/ScrollToTop.tsx';
 import './index.css';
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
