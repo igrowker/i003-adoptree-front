@@ -1,101 +1,40 @@
-import AdoptarArbol from '../../components/AdoptarArbol/AdoptarArbol'; //lamado al componente hijo
+import React from 'react';
+import AdoptarArbol from '../../components/AdoptarArbol/AdoptarArbol';
 import { InputAdornment, TextField } from '@mui/material';
 import SearchIcon from '@mui/icons-material/Search';
 import './Adoptar.css';
+import { useGetArbolesQuery } from '../../store/services/arbolApi'; // Hook generado por RTK Query
 
-const Adoptar = () => {
-  // Datos de ejemplo de un árbol que se va recibir luego de la API
+// Definimos el tipo de los datos de cada árbol
+interface Arbol {
+  id: number;
+  name: string;
+  type: string;
+  location: string;
+  imageUrl: string;
+  productor: string;
+  price: number;
+}
 
-  //!!EN ESTA PAGE SE RECIBE LA INFO DE LOS ARBOLES CARGADOS CON TODA LA INFO CORRESPONDIENTE COMO ESTE CARGADA LA TABLA EN FORMATO JSON Y TRABAJARLA
-  //!! EL FLUJO SERIA : Adoptar.tsx(info arboles) ---> AdoptarArbol.tsx(se le pasa la info por props y se genera las diferentes cards con un bucle)
+const Adoptar: React.FC = () => {
+  // Utilizamos el hook para obtener los datos desde la API
+  const { data: arboles, error, isLoading } = useGetArbolesQuery();
 
-  //------------------------------------------------------------------------------------------
-  //EN ESTA SECCION REEMPLAZAR POR LA LOGICA DE RECEPCION DE LA INFO
-
-  const datos = [
-    {
-      id: 1,
-      name: 'Arbol de Naranjo',
-      type: 'Naranja',
-      location: 'Tucumán, Argentina',
-      imageUrl:
-        'https://i.pinimg.com/564x/3c/bf/ec/3cbfec1259635898efae5b57ea3ddea3.jpg',
-      productor: 'Anita Minisci',
-      price: 100,
-    },
-
-    {
-      id: 2,
-      name: 'Arbol de Mandarino',
-      type: 'Mandarino',
-      location: 'Mendoza, Argentina',
-      imageUrl:
-        'https://i.pinimg.com/564x/64/9f/a5/649fa54b28b8539c1ae306e98a5673c0.jpg',
-      productor: 'Angelo Gibilisco',
-      price: 600,
-    },
-
-    {
-      id: 3,
-      name: 'Arbol de Limon ',
-      type: 'Limon',
-      location: 'Corrientes, Argentina',
-      imageUrl:
-        'https://i.pinimg.com/564x/35/96/8f/35968f335d21465253afe8c96b9af31e.jpg',
-      productor: 'Antonio Bonillo',
-      price: 150,
-    },
-
-    {
-      id: 4,
-      name: 'Arbol de Limon ',
-      type: 'Limon',
-      location: 'Corrientes, Argentina',
-      imageUrl:
-        'https://i.pinimg.com/564x/35/96/8f/35968f335d21465253afe8c96b9af31e.jpg',
-      productor: 'Juan Bonillo',
-      price: 150,
-    },
-
-    {
-      id: 5,
-      name: 'Arbol de Limon ',
-      type: 'Limon',
-      location: 'Corrientes, Argentina',
-      imageUrl:
-        'https://i.pinimg.com/564x/35/96/8f/35968f335d21465253afe8c96b9af31e.jpg',
-      productor: 'Joaquin Gine',
-      price: 150,
-    },
-
-    {
-      id: 6,
-      name: 'Arbol de Limon ',
-      type: 'Limon',
-      location: 'Corrientes, Argentina',
-      imageUrl:
-        'https://i.pinimg.com/564x/35/96/8f/35968f335d21465253afe8c96b9af31e.jpg',
-      productor: 'Danilo Magnano',
-      price: 150,
-    },
-
-    {
-      id: 7,
-      name: 'Arbol de Limon ',
-      type: 'Limon',
-      location: 'Corrientes, Argentina',
-      imageUrl:
-        'https://i.pinimg.com/564x/35/96/8f/35968f335d21465253afe8c96b9af31e.jpg',
-      productor: 'Angelo Dipiero',
-      price: 150,
-    },
-  ];
-
+  // Función para manejar la adopción de un árbol
   const handleAdopt = (arbolId: number) => {
     console.log(`Árbol adoptado con ID: ${arbolId}`);
-    //  lógica para manejar la adopción (para enviar los datos a la API "carga")
+    // lógica para manejar la adopción (como enviar datos a la API)
   };
-  //-----------------------------------------------------------------------------------------
+
+  // Muestra un mensaje de carga mientras se obtienen los datos
+  if (isLoading) {
+    return <p>Cargando árboles...</p>;
+  }
+
+  // Muestra un mensaje en caso de error
+  if (error) {
+    return <p>Ocurrió un error al cargar los árboles.</p>;
+  }
 
   return (
     <div className="px-[200px] my-[116px]">
@@ -111,37 +50,28 @@ const Adoptar = () => {
         variant="outlined"
         sx={{
           '& .MuiFormLabel-root': {
-            color: '#8F8F8F', // Color normal del label
-            '&:hover': {
-              color: '#8F8F8F', // Color del label al pasar el mouse
-            },
+            color: '#8F8F8F',
+            '&:hover': { color: '#8F8F8F' },
           },
           '& .MuiOutlinedInput-root': {
-            '&:hover fieldset': {
-              borderColor: '#4BAF47', // Cambia el color del borde al pasar el mouse
-            },
-            '&.Mui-focused fieldset': {
-              borderColor: '#4BAF47', // Cambia el color del borde al enfocar
-            },
+            '&:hover fieldset': { borderColor: '#4BAF47' },
+            '&.Mui-focused fieldset': { borderColor: '#4BAF47' },
           },
-          '& .MuiInputBase-input': {
-            color: '#4BAF47', // Cambia el color del texto
-          },
+          '& .MuiInputBase-input': { color: '#4BAF47' },
         }}
-        slotProps={{
-          input: {
-            endAdornment: (
-              <InputAdornment position="end">
-                <SearchIcon />
-              </InputAdornment>
-            ),
-          },
+        InputProps={{
+          endAdornment: (
+            <InputAdornment position="end">
+              <SearchIcon />
+            </InputAdornment>
+          ),
         }}
       />
+
       <div className="grid grid-cols-1 md:grid-cols-4 gap-6 mt-10">
-        {/*!! iterar sobre una lista de árboles si tienes más de uno !!*/}
-        {datos.map((dat) => (
-          <AdoptarArbol key={dat.id} datos={dat} onAdopt={handleAdopt} />
+        {/* Iteramos sobre los datos de los árboles recibidos desde la API */}
+        {arboles?.map((arbol: Arbol) => (
+          <AdoptarArbol key={arbol.id} datos={arbol} onAdopt={handleAdopt} />
         ))}
       </div>
     </div>

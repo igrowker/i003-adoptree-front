@@ -3,6 +3,7 @@ import { persistStore, persistReducer } from 'redux-persist';
 import storage from 'redux-persist/lib/storage'; // Utiliza localStorage
 import { userSlice, UserState } from './features/userSlice';
 import { TypedUseSelectorHook, useDispatch, useSelector } from 'react-redux';
+import { arbolApi } from '../store/services/arbolApi'; // Importa la API de árboles
 
 // Configuración de persistencia
 const persistConfig = {
@@ -18,7 +19,10 @@ const persistedUserReducer = persistReducer(persistConfig, userSlice.reducer);
 export const store = configureStore({
   reducer: {
     user: persistedUserReducer, // Aplicamos el reducer persistido
+    [arbolApi.reducerPath]: arbolApi.reducer, // Añadimos el reducer de la API de árboles
   },
+  middleware: (getDefaultMiddleware) =>
+    getDefaultMiddleware().concat(arbolApi.middleware), // Añadimos el middleware de la API
 });
 
 // Configuración del persistor para poder utilizar PersistGate
@@ -29,5 +33,6 @@ export const useAppDispatch: () => typeof store.dispatch = useDispatch;
 
 // Tipar correctamente el selector usando `UserState`
 export const useAppSelector: TypedUseSelectorHook<{
-  user: UserState; // Aquí debe coincidir el key con el nombre del reducer en el store
+  user: UserState;
+  // Añade el estado de la API para usar el hook selector si lo necesitas
 }> = useSelector;
