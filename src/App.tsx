@@ -5,6 +5,7 @@ import { useEffect } from 'react';
 import requestNotificationPermission from './firebase/notification';
 import { firebaseConfig } from '../firebase-config';
 
+
 const clientId = import.meta.env.VITE_GOOGLE_CLIENT_ID;
 
 const App: React.FC = () => {
