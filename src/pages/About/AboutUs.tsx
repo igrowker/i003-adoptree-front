@@ -35,7 +35,7 @@ const AboutUs: React.FC = () => {
 </div>
 
 
-        <h3 className="text-[30px] font-[800] text-center mb-4">Nos aseguramos de que tu idea y creación se entreguen correctamente</h3>
+        <h3 className="text-[30px] font-[700] text-center mb-4">Nos aseguramos de que tu idea y creación se entreguen correctamente</h3>
 
         <div className="about-paragraphs-container grid grid-cols-1 md:grid-cols-2 gap-8 mx-auto px-4 max-w-screen-lg">
   <div className="about-paragraph bg-white border border-gray-200 p-6 rounded-lg shadow-sm hover:shadow-md transition-shadow">
@@ -55,7 +55,7 @@ const AboutUs: React.FC = () => {
 
       <div className="bg-[#F7FAFC] flex flex-col items-center pt-[4rem] pb-12 px-6 gap-[4rem]">
         <div className="w-full max-w-4xl">
-          <h3 className="text-[30px] font-[800] text-center">Nuestro compromiso con la sostenibilidad</h3>
+          <h3 className="text-[30px] font-[700] text-center">Nuestro compromiso con la sostenibilidad</h3>
           <div className="commitment-section">
             <div className="commitment-image">
               <img
@@ -79,7 +79,7 @@ const AboutUs: React.FC = () => {
 
         {/* Sección de valores */}
         <div className="w-full max-w-4xl mb-12">
-          <h3 className="text-[30px] font-[800] text-center mb-4">Nuestros valores</h3>
+          <h3 className="text-[30px] font-[700] text-center mb-4">Nuestros valores</h3>
           <div className="about-values">
             <div className="value-card flex flex-col justify-center items-center">
               <img src={sostenibilidadIcon} alt="Sostenibilidad" className="value-icon" />

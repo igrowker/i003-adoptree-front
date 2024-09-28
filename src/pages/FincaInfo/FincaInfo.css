@@ -16,7 +16,7 @@
   position: relative;
   width: 100%;
   max-width: 400px;
-  height: 300px;
+  height: 316px;
   margin-bottom: 2rem;
   overflow: hidden;
   border-radius: 8px;
@@ -60,7 +60,7 @@
 }
 
 .finca-info-details h2 {
-  font-size: 1.8rem;
+  font-size: 2.25rem;
   font-weight: 700;
   margin-bottom: 1rem;
 }

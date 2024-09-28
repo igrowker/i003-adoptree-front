@@ -10,8 +10,8 @@
 .about-header {
   font-size: 3rem;
   text-align: center;
-  font-weight: 900;
-  margin-bottom: 2.5rem;
+  font-weight: 700;
+  margin-bottom: 1.3rem;
   color: #1f2937;
 }
 
@@ -30,7 +30,7 @@
   color: #4b5563;
   max-width: 45rem;
   margin: 0 auto;
-  margin-bottom: 3rem;
+  margin-bottom: 1.5rem;
 }
 
 .about-paragraphs-container {
@@ -57,10 +57,6 @@
   transition: transform 0.4s ease-in-out;
   border-radius: 1rem;
   object-fit: cover;
-}
-
-.about-image img:hover {
-  transform: scale(1.05);
 }
 
 .about-values {
