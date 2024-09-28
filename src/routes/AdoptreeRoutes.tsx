@@ -8,9 +8,9 @@ import Impacto from '../pages/Impacto/Impacto';
 import Contacto from '../components/Contacto/Contacto';
 import PrivacyPolicy from '../pages/PrivacyPolicy/PrivacyPolicy';
 import BlogPage from '../pages/Blog/BlogPage';
-import LeerMas1 from '../pages/Blog/LeerMas/LeerMas1';
-import LeerMas2 from '../pages/Blog/LeerMas/LeerMas2';
-import LeerMas3 from '../pages/Blog/LeerMas/LeerMas3';
+import Blog1 from '../pages/Blog/LeerMas/Blog1';
+import Blog2 from '../pages/Blog/LeerMas/Blog2';
+import Blog3 from '../pages/Blog/LeerMas/Blog3';
 import LanguageSwitcher from '../pages/Blog/LeerMas/LanguageSwitcher';
 import FincaInfo from '../pages/FincaInfo/FincaInfo';
 import DonacionesPatrocinios from '../components/DonacionesPatrocinios/DonacionesPatrocinios';
@@ -33,9 +33,9 @@ const AdoptreeRoutes = () => {
         <Route path="/checkout" element={<Checkout />} />
         <Route path="/impacto-ambiental" element={<Impacto />} />
         <Route path="/blogs" element={<BlogPage />} />
-        <Route path="/leerMas1" element={<LeerMas1 />} />
-        <Route path="/leerMas2" element={<LeerMas2 />} />
-        <Route path="/leerMas3" element={<LeerMas3 />} />
+        <Route path="/blog1" element={<Blog1 />} />
+        <Route path="/blog2" element={<Blog2 />} />
+        <Route path="/blog3" element={<Blog3 />} />
         <Route path="/languageSwitcher" element={<LanguageSwitcher />} />
         <Route path="/donaciones" element={<DonacionesPatrocinios />} />
         <Route path="/about" element={<AboutUs />} />

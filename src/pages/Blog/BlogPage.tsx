@@ -12,7 +12,7 @@ const BlogPage: React.FC = () => {
       content:
         'Este mes hemos logrado un progreso significativo en la implementación de nuevas prácticas sostenibles en la finca. Hemos introducido nuevas especies de árboles autóctonos...',
       category: 'Actualización del Proyecto',
-      link: '/leerMas1',  // Ruta correspondiente
+      link: '/Blog1',  // Ruta correspondiente
     },
     {
       title: 'Importancia de la Reforestación',
@@ -20,7 +20,7 @@ const BlogPage: React.FC = () => {
       content:
         'La reforestación es clave para combatir el cambio climático y preservar la biodiversidad. En nuestro proyecto, estamos comprometidos con la plantación de árboles que ayudan a regenerar ecosistemas locales...',
       category: 'Conservación Ambiental',
-      link: '/leerMas2',  // Ruta correspondiente
+      link: '/Blog2',  // Ruta correspondiente
     },
     {
       title: 'Entrevista con el Dr. Juan Pérez',
@@ -28,7 +28,7 @@ const BlogPage: React.FC = () => {
       content:
         'En esta entrevista, el Dr. Juan Pérez nos habla sobre la importancia de las prácticas agrícolas sostenibles y cómo afectan al medio ambiente a largo plazo...',
       category: 'Entrevistas',
-      link: '/leerMas3',  // Ruta correspondiente
+      link: '/Blog3',  // Ruta correspondiente
     },
   ];
 
