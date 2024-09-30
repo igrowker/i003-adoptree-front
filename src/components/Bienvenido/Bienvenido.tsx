@@ -1,16 +1,16 @@
 import React from 'react';
-// import farmerImage from '../../assets/farmer.jpg'; // es la ruta de la img principal de fondo
 import video from '../../assets/AdobeStock_812746937.mov';
-import tituloPrincipal from '../../assets/titulo.png'; //img del titulo Portada con diseño en formato png
-import adoptionImage from '../../assets/adopcion.jpg'; //img card 1
-import compraImage from '../../assets/compra.jpg'; //img card 2
-import disfrutaImage from '../../assets/disfruta.jpg'; //img card 3
+import tituloPrincipal from '../../assets/titulo.png';
+import adoptionImage from '../../assets/adopcion.jpg';
+import compraImage from '../../assets/compra.jpg';
+import disfrutaImage from '../../assets/disfruta.jpg';
 
-import './Bienvenido.css'; //estilos personalizados para el componente
+import './Bienvenido.css'; //
 
 const Bienvenido: React.FC = () => {
   return (
-    <section className=" bg-cover bg-center h-screen md:mb-20 p-[220px] 4xl:p-[440px]">
+    <section className=" bg-cover bg-center h-screen md:mb-20 p-[220px] max-md:pl-[2em] max-md:pt-[8em] 4xl:p-[440px]">
+      
       {/* Video de fondo */}
       <video
         autoPlay
@@ -26,15 +26,15 @@ const Bienvenido: React.FC = () => {
       <div className="absolute inset-0 bg-black opacity-40"></div>
 
       {/* Contenido */}
-      <div className="relative z-10 text-center text-white">
+      <div className="relative z-10 text-center text-white max-md:w-[80vw]">
         <p className="text-lg mb-5 flex">BIENVENIDO A ADOPTREE</p>
         <img
-          className="w-[400px] 4xl:w-[700px]"
+          className="w-[400px] max-md:w-[15em] 4xl:w-[700px]"
           src={tituloPrincipal}
           alt="titulo"
         />
         <div className="w-1/2 flex flex-col">
-          <p className="text-lg 4xl:text-[30px] md:text-[18px] mb-6 anchoPersonalizado tipografiaPersonalizada w-[500px] 4xl:w-[700px]">
+          <p className="text-lg 4xl:text-[30px] md:text-[18px] mb-6 anchoPersonalizado tipografiaPersonalizada 4xl:w-[700px] ">
             Descubre cómo puedes adoptar un árbol cítrico, apoyar a productores
             locales y recibir fruta fresca en casa.
             <br />
@@ -48,9 +48,10 @@ const Bienvenido: React.FC = () => {
       </div>
 
       {/*SECCIÓN DE CARDS*/}
-      <div className="absolute bottom-[-120px] left-0 right-0 hidden md:flex justify-center z-20">
+      <div className="absolute bottom-[-12em] left-0 right-0 hidden md:flex justify-center z-20">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6 px-4 md:px-0">
-          <div className="bg-white shadow-lg rounded-lg p-6 text-center w-[250px] 4xl:w-[300px]">
+
+          <div className="bg-white shadow-lg rounded-lg p-6 text-center w-[250px] 4xl:w-[300px] responsiveCards">
             <p className="text-orange-400 font-medium tipografiaCards 4xl:text-[35px]">
               Adopta
             </p>
@@ -60,11 +61,11 @@ const Bienvenido: React.FC = () => {
             <img
               src={adoptionImage}
               alt="Naranjos en adopción"
-              className="h-24 w-24 mx-auto rounded-full mb-4"
+              className="mx-auto rounded-full mb-4 responsiveImg"
             />
           </div>
 
-          <div className="bg-white shadow-lg rounded-lg p-6 text-center w-[250px] 4xl:w-[300px]">
+          <div className="bg-white shadow-lg rounded-lg p-6 text-center w-[250px] 4xl:w-[300px] responsiveCards">
             <p className="text-orange-400 font-medium tipografiaCards 4xl:text-[35px]">
               Compra
             </p>
@@ -74,11 +75,11 @@ const Bienvenido: React.FC = () => {
             <img
               src={compraImage}
               alt="Naranjos en adopción"
-              className="h-24 w-24 mx-auto rounded-full mb-4"
+              className="mx-auto rounded-full mb-4 responsiveImg"
             />
           </div>
 
-          <div className="bg-white shadow-lg rounded-lg p-6 text-center w-[250px] 4xl:w-[300px]">
+          <div className="bg-white shadow-lg rounded-lg p-6 text-center w-[250px] 4xl:w-[300px] responsiveCards">
             <p className="text-orange-400 font-medium tipografiaCards 4xl:text-[35px]">
               Disfruta
             </p>
@@ -88,7 +89,7 @@ const Bienvenido: React.FC = () => {
             <img
               src={disfrutaImage}
               alt="Naranjos en adopción"
-              className="h-24 w-24 mx-auto rounded-full mb-4"
+              className="mx-auto rounded-full mb-4 responsiveImg"
             />
           </div>
         </div>
