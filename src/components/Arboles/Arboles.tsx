@@ -1,5 +1,5 @@
-import { Spa, LocalFlorist, Yard } from '@mui/icons-material'; // Importando íconos de MUI
-import naranjosImg from '../../assets/naranjos.jpg'; // Ejemplo de cómo importar imágenes
+import { Spa, LocalFlorist, Yard } from '@mui/icons-material';
+import naranjosImg from '../../assets/naranjos.jpg';
 import limonerosImg from '../../assets/limoneros.jpg';
 import pomelerosImg from '../../assets/pomeleros.jpg';
 import mandarinosImg from '../../assets/mandarinos.jpg';
@@ -34,7 +34,7 @@ const arboles = [
 
 const Arboles: React.FC = () => {
   return (
-    <section className="py-14 bg-white px-[200px]">
+    <section className="bg-white responsiveTree">
       <div className="container mx-auto">
         {/* HEADER o título */}
         <div className="text-center mb-8">
@@ -43,11 +43,11 @@ const Arboles: React.FC = () => {
         </div>
 
         {/* Cards de árboles */}
-        <div className="flex justify-center gap-6">
+        <div className="flex justify-center gap-6 flex-wrap">
           {arboles.map((arbol) => (
             <div
               key={arbol.id}
-              className="bg-white rounded-xl overflow-hidden shadow-lg max-w-xs md:h-96 md:w-[16rem]"
+              className="bg-white rounded-xl overflow-hidden shadow-lg max-w-xs md:h-96 md:w-[16rem] responsiveCard"
             >
               {/* Imagen */}
               <img
