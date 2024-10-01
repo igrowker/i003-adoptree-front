@@ -1,12 +1,13 @@
 import React, { useState } from 'react';
-import { useGetFincaDataQuery } from '../../store/services/fincaApi'; 
+import { useGetFincaDataQuery } from '../../store/services/fincaApi'; // Importamos el hook
 import './FincaInfo.css';
 
 const FincaInfo: React.FC = () => {
   const [currentSlide, setCurrentSlide] = useState(0);
 
-
-  const { data: fincaData, isLoading, isError } = useGetFincaDataQuery();
+  // Aquí proporcionas el argumento necesario, en este caso un "id" de la finca
+  const fincaId = 1;  // Suponiendo que tienes el id de la finca disponible
+  const { data: fincaData, isLoading, isError } = useGetFincaDataQuery(fincaId);
 
   if (isLoading) {
     return <div>Cargando...</div>;
@@ -28,12 +29,12 @@ const FincaInfo: React.FC = () => {
 
   return (
     <div className="finca-info-container">
-
+      {/* Sección centrada del título y descripción */}
       <div className="finca-info-header">
         <h2>{fincaData.name}</h2>
       </div>
 
-
+      {/* Carrusel de imágenes */}
       <div className="finca-info-image">
         <button
           onClick={prevSlide}
@@ -55,16 +56,18 @@ const FincaInfo: React.FC = () => {
         </button>
       </div>
 
+      {/* Cards fijas con descripciones dinámicas */}
       <div className="finca-info-practices">
         <div className="finca-info-practice">
           <span className="practice-icon" aria-hidden="true">♻️</span>
-          <h3>Prácticas sostenibles</h3>
+          <h3>Prácticas</h3>
           <p>{fincaData.practicesSustainable}</p>
         </div>
 
         <div className="finca-info-practice">
           <span className="practice-icon" aria-hidden="true">🌳</span>
           <h3>Árboles</h3>
+          {/* Usamos un mapa para recorrer los tipos de árboles */}
           <ul>
             {fincaData.arbol.type.map((treeType: string, index: number) => (
               <li key={index}>{treeType}</li>
