@@ -58,7 +58,7 @@ const FincaInfo: React.FC = () => {
       <div className="finca-info-practices">
         <div className="finca-info-practice">
           <span className="practice-icon" aria-hidden="true">♻️</span>
-          <h3>Prácticas</h3>
+          <h3>Prácticas sostenibles</h3>
           <p>{fincaData.practicesSustainable}</p>
         </div>
 
