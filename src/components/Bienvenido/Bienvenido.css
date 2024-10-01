@@ -6,12 +6,6 @@
   width: 150%;
 }
 
-@media screen and (max-width: 768px) {
-  .anchoPersonalizado {
-    width: 80vw;
-  }
-}
-
 .tipografiaCards {
   font-family: 'Covered By Your Grace', cursive;
   font-size: 24px;
@@ -23,16 +17,4 @@
   font-weight: 700;
   font-style: normal;
   color: #cecaca;
-}
-
-.responsiveImg {
-  width: 96px;
-  height: 96px;
-}
-
-@media screen and (max-width: 827px) {
-  .responsiveImg {
-    width: 70px;
-    height: 70px;
-  }
 }

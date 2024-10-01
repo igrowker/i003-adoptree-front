@@ -1,16 +1,19 @@
 import CheckIcon from '../../assets/CheckIcon.svg';
 import FruitIcon from '../../assets/FruitsIcon.svg';
 import PlantIcon from '../../assets/PlantsIcon.svg';
+// import imgAdopcion from '../../assets/imgAdopcion.png';
+// import imgFincas from '../../assets/imgFincas.png';
 import imgNaranjas from '../../assets/imgNaranjas.png';
+// import imgProveedor from '../../assets/imgProveedor.png';
 import './Agriculture.css';
 
 const Agriculture: React.FC = () => {
   return (
-    <section className="flex px-[200px] mt-[220px] mb-[6em] max-md:mt-4 max-lg:flex-col max-lg:items-center 4xl:justify-center">
-      <section className="w-[50%] 4xl:w-[30%] mr-4 flex flex-col justify-center items-center max-md:w-[20em]">
+    <section className="flex px-[200px] mt-[220px] mb-[6em] max-lg:flex-col max-lg:items-center 4xl:justify-center">
+      <section className="w-[50%] 4xl:w-[30%] mr-4 flex flex-col justify-center items-center">
         <img className="w-[500px]" src={imgNaranjas} />
       </section>
-      <section className="w-[50%] max-md:w-[20em] 4xl:w-[30%] max-lg:w-[100%] max-lg:ml-16 max-lg:mt-16">
+      <section className="w-[50%] 4xl:w-[30%] max-lg:w-[100%] max-lg:ml-16 max-lg:mt-16">
         <span className="text-[#FF9900] text-[20px] Typography">
           Crowdfarming
         </span>
@@ -28,7 +31,7 @@ const Agriculture: React.FC = () => {
           y el agua que empleamos.
         </p>
         <div className="mb-[1.2rem] flex items-center max-lg:mb-8 gap-[15px]">
-          <div className="flex items-center w-[30%] gap-[10px] max-md:w-[10em]">
+          <div className="flex items-center w-[30%] gap-[10px]">
             <img className="w-[64px]" src={FruitIcon} />
             <p className="text-[#1F1E17] text-base font-bold">
               Compra fruta fresca
