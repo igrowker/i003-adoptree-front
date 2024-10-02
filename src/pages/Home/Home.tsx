@@ -5,6 +5,8 @@ import Cards from '../../components/Cards/Cards';
 import Beneficios from '../../components/Beneficios/Beneficios';
 import Agriculture from '../../components/Agriculture/Agriculture';
 import Agroadopcion from '../../components/Agroadopcion/Agroadopcion';
+import Donaciones from '../../components/Donaciones/Donaciones';
+
 
 const Home = () => {
   return (
@@ -16,6 +18,7 @@ const Home = () => {
       <Cards />
       <Agroadopcion />
       <Beneficios />
+      <Donaciones />
     </>
   );
 };
