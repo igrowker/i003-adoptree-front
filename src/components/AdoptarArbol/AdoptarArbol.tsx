@@ -2,6 +2,7 @@ import AgricultureIcon from '@mui/icons-material/Agriculture';
 import GiteIcon from '@mui/icons-material/Gite';
 import { GiFruitTree, GiFruitBowl } from 'react-icons/gi';
 import './AdoptarArbol.css'; // Asegúrate de ajustar este archivo
+import { useNavigate } from 'react-router-dom';
 
 //!! SE ESTABLECIO ESTOS TIPOS PARA QUE NO GENERE ERROR DE ESLINT DURANTE LA COMPROBACION
 //!! CON ESTO SE INDICA LOS TIPOS ESPECIFICOS QUE RECIBE ESTE COMPONENTE PARA NO COLOCAR "ANY"
@@ -23,6 +24,7 @@ interface AdoptarArbolProps {
 }
 
 const AdoptarArbol: React.FC<AdoptarArbolProps> = ({ datos, onAdopt }) => {
+  const navigate = useNavigate();
   return (
     <div className="flex justify-center gap-6">
       <div className="group bg-white rounded-xl overflow-hidden shadow-lg max-w-sm md:h-[29rem] md:w-[17rem] transform transition-all duration-300 hover:scale-105 hover:shadow-2xl">
@@ -85,7 +87,7 @@ const AdoptarArbol: React.FC<AdoptarArbolProps> = ({ datos, onAdopt }) => {
           </div>
 
           <button
-            onClick={() => onAdopt(datos.id)}
+            onClick={() => navigate(`/adopta-un-arbol/${datos.id}`)}
             className="mt-6 w-11/12 rounded-lg bg-[#4BAF47] text-white transition-all duration-300 hover:bg-[#3B8838] py-2 px-4 font-medium shadow-md hover:shadow-lg focus:outline-none focus:ring-2 focus:ring-[#4BAF47] focus:ring-opacity-50"
           >
             Adoptar este árbol

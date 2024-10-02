@@ -96,7 +96,6 @@ const Adoptar = () => {
     //  lógica para manejar la adopción (para enviar los datos a la API "carga")
   };
   //-----------------------------------------------------------------------------------------
-
   return (
     <div className="px-[200px] my-[116px]">
       <h1 className="text-4xl font-bold mb-2 mt-10">Adopciones</h1>
