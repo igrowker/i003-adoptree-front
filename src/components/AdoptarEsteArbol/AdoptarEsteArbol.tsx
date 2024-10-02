@@ -100,7 +100,7 @@ const AdoptarEsteArbol = () => {
           <span className="text-base text-gray-600">En {arbol?.location}</span>
         </div>
         <div className='flex flex-col items-start gap-2'>
-            <p className='text-lg font-bold text-[#4BAF47]'>${arbol?.price}/año</p>
+            <p className='text-lg font-bold text-[#4BAF47]'>{arbol?.price.toLocaleString("es-AR", {style: "currency", currency: "ARS"})}/año</p>
           <button
             className="text-xl rounded-[10px] bg-[#4BAF47] text-white hover:bg-[#3B8838] py-3 transition-colors duration-300 w-full 4xl:w-1/2"
             onClick={() => navigate('/checkout')}
