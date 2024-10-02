@@ -23,7 +23,7 @@ interface AdoptarArbolProps {
   onAdopt: OnAdoptType;
 }
 
-const AdoptarArbol: React.FC<AdoptarArbolProps> = ({ datos, onAdopt }) => {
+const AdoptarArbol: React.FC<AdoptarArbolProps> = ({ datos }) => {
   const navigate = useNavigate();
   return (
     <div className="flex justify-center gap-6">
