@@ -1,0 +1,143 @@
+* {
+    box-sizing: border-box;
+  }
+  
+  .donar-container {
+    display: flex;
+    height: 100vh;
+    justify-content: center;
+    align-items: center;
+    background-color: #f8f7f0;
+  }
+  
+  .donar-image {
+    width: 40%;
+    max-width: 500px;
+    height: 100%;
+    overflow: hidden;
+    border-top-left-radius: 20px;
+    border-bottom-left-radius: 20px;
+  }
+  
+  .donar-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  
+  .donar-form {
+    width: 100%;
+    height: 100%;
+    max-width: 500px;
+    padding: 2rem 3.8rem;
+    display: flex;
+    flex-direction: column;
+    border-top-right-radius: 20px;
+    border-bottom-right-radius: 20px;
+    background-color: white;
+  }
+  
+  .donar-form h2 {
+    margin-bottom: 20px;
+    font-size: 1.8rem;
+    color: #333;
+  }
+  
+  .donar-form p {
+    color: #888;
+    margin-bottom: 1.5rem;
+  }
+  
+  .donar-form form {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .donar-form input,
+  .donar-form textarea {
+    padding: 0.75rem;
+    margin-bottom: 1rem;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    font-size: 1rem;
+  }
+  
+  .donar-form button {
+    padding: 0.75rem;
+    background-color: #4baf47;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1rem;
+  }
+  
+  .donar-form button:hover {
+    background-color: #3b8838;
+  }
+  
+  .signup-text {
+    margin-top: 20px;
+    font-size: 14px;
+    text-align: center;
+  }
+  
+  .signup-text a {
+    color: #4baf47;
+    font-weight: 500;
+    text-decoration: none;
+  }
+  
+  .monto-options {
+    margin-bottom: 20px;
+  }
+  
+  .monto-options label {
+    font-size: 16px;
+    margin-bottom: 10px;
+    display: block;
+  }
+  
+  .monto-buttons {
+    display: flex;
+    gap: 10px;
+  }
+  
+  .monto-buttons button {
+    padding: 10px 20px;
+    border: 1px solid #ddd;
+    background-color: #fff;
+    cursor: pointer;
+    border-radius: 5px;
+    color: #333;
+    font-weight: bold; 
+    min-width: 80px; 
+    text-align: center; 
+  }
+  
+  .monto-buttons button.selected {
+    border: 2px solid #4BAF47;
+    background-color: #f0f4f8;
+    color: #4BAF47; 
+  }
+  
+  .monto-buttons button:hover {
+    background-color: #e0e7ed;
+    color: #333;
+  }
+  
+@media (max-width: 1024px) {
+    .donar-container {
+      grid-template-columns: 1fr; 
+      padding: 20px;
+    }
+  
+    .donar-image img {
+      max-height: 300px; 
+    }
+  
+    .donar-form {
+      max-width: 100%; 
+    }
+  }
+  

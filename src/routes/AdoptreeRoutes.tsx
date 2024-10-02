@@ -15,7 +15,7 @@ import LanguageSwitcher from '../pages/Blog/LeerMas/LanguageSwitcher';
 import FincaInfo from '../pages/FincaInfo/FincaInfo';
 import DonacionesPatrocinios from '../components/DonacionesPatrocinios/DonacionesPatrocinios';
 import AboutUs from '../pages/About/AboutUs';
-
+import Donar from '../pages/Donar/Donar';
 
 
 
@@ -41,6 +41,7 @@ const AdoptreeRoutes = () => {
         <Route path="/about" element={<AboutUs />} />
         <Route path="/contacto" element={<Contacto />} />
         <Route path="/privacy-policy" element={<PrivacyPolicy />} />
+        <Route path="/donar" element={<Donar />} />
       </Routes>
 
       <Footer />
