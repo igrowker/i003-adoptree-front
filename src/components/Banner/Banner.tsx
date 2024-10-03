@@ -13,8 +13,8 @@ const Banner: React.FC = () => {
             <br />
             sostenible.
           </h1>
-          <button className="rounded-[10px] bg-[#4BAF47] text-white hover:bg-[#3B8838] 4xl:text-[20px]">
-            Adopta ahora
+          <button className="rtext-white bg-gradient-to-r from-green-500 to-green-600 rounded-[10px] shadow-lg hover:from-green-600 hover:to-green-700 transition-all duration-300 transform">
+            <a href="/adopta-un-arbol">Adopta ahora</a>
           </button>
         </div>
       </div>

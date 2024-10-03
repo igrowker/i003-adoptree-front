@@ -17,7 +17,7 @@ const Agriculture: React.FC = () => {
         <span className="text-[#FF9900] text-[20px] Typography">
           Crowdfarming
         </span>
-        <h2 className="text-[#1F1E17] text-5xl font-bold w-[60%] mb-8 max-lg:w-[100%]">
+        <h2 className="text-[#1F1E17] text-5xl font-[800] w-[60%] mb-8 max-lg:w-[100%]">
           La agricultura del siglo XXI
         </h2>
         <h3 className="text-[#4BAF47] text-xl font-bold mb-[1.2rem]">
@@ -59,8 +59,8 @@ const Agriculture: React.FC = () => {
             </p>
           </div>
         </div>
-        <button className="bg-[#4BAF47] text-white w-[196px] h-[60px] border-none hover:bg-[#3B8838]">
-          Descubre más
+        <button className="text-white bg-gradient-to-r from-green-500 to-green-600 rounded-[10px] shadow-lg hover:from-green-600 hover:to-green-700 transition-all duration-300 transform">
+          <a href="/impacto-ambiental">Descubre más</a>
         </button>
       </section>
     </section>

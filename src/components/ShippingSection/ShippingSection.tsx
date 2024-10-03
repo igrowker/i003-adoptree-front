@@ -8,14 +8,16 @@ const ShippingSection: React.FC = () => {
     state: '',
     zipCode: '',
     country: 'España',
-    phone: ''
+    phone: '',
   });
 
-  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
+  const handleInputChange = (
+    e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>
+  ) => {
     const { name, value } = e.target;
-    setShippingInfo(prevState => ({
+    setShippingInfo((prevState) => ({
       ...prevState,
-      [name]: value
+      [name]: value,
     }));
   };
 
@@ -31,7 +33,12 @@ const ShippingSection: React.FC = () => {
       <h2 className="text-2xl font-semibold mb-6">Información de Envío</h2>
       <form onSubmit={handleSubmit} className="space-y-4">
         <div>
-          <label htmlFor="fullName" className="block text-sm font-medium text-gray-700">Nombre completo</label>
+          <label
+            htmlFor="fullName"
+            className="block text-sm font-medium text-gray-700"
+          >
+            Nombre completo
+          </label>
           <input
             type="text"
             id="fullName"
@@ -43,7 +50,12 @@ const ShippingSection: React.FC = () => {
           />
         </div>
         <div>
-          <label htmlFor="address" className="block text-sm font-medium text-gray-700">Dirección</label>
+          <label
+            htmlFor="address"
+            className="block text-sm font-medium text-gray-700"
+          >
+            Dirección
+          </label>
           <input
             type="text"
             id="address"
@@ -56,7 +68,12 @@ const ShippingSection: React.FC = () => {
         </div>
         <div className="grid grid-cols-2 gap-4">
           <div>
-            <label htmlFor="city" className="block text-sm font-medium text-gray-700">Ciudad</label>
+            <label
+              htmlFor="city"
+              className="block text-sm font-medium text-gray-700"
+            >
+              Ciudad
+            </label>
             <input
               type="text"
               id="city"
@@ -68,7 +85,12 @@ const ShippingSection: React.FC = () => {
             />
           </div>
           <div>
-            <label htmlFor="state" className="block text-sm font-medium text-gray-700">Provincia</label>
+            <label
+              htmlFor="state"
+              className="block text-sm font-medium text-gray-700"
+            >
+              Provincia
+            </label>
             <input
               type="text"
               id="state"
@@ -82,7 +104,12 @@ const ShippingSection: React.FC = () => {
         </div>
         <div className="grid grid-cols-2 gap-4">
           <div>
-            <label htmlFor="zipCode" className="block text-sm font-medium text-gray-700">Código Postal</label>
+            <label
+              htmlFor="zipCode"
+              className="block text-sm font-medium text-gray-700"
+            >
+              Código Postal
+            </label>
             <input
               type="text"
               id="zipCode"
@@ -94,7 +121,12 @@ const ShippingSection: React.FC = () => {
             />
           </div>
           <div>
-            <label htmlFor="country" className="block text-sm font-medium text-gray-700">País</label>
+            <label
+              htmlFor="country"
+              className="block text-sm font-medium text-gray-700"
+            >
+              País
+            </label>
             <select
               id="country"
               name="country"
@@ -110,7 +142,12 @@ const ShippingSection: React.FC = () => {
           </div>
         </div>
         <div>
-          <label htmlFor="phone" className="block text-sm font-medium text-gray-700">Teléfono</label>
+          <label
+            htmlFor="phone"
+            className="block text-sm font-medium text-gray-700"
+          >
+            Teléfono
+          </label>
           <input
             type="tel"
             id="phone"

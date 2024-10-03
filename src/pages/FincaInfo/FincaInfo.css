@@ -1,23 +1,31 @@
 .finca-info-container {
   max-width: 1200px;
-  margin: 100px 200px;
-  margin-top: 150px;
-  /* padding: 2rem; */
-  /* font-family: Arial, sans-serif; */
+  margin: 100px auto;
+  padding-left: 10rem;
+  padding-right: 10rem;
 }
 
-.finca-info-content {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
+.finca-info-header {
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.finca-info-header h2 {
+  font-size: 2.5rem;
+  font-weight: bold;
+}
+
+.finca-info-header p {
+  font-size: 1.2rem;
+  color: #555;
 }
 
 .finca-info-image {
   position: relative;
   width: 100%;
-  max-width: 400px;
+  max-width: 600px;
+  margin: 0 auto 3rem; /* Centramos el carrusel y añadimos un margen inferior */
   height: 316px;
-  margin-bottom: 2rem;
   overflow: hidden;
   border-radius: 8px;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
@@ -37,13 +45,8 @@
   color: white;
   border: none;
   padding: 0.5rem;
-  font-size: 1rem;
+  font-size: 1.5rem;
   cursor: pointer;
-  transition: background-color 0.3s;
-}
-
-.carousel-button:hover {
-  background-color: rgba(0, 0, 0, 0.7);
 }
 
 .carousel-button.prev {
@@ -54,39 +57,21 @@
   right: 10px;
 }
 
-.finca-info-details {
-  text-align: center;
-  max-width: 800px;
-}
-
-.finca-info-details h2 {
-  font-size: 2.25rem;
-  font-weight: 700;
-  margin-bottom: 1rem;
-}
-
-.finca-info-details > p {
-  font-size: 1rem;
-  line-height: 1.6;
-  color: #333;
-  margin-bottom: 2rem;
-}
-
+/* Sección de prácticas */
 .finca-info-practices {
   display: flex;
-  justify-content: space-between;
+  justify-content: space-around; /* Espaciado entre las columnas */
   flex-wrap: wrap;
-  gap: 1rem;
+  margin-top: 2rem;
 }
 
 .finca-info-practice {
-  flex: 1;
-  min-width: 200px;
-  max-width: 250px;
+  flex: 0 1 calc(33.333% - 1rem); /* Tres columnas con espacio entre ellas */
   background-color: #f8f9fa;
   padding: 1rem;
   border-radius: 8px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  margin-bottom: 1rem;
   transition: transform 0.3s ease;
 }
 
@@ -111,30 +96,15 @@
   color: #555;
 }
 
-@media (min-width: 768px) {
-  .finca-info-content {
-    flex-direction: row;
-    align-items: flex-cemter;
-  }
-
-  .finca-info-image {
-    flex: 0 0 300px;
-    margin-right: 2rem;
-    margin-bottom: 0;
-  }
-
-  .finca-info-details {
-    flex: 1;
-    text-align: left;
-  }
-
-  .finca-info-practices {
-    justify-content: flex-start;
+/* Responsividad */
+@media (max-width: 768px) {
+  .finca-info-practice {
+    flex: 0 1 calc(50% - 1rem); /* Dos columnas en pantallas más pequeñas */
   }
 }
 
-@media (min-width: 1024px) {
-  .finca-info-image {
-    flex: 0 0 385px;
+@media (max-width: 480px) {
+  .finca-info-practice {
+    flex: 0 1 100%; /* Una columna en pantallas muy pequeñas */
   }
 }
