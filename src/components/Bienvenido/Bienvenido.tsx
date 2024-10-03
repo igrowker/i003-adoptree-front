@@ -45,7 +45,7 @@ const Bienvenido: React.FC = () => {
             onClick={() =>
               document
                 .getElementById('como-adoptar')
-                .scrollIntoView({ behavior: 'smooth' })
+                ?.scrollIntoView({ behavior: 'smooth' })
             }
             className="w-[220px] text-white bg-gradient-to-r from-green-500 to-green-600 rounded-[10px] shadow-lg hover:from-green-600 hover:to-green-700 transition-all duration-300 transform"
           >

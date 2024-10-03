@@ -6,7 +6,6 @@ import sosteniendoImg from './sosteniendo.jpg'; // Asegúrate de que la ruta es 
 import { AlertCircle, ShoppingCart } from 'lucide-react';
 
 const DescubreMas: React.FC = () => {
-
   return (
     <section className="px-[200px] my-[150px]">
       <div className="max-w-6xl">
