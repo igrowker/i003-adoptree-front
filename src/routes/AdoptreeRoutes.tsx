@@ -15,6 +15,7 @@ import LanguageSwitcher from '../pages/Blog/LeerMas/LanguageSwitcher';
 import FincaInfo from '../pages/FincaInfo/FincaInfo';
 import DonacionesPatrocinios from '../components/DonacionesPatrocinios/DonacionesPatrocinios';
 import AboutUs from '../pages/About/AboutUs';
+import AdoptarEsteArbol from '../components/AdoptarEsteArbol/AdoptarEsteArbol';
 import DescubreMas from '../components/Beneficios/DescubreMas/DescubreMas'; // Componente DescubreMas
 import Donar from '../pages/Donar/Donar'; // Componente Donar
 
@@ -27,6 +28,7 @@ const AdoptreeRoutes = () => {
         <Route path="/" element={<Home />} />
         <Route path="/fincas" element={<FincaInfo />} />
         <Route path="/adopta-un-arbol" element={<Adoptar />} />
+        <Route path="/adopta-un-arbol/:id" element={<AdoptarEsteArbol />} />
         <Route path="/checkout" element={<Checkout />} />
         <Route path="/impacto-ambiental" element={<Impacto />} />
         <Route path="/blogs" element={<BlogPage />} />
