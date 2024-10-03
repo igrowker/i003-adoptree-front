@@ -5,18 +5,7 @@ import sosteniendoImg from './sosteniendo.jpg'; // Asegúrate de que la ruta es 
 
 import { AlertCircle, ShoppingCart } from 'lucide-react';
 
-const DescubreMas = () => {
-  const handleBuyTree = () => {
-    alert(
-      '¡Gracias por comprar uno de nuestros árboles! Tu apoyo es invaluable.'
-    );
-  };
-
-  const handleDonateTree = () => {
-    alert(
-      '¡Gracias por tu interés en donar un árbol! Tu contribución ayuda a mejorar el medio ambiente.'
-    );
-  };
+const DescubreMas: React.FC = () => {
 
   return (
     <section className="px-[200px] my-[150px]">
