@@ -15,8 +15,8 @@ import LanguageSwitcher from '../pages/Blog/LeerMas/LanguageSwitcher';
 import FincaInfo from '../pages/FincaInfo/FincaInfo';
 import DonacionesPatrocinios from '../components/DonacionesPatrocinios/DonacionesPatrocinios';
 import AboutUs from '../pages/About/AboutUs';
-
-// import DonacionesPatrocinios from '../components/DonacionesPatrocinios/DonacionesPatrocinios';
+import DescubreMas from '../components/Beneficios/DescubreMas/DescubreMas'; // Componente DescubreMas
+import Donar from '../pages/Donar/Donar'; // Componente Donar
 
 const AdoptreeRoutes = () => {
   return (
@@ -38,6 +38,9 @@ const AdoptreeRoutes = () => {
         <Route path="/about" element={<AboutUs />} />
         <Route path="/contacto" element={<Contacto />} />
         <Route path="/privacy-policy" element={<PrivacyPolicy />} />
+        <Route path="/beneficios" element={<DescubreMas />} />{' '}
+        {/* Ruta DescubreMas */}
+        <Route path="/donar" element={<Donar />} /> {/* Ruta Donar */}
       </Routes>
 
       <Footer />

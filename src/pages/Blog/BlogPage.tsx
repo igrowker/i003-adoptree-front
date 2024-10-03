@@ -43,7 +43,7 @@ const BlogPage: React.FC = () => {
               className="w-full md:w-1/2 h-64 object-cover rounded-tl-[100px] shadow-lg"
             />
             <div className="w-full md:w-1/2">
-              <h2 className="text-3xl font-bold mb-4">
+              <h2 className="text-3xl font-[800] mb-4">
                 Evolución del proyecto
               </h2>
               <p className="text-gray-600 leading-relaxed">
@@ -64,7 +64,7 @@ const BlogPage: React.FC = () => {
               className="w-full md:w-1/2 h-64 object-cover rounded-br-[100px] shadow-lg"
             />
             <div className="w-full md:w-1/2 text-right">
-              <h2 className="text-3xl font-bold mb-4">
+              <h2 className="text-3xl font-[800] mb-4">
                 Importancia de la reforestación
               </h2>
               <p className="text-gray-600 leading-relaxed">
@@ -79,7 +79,7 @@ const BlogPage: React.FC = () => {
           </div>
         </div>
 
-        <h1 className="text-4xl font-bold text-center mb-12">
+        <h1 className="text-4xl font-[800] text-center mb-12">
           Publicaciones Recientes
         </h1>
 

@@ -163,13 +163,6 @@ const Navbar: React.FC = () => {
           >
             Fincas
           </a>
-          <a
-            className="text-sm 4xl:text-[20px]"
-            href="/donaciones"
-            style={{ '--i': 5 } as AnchorProps}
-          >
-            Donaciones
-          </a>
         </nav>
       </div>
       <div className="flex items-center gap-3 text-sm">
@@ -187,7 +180,7 @@ const Navbar: React.FC = () => {
                 </a>
               </div>
             )}
-            <button className="rounded-[10px] bg-[#4BAF47] text-white hover:bg-[#3B8838] 4xl:text-[20px]">
+            <button className="text-white bg-gradient-to-r from-green-500 to-green-600 rounded-[10px] shadow-lg hover:from-green-600 hover:to-green-700 transition-all duration-300 transform">
               Adopta ahora
             </button>
 

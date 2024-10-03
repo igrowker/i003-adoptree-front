@@ -4,12 +4,15 @@ import './Agroadopcion.css';
 
 const Agroadopcion: React.FC = () => {
   return (
-    <section className="bg-[#f8f7f0] py-20 px-[200px] my-[116px] flex justify-center">
+    <section
+      id="como-adoptar"
+      className="bg-[#f8f7f0] py-20 px-[200px] my-[70px] flex justify-center"
+    >
       <div className="container flex flex-col items-center text-center">
-        <p className="text-orange-500 mb-2 fuentePersonalizada">
+        <p className="text-orange-500 mb-2 fuentePersonalizada text-[28px] mt-[15px]">
           Agroadopcion ecologica
         </p>
-        <h2 className="text-3xl font-bold text-gray-900 mb-[40px]">
+        <h2 className="text-3xl font-[800] text-gray-900 mb-[40px]">
           ¿En que consisté la adopción de un árbol?
         </h2>
 

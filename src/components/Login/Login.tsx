@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import backgroundImage from '../../assets/Hojas.png';
+import backgroundImage from '../../assets/citricos.jpg';
 import logo from '../../assets/Header.png';
 import { Link, useNavigate } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
@@ -144,7 +144,7 @@ const Login: React.FC = () => {
           alt="Adoptree Logo"
           className="logo w-[115px] mb-[30px]"
         />
-        <h2 className="mb-[30px]">
+        <h2 className="mb-[30px] font-[900]">
           Hola, <br /> Bienvenido de nuevo
         </h2>
         <p className="text-[14px]">Inicie sesión para gestionar su cuenta.</p>
@@ -168,7 +168,7 @@ const Login: React.FC = () => {
 
           <button
             type="submit"
-            className="bg-[#4BAF47] text-white border-none hover:bg-[#3B8838]"
+            className="text-white bg-gradient-to-r from-green-500 to-green-600 rounded-[10px] shadow-lg hover:from-green-600 hover:to-green-700 transition-all duration-300 transform"
           >
             Inicia sesión
           </button>
