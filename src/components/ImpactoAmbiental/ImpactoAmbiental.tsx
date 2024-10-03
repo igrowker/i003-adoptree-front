@@ -1,7 +1,7 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
-import '../../pages/About/AboutUsSection.css'
+import '../../pages/About/AboutUsSection.css';
 
 // Estilos comunes
 const sectionContainer = 'flex flex-col items-center gap-4 py-24';
@@ -15,7 +15,7 @@ const ImpactoAmbiental: React.FC = () => {
       <Section
         title="Regenerar la tierra que nos alimenta"
         content="Adoptree es una plataforma que busca conectar a personas con la naturaleza, permitiendo adoptar árboles y reforestar áreas deforestadas."
-        imageSrc="./bio1.svg"
+        imageSrc="./impacto.png"
         imageAlt="Agricultura Regenerativa"
       />
 
@@ -127,7 +127,7 @@ const Section: React.FC<{
       transition={{ duration: 0.5, delay: 0.2 }}
     >
       <img
-        className="max-w-[400px] h-auto rounded-lg"
+        className="max-w-[450px] h-auto rounded-lg"
         src={imageSrc}
         alt={imageAlt}
       />

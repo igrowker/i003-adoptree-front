@@ -35,11 +35,13 @@
     "react-slick": "^0.30.2",
     "redux-persist": "^6.0.0",
     "slick-carousel": "^1.8.1",
+    "socket.io-client": "^4.8.0",
     "template-vite-react": "file:"
   },
   "devDependencies": {
     "@types/react": "^18.3.3",
     "@types/react-dom": "^18.3.0",
+    "@types/redux-persist": "^4.3.1",
     "@typescript-eslint/eslint-plugin": "^7.18.0",
     "@typescript-eslint/parser": "^7.18.0",
     "@vitejs/plugin-react": "^4.3.1",

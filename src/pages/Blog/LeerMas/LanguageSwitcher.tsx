@@ -1,16 +1,16 @@
 import React from 'react';
 import { useTranslation } from 'react-i18next';
-import usFlag from "../../../assets/en.png";
-import esFlag from "../../../assets/es.png";
+import usFlag from '../../../assets/en.png';
+import esFlag from '../../../assets/es.png';
 
-import './LanguageSwitcher.css';  
+import './LanguageSwitcher.css';
 
 const LanguageSwitcher: React.FC = () => {
   const { i18n } = useTranslation();
 
   const changeLanguage = (lng: string) => {
     i18n.changeLanguage(lng).then(() => {
-      console.log(`Idioma cambiado a: ${lng}`); 
+      console.log(`Idioma cambiado a: ${lng}`);
     });
   };
 

@@ -72,20 +72,25 @@ const Checkout = () => {
             </div>
             <div className="flex justify-end mt-[20px]">
               <div>
-                <p className="flex justify-end mb-2 font-[600]">$ {totalPrice.toFixed(2)}</p>
-                <p className="text-sm text-gray-500">Coste de envío: $ {shippingCost.toFixed(2)}</p>
+                <p className="flex justify-end mb-2 font-[600]">
+                  $ {totalPrice.toFixed(2)}
+                </p>
+                <p className="text-sm text-gray-500">
+                  Coste de envío: $ {shippingCost.toFixed(2)}
+                </p>
               </div>
             </div>
             <hr className="my-[20px]" />
             <p className="text-gray-500">
-              Las fechas de envío pueden variar en función de variables climatológicas.
+              Las fechas de envío pueden variar en función de variables
+              climatológicas.
             </p>
           </>
         );
       case 1:
         return <ShippingSection />;
       case 2:
-        return <PaymentMethodSection />
+        return <PaymentMethodSection />;
       default:
         return <p>Paso desconocido</p>;
     }
@@ -96,7 +101,9 @@ const Checkout = () => {
       <div className="flex gap-[40px] px-[200px] py-[20px] bg-[#f9fafa]">
         {steps.map((step, index) => (
           <React.Fragment key={step.label}>
-            <div className={`flex items-center gap-[8px] ${index === activeStep ? 'text-[#4BAF47]' : 'text-[#b7bec7]'}`}>
+            <div
+              className={`flex items-center gap-[8px] ${index === activeStep ? 'text-[#4BAF47]' : 'text-[#b7bec7]'}`}
+            >
               <step.icon />
               {step.label}
             </div>
@@ -117,7 +124,9 @@ const Checkout = () => {
 
           <div className="mt-[20px] flex items-center gap-[150px]">
             <span>Precio final</span>
-            <span className="text-xl font-bold text-[#4BAF47]">$ {totalPrice.toFixed(2)}</span>
+            <span className="text-xl font-bold text-[#4BAF47]">
+              $ {totalPrice.toFixed(2)}
+            </span>
           </div>
 
           <button

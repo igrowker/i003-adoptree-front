@@ -8,6 +8,7 @@ const FincaInfo: React.FC = () => {
   // Aquí proporcionas el argumento necesario, en este caso un "id" de la finca
   const fincaId = 1;  // Suponiendo que tienes el id de la finca disponible
   const { data: fincaData, isLoading, isError } = useGetFincaDataQuery(fincaId);
+  console.log(fincaData)
 
   if (isLoading) {
     return <div>Cargando...</div>;

@@ -2,7 +2,7 @@ import React from 'react';
 import './BlogPage.css';
 import Reforestation from '../Blog/reforestation.jpg';
 import { Calendar, Tag, ChevronRight } from 'lucide-react';
-import { Link } from 'react-router-dom';  // Importa Link para manejar la navegación
+import { Link } from 'react-router-dom'; // Importa Link para manejar la navegación
 
 const BlogPage: React.FC = () => {
   const blogPosts = [
@@ -12,7 +12,7 @@ const BlogPage: React.FC = () => {
       content:
         'Este mes hemos logrado un progreso significativo en la implementación de nuevas prácticas sostenibles en la finca. Hemos introducido nuevas especies de árboles autóctonos...',
       category: 'Actualización del Proyecto',
-      link: '/Blog1',  // Ruta correspondiente
+      link: '/Blog1', // Ruta correspondiente
     },
     {
       title: 'Importancia de la Reforestación',
@@ -20,7 +20,7 @@ const BlogPage: React.FC = () => {
       content:
         'La reforestación es clave para combatir el cambio climático y preservar la biodiversidad. En nuestro proyecto, estamos comprometidos con la plantación de árboles que ayudan a regenerar ecosistemas locales...',
       category: 'Conservación Ambiental',
-      link: '/Blog2',  // Ruta correspondiente
+      link: '/Blog2', // Ruta correspondiente
     },
     {
       title: 'Entrevista con el Dr. Juan Pérez',
@@ -28,7 +28,7 @@ const BlogPage: React.FC = () => {
       content:
         'En esta entrevista, el Dr. Juan Pérez nos habla sobre la importancia de las prácticas agrícolas sostenibles y cómo afectan al medio ambiente a largo plazo...',
       category: 'Entrevistas',
-      link: '/Blog3',  // Ruta correspondiente
+      link: '/Blog3', // Ruta correspondiente
     },
   ];
 
@@ -104,7 +104,10 @@ const BlogPage: React.FC = () => {
                 </p>
 
                 {/* Envolver el botón en un Link sin modificar el diseño */}
-                <Link to={post.link} className="flex items-center justify-between rounded-[10px] bg-[#4BAF47] text-white hover:bg-[#3B8838] 4xl:text-[20px] px-4 py-2">
+                <Link
+                  to={post.link}
+                  className="flex items-center justify-between rounded-[10px] bg-[#4BAF47] text-white hover:bg-[#3B8838] 4xl:text-[20px] px-4 py-2"
+                >
                   Leer más
                   <ChevronRight className="w-4 h-4 ml-1" />
                 </Link>

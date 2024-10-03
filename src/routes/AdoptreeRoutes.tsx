@@ -16,9 +16,6 @@ import FincaInfo from '../pages/FincaInfo/FincaInfo';
 import DonacionesPatrocinios from '../components/DonacionesPatrocinios/DonacionesPatrocinios';
 import AboutUs from '../pages/About/AboutUs';
 
-
-
-
 // import DonacionesPatrocinios from '../components/DonacionesPatrocinios/DonacionesPatrocinios';
 
 const AdoptreeRoutes = () => {

@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import CreditCardIcon from '@mui/icons-material/CreditCard';
-import Mp from '../../assets/mp.png'
+import Mp from '../../assets/mp.png';
 
 const PaymentMethodSection: React.FC = () => {
   const [paymentMethod, setPaymentMethod] = useState('');
@@ -8,7 +8,7 @@ const PaymentMethodSection: React.FC = () => {
     cardNumber: '',
     cardName: '',
     expiryDate: '',
-    cvv: ''
+    cvv: '',
   });
 
   const handlePaymentMethodChange = (method: string) => {
@@ -17,9 +17,9 @@ const PaymentMethodSection: React.FC = () => {
 
   const handleCardInfoChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
-    setCardInfo(prevState => ({
+    setCardInfo((prevState) => ({
       ...prevState,
-      [name]: value
+      [name]: value,
     }));
   };
 
@@ -61,9 +61,12 @@ const PaymentMethodSection: React.FC = () => {
               onChange={() => handlePaymentMethodChange('mercadopago')}
               className="focus:ring-green-500 h-4 w-4 text-green-600 border-gray-300"
             />
-            <label htmlFor="mercadopago" className="flex items-center space-x-2">
+            <label
+              htmlFor="mercadopago"
+              className="flex items-center space-x-2"
+            >
               {/* <SiMercadopago className="text-gray-600" /> */}
-              <img className='w-[80px]' src={Mp} alt='Mercado Pago Logo' />
+              <img className="w-[80px]" src={Mp} alt="Mercado Pago Logo" />
               {/* <span>Mercado Pago</span> */}
             </label>
           </div>
@@ -72,7 +75,12 @@ const PaymentMethodSection: React.FC = () => {
         {paymentMethod === 'creditCard' && (
           <div className="space-y-4">
             <div>
-              <label htmlFor="cardNumber" className="block text-sm font-medium text-gray-700">Número de tarjeta</label>
+              <label
+                htmlFor="cardNumber"
+                className="block text-sm font-medium text-gray-700"
+              >
+                Número de tarjeta
+              </label>
               <input
                 type="text"
                 id="cardNumber"
@@ -84,7 +92,12 @@ const PaymentMethodSection: React.FC = () => {
               />
             </div>
             <div>
-              <label htmlFor="cardName" className="block text-sm font-medium text-gray-700">Nombre en la tarjeta</label>
+              <label
+                htmlFor="cardName"
+                className="block text-sm font-medium text-gray-700"
+              >
+                Nombre en la tarjeta
+              </label>
               <input
                 type="text"
                 id="cardName"
@@ -97,7 +110,12 @@ const PaymentMethodSection: React.FC = () => {
             </div>
             <div className="grid grid-cols-2 gap-4">
               <div>
-                <label htmlFor="expiryDate" className="block text-sm font-medium text-gray-700">Fecha de expiración</label>
+                <label
+                  htmlFor="expiryDate"
+                  className="block text-sm font-medium text-gray-700"
+                >
+                  Fecha de expiración
+                </label>
                 <input
                   type="text"
                   id="expiryDate"
@@ -110,7 +128,12 @@ const PaymentMethodSection: React.FC = () => {
                 />
               </div>
               <div>
-                <label htmlFor="cvv" className="block text-sm font-medium text-gray-700">CVV</label>
+                <label
+                  htmlFor="cvv"
+                  className="block text-sm font-medium text-gray-700"
+                >
+                  CVV
+                </label>
                 <input
                   type="text"
                   id="cvv"
@@ -128,7 +151,8 @@ const PaymentMethodSection: React.FC = () => {
         {paymentMethod === 'mercadopago' && (
           <div className="bg-green-100 p-4 rounded-md">
             <p className="text-green-800">
-              Serás redirigido a Mercado Pago para completar tu pago de forma segura.
+              Serás redirigido a Mercado Pago para completar tu pago de forma
+              segura.
             </p>
           </div>
         )}
