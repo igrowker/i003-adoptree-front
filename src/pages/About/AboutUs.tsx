@@ -21,34 +21,15 @@ const AboutUs: React.FC = () => {
         </p>
 
         <div className="grid grid-cols-1 md:grid-cols-4 gap-4 mb-12 about-image-container">
-          <div className="about-image h-80 overflow-hidden">
-            <img
-              src={img1}
-              alt="Limonero"
-              className="w-full h-full object-cover"
-            />
-          </div>
-          <div className="about-image h-80 overflow-hidden">
-            <img
-              src={img2}
-              alt="Naranjas"
-              className="w-full h-full object-cover"
-            />
-          </div>
-          <div className="about-image h-80 overflow-hidden">
-            <img
-              src={img3}
-              alt="Naranjo"
-              className="w-full h-full object-cover"
-            />
-          </div>
-          <div className="about-image h-80 overflow-hidden">
-            <img
-              src={img4}
-              alt="Naranjo"
-              className="w-full h-full object-cover"
-            />
-          </div>
+          {[img1, img2, img3, img4].map((img, index) => (
+            <div key={index} className="about-image h-80 overflow-hidden">
+              <img
+                src={img}
+                alt={`Imagen ${index + 1}`}
+                className="w-full h-full object-cover"
+              />
+            </div>
+          ))}
         </div>
 
         <h3 className="text-[30px] font-[800] text-center mb-4">
@@ -56,20 +37,14 @@ const AboutUs: React.FC = () => {
         </h3>
 
         <div className="about-paragraphs-container grid grid-cols-1 md:grid-cols-2 gap-8 mx-auto px-4 max-w-screen-lg">
-          <div className="about-paragraph bg-white border border-gray-200 p-6 rounded-lg shadow-sm hover:shadow-md transition-shadow">
-            <p className="text-base leading-relaxed text-gray-600">
-              Adoptree ofrece una conexión directa con los productores de
-              cítricos en Argentina. Al adoptar un árbol, recibís una parte de
-              la cosecha, apoyando la sostenibilidad agrícola.
-            </p>
-          </div>
-          <div className="about-paragraph bg-white border border-gray-200 p-6 rounded-lg shadow-sm hover:shadow-md transition-shadow">
-            <p className="text-base leading-relaxed text-gray-600">
-              Nuestra plataforma facilita a los agricultores ingresos
-              constantes, permitiendo mantener sus huertos de manera sostenible
-              y mejorar las prácticas agrícolas responsables.
-            </p>
-          </div>
+          {[
+            "Adoptree ofrece una conexión directa con los productores de cítricos en Argentina. Al adoptar un árbol, recibís una parte de la cosecha, apoyando la sostenibilidad agrícola.",
+            "Nuestra plataforma facilita a los agricultores ingresos constantes, permitiendo mantener sus huertos de manera sostenible y mejorar las prácticas agrícolas responsables."
+          ].map((text, index) => (
+            <div key={index} className="about-paragraph bg-white border border-gray-200 p-6 rounded-lg shadow-sm hover:shadow-md transition-shadow">
+              <p className="text-base leading-relaxed text-gray-600">{text}</p>
+            </div>
+          ))}
         </div>
       </div>
 
@@ -109,48 +84,25 @@ const AboutUs: React.FC = () => {
             Nuestros valores
           </h3>
           <div className="about-values">
-            <div className="value-card flex flex-col justify-center items-center">
-              <img
-                src={sostenibilidadIcon}
-                alt="Sostenibilidad"
-                className="value-icon"
-              />
-              <h3 className="text-xl font-semibold mb-2 text-gray-800">
-                Sostenibilidad
-              </h3>
-              <p className="value-text text-sm text-gray-600">
-                Cuidamos el medio ambiente y buscamos siempre reducir nuestra
-                huella de carbono en cada proyecto.
-              </p>
-            </div>
-            <div className="value-card flex flex-col justify-center items-center">
-              <img
-                src={compromisoIcon}
-                alt="Compromiso"
-                className="value-icon"
-              />
-              <h3 className="text-xl font-semibold mb-2 text-gray-800">
-                Compromiso
-              </h3>
-              <p className="value-text text-sm text-gray-600">
-                Estamos comprometidos con nuestros clientes y con la sociedad
-                para lograr un impacto positivo.
-              </p>
-            </div>
-            <div className="value-card flex flex-col justify-center items-center">
-              <img
-                src={innovacionIcon}
-                alt="Innovación"
-                className="value-icon"
-              />
-              <h3 className="text-xl font-semibold mb-2 text-gray-800">
-                Innovación
-              </h3>
-              <p className="value-text text-sm text-gray-600">
-                Nos esforzamos en buscar nuevas soluciones para mejorar la
-                sostenibilidad y la eficiencia de nuestros proyectos.
-              </p>
-            </div>
+            {[
+              { icon: sostenibilidadIcon, title: "Sostenibilidad", text: "Cuidamos el medio ambiente y buscamos siempre reducir nuestra huella de carbono en cada proyecto." },
+              { icon: compromisoIcon, title: "Compromiso", text: "Estamos comprometidos con nuestros clientes y con la sociedad para lograr un impacto positivo." },
+              { icon: innovacionIcon, title: "Innovación", text: "Nos esforzamos en buscar nuevas soluciones para mejorar la sostenibilidad y la eficiencia de nuestros proyectos." }
+            ].map((value, index) => (
+              <div key={index} className="value-card flex flex-col justify-center items-center">
+                <img
+                  src={value.icon}
+                  alt={value.title}
+                  className="value-icon"
+                />
+                <h3 className="text-xl font-semibold mb-2 text-gray-800">
+                  {value.title}
+                </h3>
+                <p className="value-text text-sm text-gray-600">
+                  {value.text}
+                </p>
+              </div>
+            ))}
           </div>
         </div>
       </div>

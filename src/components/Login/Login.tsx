@@ -139,11 +139,13 @@ const Login: React.FC = () => {
         <img src={backgroundImage} alt="Background" />
       </div>
       <div className="login-form shadow-sm">
-        <img
-          src={logo}
-          alt="Adoptree Logo"
-          className="logo w-[115px] mb-[30px]"
-        />
+        <a href="/">
+          <img
+            src={logo}
+            alt="Adoptree Logo"
+            className="logo w-[115px] mb-[30px]"
+          />
+        </a>
         <h2 className="mb-[30px] font-[900]">
           Hola, <br /> Bienvenido de nuevo
         </h2>

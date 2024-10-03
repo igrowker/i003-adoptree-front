@@ -3,6 +3,7 @@ import { persistStore, persistReducer } from 'redux-persist';
 import storage from 'redux-persist/lib/storage'; // Utiliza localStorage
 import { userSlice, UserState } from './features/userSlice';
 import { TypedUseSelectorHook, useDispatch, useSelector } from 'react-redux';
+import { fincaApi } from './services/fincaApi'; // Importar fincaApi
 
 // Configuración de persistencia
 const persistConfig = {
@@ -18,7 +19,10 @@ const persistedUserReducer = persistReducer(persistConfig, userSlice.reducer);
 export const store = configureStore({
   reducer: {
     user: persistedUserReducer, // Aplicamos el reducer persistido
+    [fincaApi.reducerPath]: fincaApi.reducer, // Añadir el reducer de fincaApi
   },
+  middleware: (getDefaultMiddleware) =>
+    getDefaultMiddleware().concat(fincaApi.middleware), // Añadir el middleware de fincaApi
 });
 
 // Configuración del persistor para poder utilizar PersistGate
@@ -29,5 +33,5 @@ export const useAppDispatch: () => typeof store.dispatch = useDispatch;
 
 // Tipar correctamente el selector usando `UserState`
 export const useAppSelector: TypedUseSelectorHook<{
-  user: UserState; // Aquí debe coincidir el key con el nombre del reducer en el store
+  user: UserState;
 }> = useSelector;

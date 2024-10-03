@@ -1,89 +1,58 @@
-import React, { useState } from 'react';
+import React from 'react';
+import { useGetFincaDataQuery } from '../../store/services/fincaApi'; 
 import './FincaInfo.css';
+import { Arbol, Hacienda } from '../../types/types';
 
 const FincaInfo: React.FC = () => {
-  const [currentSlide, setCurrentSlide] = useState(0);
 
-  const fincaData = {
-    images: [
-      'https://st3.depositphotos.com/1473952/12536/i/450/depositphotos_125363882-stock-photo-growing-coffee-plants.jpg',
-      'https://phantom-expansion.unidadeditorial.es/a41a4de6b5f98819fd94aca815127a4d/crop/20x0/1368x899/resize/828/f/webp/assets/multimedia/imagenes/2021/11/11/16366691784221.jpg',
-      'https://www.agronewscomunitatvalenciana.com/sites/default/files/articles/00naranjas_0%20%281%29.jpg',
-    ],
-    title: 'Nuestra Finca Sostenible',
-    description:
-      'La finca está ubicada en una zona montañosa donde se aplican prácticas de sostenibilidad...',
-    practices: [
-      {
-        title: 'Prácticas',
-        description:
-          'Utilizamos técnicas de cultivo 100% orgánicas para preservar la calidad del suelo.',
-        icon: '🌿',
-      },
-      {
-        title: 'Equipo',
-        description:
-          'Contamos con expertos agrícolas con certificación en prácticas sostenibles.',
-        icon: '👥',
-      },
-      {
-        title: 'Ubicación',
-        description:
-          'Toda la energía utilizada proviene de fuentes renovables.',
-        icon: '📍',
-      },
-    ],
-  };
+  const { data: fincaData, isLoading, isError } = useGetFincaDataQuery(1);
 
-  const nextSlide = () => {
-    setCurrentSlide((prev) => (prev + 1) % fincaData.images.length);
-  };
+  if (isLoading) {
+    return <div>Cargando...</div>;
+  }
 
-  const prevSlide = () => {
-    setCurrentSlide(
-      (prev) => (prev - 1 + fincaData.images.length) % fincaData.images.length
-    );
-  };
+  if (isError) {
+    return <div>Error al cargar los datos.</div>;
+  }
+
 
   return (
     <div className="finca-info-container">
-      <div className="finca-info-content">
-        <div className="finca-info-image">
-          <button
-            onClick={prevSlide}
-            className="carousel-button prev"
-            aria-label="Imagen anterior"
-          >
-            &#10094;
-          </button>
-          <img
-            src={fincaData.images[currentSlide]}
-            alt={`Finca ${currentSlide + 1}`}
-          />
-          <button
-            onClick={nextSlide}
-            className="carousel-button next"
-            aria-label="Siguiente imagen"
-          >
-            &#10095;
-          </button>
-        </div>
-        <div className="finca-info-details">
-          <h2>{fincaData.title}</h2>
-          <p>{fincaData.description}</p>
+      {fincaData.map((finca: Hacienda) => (
+        <div key={finca.id} className="finca-info">
+          {/* Sección del título y descripción */}
+          <div className="finca-info-header">
+            <h2>{finca.name}</h2>
+          </div>
+
+          {/* Información de prácticas sostenibles */}
           <div className="finca-info-practices">
-            {fincaData.practices.map((practice, index) => (
-              <div key={index} className="finca-info-practice">
-                <span className="practice-icon" aria-hidden="true">
-                  {practice.icon}
-                </span>
-                <h3>{practice.title}</h3>
-                <p>{practice.description}</p>
-              </div>
-            ))}
+            <div className="finca-info-practice">
+              <span className="practice-icon" aria-hidden="true">♻️</span>
+              <h3>Prácticas</h3>
+              <p>{finca.practicesSustainable}</p>
+            </div>
+
+            {/* Información sobre los tipos de árboles */}
+            <div className="finca-info-practice">
+              <span className="practice-icon" aria-hidden="true">🌳</span>
+              <h3>Árboles</h3>
+              <ul>
+                {finca.arbol.map((tree: Arbol, index: number) => (
+                  <li key={index}>{tree.type}</li>
+                ))}
+              </ul>
+            </div>
+
+            {/* Información sobre la ubicación */}
+            <div className="finca-info-practice">
+              <span className="practice-icon" aria-hidden="true">📍</span>
+              <h3>Ubicación</h3>
+              <p>{finca.ubication}</p>
+            </div>
           </div>
         </div>
-      </div>
+      ))}
     </div>
   );
 };

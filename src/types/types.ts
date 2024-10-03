@@ -61,3 +61,23 @@ export type GoogleAuthError = {
   // Para propiedades desconocidas, usamos un tipo de unión
   [key: string]: string | number | undefined;
 };
+
+
+export interface UserFinca {
+  name: string;
+}
+
+export interface Arbol {
+  active: boolean;
+  statusTree: "ARBOL_JOVEN" | string; // Puedes agregar más valores si los conoces
+  type: string;
+  user: UserFinca;
+}
+
+export interface Hacienda {
+  id: number;
+  name: string;
+  ubication: string;
+  practicesSustainable: string;
+  arbol: Arbol[];
+}
