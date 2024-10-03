@@ -110,7 +110,7 @@ const Section: React.FC<{
   imageSrc: string;
   imageAlt: string;
 }> = ({ title, content, imageSrc, imageAlt }) => (
-  <section className="flex flex-col items-center lg:flex-row px-[30px] py-20">
+  <section className="flex flex-col items-center lg:flex-row pb-[3.2rem] gap-[30px]">
     <motion.div
       className="flex-1 mb-8 lg:mb-0"
       initial={{ opacity: 0, y: 50 }}
@@ -127,7 +127,7 @@ const Section: React.FC<{
       transition={{ duration: 0.5, delay: 0.2 }}
     >
       <img
-        className="max-w-[450px] h-auto rounded-lg"
+        className="h-auto rounded-lg"
         src={imageSrc}
         alt={imageAlt}
       />

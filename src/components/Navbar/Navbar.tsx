@@ -242,7 +242,7 @@ const Navbar: React.FC = () => {
                 )}
                  {notificationsModal && (
               <div
-                className="absolute md:top-[3.8rem] desktop:top-[4.1rem] w-[16rem] bg-white gap-4 md:right-[50px] desktop:right-[125px] px-1 min-h-[7.8rem] rounded shadow-md"
+                className="absolute md:top-[3.8rem] desktop:top-[4.1rem] w-[14rem] bg-white gap-4 md:right-[50px] desktop:right-[185px] px-1 min-h-[7.8rem] rounded shadow-md"
                 ref={modalRef}>
                 <div className="flex flex-col items-center">
                   <h5 className="text-base font-medium text-[#05264E] mt-5">Your Notifications</h5>
