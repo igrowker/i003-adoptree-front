@@ -1,10 +1,11 @@
 import React from 'react';
 import { useGetFincaDataQuery } from '../../store/services/fincaApi'; 
 import './FincaInfo.css';
+import { Arbol, Hacienda } from '../../types/types';
 
 const FincaInfo: React.FC = () => {
 
-  const { data: fincaData, isLoading, isError } = useGetFincaDataQuery();
+  const { data: fincaData, isLoading, isError } = useGetFincaDataQuery(1);
 
   if (isLoading) {
     return <div>Cargando...</div>;
@@ -17,7 +18,7 @@ const FincaInfo: React.FC = () => {
 
   return (
     <div className="finca-info-container">
-      {fincaData.map((finca: any) => (
+      {fincaData.map((finca: Hacienda) => (
         <div key={finca.id} className="finca-info">
           {/* Sección del título y descripción */}
           <div className="finca-info-header">
@@ -37,7 +38,7 @@ const FincaInfo: React.FC = () => {
               <span className="practice-icon" aria-hidden="true">🌳</span>
               <h3>Árboles</h3>
               <ul>
-                {finca.arbol.map((tree: any, index: number) => (
+                {finca.arbol.map((tree: Arbol, index: number) => (
                   <li key={index}>{tree.type}</li>
                 ))}
               </ul>

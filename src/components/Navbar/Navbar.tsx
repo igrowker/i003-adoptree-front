@@ -27,7 +27,7 @@ const Navbar: React.FC = () => {
   const [scrollPosition, setScrollPosition] = useState(0);
   const [showModal, setShowModal] = useState<boolean>(false);
   const [notificationsModal, setNotificationsModal] = useState<boolean>(false);
-  const [notifications, setNotifications] = useState<any[]>([])
+  // const [notifications, setNotifications] = useState<any[]>([])
 
   const modalRef = useRef<HTMLDivElement | null>(null);
   const currentClickRef = useRef<EventTarget | null>(null);
@@ -246,7 +246,7 @@ const Navbar: React.FC = () => {
                 ref={modalRef}>
                 <div className="flex flex-col items-center">
                   <h5 className="text-base font-medium text-[#05264E] mt-5">Your Notifications</h5>
-                  {notifications && (
+                  {/* {notifications && (
                     <div className="w-full">
                       <ul>
                         {notifications.map((notification) => (
@@ -254,7 +254,7 @@ const Navbar: React.FC = () => {
                         ))}
                       </ul>
                     </div>
-                  )}
+                  )} */}
                 </div>
               </div>
             )}
