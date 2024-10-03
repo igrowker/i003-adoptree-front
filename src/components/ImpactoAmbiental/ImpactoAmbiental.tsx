@@ -1,11 +1,11 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
-import '../../pages/About/AboutUsSection.css'
+import '../../pages/About/AboutUsSection.css';
 
 // Estilos comunes
 const sectionContainer = 'flex flex-col items-center gap-4 py-24';
-const sectionTitle = 'text-4xl font-bold text-gray-800 mb-6 text-center';
+const sectionTitle = 'text-4xl font-[800] text-gray-800 mb-6 text-center';
 const sectionContent = 'text-lg text-gray-600 max-w-3xl text-center mb-10';
 
 // Componente principal
@@ -117,7 +117,7 @@ const Section: React.FC<{
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.5 }}
     >
-      <h1 className="text-[3.5rem] font-bold mb-6 text-gray-800">{title}</h1>
+      <h1 className="text-[3.5rem] font-[900] mb-6 text-gray-800">{title}</h1>
       <p className="text-xl text-gray-600">{content}</p>
     </motion.div>
     <motion.div

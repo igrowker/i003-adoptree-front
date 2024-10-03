@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import limones from '../../../assets/limones.jpg'
+import limones from '../../../assets/limones.jpg';
 import { motion } from 'framer-motion';
 
 interface Content {
@@ -24,7 +24,7 @@ const Post1: React.FC = () => {
 
       Aparte de estos avances, también hemos iniciado un programa de formación para nuestros empleados, 
       en el cual se les educa sobre la importancia de la sostenibilidad y el impacto positivo que estas acciones tienen en el medio ambiente. 
-      El programa no solo mejora las habilidades técnicas del equipo, sino que también refuerza nuestro compromiso colectivo con la protección del entorno.`
+      El programa no solo mejora las habilidades técnicas del equipo, sino que también refuerza nuestro compromiso colectivo con la protección del entorno.`,
     },
     en: {
       title: 'Project Update',
@@ -34,8 +34,8 @@ const Post1: React.FC = () => {
 
       Beyond these advancements, we have also launched a training program for our employees, 
       educating them on the importance of sustainability and the positive impact these actions have on the environment. 
-      The program not only enhances the technical skills of the team but also reinforces our collective commitment to environmental protection.`
-    }
+      The program not only enhances the technical skills of the team but also reinforces our collective commitment to environmental protection.`,
+    },
   };
 
   const { title, text } = content[language];
@@ -75,10 +75,14 @@ const Post1: React.FC = () => {
               alt="Project update"
             />
             <div className="absolute inset-0 bg-gradient-to-t from-black to-transparent opacity-70"></div>
-            <h1 className="absolute bottom-4 left-4 text-3xl font-bold text-white">{title}</h1>
+            <h1 className="absolute bottom-4 left-4 text-3xl font-bold text-white">
+              {title}
+            </h1>
           </div>
           <div className="p-8">
-            <p className="text-gray-700 leading-relaxed whitespace-pre-line">{text}</p>
+            <p className="text-gray-700 leading-relaxed whitespace-pre-line">
+              {text}
+            </p>
           </div>
         </motion.div>
       </div>

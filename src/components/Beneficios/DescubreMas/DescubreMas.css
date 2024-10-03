@@ -15,7 +15,7 @@
 .text-4xl {
   font-size: 1.5rem; /* Tamaño más pequeño del texto */
   font-weight: bold;
-  color: #FF6F00; /* Color naranja */
+  color: #ff6f00; /* Color naranja */
 }
 
 .benefits {
@@ -37,7 +37,7 @@
 
 .benefit-title {
   font-size: 1.2rem; /* Tamaño del título de cada beneficio */
-  color: #FF6F00; /* Color naranja */
+  color: #ff6f00; /* Color naranja */
 }
 
 .benefit p {
@@ -59,8 +59,8 @@
 }
 
 .cta-button {
-  background-color: #4BAF47; 
-  color: white; 
+  background-color: #4baf47;
+  color: white;
   padding: 20px 30px; /* Espaciado interno del botón */
   border: none; /* Sin borde */
   border-radius: 3px; /* Bordes redondeados */

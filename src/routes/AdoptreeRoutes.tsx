@@ -38,7 +38,8 @@ const AdoptreeRoutes = () => {
         <Route path="/about" element={<AboutUs />} />
         <Route path="/contacto" element={<Contacto />} />
         <Route path="/privacy-policy" element={<PrivacyPolicy />} />
-        <Route path="/descubre-mas" element={<DescubreMas />} /> {/* Ruta DescubreMas */}
+        <Route path="/beneficios" element={<DescubreMas />} />{' '}
+        {/* Ruta DescubreMas */}
         <Route path="/donar" element={<Donar />} /> {/* Ruta Donar */}
       </Routes>
 
@@ -48,4 +49,3 @@ const AdoptreeRoutes = () => {
 };
 
 export default AdoptreeRoutes;
-

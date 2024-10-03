@@ -1,8 +1,7 @@
 import React, { useState } from 'react';
-import backgroundImage from '../../assets/Hojas.png';
-import logo from '../../assets/Header.png';
-import './Donar.css'; 
-import { Link, useNavigate } from 'react-router-dom';
+import backgroundImage from '../../assets/Mandarinas.jpg';
+import { useNavigate } from 'react-router-dom';
+import './Donar.css';
 
 const Donar: React.FC = () => {
   const [formData, setFormData] = useState({
@@ -17,7 +16,9 @@ const Donar: React.FC = () => {
 
   const navigate = useNavigate();
 
-  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+  const handleInputChange = (
+    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+  ) => {
     const { name, value } = e.target;
     setFormData({
       ...formData,
@@ -45,7 +46,7 @@ const Donar: React.FC = () => {
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    
+
     try {
       // Aquí se puede hacer la lógica de envío del formulario
       const opciones = {
@@ -56,13 +57,15 @@ const Donar: React.FC = () => {
         body: JSON.stringify(formData),
       };
 
-      const response = await fetch('http://localhost:3000/donaciones', opciones);
+      const response = await fetch(
+        'http://localhost:3000/donaciones',
+        opciones
+      );
       if (!response.ok) throw new Error('Error en la petición');
 
       // Puedes redirigir a otra página o mostrar un mensaje de éxito
       navigate('/');
       alert('Gracias por tu donación!');
-
     } catch (err) {
       console.error(err);
       alert('Hubo un error al procesar tu donación.');
@@ -70,13 +73,14 @@ const Donar: React.FC = () => {
   };
 
   return (
-    <div className="donar-container p-[50px]">
-      <div className="donar-image shadow-sm">
+    <div className="donar-container mt-[150px]">
+      <div className="donar-image shadow-lg">
         <img src={backgroundImage} alt="Background" />
       </div>
-      <div className="donar-form shadow-sm">
-        <img src={logo} alt="Adoptree Logo" className="logo w-[115px] mb-[30px]" />
-        <h2 className="mb-[30px]">Haz tu donación 🌱</h2>
+      <div className="donar-form shadow-lg">
+        <h2 className="mb-[30px] text-[1.9rem] font-[900]">
+          Haz tu donación 🌱
+        </h2>
         <p className="text-[14px]">Tu apoyo es muy valioso para nosotros.</p>
         <form onSubmit={handleSubmit}>
           <input
@@ -104,21 +108,21 @@ const Donar: React.FC = () => {
                 className={selectedMonto === 100 ? 'selected' : ''}
                 onClick={() => handleMontoClick(100)}
               >
-                $100
+                $1000
               </button>
               <button
                 type="button"
                 className={selectedMonto === 50 ? 'selected' : ''}
                 onClick={() => handleMontoClick(50)}
               >
-                $50
+                $3000
               </button>
               <button
                 type="button"
                 className={selectedMonto === 25 ? 'selected' : ''}
                 onClick={() => handleMontoClick(25)}
               >
-                $25
+                $5000
               </button>
               <button
                 type="button"
@@ -150,17 +154,11 @@ const Donar: React.FC = () => {
           />
           <button
             type="submit"
-            className="bg-[#4BAF47] text-white border-none hover:bg-[#3B8838]"
+            className="text-white bg-gradient-to-r from-green-500 to-green-600 rounded-[10px] shadow-lg hover:from-green-600 hover:to-green-700 transition-all duration-300 transform"
           >
             Donar
           </button>
         </form>
-        <p className="signup-text text-[14px] mt-[20px]">
-          ¿No tienes cuenta?{' '}
-          <Link className="font-[500]" to="/auth/register">
-            Regístrate
-          </Link>
-        </p>
       </div>
     </div>
   );

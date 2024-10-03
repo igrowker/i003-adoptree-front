@@ -18,12 +18,12 @@ const Cards: React.FC = () => {
   ];
 
   return (
-    <section className="w-full my-[116px] px-[200px]">
+    <section className="w-full my-[70px] px-[200px]">
       <div className="text-center">
-        <span className="text-[#FF9900] font-facuFont text-[32px]">
+        <span className="text-[#FF9900] font-facuFont text-[28px]">
           Compra directa
         </span>
-        <h2 className="text-3xl font-manrope font-extrabold mb-[40px]">
+        <h2 className="text-3xl font-[800] mb-[40px]">
           Agricultura de otros productores
         </h2>
       </div>

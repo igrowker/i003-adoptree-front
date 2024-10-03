@@ -2,11 +2,11 @@
   background-color: white;
   color: #333;
   padding: 20px;
-  font-family: Arial, sans-serif;
+  /* font-family: Arial, sans-serif; */
 }
 
-h2 {
-  color: #FF7F00; /* Subtítulos en color naranja */
+.beneficios {
+  color: #ff7f00; /* Subtítulos en color naranja */
   text-align: center;
   font-size: 28px;
   margin-bottom: 20px;
@@ -32,7 +32,7 @@ h2 {
 }
 
 .benefit h3 {
-  color: #FF7F00;
+  color: #ff7f00;
   font-size: 22px;
   margin-bottom: 10px;
 }
@@ -47,7 +47,7 @@ h2 {
 }
 
 .call-to-action button {
-  background-color: #32CD32; /* Botón verde */
+  background-color: #32cd32; /* Botón verde */
   color: white;
   padding: 10px 20px;
   border: none;
@@ -57,7 +57,7 @@ h2 {
 }
 
 .call-to-action button:hover {
-  background-color: #28A428; /* Más oscuro al pasar el mouse */
+  background-color: #28a428; /* Más oscuro al pasar el mouse */
 }
 
 .call-to-action p {
