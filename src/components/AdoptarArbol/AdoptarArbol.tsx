@@ -3,13 +3,21 @@ import GiteIcon from '@mui/icons-material/Gite';
 import { GiFruitTree, GiFruitBowl } from 'react-icons/gi';
 import './AdoptarArbol.css'; // Asegúrate de ajustar este archivo
 
+interface FincaData {
+  id: number,
+  name: string,
+  ubication: string,
+  practicesSustainable: string,
+  productor: string
+}
+
 interface ArbolData {
   id: number;
   name: string;
   type: string;
   location: string;
   images: string[];
-  finca: any;
+  finca: FincaData;
   productor: string;
   price: number;
 }
