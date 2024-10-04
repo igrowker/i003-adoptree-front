@@ -11,7 +11,7 @@ interface Arbol {
   name: string;
   type: string;
   location: string;
-  imageUrl: string;
+  images: string[];
   productor: string;
   price: number;
 }
@@ -70,7 +70,7 @@ const Adoptar: React.FC = () => {
 
       <div className="grid grid-cols-1 md:grid-cols-4 gap-6 mt-10">
         {/* Iteramos sobre los datos de los árboles recibidos desde la API */}
-        {arboles?.map((arbol: Arbol) => (
+        {arboles?.map((arbol: any) => (
           <AdoptarArbol key={arbol.id} datos={arbol} onAdopt={handleAdopt} />
         ))}
       </div>

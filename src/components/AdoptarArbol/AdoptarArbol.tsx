@@ -8,7 +8,8 @@ interface ArbolData {
   name: string;
   type: string;
   location: string;
-  imageUrl: string;
+  images: string[];
+  finca: any;
   productor: string;
   price: number;
 }
@@ -26,7 +27,7 @@ const AdoptarArbol: React.FC<AdoptarArbolProps> = ({ datos, onAdopt }) => {
       <div className="group bg-white rounded-xl overflow-hidden shadow-lg max-w-sm md:h-[29rem] md:w-[17rem] flex flex-col">
         <div className="relative flex-grow">
           <img
-            src={datos.imageUrl}
+            src={datos.images[0]}
             alt={`Árbol de ${datos.name}`}
             className="w-full h-48 object-cover transition-all duration-300 group-hover:brightness-95"
           />
@@ -42,7 +43,7 @@ const AdoptarArbol: React.FC<AdoptarArbolProps> = ({ datos, onAdopt }) => {
             </div>
 
             <h3 className="mt-6 text-xl font-semibold text-gray-900 mb-4">
-              {datos.name}
+              {datos.type}
             </h3>
 
             <div className="px-4 space-y-2">
@@ -65,7 +66,7 @@ const AdoptarArbol: React.FC<AdoptarArbolProps> = ({ datos, onAdopt }) => {
                 <span>
                   Finca:{' '}
                   <span className="text-[#00BF62] font-medium">
-                    {datos.location}
+                    {datos.finca.name}
                   </span>
                 </span>
               </p>
@@ -77,7 +78,7 @@ const AdoptarArbol: React.FC<AdoptarArbolProps> = ({ datos, onAdopt }) => {
                 <span>
                   Productor:{' '}
                   <span className="text-[#00BF62] font-medium">
-                    {datos.productor}
+                    {datos.finca.productor}
                   </span>
                 </span>
               </p>
