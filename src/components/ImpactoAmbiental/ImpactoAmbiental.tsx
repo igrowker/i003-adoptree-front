@@ -1,11 +1,11 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
-import '../../pages/About/AboutUsSection.css'
+import '../../pages/About/AboutUsSection.css';
 
 // Estilos comunes
 const sectionContainer = 'flex flex-col items-center gap-4 py-24';
-const sectionTitle = 'text-4xl font-bold text-gray-800 mb-6 text-center';
+const sectionTitle = 'text-4xl font-[800] text-gray-800 mb-6 text-center';
 const sectionContent = 'text-lg text-gray-600 max-w-3xl text-center mb-10';
 
 // Componente principal
@@ -15,7 +15,7 @@ const ImpactoAmbiental: React.FC = () => {
       <Section
         title="Regenerar la tierra que nos alimenta"
         content="Adoptree es una plataforma que busca conectar a personas con la naturaleza, permitiendo adoptar árboles y reforestar áreas deforestadas."
-        imageSrc="./bio1.svg"
+        imageSrc="./impacto.png"
         imageAlt="Agricultura Regenerativa"
       />
 
@@ -110,14 +110,14 @@ const Section: React.FC<{
   imageSrc: string;
   imageAlt: string;
 }> = ({ title, content, imageSrc, imageAlt }) => (
-  <section className="flex flex-col items-center lg:flex-row px-[30px] py-20">
+  <section className="flex flex-col items-center lg:flex-row pb-[3.2rem] gap-[30px]">
     <motion.div
       className="flex-1 mb-8 lg:mb-0"
       initial={{ opacity: 0, y: 50 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.5 }}
     >
-      <h1 className="text-[3.5rem] font-bold mb-6 text-gray-800">{title}</h1>
+      <h1 className="text-[3.5rem] font-[900] mb-6 text-gray-800">{title}</h1>
       <p className="text-xl text-gray-600">{content}</p>
     </motion.div>
     <motion.div
@@ -127,7 +127,7 @@ const Section: React.FC<{
       transition={{ duration: 0.5, delay: 0.2 }}
     >
       <img
-        className="max-w-[400px] h-auto rounded-lg"
+        className="h-auto rounded-lg"
         src={imageSrc}
         alt={imageAlt}
       />

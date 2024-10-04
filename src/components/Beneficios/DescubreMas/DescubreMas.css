@@ -1,0 +1,74 @@
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+.text-center {
+  text-align: center;
+}
+
+.mt-20 {
+  margin-top: 5rem; /* Ajusta el espacio superior según tu diseño */
+}
+
+.text-4xl {
+  font-size: 1.5rem; /* Tamaño más pequeño del texto */
+  font-weight: bold;
+  color: #ff6f00; /* Color naranja */
+}
+
+.benefits {
+  display: flex;
+  justify-content: space-between; /* Cambia a espacio entre para más uniformidad */
+  flex-wrap: wrap; /* Permite que los elementos se ajusten en diferentes pantallas */
+  margin-top: 20px; /* Espacio entre el texto introductorio y las imágenes */
+}
+
+.benefit {
+  flex: 1 1 30%; /* Ajuste de flexibilidad para ocupar espacio */
+  max-width: 300px; /* Máximo ancho para mantener uniformidad */
+  text-align: center; /* Centra el contenido de cada beneficio */
+  margin: 10px; /* Espacio entre cada beneficio */
+  background-color: #f9f9f9; /* Fondo claro para las secciones */
+  padding: 20px; /* Espaciado interno */
+  border-radius: 8px; /* Esquinas redondeadas */
+}
+
+.benefit-title {
+  font-size: 1.2rem; /* Tamaño del título de cada beneficio */
+  color: #ff6f00; /* Color naranja */
+}
+
+.benefit p {
+  font-size: 1rem; /* Asegurando que el tamaño de fuente de los párrafos sea uniforme */
+}
+
+.img-responsive {
+  width: 100%; /* Hace que las imágenes ocupen todo el contenedor */
+  height: auto; /* Mantiene la proporción de la imagen */
+  object-fit: cover; /* Ajusta el contenido de la imagen */
+}
+
+.call-to-action {
+  margin-top: 30px; /* Espacio entre los beneficios y la sección de llamada a la acción */
+  display: flex; /* Usar flexbox para alinear los botones */
+  justify-content: center; /* Centrar los botones */
+  flex-direction: column; /* Colocar los botones uno debajo del otro */
+  align-items: center; /* Alinear horizontalmente */
+}
+
+.cta-button {
+  background-color: #4baf47;
+  color: white;
+  padding: 20px 30px; /* Espaciado interno del botón */
+  border: none; /* Sin borde */
+  border-radius: 3px; /* Bordes redondeados */
+  cursor: pointer; /* Cambia el cursor al pasar sobre el botón */
+  font-size: 1rem; /* Tamaño del texto del botón */
+  margin: 10px 0; /* Margen vertical para separar los botones */
+}
+
+.cta-button:hover {
+  background-color: #3a8f36; /* Color más oscuro al pasar el ratón */
+}

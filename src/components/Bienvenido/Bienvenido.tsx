@@ -41,7 +41,14 @@ const Bienvenido: React.FC = () => {
             <br className="hidden 4xl:block" />
             <span className="4xl:mt-[15px]">¡Únete a Adoptree!</span>
           </p>
-          <button className="rounded-[10px] w-[220px] bg-[#4BAF47] text-white hover:bg-[#3B8838]">
+          <button
+            onClick={() =>
+              document
+                .getElementById('como-adoptar')
+                ?.scrollIntoView({ behavior: 'smooth' })
+            }
+            className="w-[220px] text-white bg-gradient-to-r from-green-500 to-green-600 rounded-[10px] shadow-lg hover:from-green-600 hover:to-green-700 transition-all duration-300 transform"
+          >
             Descubre cómo
           </button>
         </div>
@@ -54,7 +61,7 @@ const Bienvenido: React.FC = () => {
             <p className="text-orange-400 font-medium tipografiaCards 4xl:text-[35px]">
               Adopta
             </p>
-            <h3 className="text-xl font-semibold mb-4 4xl:text-[22px]">
+            <h3 className="text-[1.15rem] font-semibold mb-4 4xl:text-[22px]">
               Naranjos en adopción
             </h3>
             <img
@@ -68,8 +75,8 @@ const Bienvenido: React.FC = () => {
             <p className="text-orange-400 font-medium tipografiaCards 4xl:text-[35px]">
               Compra
             </p>
-            <h3 className="text-xl font-semibold mb-4 4xl:text-[22px]">
-              Naranjos en adopción
+            <h3 className="text-[1.15rem] font-semibold mb-4 4xl:text-[22px]">
+              Directo del proveedor
             </h3>
             <img
               src={compraImage}
@@ -82,8 +89,8 @@ const Bienvenido: React.FC = () => {
             <p className="text-orange-400 font-medium tipografiaCards 4xl:text-[35px]">
               Disfruta
             </p>
-            <h3 className="text-xl font-semibold mb-4 4xl:text-[22px]">
-              Naranjos en adopción
+            <h3 className="text-[1.15rem] font-semibold mb-4 4xl:text-[22px]">
+              Visita nuestras fincas
             </h3>
             <img
               src={disfrutaImage}

@@ -35,11 +35,13 @@ const arboles = [
 const Arboles: React.FC = () => {
   return (
     <section className="py-14 bg-white px-[200px]">
-      <div className="container mx-auto">
+      <div className="mx-auto">
         {/* HEADER o título */}
         <div className="text-center mb-8">
           <p className="text-orange-500 font-medium fuente">Adopta</p>
-          <h2 className="text-3xl font-bold text-gray-900">Nuestros árboles</h2>
+          <h2 className="text-3xl font-[800] text-gray-900">
+            Nuestros árboles
+          </h2>
         </div>
 
         {/* Cards de árboles */}
@@ -70,7 +72,7 @@ const Arboles: React.FC = () => {
                 </h3>
 
                 {/* Botón */}
-                <button className="rounded-[10px] bg-[#4BAF47] text-white transitio mt-4 hover:bg-[#3B8838]">
+                <button className="mt-4 text-white bg-gradient-to-r from-green-500 to-green-600 rounded-[10px] shadow-lg hover:from-green-600 hover:to-green-700 transition-all duration-300 transform">
                   Adoptar
                 </button>
               </div>

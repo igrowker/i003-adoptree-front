@@ -16,7 +16,7 @@ const App: React.FC = () => {
     navigator.serviceWorker
       .register('/firebase-messaging-sw.js')
       .then((registration) => {
-        console.log("Service Worker registrado con éxito:", registration);
+        console.log('Service Worker registrado con éxito:', registration);
         // Se envian las configuraciones de firebase al SW 👇
         registration.active?.postMessage({ firebaseConfig });
       })

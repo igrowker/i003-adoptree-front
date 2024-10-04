@@ -1,27 +1,31 @@
-import beneficiosImage from '../../assets/beneficios.jpg'; // Definición de la variable para llamar la imagen estática
-import CheckCircleIcon from '@mui/icons-material/CheckCircle';
-import './Beneficios.css'; //importacion del css para la fuente
+import beneficiosImage from '../../assets/beneficios.jpg'; // Importación de la imagen
+import CheckCircleIcon from '@mui/icons-material/CheckCircle'; // Iconos
+import './Beneficios.css'; // Importación del CSS
+import { Link } from 'react-router-dom'; // Link para la navegación
 
 const Beneficios: React.FC = () => {
   return (
-    <section className="bg-white px-[200px] my-[116px] flex justify-center">
+    <section className="bg-white px-[200px] my-[70px] flex justify-center">
       <div className="container flex flex-col items-center text-center">
-        <p className="text-orange-500 mb-2 fuentePersonalizada">Beneficios</p>
-        <h2 className="text-3xl font-bold text-gray-900 mb-[40px]">
+        <p className="text-orange-500 mb-2 fuentePersonalizada fuente">
+          Beneficios
+        </p>
+        <h2 className="beneficios text-3xl font-[800] text-gray-900 mb-[40px]">
           ¿Por qué comprar directo del productor?
         </h2>
 
         <div className="flex flex-col md:flex-row items-center justify-center md:items-start md:space-x-8">
           {/* Imagen */}
-          <div className="mb-6 md:mb-0">
+          <div className="mb-6 md:mb-0 h-full">
             <img
               src={beneficiosImage}
               alt="BeneficiosProductor"
-              className="rounded-lg shadow-lg w-[400px]"
+              className="rounded-lg shadow-lg w-[400px] h-full"
             />
           </div>
 
-          <div className="md:w-1/2 text-left md:text-left">
+          {/* Texto y Beneficios */}
+          <div className="md:w-1/2 text-left">
             <p className="text-gray-700 mb-4">
               Comprar directo del productor te ofrece alimentos frescos, de
               calidad, y la oportunidad de apoyar a quienes cultivan de manera
@@ -77,9 +81,12 @@ const Beneficios: React.FC = () => {
               </li>
             </ul>
 
-            <button className="rounded-[10px] bg-[#4BAF47] text-white mt-6 hover:bg-[#3B8838]">
-              Descubre más
-            </button>
+            {/* Botón para redirigir */}
+            <Link to="/beneficios">
+              <button className="mt-6 text-white bg-gradient-to-r from-green-500 to-green-600 rounded-[10px] shadow-lg hover:from-green-600 hover:to-green-700 transition-all duration-300 transform">
+                Descubre más
+              </button>
+            </Link>
           </div>
         </div>
       </div>

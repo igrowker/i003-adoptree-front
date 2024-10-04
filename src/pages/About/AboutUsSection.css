@@ -10,8 +10,8 @@
 .about-header {
   font-size: 3rem;
   text-align: center;
-  font-weight: 900;
-  margin-bottom: 2.5rem;
+  font-weight: 700;
+  margin-bottom: 1.3rem;
   color: #1f2937;
 }
 
@@ -30,7 +30,7 @@
   color: #4b5563;
   max-width: 45rem;
   margin: 0 auto;
-  margin-bottom: 3rem;
+  margin-bottom: 1.5rem;
 }
 
 .about-paragraphs-container {
@@ -59,10 +59,6 @@
   object-fit: cover;
 }
 
-.about-image img:hover {
-  transform: scale(1.05);
-}
-
 .about-values {
   margin-top: 3rem;
   display: flex;
@@ -78,7 +74,9 @@
   background-color: #fff;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
   border-radius: 1rem;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  transition:
+    transform 0.3s ease,
+    box-shadow 0.3s ease;
   text-align: center;
 }
 
