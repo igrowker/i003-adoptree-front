@@ -7,9 +7,11 @@ import Agriculture from '../../components/Agriculture/Agriculture';
 import Agroadopcion from '../../components/Agroadopcion/Agroadopcion';
 import Donaciones from '../../components/Donaciones/Donaciones';
 
+
 const Home = () => {
   return (
     <>
+
       <Bienvenido />
       <Agriculture />
       <Arboles />
@@ -23,3 +25,4 @@ const Home = () => {
 };
 
 export default Home;
+

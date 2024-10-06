@@ -1,3 +1,4 @@
+import React, { useState } from 'react';
 import { Spa, LocalFlorist, Yard } from '@mui/icons-material'; // Importando íconos de MUI
 import naranjosImg from '../../assets/naranjos.jpg'; // Ejemplo de cómo importar imágenes
 import limonerosImg from '../../assets/limoneros.jpg';
@@ -5,43 +6,80 @@ import pomelerosImg from '../../assets/pomeleros.jpg';
 import mandarinosImg from '../../assets/mandarinos.jpg';
 import './Arboles.css';
 
-const arboles = [
-  {
-    id: 1,
-    name: 'Naranjos',
-    image: naranjosImg,
-    icon: <Spa style={{ color: '#FFF' }} />,
-  },
-  {
-    id: 2,
-    name: 'Limoneros',
-    image: limonerosImg,
-    icon: <Spa style={{ color: '#FFF' }} />,
-  },
-  {
-    id: 3,
-    name: 'Pomeleros',
-    image: pomelerosImg,
-    icon: <LocalFlorist style={{ color: '#FFF' }} />,
-  },
-  {
-    id: 4,
-    name: 'Mandarinos',
-    image: mandarinosImg,
-    icon: <Yard style={{ color: '#FFF' }} />,
-  },
-];
-
 const Arboles: React.FC = () => {
+  const [language, setLanguage] = useState<'es' | 'en'>('es');
+
+  const toggleLanguage = (lang: 'es' | 'en') => {
+    setLanguage(lang);
+  };
+
+  const content: Record<'es' | 'en', any> = {
+    es: {
+      adopt: 'Adopta',
+      treesTitle: 'Nuestros árboles',
+      adoptTree: 'Adopta un árbol cítrico y sé parte de la agricultura sostenible.',
+      adoptButton: 'Adoptar',
+    },
+    en: {
+      adopt: 'Adopt',
+      treesTitle: 'Our trees',
+      adoptTree: 'Adopt a citrus tree and be part of sustainable agriculture.',
+      adoptButton: 'Adopt',
+    },
+  };
+
+  const { adopt, treesTitle, adoptTree, adoptButton } = content[language];
+
+  const arboles = [
+    {
+      id: 1,
+      name: language === 'es' ? 'Naranjos' : 'Orange Trees',
+      image: naranjosImg,
+      icon: <Spa style={{ color: '#FFF' }} />,
+    },
+    {
+      id: 2,
+      name: language === 'es' ? 'Limoneros' : 'Lemon Trees',
+      image: limonerosImg,
+      icon: <Spa style={{ color: '#FFF' }} />,
+    },
+    {
+      id: 3,
+      name: language === 'es' ? 'Pomeleros' : 'Grapefruit Trees',
+      image: pomelerosImg,
+      icon: <LocalFlorist style={{ color: '#FFF' }} />,
+    },
+    {
+      id: 4,
+      name: language === 'es' ? 'Mandarinos' : 'Mandarin Trees',
+      image: mandarinosImg,
+      icon: <Yard style={{ color: '#FFF' }} />,
+    },
+  ];
+
   return (
     <section className="py-14 bg-white px-[200px]">
       <div className="mx-auto">
+        {/* LANGUAGE SWITCHER */}
+        <div className="flex justify-center space-x-4 mb-8">
+          <button
+            onClick={() => toggleLanguage('es')}
+            className={`px-4 py-2 rounded-[10px] ${language === 'es' ? 'bg-[#4BAF47] text-white' : 'bg-gray-200'} transition-colors duration-300`}
+          >
+            Español
+          </button>
+          <button
+            onClick={() => toggleLanguage('en')}
+            className={`px-4 py-2 rounded-[10px] ${language === 'en' ? 'bg-[#4BAF47] text-white' : 'bg-gray-200'} transition-colors duration-300`}
+          >
+            English
+          </button>
+        </div>
+
         {/* HEADER o título */}
         <div className="text-center mb-8">
-          <p className="text-orange-500 font-medium fuente">Adopta</p>
-          <h2 className="text-3xl font-[800] text-gray-900">
-            Nuestros árboles
-          </h2>
+          <p className="text-orange-500 font-medium fuente">{adopt}</p>
+          <h2 className="text-3xl font-[800] text-gray-900">{treesTitle}</h2>
         </div>
 
         {/* Cards de árboles */}
@@ -67,13 +105,12 @@ const Arboles: React.FC = () => {
 
                 {/* Título */}
                 <h3 className="mt-6 text-xl font-semibold text-gray-900">
-                  {' '}
-                  {arbol.name}{' '}
+                  {arbol.name}
                 </h3>
 
                 {/* Botón */}
                 <button className="mt-4 text-white bg-gradient-to-r from-green-500 to-green-600 rounded-[10px] shadow-lg hover:from-green-600 hover:to-green-700 transition-all duration-300 transform">
-                  Adoptar
+                  {adoptButton}
                 </button>
               </div>
             </div>
@@ -81,7 +118,7 @@ const Arboles: React.FC = () => {
         </div>
 
         <h3 className="text-4xl font-bold text-white mb-4">
-          Adopta un árbol cítrico y sé parte de la agricultura sostenible.
+          {adoptTree}
         </h3>
       </div>
     </section>
