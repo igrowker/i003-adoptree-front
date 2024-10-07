@@ -1,17 +1,15 @@
-import React, { useState } from 'react';
+import React from 'react';
 import CheckIcon from '../../assets/CheckIcon.svg';
 import FruitIcon from '../../assets/FruitsIcon.svg';
 import PlantIcon from '../../assets/PlantsIcon.svg';
 import imgNaranjas from '../../assets/imgNaranjas.png';
 import './Agriculture.css';
 
-const Agriculture: React.FC = () => {
-  const [language, setLanguage] = useState<'es' | 'en'>('es');
+interface AgricultureProps {
+  language: 'es' | 'en';
+}
 
-  const toggleLanguage = (lang: 'es' | 'en') => {
-    setLanguage(lang);
-  };
-
+const Agriculture: React.FC<AgricultureProps> = ({ language }) => {
   const content: Record<'es' | 'en', any> = {
     es: {
       crowdfarming: 'Crowdfarming',
@@ -48,21 +46,6 @@ const Agriculture: React.FC = () => {
         <img className="w-[500px]" src={imgNaranjas} alt="Naranjas" />
       </section>
       <section className="w-[50%] 4xl:w-[30%] max-lg:w-[100%] max-lg:ml-16 max-lg:mt-16">
-        <div className="flex justify-center space-x-4 mb-8">
-          <button
-            onClick={() => toggleLanguage('es')}
-            className={`px-4 py-2 rounded-[10px] ${language === 'es' ? 'bg-[#4BAF47] text-white' : 'bg-gray-200'} transition-colors duration-300`}
-          >
-            Español
-          </button>
-          <button
-            onClick={() => toggleLanguage('en')}
-            className={`px-4 py-2 rounded-[10px] ${language === 'en' ? 'bg-[#4BAF47] text-white' : 'bg-gray-200'} transition-colors duration-300`}
-          >
-            English
-          </button>
-        </div>
-
         <span className="text-[#FF9900] text-[20px] Typography">{crowdfarming}</span>
         <h2 className="text-[#1F1E17] text-5xl font-[800] w-[60%] mb-8 max-lg:w-[100%]">{title}</h2>
         <h3 className="text-[#4BAF47] text-xl font-bold mb-[1.2rem]">{subtitle}</h3>

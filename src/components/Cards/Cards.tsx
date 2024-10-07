@@ -1,14 +1,12 @@
-import React, { useState } from 'react';
+import React from 'react';
 import './Cards.css';
 
-const Cards: React.FC = () => {
-  const [language, setLanguage] = useState<'es' | 'en'>('es');
+interface CardsProps {
+  language: 'es' | 'en';
+}
 
-  const toggleLanguage = (lang: 'es' | 'en') => {
-    setLanguage(lang);
-  };
-
-  const content: Record<'es' | 'en', any> = {
+const Cards: React.FC<CardsProps> = ({ language }) => {
+  const content: Record<'es' | 'en', { directPurchase: string, title: string }> = {
     es: {
       directPurchase: 'Compra directa',
       title: 'Agricultura de otros productores',
@@ -55,20 +53,6 @@ const Cards: React.FC = () => {
             alt={`Card ${index}`}
           />
         ))}
-      </div>
-      <div className="flex justify-center space-x-4 mt-4">
-        <button
-          onClick={() => toggleLanguage('es')}
-          className={`px-4 py-2 rounded-[10px] ${language === 'es' ? 'bg-[#4BAF47] text-white' : 'bg-gray-200'} transition-colors duration-300`}
-        >
-          Español
-        </button>
-        <button
-          onClick={() => toggleLanguage('en')}
-          className={`px-4 py-2 rounded-[10px] ${language === 'en' ? 'bg-[#4BAF47] text-white' : 'bg-gray-200'} transition-colors duration-300`}
-        >
-          English
-        </button>
       </div>
     </section>
   );

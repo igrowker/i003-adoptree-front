@@ -1,17 +1,16 @@
-import React, { useState } from 'react';
-import { Spa, LocalFlorist, Yard } from '@mui/icons-material'; // Importando íconos de MUI
-import naranjosImg from '../../assets/naranjos.jpg'; // Ejemplo de cómo importar imágenes
+import React from 'react';
+import { Spa, LocalFlorist, Yard } from '@mui/icons-material';
+import naranjosImg from '../../assets/naranjos.jpg';
 import limonerosImg from '../../assets/limoneros.jpg';
 import pomelerosImg from '../../assets/pomeleros.jpg';
 import mandarinosImg from '../../assets/mandarinos.jpg';
 import './Arboles.css';
 
-const Arboles: React.FC = () => {
-  const [language, setLanguage] = useState<'es' | 'en'>('es');
+interface ArbolesProps {
+  language: 'es' | 'en';
+}
 
-  const toggleLanguage = (lang: 'es' | 'en') => {
-    setLanguage(lang);
-  };
+const Arboles: React.FC<ArbolesProps> = ({ language }) => {
 
   const content: Record<'es' | 'en', any> = {
     es: {
@@ -60,22 +59,6 @@ const Arboles: React.FC = () => {
   return (
     <section className="py-14 bg-white px-[200px]">
       <div className="mx-auto">
-        {/* LANGUAGE SWITCHER */}
-        <div className="flex justify-center space-x-4 mb-8">
-          <button
-            onClick={() => toggleLanguage('es')}
-            className={`px-4 py-2 rounded-[10px] ${language === 'es' ? 'bg-[#4BAF47] text-white' : 'bg-gray-200'} transition-colors duration-300`}
-          >
-            Español
-          </button>
-          <button
-            onClick={() => toggleLanguage('en')}
-            className={`px-4 py-2 rounded-[10px] ${language === 'en' ? 'bg-[#4BAF47] text-white' : 'bg-gray-200'} transition-colors duration-300`}
-          >
-            English
-          </button>
-        </div>
-
         {/* HEADER o título */}
         <div className="text-center mb-8">
           <p className="text-orange-500 font-medium fuente">{adopt}</p>

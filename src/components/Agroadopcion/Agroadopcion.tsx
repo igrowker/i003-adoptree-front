@@ -1,15 +1,13 @@
-import React, { useState } from 'react';
+import React from 'react';
 import imgLimones from '../../assets/img-limones.png';
 import imgNaranjero from '../../assets/img-naranjero.png';
 import './Agroadopcion.css';
 
-const Agroadopcion: React.FC = () => {
-  const [language, setLanguage] = useState<'es' | 'en'>('es');
+interface AgroadopcionProps {
+  language: 'es' | 'en';
+}
 
-  const toggleLanguage = (lang: 'es' | 'en') => {
-    setLanguage(lang);
-  };
-
+const Agroadopcion: React.FC<AgroadopcionProps> = ({ language }) => {
   const content: Record<'es' | 'en', { 
     title: string; 
     adoptionQuestion: string; 
@@ -51,7 +49,7 @@ const Agroadopcion: React.FC = () => {
     },
   };
 
-  const { title, adoptionQuestion, adoptionDescription, currentProduction, ownershipQuestion, steps, clickHere } = content[language];
+  const { adoptionQuestion, adoptionDescription, currentProduction, ownershipQuestion, steps, clickHere } = content[language];
 
   return (
     <section
@@ -109,21 +107,6 @@ const Agroadopcion: React.FC = () => {
             </div>
           </div>
         </div>
-      </div>
-
-      <div className="flex justify-center space-x-4 mt-8">
-        <button
-          onClick={() => toggleLanguage('es')}
-          className={`px-4 py-2 rounded-[10px] ${language === 'es' ? 'bg-[#4BAF47] text-white' : 'bg-gray-200'} transition-colors duration-300`}
-        >
-          Español
-        </button>
-        <button
-          onClick={() => toggleLanguage('en')}
-          className={`px-4 py-2 rounded-[10px] ${language === 'en' ? 'bg-[#4BAF47] text-white' : 'bg-gray-200'} transition-colors duration-300`}
-        >
-          English
-        </button>
       </div>
     </section>
   );

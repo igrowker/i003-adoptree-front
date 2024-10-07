@@ -1,3 +1,5 @@
+import React from 'react';
+import { useLanguage } from '../../LanguageContext/LanguageContext'; // Importa el hook del contexto
 import Bienvenido from '../../components/Bienvenido/Bienvenido';
 import Arboles from '../../components/Arboles/Arboles';
 import Banner from '../../components/Banner/Banner';
@@ -7,22 +9,21 @@ import Agriculture from '../../components/Agriculture/Agriculture';
 import Agroadopcion from '../../components/Agroadopcion/Agroadopcion';
 import Donaciones from '../../components/Donaciones/Donaciones';
 
+const Home: React.FC = () => {
+  const { language } = useLanguage(); // Obtiene el idioma del contexto
 
-const Home = () => {
   return (
     <>
-
-      <Bienvenido />
-      <Agriculture />
-      <Arboles />
-      <Banner />
-      <Cards />
-      <Agroadopcion />
-      <Beneficios />
-      <Donaciones />
+      <Bienvenido language={language}/>
+      <Agriculture language={language}/>
+      <Arboles language={language}/>
+      <Banner language={language}/>
+      <Cards language={language}/>
+      <Agroadopcion language={language}/>
+      <Beneficios language={language}/>
+      <Donaciones language={language} />
     </>
   );
 };
 
 export default Home;
-

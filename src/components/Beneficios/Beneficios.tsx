@@ -1,16 +1,14 @@
-import React, { useState } from 'react';
+import React from 'react';
 import beneficiosImage from '../../assets/beneficios.jpg'; // Importación de la imagen
 import CheckCircleIcon from '@mui/icons-material/CheckCircle'; // Iconos
 import './Beneficios.css'; // Importación del CSS
 import { Link } from 'react-router-dom'; // Link para la navegación
 
-const Beneficios: React.FC = () => {
-  const [language, setLanguage] = useState<'es' | 'en'>('es');
+interface BeneficiosProps {
+  language: 'es' | 'en';
+}
 
-  const toggleLanguage = (lang: 'es' | 'en') => {
-    setLanguage(lang);
-  };
-
+const Beneficios: React.FC<BeneficiosProps> = ({ language }) => {
   const content: Record<'es' | 'en', any> = {
     es: {
       benefitsTitle: 'Beneficios',
@@ -62,22 +60,6 @@ const Beneficios: React.FC = () => {
   return (
     <section className="bg-white px-[200px] my-[70px] flex justify-center">
       <div className="container flex flex-col items-center text-center">
-        {/* Botones para cambiar idioma */}
-        <div className="flex justify-center space-x-4 mb-8">
-          <button
-            onClick={() => toggleLanguage('es')}
-            className={`px-4 py-2 rounded-[10px] ${language === 'es' ? 'bg-[#4BAF47] text-white' : 'bg-gray-200'} transition-colors duration-300`}
-          >
-            Español
-          </button>
-          <button
-            onClick={() => toggleLanguage('en')}
-            className={`px-4 py-2 rounded-[10px] ${language === 'en' ? 'bg-[#4BAF47] text-white' : 'bg-gray-200'} transition-colors duration-300`}
-          >
-            English
-          </button>
-        </div>
-
         <p className="text-orange-500 mb-2 fuentePersonalizada fuente">
           {benefitsTitle}
         </p>

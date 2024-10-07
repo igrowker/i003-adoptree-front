@@ -1,39 +1,55 @@
-import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+import React, { useEffect, useState } from 'react';
+import { useLanguage } from '../../LanguageContext/LanguageContext'; // Ajusta la ruta según tu estructura
+import '../LanguageSwitcher/LanguageSwitcher.css'; // Asegúrate de que la ruta sea correcta
 
-const Navbar: React.FC = () => {
-  const [language, setLanguage] = useState<'es' | 'en'>('es');
+const LanguageSwitcher: React.FC = () => {
+  const { language, setLanguage } = useLanguage();
+  const [isAtFooter, setIsAtFooter] = useState(false);
 
-  const toggleLanguage = (lang: 'es' | 'en') => {
+  const handleLanguageChange = (lang: 'es' | 'en') => {
     setLanguage(lang);
+    localStorage.setItem('language', lang); // Almacena el idioma en localStorage
   };
 
-  return (
-    <nav className="flex justify-between items-center p-4 bg-green-500 text-white">
-      {/* Links de navegación */}
-      <div className="flex space-x-4">
-        <Link to="/">Home</Link>
-        <Link to="/about">About</Link>
-        <Link to="/contacto">Contacto</Link>
-      </div>
+  const checkScrollPosition = () => {
+    const footer = document.querySelector('footer'); // Selecciona tu footer
+    if (footer) {
+      const footerRect = footer.getBoundingClientRect();
+      const isInView = footerRect.top <= window.innerHeight && footerRect.top >= 0;
+      setIsAtFooter(isInView);
+    }
+  };
 
-      {/* LANGUAGE SWITCHER */}
-      <div className="flex space-x-4">
-        <button
-          onClick={() => toggleLanguage('es')}
-          className={`px-4 py-2 rounded-[10px] ${language === 'es' ? 'bg-[#4BAF47] text-white' : 'bg-gray-200'} transition-colors duration-300`}
-        >
-          Español
-        </button>
-        <button
-          onClick={() => toggleLanguage('en')}
-          className={`px-4 py-2 rounded-[10px] ${language === 'en' ? 'bg-[#4BAF47] text-white' : 'bg-gray-200'} transition-colors duration-300`}
-        >
-          English
-        </button>
-      </div>
-    </nav>
+  useEffect(() => {
+    // Recupera el idioma de localStorage al cargar el componente
+    const savedLanguage = localStorage.getItem('language');
+    if (savedLanguage) {
+      setLanguage(savedLanguage as 'es' | 'en'); // Establece el idioma guardado
+    }
+
+    window.addEventListener('scroll', checkScrollPosition);
+    return () => {
+      window.removeEventListener('scroll', checkScrollPosition);
+    };
+  }, [setLanguage]);
+
+  return (
+    <div className="language-switcher" style={{ bottom: isAtFooter ? 'calc(20px + 100px)' : '20px' }}>
+      <button
+        onClick={() => handleLanguageChange('es')}
+        className={language === 'es' ? 'active' : ''}
+      >
+        Español
+      </button>
+      <button
+        onClick={() => handleLanguageChange('en')}
+        className={language === 'en' ? 'active' : ''}
+      >
+        English
+      </button>
+    </div>
   );
 };
 
-export default Navbar;
+export default LanguageSwitcher;
+

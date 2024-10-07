@@ -1,0 +1,31 @@
+.language-switcher {
+  position: fixed; /* Fijo al viewport */
+  bottom: 20px; /* A 20px del borde inferior */
+  right: 20px; /* A 20px del borde derecho */
+  display: flex; /* Usar flexbox */
+  flex-direction: column; /* Colocar los botones en una columna */
+  align-items: center; /* Alinear botones al centro horizontalmente */
+  z-index: 999; /* Para asegurar que esté por encima de otros elementos */
+}
+
+.language-switcher button {
+  background-color: #4baf47; /* Fondo de botón */
+  color: white; /* Color del texto */
+  border: 2px solid transparent; /* Sin borde por defecto */
+  border-radius: 1rem; /* Bordes redondeados */
+  padding: 10px 20px; /* Espaciado interno */
+  margin: 5px 0; /* Espacio vertical entre botones */
+  cursor: pointer; /* Cambiar cursor al pasar por encima */
+  transition: all 0.3s ease; /* Transición suave */
+  z-index: 999; 
+}
+
+.language-switcher button:hover {
+  background-color: #3a8f36; /* Cambiar fondo al pasar el mouse */
+}
+
+.language-switcher button.active {
+  border-color: #245621; /* Color del borde para el botón activo */
+  background-color: #245621; /* Fondo del botón activo */
+  color: #fff; /* Color del texto del botón activo */
+}

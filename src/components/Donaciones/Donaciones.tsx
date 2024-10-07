@@ -1,17 +1,16 @@
-import React, { useState } from 'react';
+import React from 'react';
 import donacionesImage from '../../assets/Donaciones.png';
 import { useNavigate } from 'react-router-dom';
 import { Heart } from 'lucide-react';
 
-const Donaciones: React.FC = () => {
+interface DonacionesProps {
+  language: 'es' | 'en';
+}
+
+const Donaciones: React.FC<DonacionesProps> = ({ language }) => {
   const navigate = useNavigate();
-  const [language, setLanguage] = useState<'es' | 'en'>('es');
 
-  const toggleLanguage = (lang: 'es' | 'en') => {
-    setLanguage(lang);
-  };
-
-  const content: Record<'es' | 'en', any> = {
+  const content: Record<'es' | 'en', { [key: string]: string }> = {
     es: {
       donations: 'Donaciones',
       title: '¿Nos ayudarías a crecer con una donación?',
@@ -32,13 +31,7 @@ const Donaciones: React.FC = () => {
     },
   };
 
-  const {
-    donations,
-    title,
-    description1,
-    description2,
-    donateHere
-  } = content[language];
+  const { donations, title, description1, description2, donateHere } = content[language];
 
   const handleDonationClick = () => {
     navigate('/donar');
@@ -47,30 +40,11 @@ const Donaciones: React.FC = () => {
   return (
     <section className="bg-[#f8f7f0] py-[75px]">
       <div className="container mx-auto px-8 max-w-5xl bg-[#f8f7f0]">
-        <div className="flex justify-center space-x-4 mb-8">
-          <button
-            onClick={() => toggleLanguage('es')}
-            className={`px-4 py-2 rounded-[10px] ${
-              language === 'es' ? 'bg-[#4BAF47] text-white' : 'bg-gray-200'
-            } transition-colors duration-300`}
-          >
-            Español
-          </button>
-          <button
-            onClick={() => toggleLanguage('en')}
-            className={`px-4 py-2 rounded-[10px] ${
-              language === 'en' ? 'bg-[#4BAF47] text-white' : 'bg-gray-200'
-            } transition-colors duration-300`}
-          >
-            English
-          </button>
-        </div>
-
         <div className="text-center mb-12">
-          <span className="text-orange-500 fuentePersonalizada fuente">
+          <span className="text-orange-500 font-semibold tracking-wide">
             {donations}
           </span>
-          <h2 className="text-3xl font-[800] text-gray-900 mb-4">{title}</h2>
+          <h2 className="text-3xl font-bold text-gray-900 mb-4">{title}</h2>
         </div>
 
         <div className="flex flex-col md:flex-row items-center justify-start gap-8 md:gap-12">
@@ -88,7 +62,7 @@ const Donaciones: React.FC = () => {
 
             <button
               onClick={handleDonationClick}
-              className="inline-flex items-center px-6 py-3 font-semibold text-white bg-gradient-to-r from-green-500 to-green-600 rounded-[10px] shadow-lg hover:from-green-600 hover:to-green-700 transition-all duration-300 transform hover:-translate-y-1"
+              className="inline-flex items-center px-6 py-3 font-semibold text-white bg-gradient-to-r from-green-500 to-green-600 rounded-lg shadow-lg hover:from-green-600 hover:to-green-700 transition-all duration-300 transform hover:-translate-y-1"
             >
               <Heart className="mr-2" size={20} />
               {donateHere}

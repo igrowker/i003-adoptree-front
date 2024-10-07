@@ -1,17 +1,15 @@
-import React, { useState } from 'react';
+import React from 'react';
 import video from '../../assets/AdobeStock_812746937.mov';
 import adoptionImage from '../../assets/adopcion.jpg';
 import compraImage from '../../assets/compra.jpg';
 import disfrutaImage from '../../assets/disfruta.jpg';
 import './Bienvenido.css';
 
-const Bienvenido: React.FC = () => {
-  const [language, setLanguage] = useState<'es' | 'en'>('es');
+interface BienvenidoProps {
+  language: 'es' | 'en';
+}
 
-  const toggleLanguage = (lang: 'es' | 'en') => {
-    setLanguage(lang);
-  };
-
+const Bienvenido: React.FC<BienvenidoProps> = ({ language }) => {
   const content: Record<'es' | 'en', any> = {
     es: {
       welcome: 'BIENVENIDO A ADOPTREE',
@@ -65,16 +63,6 @@ const Bienvenido: React.FC = () => {
       </video>
 
       <div className="absolute inset-0 bg-black opacity-40"></div>
-
-      {/* Botones para cambiar de idioma */}
-      <div className="relative z-20 text-center mb-4">
-        <button onClick={() => toggleLanguage('es')} className={`px-4 py-2 ${language === 'es' ? 'bg-[#4BAF47] text-white' : 'bg-gray-200'}`}>
-          Español
-        </button>
-        <button onClick={() => toggleLanguage('en')} className={`px-4 py-2 ml-4 ${language === 'en' ? 'bg-[#4BAF47] text-white' : 'bg-gray-200'}`}>
-          English
-        </button>
-      </div>
 
       <div className="relative z-10 text-center text-white">
         <p className="text-lg mb-5 flex">{welcome}</p>

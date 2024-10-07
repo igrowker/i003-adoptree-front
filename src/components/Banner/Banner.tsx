@@ -1,13 +1,11 @@
-import React, { useState } from 'react';
+import React from 'react';
 import './Banner.css';
 
-const Banner: React.FC = () => {
-  const [language, setLanguage] = useState<'es' | 'en'>('es');
+interface BannerProps {
+  language: 'es' | 'en';
+}
 
-  const toggleLanguage = (lang: 'es' | 'en') => {
-    setLanguage(lang);
-  };
-
+const Banner: React.FC<BannerProps> = ({ language }) => {
   const content: Record<'es' | 'en', any> = {
     es: {
       titleLine1: 'Adopta un árbol cítrico',
@@ -36,20 +34,6 @@ const Banner: React.FC = () => {
             <br />
             {titleLine3}
           </h1>
-          <div className="flex justify-center space-x-4 mb-8">
-            <button
-              onClick={() => toggleLanguage('es')}
-              className={`px-4 py-2 rounded-[10px] ${language === 'es' ? 'bg-[#4BAF47] text-white' : 'bg-gray-200'} transition-colors duration-300`}
-            >
-              Español
-            </button>
-            <button
-              onClick={() => toggleLanguage('en')}
-              className={`px-4 py-2 rounded-[10px] ${language === 'en' ? 'bg-[#4BAF47] text-white' : 'bg-gray-200'} transition-colors duration-300`}
-            >
-              English
-            </button>
-          </div>
           <button className="text-white bg-gradient-to-r from-green-500 to-green-600 rounded-[10px] shadow-lg hover:from-green-600 hover:to-green-700 transition-all duration-300 transform">
             <a href="/adopta-un-arbol">{button}</a>
           </button>
@@ -60,4 +44,3 @@ const Banner: React.FC = () => {
 };
 
 export default Banner;
-

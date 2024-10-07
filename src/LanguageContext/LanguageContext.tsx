@@ -1,22 +1,30 @@
-import React, { createContext, useState, useContext } from 'react';
+import React, { createContext, useContext, useState, ReactNode } from 'react';
 
-// Crear el contexto
-const LanguageContext = createContext();
+// Define los tipos para el contexto
+interface LanguageContextType {
+  language: 'es' | 'en';
+  setLanguage: React.Dispatch<React.SetStateAction<'es' | 'en'>>;
+}
 
-// Proveedor del contexto
-export const LanguageProvider = ({ children }) => {
-  const [language, setLanguage] = useState('es');
+// Crea el contexto con un valor por defecto
+const LanguageContext = createContext<LanguageContextType | undefined>(undefined);
 
-  const toggleLanguage = (lang) => {
-    setLanguage(lang);
-  };
+// Componente proveedor para envolver tu aplicación
+export const LanguageProvider: React.FC<{ children: ReactNode }> = ({ children }) => {
+  const [language, setLanguage] = useState<'es' | 'en'>('es'); // Establece el valor por defecto aquí
 
   return (
-    <LanguageContext.Provider value={{ language, toggleLanguage }}>
+    <LanguageContext.Provider value={{ language, setLanguage }}>
       {children}
     </LanguageContext.Provider>
   );
 };
 
-// Hook para usar el contexto en los componentes
-export const useLanguage = () => useContext(LanguageContext);
+// Hook para usar el contexto fácilmente
+export const useLanguage = () => {
+  const context = useContext(LanguageContext);
+  if (context === undefined) {
+    throw new Error('useLanguage must be used within a LanguageProvider');
+  }
+  return context;
+};
