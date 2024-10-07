@@ -1,12 +1,15 @@
 export const validateForm = (fieldName: string, value: string) => {
   let error = '';
-  const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-  const passwordRegex = /^(?=.*[a-zA-Z])(?=.*\d)[a-zA-Z\d]{8,}$/;
+  const emailRegex = /^[\w.-]+@[a-zA-Z\d.-]+\.[a-zA-Z]{2,}$/;
+  const passwordRegex = /^(?=.*[A-Z])(?=.*\d)[A-Za-z\d]{8,}$/;
+  const fullNameRegex = /^[A-Za-zÁÉÍÓÚáéíóúÑñ]+(?: [A-Za-zÁÉÍÓÚáéíóúÑñ]+)+$/;
 
   switch (fieldName) {
     case 'name':
       if (!value.trim()) {
         error = 'Full name is required';
+      }else if (!fullNameRegex.test(value)) {
+        error = 'Invalid full name';
       }
       break;
 
