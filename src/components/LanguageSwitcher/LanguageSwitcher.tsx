@@ -39,13 +39,13 @@ const LanguageSwitcher: React.FC = () => {
         onClick={() => handleLanguageChange('es')}
         className={language === 'es' ? 'active' : ''}
       >
-        Español
+        ES
       </button>
       <button
         onClick={() => handleLanguageChange('en')}
         className={language === 'en' ? 'active' : ''}
       >
-        English
+        EN
       </button>
     </div>
   );
