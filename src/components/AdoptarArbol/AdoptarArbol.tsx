@@ -1,61 +1,67 @@
+import React from 'react';
 import AgricultureIcon from '@mui/icons-material/Agriculture';
 import GiteIcon from '@mui/icons-material/Gite';
 import { GiFruitTree, GiFruitBowl } from 'react-icons/gi';
-import './AdoptarArbol.css'; // Asegúrate de ajustar este archivo
 import { useNavigate } from 'react-router-dom';
+import './AdoptarArbol.css';
 
-//!! SE ESTABLECIO ESTOS TIPOS PARA QUE NO GENERE ERROR DE ESLINT DURANTE LA COMPROBACION
-//!! CON ESTO SE INDICA LOS TIPOS ESPECIFICOS QUE RECIBE ESTE COMPONENTE PARA NO COLOCAR "ANY"
+interface FincaData {
+  id: number;
+  name: string;
+  ubication: string;
+  practicesSustainable: string;
+  productor: string;
+}
+
 interface ArbolData {
   id: number;
   name: string;
   type: string;
   location: string;
-  imageUrl: string;
+  images: string[];
+  finca: FincaData;
   productor: string;
   price: number;
 }
 
-type OnAdoptType = (id: number) => void;
-
 interface AdoptarArbolProps {
   datos: ArbolData;
-  onAdopt: OnAdoptType;
 }
 
 const AdoptarArbol: React.FC<AdoptarArbolProps> = ({ datos }) => {
   const navigate = useNavigate();
-  return (
-    <div className="flex justify-center gap-6">
-      <div className="group bg-white rounded-xl overflow-hidden shadow-lg max-w-sm md:h-[29rem] md:w-[17rem] transform transition-all duration-300 hover:scale-105 hover:shadow-2xl">
-        <div className="relative">
-          <img
-            src={datos.imageUrl}
-            alt={`Árbol de ${datos.name}`}
-            className="w-full h-48 object-cover transition-all duration-300 group-hover:brightness-95"
-          />
-          <div className="absolute top-2 right-2 bg-white bg-opacity-90 rounded-full px-3 py-1 text-sm font-bold text-[#4BAF47]">
-            ${datos.price}/año
-          </div>
-        </div>
 
-        <div className="relative -mt-6 py-6 bg-white rounded-t-xl text-center">
+  return (
+    <div className="w-full sm:w-[calc(50%-8px)] md:w-[calc(33.333%-16px)] lg:w-[calc(25%-18px)] min-w-[250px] max-w-[280px] bg-white rounded-xl overflow-hidden shadow-lg flex flex-col">
+      <div className="relative">
+        <img
+          src={datos.images[0]}
+          alt={`Árbol de ${datos.name}`}
+          className="w-full h-48 object-cover transition-all duration-300 group-hover:brightness-95"
+        />
+        <div className="absolute top-2 right-2 bg-white bg-opacity-90 rounded-full px-3 py-1 text-sm font-bold text-[#4BAF47]">
+          ${datos.price}/año
+        </div>
+      </div>
+
+      <div className="relative -mt-6 p-4 bg-white rounded-t-xl text-center flex flex-col justify-between flex-grow">
+        <div>
           <div className="absolute top-0 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-orange-500 rounded-full p-3 shadow-md">
             <GiFruitBowl size={22} className="text-white" aria-hidden="true" />
           </div>
 
           <h3 className="mt-6 text-xl font-semibold text-gray-900 mb-4">
-            {datos.name}
+            {datos.type}
           </h3>
 
-          <div className="px-4 space-y-2">
+          <div className="space-y-2">
             <p className="flex items-center text-gray-700 text-sm">
               <GiFruitTree
                 size={20}
                 className="text-[#FF9E2F] mr-2 flex-shrink-0"
                 aria-hidden="true"
               />
-              <span>
+              <span className="truncate">
                 Tipo:{' '}
                 <span className="text-[#00BF62] font-medium">{datos.type}</span>
               </span>
@@ -65,34 +71,34 @@ const AdoptarArbol: React.FC<AdoptarArbolProps> = ({ datos }) => {
                 className="text-[#FF9E2F] mr-2 flex-shrink-0"
                 aria-hidden="true"
               />
-              <span>
+              <span className="truncate">
                 Finca:{' '}
                 <span className="text-[#00BF62] font-medium">
-                  {datos.location}
+                  {datos.finca.name}
                 </span>
               </span>
             </p>
             <p className="flex items-center text-gray-700 text-sm">
               <AgricultureIcon
-                className="text-[#FF9E2F] mr-2 flex-shrink-0"
+                className="text-[#FF9E2F] mr-1 flex-shrink-0"
                 aria-hidden="true"
               />
-              <span>
+              <span className="truncate">
                 Productor:{' '}
                 <span className="text-[#00BF62] font-medium">
-                  {datos.productor}
+                  {datos.finca.productor}
                 </span>
               </span>
             </p>
           </div>
-
-          <button
-            onClick={() => navigate(`/adopta-un-arbol/${datos.id}`)}
-            className="mt-6 w-11/12 rounded-lg bg-[#4BAF47] text-white transition-all duration-300 hover:bg-[#3B8838] py-2 px-4 font-medium shadow-md hover:shadow-lg focus:outline-none focus:ring-2 focus:ring-[#4BAF47] focus:ring-opacity-50"
-          >
-            Adoptar este árbol
-          </button>
         </div>
+
+        <button
+          onClick={() => navigate(`/adopta-un-arbol/${datos.id}`)}
+          className="w-full mt-4 rounded-lg bg-[#4BAF47] text-white transition-all duration-300 hover:bg-[#3B8833] py-2 px-4 font-medium shadow-md hover:shadow-lg focus:outline-none focus:ring-2 focus:ring-[#4BAF47] focus:ring-opacity-50"
+        >
+          Adoptar este árbol
+        </button>
       </div>
     </div>
   );

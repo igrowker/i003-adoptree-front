@@ -13,15 +13,13 @@ import { useSelector, useDispatch } from 'react-redux';
 import { Link, useNavigate } from 'react-router-dom';
 import { logout } from '../../store/features/userSlice';
 import { RootState } from '../../types/types';
-import { io } from "socket.io-client";
+import { io } from 'socket.io-client';
 import './Navbar.css';
 
 export interface AnchorProps
   extends React.AnchorHTMLAttributes<HTMLAnchorElement> {
   style?: React.CSSProperties & { '--i'?: number };
 }
-
-const socket = io("http://localhost:4000", { withCredentials: true });
 
 const Navbar: React.FC = () => {
   const [scrollPosition, setScrollPosition] = useState(0);
@@ -72,7 +70,6 @@ const Navbar: React.FC = () => {
     };
   }, []);
 
-
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
       if (
@@ -85,33 +82,32 @@ const Navbar: React.FC = () => {
       }
     };
 
-    document.addEventListener("mousedown", handleClickOutside);
+    document.addEventListener('mousedown', handleClickOutside);
 
     return () => {
-      document.removeEventListener("mousedown", handleClickOutside);
+      document.removeEventListener('mousedown', handleClickOutside);
     };
   }, []);
 
   useEffect(() => {
-    socket.on("new_adoption", (adoption) => {
-      console.log("Nueva adopción:", adoption);
-      if (adoption) {
-        // Asegúrate de que post no sea null
-        // setNotifications((prevNotifications) => [
-        //   ...prevNotifications,
-        //   { id: post.id, message: `Nuevo post: ${post.title}` },
-        // ]);
-      }
+    const socket = io('http://localhost:3000', { 
+      withCredentials: true,
+      query: { userId: user?.id }  // Enviar el userId al conectar el socket
+    });
+
+    socket.on('new_adoption', (adoption) => {
+      console.log('Nueva adopción:', adoption);
+      // Aquí puedes mostrar la notificación al usuario
     });
 
     return () => {
-      socket.off("new_post");
+      socket.disconnect();
     };
   }, []);
 
   return (
     <header
-      className={`header py-4 xl:px-[200px] md:px-[60px] mobile:px-[30px] bg-white ${
+      className={`header py-4 xl:px-[200px] 2xl:px-[165px] md:px-[60px] mobile:px-[30px] bg-white ${
         scrollPosition > 0 ? 'scrolled' : ''
       }`}
     >
@@ -192,13 +188,16 @@ const Navbar: React.FC = () => {
                 >
                   <PersonIcon className="text-[#4BAF47] text[20px]" />
                 </div>
-                <div onClick={handleShowNotifications} className="p-[6px] bg-white border border-gray-300 rounded-full ml-2 cursor-pointer">
+                <div
+                  onClick={handleShowNotifications}
+                  className="p-[6px] bg-white border border-gray-300 rounded-full ml-2 cursor-pointer"
+                >
                   <NotificationsIcon className="text-[#4BAF47] text[20px]" />
                 </div>
 
                 {showModal && (
                   <div
-                    className="absolute md:top-[3.8rem] desktop:top-[4.1rem] bg-white gap-4 md:right-[96px] desktop:right-[230px] p-5 rounded shadow-md"
+                    className="absolute md:top-[3.8rem] desktop:top-[4.1rem] bg-white gap-4 md:right-[96px] desktop:right-[185px] p-5 rounded shadow-md"
                     ref={modalRef}
                   >
                     <div>
@@ -240,13 +239,16 @@ const Navbar: React.FC = () => {
                     </div>
                   </div>
                 )}
-                 {notificationsModal && (
-              <div
-                className="absolute md:top-[3.8rem] desktop:top-[4.1rem] w-[14rem] bg-white gap-4 md:right-[50px] desktop:right-[185px] px-1 min-h-[7.8rem] rounded shadow-md"
-                ref={modalRef}>
-                <div className="flex flex-col items-center">
-                  <h5 className="text-base font-medium text-[#05264E] mt-5">Your Notifications</h5>
-                  {/* {notifications && (
+                {notificationsModal && (
+                  <div
+                    className="absolute md:top-[3.8rem] desktop:top-[4.1rem] w-[14rem] bg-white gap-4 md:right-[50px] desktop:right-[143px] px-1 min-h-[7.8rem] rounded shadow-md"
+                    ref={modalRef}
+                  >
+                    <div className="flex flex-col items-center">
+                      <h5 className="text-base font-medium text-[#05264E] mt-5">
+                        Your Notifications
+                      </h5>
+                      {/* {notifications && (
                     <div className="w-full">
                       <ul>
                         {notifications.map((notification) => (
@@ -255,9 +257,9 @@ const Navbar: React.FC = () => {
                       </ul>
                     </div>
                   )} */}
-                </div>
-              </div>
-            )}
+                    </div>
+                  </div>
+                )}
               </div>
             )}
           </div>

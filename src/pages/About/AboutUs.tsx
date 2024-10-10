@@ -38,10 +38,13 @@ const AboutUs: React.FC = () => {
 
         <div className="about-paragraphs-container grid grid-cols-1 md:grid-cols-2 gap-8 mx-auto px-4 max-w-screen-lg">
           {[
-            "Adoptree ofrece una conexión directa con los productores de cítricos en Argentina. Al adoptar un árbol, recibís una parte de la cosecha, apoyando la sostenibilidad agrícola.",
-            "Nuestra plataforma facilita a los agricultores ingresos constantes, permitiendo mantener sus huertos de manera sostenible y mejorar las prácticas agrícolas responsables."
+            'Adoptree ofrece una conexión directa con los productores de cítricos en Argentina. Al adoptar un árbol, recibís una parte de la cosecha, apoyando la sostenibilidad agrícola.',
+            'Nuestra plataforma facilita a los agricultores ingresos constantes, permitiendo mantener sus huertos de manera sostenible y mejorar las prácticas agrícolas responsables.',
           ].map((text, index) => (
-            <div key={index} className="about-paragraph bg-white border border-gray-200 p-6 rounded-lg shadow-sm hover:shadow-md transition-shadow">
+            <div
+              key={index}
+              className="about-paragraph bg-white border border-gray-200 p-6 rounded-lg shadow-sm hover:shadow-md transition-shadow"
+            >
               <p className="text-base leading-relaxed text-gray-600">{text}</p>
             </div>
           ))}
@@ -85,11 +88,26 @@ const AboutUs: React.FC = () => {
           </h3>
           <div className="about-values">
             {[
-              { icon: sostenibilidadIcon, title: "Sostenibilidad", text: "Cuidamos el medio ambiente y buscamos siempre reducir nuestra huella de carbono en cada proyecto." },
-              { icon: compromisoIcon, title: "Compromiso", text: "Estamos comprometidos con nuestros clientes y con la sociedad para lograr un impacto positivo." },
-              { icon: innovacionIcon, title: "Innovación", text: "Nos esforzamos en buscar nuevas soluciones para mejorar la sostenibilidad y la eficiencia de nuestros proyectos." }
+              {
+                icon: sostenibilidadIcon,
+                title: 'Sostenibilidad',
+                text: 'Cuidamos el medio ambiente y buscamos siempre reducir nuestra huella de carbono en cada proyecto.',
+              },
+              {
+                icon: compromisoIcon,
+                title: 'Compromiso',
+                text: 'Estamos comprometidos con nuestros clientes y con la sociedad para lograr un impacto positivo.',
+              },
+              {
+                icon: innovacionIcon,
+                title: 'Innovación',
+                text: 'Nos esforzamos en buscar nuevas soluciones para mejorar la sostenibilidad y la eficiencia de nuestros proyectos.',
+              },
             ].map((value, index) => (
-              <div key={index} className="value-card flex flex-col justify-center items-center">
+              <div
+                key={index}
+                className="value-card flex flex-col justify-center items-center"
+              >
                 <img
                   src={value.icon}
                   alt={value.title}
@@ -98,9 +116,7 @@ const AboutUs: React.FC = () => {
                 <h3 className="text-xl font-semibold mb-2 text-gray-800">
                   {value.title}
                 </h3>
-                <p className="value-text text-sm text-gray-600">
-                  {value.text}
-                </p>
+                <p className="value-text text-sm text-gray-600">{value.text}</p>
               </div>
             ))}
           </div>

@@ -1,54 +1,38 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 import { ArrowLeft, Heart, MapPin } from 'lucide-react';
+import axios from 'axios';
+import { Link } from 'react-router-dom';
 
 const AdoptarEsteArbol: React.FC = () => {
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  const [arbol, setArbol] = useState<any>();
+
   const { id } = useParams<{ id: string }>();
   const navigate = useNavigate();
-  
-  const datos = [
-    {
-      id: 1,
-      name: 'árbol de Naranjo',
-      type: 'Naranja',
-      location: 'Tucumán, Argentina',
-      imageUrl: 'https://i.pinimg.com/564x/3c/bf/ec/3cbfec1259635898efae5b57ea3ddea3.jpg',
-      productor: 'Anita Minisci',
-      price: 100,
-    },
-    {
-      id: 2,
-      name: 'árbol de Mandarino',
-      type: 'Mandarino',
-      location: 'Mendoza, Argentina',
-      imageUrl: 'https://i.pinimg.com/564x/64/9f/a5/649fa54b28b8539c1ae306e98a5673c0.jpg',
-      productor: 'Angelo Gibilisco',
-      price: 600,
-    },
-    {
-      id: 3,
-      name: 'árbol de Limon',
-      type: 'Limon',
-      location: 'Corrientes, Argentina',
-      imageUrl: 'https://i.pinimg.com/564x/35/96/8f/35968f335d21465253afe8c96b9af31e.jpg',
-      productor: 'Antonio Bonillo',
-      price: 150,
-    },
-    // ... (otros árboles)
-  ];
 
-  const obtenerArbolPorId = (id: string) => {
-    return datos.find((arbol) => arbol.id === Number(id));
-  };
+  console.log(arbol);
 
-  const arbol = id ? obtenerArbolPorId(id) : undefined;
+  useEffect(() => {
+    const fetchArbol = async () => {
+      const response = await axios.get(`http://localhost:3000/arboles/${id}`);
+
+      setArbol(response.data);
+    };
+
+    fetchArbol();
+  }, []);
 
   if (!arbol) {
     return (
       <div className="flex justify-center items-center h-screen">
         <div className="text-center p-8 bg-white shadow-lg rounded-lg">
-          <h2 className="text-2xl font-bold text-gray-800 mb-4">Árbol no encontrado</h2>
-          <p className="text-gray-600 mb-6">Lo sentimos, no pudimos encontrar el árbol que estás buscando.</p>
+          <h2 className="text-2xl font-bold text-gray-800 mb-4">
+            Árbol no encontrado
+          </h2>
+          <p className="text-gray-600 mb-6">
+            Lo sentimos, no pudimos encontrar el árbol que estás buscando.
+          </p>
           <button
             onClick={() => navigate('/adopta-un-arbol')}
             className="text-white bg-gradient-to-r from-green-500 to-green-600 rounded-[10px] shadow-lg hover:from-green-600 hover:to-green-700 transition-all duration-300 transform"
@@ -67,8 +51,8 @@ const AdoptarEsteArbol: React.FC = () => {
           <div className="md:flex-shrink-0 md:w-1/2">
             <img
               className="h-64 w-full object-cover md:h-full"
-              src={arbol.imageUrl}
-              alt={arbol.name}
+              src={arbol.images[0]}
+              alt={arbol.type}
             />
           </div>
           <div className="p-8 md:w-1/2">
@@ -76,28 +60,33 @@ const AdoptarEsteArbol: React.FC = () => {
               {arbol.type}
             </div>
             <h2 className="text-2xl font-extrabold text-gray-900 sm:text-3xl">
-              Adopta un {arbol.name}
+              Adopta un {arbol.type}
             </h2>
-            <p className="mt-2 text-gray-500">Gracias a: {arbol.productor}</p>
+            <p className="mt-2 text-gray-500">
+              Gracias a: {arbol.finca.productor}
+            </p>
             <div className="mt-3 flex items-center text-sm text-gray-500">
               <MapPin className="flex-shrink-0 mr-1.5 h-5 w-5 text-gray-400" />
-              <p>{arbol.location}</p>
+              <p>{arbol.finca.ubication}</p>
             </div>
             <p className="mt-4 text-3xl font-bold text-[#4BAF47]">
-              {arbol.price.toLocaleString("es-AR", {style: "currency", currency: "ARS"})}/año
+              {arbol.price.toLocaleString('es-AR', {
+                style: 'currency',
+                currency: 'ARS',
+              })}
+              /año
             </p>
             <div className="mt-6 space-y-4">
               <button
-                onClick={() => navigate('/checkout')}
+                onClick={() => navigate(`/checkout/${arbol.id}`)}
                 className="w-full flex items-center justify-center text-white bg-gradient-to-r from-green-500 to-green-600 rounded-[10px] shadow-md hover:from-green-600 hover:to-green-700 transition-all duration-300 transform"
               >
                 <Heart className="mr-2 h-5 w-5" /> Adoptar
               </button>
               <button
-                onClick={() => navigate('/adopta-un-arbol')}
                 className="w-full flex items-center justify-center px-4 py-2 border border-gray-300 rounded-[10px] shadow-sm text-base font-medium text-gray-700 bg-white hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2"
               >
-                <ArrowLeft className="mr-2 h-5 w-5" /> Volver
+                <Link className='flex items-center justify-center' to={`/checkout/${arbol.id}`}><ArrowLeft className="mr-2 h-5 w-5" /> Volver</Link>
               </button>
             </div>
           </div>

@@ -31,6 +31,8 @@ export interface FormDataRegister {
 export interface RootState {
   user: {
     user: User;
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    shippingAddresses: any[]
   };
 }
 
@@ -62,14 +64,13 @@ export type GoogleAuthError = {
   [key: string]: string | number | undefined;
 };
 
-
 export interface UserFinca {
   name: string;
 }
 
 export interface Arbol {
   active: boolean;
-  statusTree: "ARBOL_JOVEN" | string; // Puedes agregar más valores si los conoces
+  statusTree: 'ARBOL_JOVEN' | string; // Puedes agregar más valores si los conoces
   type: string;
   user: UserFinca;
 }
