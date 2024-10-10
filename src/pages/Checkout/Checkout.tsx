@@ -33,9 +33,11 @@ const Checkout = () => {
   const shippingAddress = useSelector((state: RootState) => state.user.shippingAddresses);
   const dispatch = useDispatch()
 
+  const BACK_URL = import.meta.env.VITE_BACK_URL
+
   useEffect(() => {
     const fetchArbol = async () => {
-      const response = await axios.get(`http://localhost:3000/arboles/${id}`);
+      const response = await axios.get(`${BACK_URL}/arboles/${id}`);
       setArbol(response.data);
 
     };
@@ -56,7 +58,7 @@ const Checkout = () => {
         currency_id: "ARS"
       };
   
-      const response = await axios.post(`http://localhost:3000/payments/create-order`, data);
+      const response = await axios.post(`${BACK_URL}/payments/create-order`, data);
       setUrl(response.data.url)
     };
   
@@ -87,7 +89,7 @@ const Checkout = () => {
     }
 
     try {
-      const response = await axios.post('http://localhost:3000/adoptions', adoptionData);
+      const response = await axios.post(`${BACK_URL}/adoptions`, adoptionData);
       console.log('Adopción creada:', response.data);
 
       window.location.href = url

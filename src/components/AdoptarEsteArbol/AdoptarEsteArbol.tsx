@@ -10,11 +10,11 @@ const AdoptarEsteArbol: React.FC = () => {
   const { id } = useParams<{ id: string }>();
   const navigate = useNavigate();
 
-  console.log(arbol);
+  const BACK_URL = import.meta.env.VITE_BACK_URL
 
   useEffect(() => {
     const fetchArbol = async () => {
-      const response = await axios.get(`http://localhost:3000/arboles/${id}`);
+      const response = await axios.get(`${BACK_URL}/arboles/${id}`);
 
       setArbol(response.data);
     };

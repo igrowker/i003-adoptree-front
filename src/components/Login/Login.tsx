@@ -20,6 +20,8 @@ const Login: React.FC = () => {
     password: '',
   });
 
+  const BACK_URL = import.meta.env.VITE_BACK_URL
+
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
@@ -62,7 +64,7 @@ const Login: React.FC = () => {
         };
 
         const response = await fetch(
-          'http://localhost:3000/auth/login',
+          `${BACK_URL}/auth/login`,
           opciones
         );
 
@@ -101,7 +103,7 @@ const Login: React.FC = () => {
     console.log(credentialResponse);
 
     try {
-      const res = await fetch('http://localhost:3000/auth/google', {
+      const res = await fetch(`${BACK_URL}/auth/google`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

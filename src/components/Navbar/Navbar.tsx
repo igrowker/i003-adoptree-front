@@ -35,6 +35,8 @@ const Navbar: React.FC = () => {
 
   const navigate = useNavigate();
 
+  const BACK_URL = import.meta.env.VITE_BACK_URL
+
   const handleShowNotifications = (event: React.MouseEvent<HTMLElement>) => {
     currentClickRef.current = event.target;
     setNotificationsModal((prevShowNotification) => !prevShowNotification);
@@ -90,7 +92,7 @@ const Navbar: React.FC = () => {
   }, []);
 
   useEffect(() => {
-    const socket = io('http://localhost:3000', { 
+    const socket = io(`${BACK_URL}`, { 
       withCredentials: true,
       query: { userId: user?.id }  // Enviar el userId al conectar el socket
     });

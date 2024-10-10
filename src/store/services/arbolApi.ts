@@ -11,10 +11,12 @@ export interface Arbol {
   price: number;
 }
 
+const BACK_URL = import.meta.env.VITE_BACK_URL
+
 // Define la API para interactuar con el backend
 export const arbolApi = createApi({
   reducerPath: 'arbolApi',
-  baseQuery: fetchBaseQuery({ baseUrl: 'http://localhost:3000' }), // Cambia la URL por la de tu backend
+  baseQuery: fetchBaseQuery({ baseUrl: `${BACK_URL}` }), // Cambia la URL por la de tu backend
   endpoints: (builder) => ({
     getArboles: builder.query<Arbol[], void>({
       query: () => '/arboles',
