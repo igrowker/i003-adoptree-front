@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import backgroundImage from '../../assets/citricos.jpg';
 import logo from '../../assets/Header.png';
 import { Link, useNavigate } from 'react-router-dom';
@@ -19,9 +19,58 @@ const Login: React.FC = () => {
     email: '',
     password: '',
   });
+  const [attempts, setAttempts] = useState<number>(0);
+  const [isBlocked, setIsBlocked] = useState<boolean>(false);
+  const [timer, setTimer] = useState<number>(0);
 
   const dispatch = useDispatch();
   const navigate = useNavigate();
+
+  const MAX_ATTEMPTS = 3; // Máximo de intentos permitidos
+  const BLOCK_TIME = 30; // Tiempo de bloqueo en segundos
+
+  useEffect(() => {
+    // Cargar el estado inicial desde localStorage
+    const storedAttempts = localStorage.getItem('loginAttempts');
+    const storedBlockState = localStorage.getItem('isBlocked');
+    const storedTimer = localStorage.getItem('timer');
+
+    if (storedAttempts) {
+      setAttempts(parseInt(storedAttempts));
+    }
+    if (storedBlockState) {
+      setIsBlocked(JSON.parse(storedBlockState));
+    }
+    if (storedTimer) {
+      setTimer(parseInt(storedTimer));
+    }
+  }, []);
+
+  useEffect(() => {
+    // Actualizar localStorage cada vez que cambien estos valores
+    localStorage.setItem('loginAttempts', attempts.toString());
+    localStorage.setItem('isBlocked', JSON.stringify(isBlocked));
+    localStorage.setItem('timer', timer.toString());
+
+    if (isBlocked && timer > 0) {
+      const countdown = setInterval(() => {
+        setTimer((prev) => {
+          if (prev <= 1) {
+            clearInterval(countdown);
+            setIsBlocked(false);
+            setAttempts(0); // Reiniciar intentos al desbloquear
+            localStorage.removeItem('loginAttempts'); // Limpiar los intentos
+            localStorage.removeItem('isBlocked'); // Limpiar estado de bloqueo
+            localStorage.removeItem('timer'); // Limpiar temporizador
+            return 0; // Asegurarse de que el temporizador se reinicie
+          }
+          return prev - 1;
+        });
+      }, 1000);
+
+      return () => clearInterval(countdown);
+    }
+  }, [attempts, isBlocked, timer]);
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
@@ -35,7 +84,7 @@ const Login: React.FC = () => {
   };
 
   const validateAndUpdateErrors = (fieldName: string, value: string) => {
-    const fieldError = validateForm(fieldName, value); //* Mensaje de error
+    const fieldError = validateForm(fieldName, value);
 
     setErrors({
       ...errors,
@@ -46,35 +95,41 @@ const Login: React.FC = () => {
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
+    if (isBlocked) {
+      alert('Demasiados intentos fallidos. Inténtalo de nuevo más tarde.');
+      return;
+    }
+
     try {
-      //* Validar que todos los campos obligatorios estén llenos
-      const isFormValid = true;
+      const isFormValid = true; // Puedes agregar tu lógica de validación
 
       if (isFormValid) {
-        //* HAPPY PATH
-
         const opciones = {
           method: 'POST',
           headers: {
-            'Content-Type': 'application/json', // Tipo de contenido que estamos enviando
+            'Content-Type': 'application/json',
           },
-          body: JSON.stringify(formData), // Convertimos los datos a formato JSON
+          body: JSON.stringify(formData),
         };
 
-        const response = await fetch(
-          'http://localhost:3000/auth/login',
-          opciones
-        );
+        const response = await fetch('http://localhost:3000/auth/login', opciones);
 
         if (!response.ok) {
-          // setFailed(true);
-          throw new Error('Error en la petición'); // Si la respuesta no es exitosa, lanzamos un error
+          const currentAttempts = attempts + 1;
+          setAttempts(currentAttempts);
+
+          if (currentAttempts >= MAX_ATTEMPTS) {
+            setIsBlocked(true);
+            setTimer(BLOCK_TIME); // Establecer temporizador a 30 segundos
+            alert('Has alcanzado el número máximo de intentos. Estás bloqueado por 30 segundos.');
+          } else {
+            alert('Credenciales incorrectas. Inténtalo de nuevo.');
+          }
+          return;
         }
 
         const data = await response.json();
         localStorage.setItem('token', data.token);
-
-        // Redirige al usuario o actualiza el estado de la aplicación
         dispatch(login(data.user));
         dispatch(setAuthenticated());
         navigate('/');
@@ -83,10 +138,6 @@ const Login: React.FC = () => {
           email: '',
           password: '',
         });
-
-        setTimeout(() => {
-          // router.push("/");
-        }, 1000);
       } else {
         alert('Todos los campos son obligatorios');
       }
@@ -97,8 +148,6 @@ const Login: React.FC = () => {
 
   const handleSuccess = async (credentialResponse: CredentialResponse) => {
     const { credential } = credentialResponse;
-
-    console.log(credentialResponse);
 
     try {
       const res = await fetch('http://localhost:3000/auth/google', {
@@ -111,26 +160,21 @@ const Login: React.FC = () => {
 
       if (res.ok) {
         const data = await res.json();
-        console.log(data);
         localStorage.setItem('token', data.token);
-        // Redirige al usuario o actualiza el estado de la aplicación
         dispatch(login(data.user));
         dispatch(setAuthenticated());
         navigate('/');
       } else {
         const errorData = await res.json();
         console.error('Error de autenticación:', errorData);
-        // Muestra un mensaje de error al usuario
       }
     } catch (error) {
       console.error('Error durante la autenticación:', error);
-      // Muestra un mensaje de error al usuario
     }
   };
 
   const handleFailure = (error: string) => {
     console.error('Error de inicio de sesión con Google:', error);
-    // Muestra un mensaje de error al usuario
   };
 
   return (
@@ -140,11 +184,7 @@ const Login: React.FC = () => {
       </div>
       <div className="login-form shadow-sm">
         <a href="/">
-          <img
-            src={logo}
-            alt="Adoptree Logo"
-            className="logo w-[115px] mb-[30px]"
-          />
+          <img src={logo} alt="Adoptree Logo" className="logo w-[115px] mb-[30px]" />
         </a>
         <h2 className="mb-[30px] font-[900]">
           Hola, <br /> Bienvenido de nuevo
@@ -167,12 +207,12 @@ const Login: React.FC = () => {
             onChange={handleInputChange}
             required
           />
-
           <button
             type="submit"
             className="text-white bg-gradient-to-r from-green-500 to-green-600 rounded-[10px] shadow-lg hover:from-green-600 hover:to-green-700 transition-all duration-300 transform"
+            disabled={isBlocked}
           >
-            Inicia sesión
+            {isBlocked ? `Bloqueado (${timer})` : 'Inicia sesión'}
           </button>
         </form>
 

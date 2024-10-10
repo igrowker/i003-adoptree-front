@@ -21,7 +21,7 @@ export interface AnchorProps
   style?: React.CSSProperties & { '--i'?: number };
 }
 
-const socket = io("http://localhost:4000", { withCredentials: true });
+const socket = io("http://localhost:3000", { withCredentials: true });
 
 const Navbar: React.FC = () => {
   const [scrollPosition, setScrollPosition] = useState(0);
