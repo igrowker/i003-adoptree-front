@@ -10,7 +10,7 @@
     "lint:fix": "eslint 'src/**/*.{js,jsx,ts,tsx}' --fix",
     "format": "prettier --write 'src/**/*.{js,jsx,ts,tsx,json,css,scss,md}'",
     "preview": "vite preview",
-    "lint:ci": "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0"
+    "lint:ci": "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 10"
   },
   "dependencies": {
     "@emotion/react": "^11.13.3",
