@@ -4,11 +4,13 @@ import { User } from '../../types/types';
 export interface UserState {
   user: User | null;
   authenticated: boolean;
+  shippingAddresses: any[]
 }
 
 const initialState: UserState = {
   user: null,
   authenticated: false,
+  shippingAddresses: []
 };
 
 export const userSlice = createSlice({
@@ -26,11 +28,14 @@ export const userSlice = createSlice({
       state.user = null;
       state.authenticated = false;
     },
+    setShippingAddresses: (state, action) => {
+      state.shippingAddresses.push(action.payload)
+    }
   },
 });
 
 // Exportar las acciones
-export const { login, setAuthenticated, logout } = userSlice.actions;
+export const { login, setAuthenticated, logout, setShippingAddresses } = userSlice.actions;
 
 // Exportar el reducer
 export default userSlice.reducer;

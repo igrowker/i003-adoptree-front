@@ -3,7 +3,7 @@ import { persistStore, persistReducer } from 'redux-persist';
 import storage from 'redux-persist/lib/storage'; // Utiliza localStorage
 import { userSlice, UserState } from './features/userSlice';
 import { TypedUseSelectorHook, useDispatch, useSelector } from 'react-redux';
-import { arbolApi } from '../store/services/arbolApi'; // Importa la API de árboles
+import { arbolApi } from '../store/services/arbolApi'; // Importa el tipo Arbol
 import { fincaApi } from './services/fincaApi'; // Importar fincaApi
 
 // Configuración de persistencia
@@ -24,9 +24,9 @@ export const store = configureStore({
     [arbolApi.reducerPath]: arbolApi.reducer, // Añadimos el reducer de la API de árboles
   },
   middleware: (getDefaultMiddleware) =>
-    getDefaultMiddleware().concat(fincaApi.middleware), // Añadir el middleware de fincaApi
-  middleware: (getDefaultMiddleware) =>
-    getDefaultMiddleware().concat(arbolApi.middleware), // Añadimos el middleware de la API
+    getDefaultMiddleware()
+      .concat(fincaApi.middleware)
+      .concat(arbolApi.middleware), // Combina ambos middlewares
 });
 
 // Configuración del persistor para poder utilizar PersistGate

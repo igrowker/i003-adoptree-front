@@ -1,7 +1,7 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
 
 // Definimos el tipo de los datos de los árboles
-interface Arbol {
+export interface Arbol {
   id: number;
   name: string;
   type: string;

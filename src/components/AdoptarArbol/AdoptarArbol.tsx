@@ -2,7 +2,6 @@ import AgricultureIcon from '@mui/icons-material/Agriculture';
 import GiteIcon from '@mui/icons-material/Gite';
 import { GiFruitTree, GiFruitBowl } from 'react-icons/gi';
 import './AdoptarArbol.css'; // Asegúrate de ajustar este archivo
-import { useNavigate } from 'react-router-dom';
 
 interface FincaData {
   id: number,
@@ -30,8 +29,7 @@ interface AdoptarArbolProps {
   onAdopt: OnAdoptType;
 }
 
-const AdoptarArbol: React.FC<AdoptarArbolProps> = ({ datos }) => {
-  const navigate = useNavigate();
+const AdoptarArbol: React.FC<AdoptarArbolProps> = ({ datos, onAdopt }) => {
   return (
     <div className="flex justify-center gap-6">
       <div className="group bg-white rounded-xl overflow-hidden shadow-lg max-w-sm md:h-[29rem] md:w-[17rem] flex flex-col">
@@ -98,7 +96,7 @@ const AdoptarArbol: React.FC<AdoptarArbolProps> = ({ datos }) => {
           {/* Botón en la parte inferior */}
           <div className="mt-4">
             <button
-              onClick={() => navigate(`/adopta-un-arbol/${datos.id}`)}
+              onClick={() => onAdopt(datos.id)}
               className="w-11/12 rounded-lg bg-[#4BAF47] text-white transition-all duration-300 hover:bg-[#3B88338] py-2 px-4 font-medium shadow-md hover:shadow-lg focus:outline-none focus:ring-2 focus:ring-[#4BAF47] focus:ring-opacity-50"
             >
               Adoptar este árbol
