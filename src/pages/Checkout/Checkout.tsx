@@ -74,8 +74,6 @@ const Checkout = () => {
   const totalPrice = (arbol?.price * quantity);
 
   const handleShippingAddressComplete = (addressData: any) => {
-    // Here you can do additional processing with the address data if needed
-    // console.log('Shipping address saved:', addressData);
     dispatch(setShippingAddresses(addressData))
 
     handleNext();
