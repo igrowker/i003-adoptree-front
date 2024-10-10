@@ -8,17 +8,20 @@ import naranjas from '../../assets/naranjas.jpg';
 import farmerGirl from '../../assets/farmer-girl.svg';
 import ShippingSection from '../../components/ShippingSection/ShippingSection';
 import PaymentMethodSection from '../../components/PaymentMethodSection/PaymentMethodSection';
+import { useLanguage } from '../../LanguageContext/LanguageContext';
 
 const Checkout = () => {
+  const { language } = useLanguage(); // Importamos useLanguage para obtener el idioma actual
+
   const [activeStep, setActiveStep] = useState(0);
   const [quantity, setQuantity] = useState(1);
   const basePrice = 2000;
   const shippingCost = 2000;
 
   const steps = [
-    { label: 'Tu cesta', icon: LocalMallIcon },
-    { label: 'Envío', icon: LocalShippingIcon },
-    { label: 'Método de pago', icon: PaymentIcon },
+    { label: language === 'es' ? 'Tu cesta' : 'Your Cart', icon: LocalMallIcon },
+    { label: language === 'es' ? 'Envío' : 'Shipping', icon: LocalShippingIcon },
+    { label: language === 'es' ? 'Método de pago' : 'Payment Method', icon: PaymentIcon },
   ];
 
   const handleNext = () => {
@@ -37,22 +40,18 @@ const Checkout = () => {
         return (
           <>
             <div className="flex gap-[32px]">
-              <img
-                className="w-[200px] h-[170px] rounded-[8px]"
-                src={naranjas}
-                alt="Naranjas"
-              />
+              <img className="w-[200px] h-[170px] rounded-[8px]" src={naranjas} alt="Naranjas" />
               <div>
                 <div className="flex justify-between bg-[#f9fafa] p-[20px] gap-[150px] items-center rounded-[4px] text-[#7e8591]">
                   <div>
                     <p className="text-gray-700 font-[500]">
-                      Adopción arbol de naranjas ecológicas
+                      {language === 'es' ? 'Adopción arbol de naranjas ecológicas' : 'Adoption of Organic Orange Tree'}
                     </p>
-                    <p>Nombre del árbol</p>
+                    <p>{language === 'es' ? 'Nombre del árbol' : 'Tree Name'}</p>
                   </div>
                   <DeleteIcon />
                 </div>
-                <p className="mt-4 mb-2">Cantidad reservada</p>
+                <p className="mt-4 mb-2">{language === 'es' ? 'Cantidad reservada' : 'Reserved Quantity'}</p>
                 <div className="flex items-center gap-[20px]">
                   <button
                     className="px-[14px] py-[4px] bg-[#e9ecf3] rounded-[4px] text-[#bfc1c4] font-[600]"
@@ -76,14 +75,13 @@ const Checkout = () => {
                   $ {totalPrice.toFixed(2)}
                 </p>
                 <p className="text-sm text-gray-500">
-                  Coste de envío: $ {shippingCost.toFixed(2)}
+                  {language === 'es' ? `Coste de envío: $ ${shippingCost.toFixed(2)}` : `Shipping Cost: $ ${shippingCost.toFixed(2)}`}
                 </p>
               </div>
             </div>
             <hr className="my-[20px]" />
             <p className="text-gray-500">
-              Las fechas de envío pueden variar en función de variables
-              climatológicas.
+              {language === 'es' ? 'Las fechas de envío pueden variar en función de variables climatológicas.' : 'Shipping dates may vary depending on weather conditions.'}
             </p>
           </>
         );
@@ -92,7 +90,7 @@ const Checkout = () => {
       case 2:
         return <PaymentMethodSection />;
       default:
-        return <p>Paso desconocido</p>;
+        return <p>{language === 'es' ? 'Paso desconocido' : 'Unknown Step'}</p>;
     }
   };
 
@@ -101,9 +99,7 @@ const Checkout = () => {
       <div className="flex gap-[40px] px-[200px] py-[20px] bg-[#f9fafa]">
         {steps.map((step, index) => (
           <React.Fragment key={step.label}>
-            <div
-              className={`flex items-center gap-[8px] ${index === activeStep ? 'text-[#4BAF47]' : 'text-[#b7bec7]'}`}
-            >
+            <div className={`flex items-center gap-[8px] ${index === activeStep ? 'text-[#4BAF47]' : 'text-[#b7bec7]'}`}>
               <step.icon />
               {step.label}
             </div>
@@ -115,15 +111,15 @@ const Checkout = () => {
       </div>
 
       <div className="flex justify-between px-[200px] mt-[50px]">
-        <div className={`${activeStep >= 1 && 'w-[64%]'} `}>
+        <div className={`${activeStep >= 1 && 'w-[64%]'}`}>
           {renderStepContent()}
         </div>
 
         <div className="p-[20px] shadow rounded-[4px]">
-          <h3 className="text-xl font-semibold">Resumen</h3>
+          <h3 className="text-xl font-semibold">{language === 'es' ? 'Resumen' : 'Summary'}</h3>
 
           <div className="mt-[20px] flex items-center gap-[150px]">
-            <span>Precio final</span>
+            <span>{language === 'es' ? 'Precio final' : 'Final Price'}</span>
             <span className="text-xl font-bold text-[#4BAF47]">
               $ {totalPrice.toFixed(2)}
             </span>
@@ -134,12 +130,12 @@ const Checkout = () => {
             onClick={handleNext}
             disabled={activeStep === steps.length - 1}
           >
-            {activeStep === steps.length - 1 ? 'Finalizar' : 'Avanzar'}
+            {activeStep === steps.length - 1 ? (language === 'es' ? 'Finalizar' : 'Finish') : (language === 'es' ? 'Avanzar' : 'Next')}
           </button>
 
           <div className="flex justify-center">
             <a className="text-[#4BAF47] text-xl text-center">
-              Seguir comprando
+              {language === 'es' ? 'Seguir comprando' : 'Continue Shopping'}
             </a>
           </div>
         </div>
@@ -148,11 +144,9 @@ const Checkout = () => {
       <div className="border border-gray-200 p-[30px] mt-[50px] ml-[200px] mr-[570px] rounded-[4px] flex items-center gap-[20px]">
         <img className="w-[60px]" src={farmerGirl} alt="Farmer Girl" />
         <div>
-          <h2 className="text-[18px] font-semibold mb-1">¿Sabías que...?</h2>
+          <h2 className="text-[18px] font-semibold mb-1">{language === 'es' ? '¿Sabías que...?' : 'Did you know...?'}</h2>
           <p>
-            Nuestra comunidad apoya la transición de 3899 hectáreas de Argentina
-            hacia una agricultura más sostenible, ya sea ecológica o
-            regenerativa
+            {language === 'es' ? 'Nuestra comunidad apoya la transición de 3899 hectáreas de Argentina hacia una agricultura más sostenible, ya sea ecológica o regenerativa' : 'Our community supports the transition of 3899 hectares of Argentina towards more sustainable agriculture, whether organic or regenerative.'}
           </p>
         </div>
       </div>

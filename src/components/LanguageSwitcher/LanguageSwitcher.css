@@ -6,7 +6,7 @@
   flex-direction: column; /* Colocar los botones en una columna */
   align-items: center; /* Alinear botones al centro horizontalmente */
   z-index: 999; /* Para asegurar que esté por encima de otros elementos */
-  margin-right: 7rem;
+  margin-right: 5rem;
   font-size: small;
 }
 

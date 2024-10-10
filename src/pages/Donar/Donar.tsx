@@ -2,8 +2,10 @@ import React, { useState } from 'react';
 import backgroundImage from '../../assets/Mandarinas.jpg';
 import { useNavigate } from 'react-router-dom';
 import './Donar.css';
+import { useLanguage } from '../../LanguageContext/LanguageContext';  // Importar contexto de idioma
 
 const Donar: React.FC = () => {
+  const { language } = useLanguage();  // Usar el idioma del contexto
   const [formData, setFormData] = useState({
     nombre: '',
     email: '',
@@ -48,7 +50,6 @@ const Donar: React.FC = () => {
     e.preventDefault();
 
     try {
-      // Aquí se puede hacer la lógica de envío del formulario
       const opciones = {
         method: 'POST',
         headers: {
@@ -63,12 +64,11 @@ const Donar: React.FC = () => {
       );
       if (!response.ok) throw new Error('Error en la petición');
 
-      // Puedes redirigir a otra página o mostrar un mensaje de éxito
       navigate('/');
-      alert('Gracias por tu donación!');
+      alert(language === 'es' ? '¡Gracias por tu donación!' : 'Thank you for your donation!');
     } catch (err) {
       console.error(err);
-      alert('Hubo un error al procesar tu donación.');
+      alert(language === 'es' ? 'Hubo un error al procesar tu donación.' : 'There was an error processing your donation.');
     }
   };
 
@@ -79,14 +79,16 @@ const Donar: React.FC = () => {
       </div>
       <div className="donar-form shadow-lg">
         <h2 className="mb-[30px] text-[1.9rem] font-[900]">
-          Haz tu donación 🌱
+          {language === 'es' ? 'Haz tu donación 🌱' : 'Make your donation 🌱'}
         </h2>
-        <p className="text-[14px]">Tu apoyo es muy valioso para nosotros.</p>
+        <p className="text-[14px]">
+          {language === 'es' ? 'Tu apoyo es muy valioso para nosotros.' : 'Your support is very valuable to us.'}
+        </p>
         <form onSubmit={handleSubmit}>
           <input
             type="text"
             name="nombre"
-            placeholder="Nombre completo"
+            placeholder={language === 'es' ? 'Nombre completo' : 'Full name'}
             value={formData.nombre}
             onChange={handleInputChange}
             required
@@ -99,9 +101,8 @@ const Donar: React.FC = () => {
             onChange={handleInputChange}
             required
           />
-          {/* Montos Predefinidos */}
           <div className="monto-options">
-            <label>Me gustaria donar:</label>
+            <label>{language === 'es' ? 'Me gustaría donar:' : 'I would like to donate:'}</label>
             <div className="monto-buttons">
               <button
                 type="button"
@@ -129,17 +130,16 @@ const Donar: React.FC = () => {
                 className={isCustom ? 'selected' : ''}
                 onClick={() => setIsCustom(true)}
               >
-                Otro
+                {language === 'es' ? 'Otro' : 'Other'}
               </button>
             </div>
           </div>
 
-          {/* Campo para monto personalizado */}
           {isCustom && (
             <input
               type="number"
               name="monto"
-              placeholder="Ingresa un monto"
+              placeholder={language === 'es' ? 'Ingresa un monto' : 'Enter an amount'}
               value={formData.monto}
               onChange={handleCustomMontoChange}
               required
@@ -148,7 +148,7 @@ const Donar: React.FC = () => {
 
           <textarea
             name="mensaje"
-            placeholder="Mensaje opcional"
+            placeholder={language === 'es' ? 'Mensaje opcional' : 'Optional message'}
             value={formData.mensaje}
             onChange={handleInputChange}
           />
@@ -156,7 +156,7 @@ const Donar: React.FC = () => {
             type="submit"
             className="text-white bg-gradient-to-r from-green-500 to-green-600 rounded-[10px] shadow-lg hover:from-green-600 hover:to-green-700 transition-all duration-300 transform"
           >
-            Donar
+            {language === 'es' ? 'Donar' : 'Donate'}
           </button>
         </form>
       </div>
