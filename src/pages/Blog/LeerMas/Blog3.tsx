@@ -31,7 +31,7 @@ const Post3: React.FC = () => {
   const { title, text } = content[language];
 
   return (
-    <div className="px-[200px] py-[150px]">
+    <div className="lg:px-[200px] 2xl:px-[165px] py-[150px]">
       <div className="max-w-4xl mx-auto">
         <div className="flex justify-center space-x-4 mb-8">
           <button

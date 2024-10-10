@@ -18,7 +18,7 @@ const Cards: React.FC = () => {
   ];
 
   return (
-    <section className="w-full my-[70px] px-[200px]">
+    <section className="w-full my-[70px] lg:px-[200px] 2xl:px-[165px]">
       <div className="text-center">
         <span className="text-[#FF9900] font-facuFont text-[28px]">
           Compra directa

@@ -9,7 +9,7 @@ import './Agriculture.css';
 
 const Agriculture: React.FC = () => {
   return (
-    <section className="flex px-[200px] mt-[220px] mb-[6em] max-lg:flex-col max-lg:items-center 4xl:justify-center">
+    <section className="flex lg:px-[200px] 2xl:px-[165px] mt-[220px] mb-[6em] max-lg:flex-col max-lg:items-center 4xl:justify-center">
       <section className="w-[50%] 4xl:w-[30%] mr-4 flex flex-col justify-center items-center">
         <img className="w-[500px]" src={imgNaranjas} />
       </section>

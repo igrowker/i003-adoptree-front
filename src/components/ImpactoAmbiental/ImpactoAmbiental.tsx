@@ -11,7 +11,7 @@ const sectionContent = 'text-lg text-gray-600 max-w-3xl text-center mb-10';
 // Componente principal
 const ImpactoAmbiental: React.FC = () => {
   return (
-    <div className="px-4 py-20 from-green-50 to-white sm:px-10 lg:px-20 xl:px-[200px]">
+    <div className="px-4 py-20 from-green-50 to-white sm:px-10 lg:px-[200px] 2xl:px-[165px]">
       <Section
         title="Regenerar la tierra que nos alimenta"
         content="Adoptree es una plataforma que busca conectar a personas con la naturaleza, permitiendo adoptar árboles y reforestar áreas deforestadas."
@@ -126,11 +126,7 @@ const Section: React.FC<{
       animate={{ opacity: 1, scale: 1 }}
       transition={{ duration: 0.5, delay: 0.2 }}
     >
-      <img
-        className="h-auto rounded-lg"
-        src={imageSrc}
-        alt={imageAlt}
-      />
+      <img className="h-auto rounded-lg" src={imageSrc} alt={imageAlt} />
     </motion.div>
   </section>
 );

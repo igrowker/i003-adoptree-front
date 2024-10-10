@@ -6,7 +6,7 @@ const Agroadopcion: React.FC = () => {
   return (
     <section
       id="como-adoptar"
-      className="bg-[#f8f7f0] py-20 px-[200px] my-[70px] flex justify-center"
+      className="bg-[#f8f7f0] py-20 lg:px-[200px] 2xl:px-[165px] my-[70px] flex justify-center"
     >
       <div className="container flex flex-col items-center text-center">
         <p className="text-orange-500 mb-2 fuentePersonalizada text-[28px] mt-[15px]">

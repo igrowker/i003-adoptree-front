@@ -34,7 +34,7 @@ const arboles = [
 
 const Arboles: React.FC = () => {
   return (
-    <section className="py-14 bg-white px-[200px]">
+    <section className="py-14 bg-white lg:px-[200px] 2xl:px-[165px]">
       <div className="mx-auto">
         {/* HEADER o título */}
         <div className="text-center mb-8">
