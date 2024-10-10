@@ -4,6 +4,7 @@ import { User } from '../../types/types';
 export interface UserState {
   user: User | null;
   authenticated: boolean;
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   shippingAddresses: any[]
 }
 

@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import React from 'react';
 import AdoptarArbol from '../../components/AdoptarArbol/AdoptarArbol';
 import { InputAdornment, TextField } from '@mui/material';

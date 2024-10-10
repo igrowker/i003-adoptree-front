@@ -31,6 +31,7 @@ export interface FormDataRegister {
 export interface RootState {
   user: {
     user: User;
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     shippingAddresses: any[]
   };
 }

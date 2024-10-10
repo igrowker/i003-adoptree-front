@@ -5,6 +5,7 @@ import axios from 'axios';
 import { Link } from 'react-router-dom';
 
 const AdoptarEsteArbol: React.FC = () => {
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const [arbol, setArbol] = useState<any>();
 
   const { id } = useParams<{ id: string }>();
