@@ -11,7 +11,7 @@ const Donaciones: React.FC = () => {
   };
 
   return (
-    <section className="bg-[#f8f7f0] py-[75px]">
+    <section className="bg-[#f8f7f0] px-[200px] py-[75px]">
       <div className="container mx-auto px-8 max-w-5xl bg-[#f8f7f0]">
         <div className="text-center mb-12">
           <span className="text-orange-500 fuentePersonalizada fuente">

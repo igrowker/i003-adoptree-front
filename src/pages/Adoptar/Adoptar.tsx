@@ -3,8 +3,8 @@ import React from 'react';
 import AdoptarArbol from '../../components/AdoptarArbol/AdoptarArbol';
 import { InputAdornment, TextField } from '@mui/material';
 import SearchIcon from '@mui/icons-material/Search';
-import './Adoptar.css';
 import { useGetArbolesQuery } from '../../store/services/arbolApi';
+import './Adoptar.css';
 
 const Adoptar: React.FC = () => {
   const { data: arboles, error, isLoading } = useGetArbolesQuery();
@@ -60,7 +60,8 @@ const Adoptar: React.FC = () => {
         }}
       />
 
-      <div className="flex flex-wrap justify-center md:justify-start gap-6 mt-10">
+<div className="grid gap-6 grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-4 mt-10 max-w-screen-lg">
+
         {arboles?.map((arbol: any) => (
           <AdoptarArbol key={arbol.id} datos={arbol} />
         ))}

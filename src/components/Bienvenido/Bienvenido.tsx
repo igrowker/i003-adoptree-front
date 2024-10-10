@@ -29,7 +29,7 @@ const Bienvenido: React.FC = () => {
       <div className="relative z-10 text-center text-white">
         <p className="lg:text-[14px] 2xl:text-lg mb-5 flex">BIENVENIDO A ADOPTREE</p>
         <img
-          className="lg:w-[330px] 2xl:w-[440px] 4xl:w-[700px]"
+          className="lg:w-[370px] 2xl:w-[440px] 4xl:w-[700px]"
           src={tituloPrincipal}
           alt="titulo"
         />
@@ -47,7 +47,7 @@ const Bienvenido: React.FC = () => {
                 .getElementById('como-adoptar')
                 ?.scrollIntoView({ behavior: 'smooth' })
             }
-            className="w-[220px] text-[16px] text-white bg-gradient-to-r from-green-500 to-green-600 rounded-[10px] shadow-lg hover:from-green-600 hover:to-green-700 transition-all duration-300 transform"
+            className="w-[220px] lg:text-[.9rem] 2xl:text-base text-white bg-gradient-to-r from-green-500 to-green-600 rounded-[10px] shadow-lg hover:from-green-600 hover:to-green-700 transition-all duration-300 transform"
           >
             Descubre cómo
           </button>
@@ -57,7 +57,7 @@ const Bienvenido: React.FC = () => {
       {/*SECCIÓN DE CARDS*/}
       <div className="absolute lg:bottom-[-105px] 2xl:bottom-[-110px] left-0 right-0 hidden md:flex justify-center z-20">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6 px-4 md:px-0">
-          <div className="bg-white shadow-lg rounded-lg p-6 text-center w-[240px] 4xl:w-[300px]">
+          <div className="bg-white shadow-lg rounded-lg p-6 text-center lg:w-[230px] 2xl:w-[250px] 4xl:w-[300px]">
             <p className="text-orange-400 font-medium tipografiaCards lg:text-[20px] 2xl:text-[24px] 4xl:text-[35px]">
               Adopta
             </p>
@@ -67,11 +67,11 @@ const Bienvenido: React.FC = () => {
             <img
               src={adoptionImage}
               alt="Naranjos en adopción"
-              className="lg:h-[4rem] 2xl:h-[5rem] lg:w-[4rem] 2xl:w-[5rem] mx-auto rounded-full mb-4"
+              className="lg:h-[4rem] lg:w-[4rem] 2xl:h-[6rem]  2xl:w-[6rem] mx-auto rounded-full mb-4"
             />
           </div>
 
-          <div className="bg-white shadow-lg rounded-lg p-6 text-center w-[240px] 4xl:w-[300px]">
+          <div className="bg-white shadow-lg rounded-lg p-6 text-center lg:w-[230px] 2xl:w-[250px] 4xl:w-[300px]">
             <p className="text-orange-400 font-medium tipografiaCards lg:text-[20px] 2xl:text-[24px] 4xl:text-[35px]">
               Compra
             </p>
@@ -81,11 +81,11 @@ const Bienvenido: React.FC = () => {
             <img
               src={compraImage}
               alt="Naranjos en adopción"
-              className="h-[5rem] w-[5rem] mx-auto rounded-full mb-4"
+              className="lg:h-[4rem] lg:w-[4rem] 2xl:h-[6rem]  2xl:w-[6rem] mx-auto rounded-full mb-4"
             />
           </div>
 
-          <div className="bg-white shadow-lg rounded-lg p-6 text-center lg:w-[230px] 2xl:w-[240px] 4xl:w-[300px]">
+          <div className="bg-white shadow-lg rounded-lg p-6 text-center lg:w-[230px] 2xl:w-[250px] 4xl:w-[300px]">
             <p className="text-orange-400 font-medium tipografiaCards lg:text-[20px] 2xl:text-[24px] 4xl:text-[35px]">
               Disfruta
             </p>
@@ -95,7 +95,7 @@ const Bienvenido: React.FC = () => {
             <img
               src={disfrutaImage}
               alt="Naranjos en adopción"
-              className="h-[5rem] w-[5rem] mx-auto rounded-full mb-4"
+              className="lg:h-[4rem] lg:w-[4rem] 2xl:h-[6rem]  2xl:w-[6rem] mx-auto rounded-full mb-4"
             />
           </div>
         </div>

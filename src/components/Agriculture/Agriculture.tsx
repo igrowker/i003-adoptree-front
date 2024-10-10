@@ -11,19 +11,19 @@ const Agriculture: React.FC = () => {
   return (
     <section className="flex lg:px-[200px] 2xl:px-[165px] mt-[220px] mb-[6em] max-lg:flex-col max-lg:items-center 4xl:justify-center">
       <section className="w-[50%] 4xl:w-[30%] mr-4 flex flex-col justify-center items-center">
-        <img className="w-[500px]" src={imgNaranjas} />
+        <img className="lg:w-[400px] 2xl:w-[500px]" src={imgNaranjas} />
       </section>
       <section className="w-[50%] 4xl:w-[30%] max-lg:w-[100%] max-lg:ml-16 max-lg:mt-16">
         <span className="text-[#FF9900] text-[20px] Typography">
           Crowdfarming
         </span>
-        <h2 className="text-[#1F1E17] text-5xl font-[800] w-[60%] mb-8 max-lg:w-[100%]">
+        <h2 className="text-[#1F1E17] lg:text-[2.6rem] leading-none 2xl:text-5xl font-[800] w-[70%] lg:mb-[1rem] 2xl:mb-8 max-lg:w-[100%]">
           La agricultura del siglo XXI
         </h2>
-        <h3 className="text-[#4BAF47] text-xl font-bold mb-[1.2rem]">
+        <h3 className="text-[#4BAF47] lg:text-[1.16rem] 2xl:text-xl font-bold lg:mb-[1rem] 2xl:mb-[1.2rem]">
           Ecológica y sostenible
         </h3>
-        <p className="text-[#878680] w-[75%] mb-[1.2rem] max-lg:w-[90%] max-lg:mb-8">
+        <p className="text-[#878680] lg:text-[.9rem] 2xl:text-base lg:w-[91%] lg:mb-[1rem] 2xl:mb-[1.2rem] max-lg:w-[90%] max-lg:mb-8">
           Las adopciones de árboles nos permiten cultivar nuestros campos de
           forma ecológica y regenerativa. Decimos "regenerative" porque buscamos
           que nuestras prácticas agrícolas no solo mantengan, sino que mejoren
@@ -32,34 +32,34 @@ const Agriculture: React.FC = () => {
         </p>
         <div className="mb-[1.2rem] flex items-center max-lg:mb-8 gap-[15px]">
           <div className="flex items-center w-[30%] gap-[10px]">
-            <img className="w-[64px]" src={FruitIcon} />
-            <p className="text-[#1F1E17] text-base font-bold">
+            <img className="lg:w-[50px] 2xl:w-[64px]" src={FruitIcon} />
+            <p className="text-[#1F1E17] lg:text-[.9rem] 2xl:text-base font-bold">
               Compra fruta fresca
             </p>
           </div>
           <div className="flex items-center w-[30%] gap-[10px]">
-            <img className="w-[64px]" src={PlantIcon} />
-            <p className="text-[#1F1E17] text-base font-bold">
+            <img className="lg:w-[50px] 2xl:w-[64px]" src={PlantIcon} />
+            <p className="text-[#1F1E17] lg:text-[.9rem] 2xl:text-base font-bold">
               No usamos agrotóxicos
             </p>
           </div>
         </div>
-        <div className="mb-[1.2rem] max-lg:mb-8">
+        <div className="mb-[1.2rem] max-lg:mb-8 w-[91%]">
           <div className="flex">
             <img className="w-[16px] mr-4" src={CheckIcon} />
-            <p className="text-[#1F1E17] font-semibold">
+            <p className="text-[#1F1E17] font-semibold lg:text-[.9rem] 2xl:text-base">
               Cultivamos de forma ecológica para mejorar nuestros sistemas.
             </p>
           </div>
           <div className="flex">
             <img className="w-[16px] mr-4" src={CheckIcon} />
-            <p className="text-[#1F1E17] font-semibold">
+            <p className="text-[#1F1E17] font-semibold lg:text-[.9rem] 2xl:text-base">
               Regeneramos el suelo, cuidamos los insectos y optimizamos el use
               de agua y energía.
             </p>
           </div>
         </div>
-        <button className="text-white bg-gradient-to-r from-green-500 to-green-600 rounded-[10px] shadow-lg hover:from-green-600 hover:to-green-700 transition-all duration-300 transform">
+        <button className="text-white lg:text-[.9rem] 2xl:text-base bg-gradient-to-r from-green-500 to-green-600 rounded-[10px] shadow-lg hover:from-green-600 hover:to-green-700 transition-all duration-300 transform">
           <a href="/impacto-ambiental">Descubre más</a>
         </button>
       </section>

@@ -32,7 +32,7 @@ const AdoptarArbol: React.FC<AdoptarArbolProps> = ({ datos }) => {
   const navigate = useNavigate();
 
   return (
-    <div className="w-full sm:w-[calc(50%-8px)] md:w-[calc(33.333%-16px)] lg:w-[calc(25%-18px)] min-w-[250px] max-w-[280px] bg-white rounded-xl overflow-hidden shadow-lg flex flex-col">
+    <div className="bg-white rounded-xl overflow-hidden shadow-lg flex flex-col w-full max-w-[250px]">
       <div className="relative">
         <img
           src={datos.images[0]}

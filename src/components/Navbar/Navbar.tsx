@@ -35,6 +35,8 @@ const Navbar: React.FC = () => {
 
   const navigate = useNavigate();
 
+  const BACK_URL = import.meta.env.VITE_BACK_URL
+
   const handleShowNotifications = (event: React.MouseEvent<HTMLElement>) => {
     currentClickRef.current = event.target;
     setNotificationsModal((prevShowNotification) => !prevShowNotification);
@@ -90,7 +92,7 @@ const Navbar: React.FC = () => {
   }, []);
 
   useEffect(() => {
-    const socket = io('http://localhost:3000', { 
+    const socket = io(`${BACK_URL}`, { 
       withCredentials: true,
       query: { userId: user?.id }  // Enviar el userId al conectar el socket
     });
@@ -177,7 +179,7 @@ const Navbar: React.FC = () => {
               </div>
             )}
             <button className="text-white bg-gradient-to-r from-green-500 to-green-600 rounded-[10px] shadow-lg hover:from-green-600 hover:to-green-700 transition-all duration-300 transform">
-              Adopta ahora
+              <a href="/adopta-un-arbol">Adopta ahora</a>
             </button>
 
             {user && (
@@ -197,7 +199,7 @@ const Navbar: React.FC = () => {
 
                 {showModal && (
                   <div
-                    className="absolute md:top-[3.8rem] desktop:top-[4.1rem] bg-white gap-4 md:right-[96px] desktop:right-[185px] p-5 rounded shadow-md"
+                    className="absolute md:top-[3.8rem] desktop:top-[4.1rem] bg-white gap-4 md:right-[96px] lg:right-[235px] 2xl:right-[185px] p-5 rounded shadow-md"
                     ref={modalRef}
                   >
                     <div>
@@ -241,7 +243,7 @@ const Navbar: React.FC = () => {
                 )}
                 {notificationsModal && (
                   <div
-                    className="absolute md:top-[3.8rem] desktop:top-[4.1rem] w-[14rem] bg-white gap-4 md:right-[50px] desktop:right-[143px] px-1 min-h-[7.8rem] rounded shadow-md"
+                    className="absolute md:top-[3.8rem] desktop:top-[4.1rem] w-[14rem] bg-white gap-4 md:right-[50px] lg:right-[185px] 2xl:right-[143px] px-1 min-h-[7.8rem] rounded shadow-md"
                     ref={modalRef}
                   >
                     <div className="flex flex-col items-center">

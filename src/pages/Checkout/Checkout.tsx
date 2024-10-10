@@ -34,9 +34,11 @@ const Checkout = () => {
   const shippingAddress = useSelector((state: RootState) => state.user.shippingAddresses);
   const dispatch = useDispatch()
 
+  const BACK_URL = import.meta.env.VITE_BACK_URL
+
   useEffect(() => {
     const fetchArbol = async () => {
-      const response = await axios.get(`http://localhost:3000/arboles/${id}`);
+      const response = await axios.get(`${BACK_URL}/arboles/${id}`);
       setArbol(response.data);
 
     };
@@ -57,7 +59,7 @@ const Checkout = () => {
         currency_id: "ARS"
       };
   
-      const response = await axios.post(`http://localhost:3000/payments/create-order`, data);
+      const response = await axios.post(`${BACK_URL}/payments/create-order`, data);
       setUrl(response.data.url)
     };
   
@@ -88,7 +90,7 @@ const Checkout = () => {
     }
 
     try {
-      const response = await axios.post('http://localhost:3000/adoptions', adoptionData);
+      const response = await axios.post(`${BACK_URL}/adoptions`, adoptionData);
       console.log('Adopción creada:', response.data);
 
       window.location.href = url
@@ -110,26 +112,26 @@ const Checkout = () => {
                 alt={arbol.type}
               />
               <div>
-                <div className="flex justify-between bg-[#f9fafa] p-[20px] gap-[150px] items-center rounded-[4px] text-[#7e8591]">
+                <div className="flex justifyf-between bg-[#f9fafa] p-[20px] gap-[150px] items-center rounded-[4px] text-[#7e8591]">
                   <div>
-                    <p className="text-gray-700 font-[500]">
+                    <p className="text-gray-700 font-[500] lg:text-[.9rem] 2xl:text-base w-[156px]">
                       Adopción de {arbol.type}
                     </p>
-                    <p>Nombre del árbol</p>
+                    <p className='lg:text-sm 2xl:text-base'>Nombre del árbol</p>
                   </div>
                   <DeleteIcon />
                 </div>
-                <p className="mt-4 mb-2">Cantidad reservada</p>
+                <p className="mt-4 mb-2 lg:text-[.9rem] 2xl:text-base">Cantidad reservada</p>
                 <div className="flex items-center gap-[20px]">
                   <button
-                    className="px-[14px] py-[4px] bg-[#e9ecf3] rounded-[4px] text-[#bfc1c4] font-[600]"
+                    className="px-[14px] py-[4px] bg-[#e9ecf3] rounded-[10px] text-[#bfc1c4] font-[600]"
                     onClick={() => handleQuantityChange(-1)}
                   >
                     -
                   </button>
-                  <span className="text-[#4BAF47] font-[600]">{quantity}</span>
+                  <span className="lg:text-[.9rem] 2xl:text-base text-[#4BAF47] font-[600]">{quantity}</span>
                   <button
-                    className="px-[14px] py-[4px] bg-[#4BAF47] rounded-[4px] text-white font-[600]"
+                    className="px-[14px] py-[4px] text-white bg-gradient-to-r from-green-500 to-green-600 rounded-[10px] shadow-lg hover:from-green-600 hover:to-green-700 transition-all duration-300 transform"
                     onClick={() => handleQuantityChange(1)}
                   >
                     +
@@ -139,7 +141,7 @@ const Checkout = () => {
             </div>
             <div className="flex justify-end mt-[20px]">
               <div>
-                <p className="flex justify-end mb-2 font-[600]">
+                <p className="lg:text-[.9rem] 2xl:text-base flex justify-end mb-2 font-[600]">
                   $ {totalPrice.toFixed(2)}
                 </p>
                 <p className="text-sm text-gray-500">
@@ -148,7 +150,7 @@ const Checkout = () => {
               </div>
             </div>
             <hr className="my-[20px]" />
-            <p className="text-gray-500">
+            <p className="text-gray-500 lg:text-[.9rem] 2xl:text-base">
               Las fechas de envío pueden variar en función de variables
               climatológicas.
             </p>
@@ -169,7 +171,7 @@ const Checkout = () => {
         {steps.map((step, index) => (
           <React.Fragment key={step.label}>
             <div
-              className={`flex items-center gap-[8px] ${index === activeStep ? 'text-[#4BAF47]' : 'text-[#b7bec7]'}`}
+              className={`flex items-center gap-[8px] lg:text-[15px] 2xl:text-base ${index === activeStep ? 'text-[#4BAF47]' : 'text-[#b7bec7]'}`}
             >
               <step.icon />
               {step.label}
@@ -183,23 +185,23 @@ const Checkout = () => {
 
       {arbol ? (
         <>
-          <div className="flex justify-between lg:px-[200px] 2xl:px-[165px] mt-[50px]">
+          <div className="flex justify-between lg:gap-[50px] 2xl:gap-[150px] lg:px-[200px] 2xl:px-[165px] mt-[50px]">
             <div className={`${activeStep >= 1 && 'w-[64%]'} `}>
               {renderStepContent()}
             </div>
 
             <div className="p-[20px] shadow rounded-[4px]">
-              <h3 className="text-xl font-semibold">Resumen</h3>
+              <h3 className="w-[120px] lg:text-[1.12rem] 2xl:text-xl font-semibold">Resumen</h3>
 
-              <div className="mt-[20px] flex items-center gap-[150px]">
-                <span>Precio final</span>
-                <span className="text-xl font-bold text-[#4BAF47]">
+              <div className="my-[20px] flex items-center lg:gap-[60px] 2xl:gap-[150px]">
+                <span className='w-[120px]'>Precio final</span>
+                <span className="w-[120px] lg:text-[1.12rem] 2xl:text-xl font-bold text-[#4BAF47]">
                   $ {(totalPrice + 2000).toFixed(2)}
                 </span>
               </div>
 
               <button
-                className="rounded-[10px] bg-[#4BAF47] text-white hover:bg-[#3B8838] my-6 w-full"
+                className="text-white bg-gradient-to-r from-green-500 to-green-600 rounded-[10px] shadow-lg hover:from-green-600 hover:to-green-700 transition-all duration-300 transform my-6 w-full"
                 onClick={activeStep === steps.length - 1 ? handleAdoptionComplete : handleNext}
                 // disabled={activeStep === steps.length - 1}
               >
@@ -207,20 +209,20 @@ const Checkout = () => {
               </button>
 
               <div className="flex justify-center">
-                <a className="text-[#4BAF47] text-xl text-center">
+                <a className="text-[#4BAF47] lg:text-[1.12rem] 2xl:text-xl text-center">
                   Seguir comprando
                 </a>
               </div>
             </div>
           </div>
 
-          <div className="border border-gray-200 p-[30px] mt-[50px] ml-[150px] mr-[570px] rounded-[4px] flex items-center gap-[20px]">
+          <div className="border border-gray-200 p-[30px] mt-[50px] lg:ml-[190px] 2xl:ml-[150px] lg:mr-[570px] 2xl:mr-[610px] rounded-[4px] flex items-center gap-[20px]">
             <img className="w-[60px]" src={farmerGirl} alt="Farmer Girl" />
             <div>
-              <h2 className="text-[18px] font-semibold mb-1">
+              <h2 className="lg:text-base 2xl:text-[18px] font-semibold mb-1">
                 ¿Sabías que...?
               </h2>
-              <p>
+              <p className='lg:text-[.9rem] 2xl:text-base'>
                 Nuestra comunidad apoya la transición de 3899 hectáreas de
                 Argentina hacia una agricultura más sostenible, ya sea ecológica
                 o regenerativa
