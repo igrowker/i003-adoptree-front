@@ -30,7 +30,7 @@ const Cards: React.FC = () => {
       <div className="flex justify-center items-center gap-6">
         {cards.map((card, index) => (
           <img
-            className="w-[260px]"
+            className="lg:w-[216px] 2xl:w-[260px]"
             key={index}
             src={card.thumbnail}
             alt={`Card ${index}`}

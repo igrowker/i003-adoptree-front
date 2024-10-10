@@ -19,7 +19,7 @@ const Agroadopcion: React.FC = () => {
         <div className="bg-white rounded px-[60px] py-[40px] max-w-7xl">
           <div className="flex justify-between mb-[35px]">
             <div className="md:col-span-9 mb-9 md:mb-0 w-[500px]">
-              <p className="text-left text-base   leading-[32px] text-gray-700">
+              <p className="text-left lg:text-[.9rem] 2xl:text-[16px] leading-[32px] text-gray-700">
                 Adoptá un cítrico de nuestro huerto de Entre Ríos. Vas a poder
                 verlo crecer a través de fotos en tu zona de usuario y recibir
                 tu cosecha de naranjas en tu casa. <br />
@@ -39,7 +39,7 @@ const Agroadopcion: React.FC = () => {
               <img
                 src={imgLimones}
                 alt="ImgLimones"
-                className="shadow-lg w-[294px]"
+                className="shadow-lg lg:w-[240px] 2xl:w-[294px]"
               />
             </div>
           </div>
@@ -49,11 +49,11 @@ const Agroadopcion: React.FC = () => {
               <img
                 src={imgNaranjero}
                 alt="imgNaranjero"
-                className="shadow-lg w-[294px] h-[454px]"
+                className="shadow-lg lg:w-[240px] 2xl:w-[294px] lg:h-[380px] 2xl:h-[454px]"
               />
             </div>
             <div className="md:col-span-9 mb-9 md:mb-0 text-gray-700 ml-[25px] w-[500px]">
-              <p className="text-left text-gray-700 text-base   leading-[32px]">
+              <p className="text-left text-gray-700 lg:text-[.9rem] 2xl:text-[16px] leading-[32px]">
                 La producción actual de naranjas está reservada para los dueños
                 de los árboles. De esta manera, podemos cultivar naranjas de
                 forma ecológica bajo demanda y enviarlas directamente del árbol
@@ -65,7 +65,7 @@ const Agroadopcion: React.FC = () => {
                 ¿Cómo podés llegar a ser dueño de un árbol?
               </p>
 
-              <ol className="list-decimal px-6 text-base   leading-[32px]">
+              <ol className="list-decimal px-6 lg:text-[.9rem] 2xl:text-[16px] leading-[32px]">
                 <li className="text-left">
                   Decidí cuántas naranjas querés reservar para la primera
                   temporada.
