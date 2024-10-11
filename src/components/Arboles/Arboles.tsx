@@ -1,3 +1,4 @@
+import { useNavigate } from 'react-router-dom';
 import { Spa, LocalFlorist, Yard } from '@mui/icons-material'; // Importando íconos de MUI
 import naranjosImg from '../../assets/naranjos.jpg'; // Ejemplo de cómo importar imágenes
 import limonerosImg from '../../assets/limoneros.jpg';
@@ -31,17 +32,22 @@ const arboles = [
     icon: <Yard style={{ color: '#FFF' }} />,
   },
 ];
+// ...
 
 const Arboles: React.FC = () => {
+  const navigate = useNavigate(); // Usamos useNavigate
+
+  const handleAdoptar = (name: string) => {
+    navigate(`/adopta-un-arbol?search=${name}`); // Redirigir a Adoptar con el nombre del árbol
+  };
+
   return (
     <section className="py-14 bg-white lg:px-[200px] 2xl:px-[165px]">
       <div className="mx-auto">
         {/* HEADER o título */}
         <div className="text-center mb-8">
           <p className="text-orange-500 font-medium fuente">Adopta</p>
-          <h2 className="text-3xl font-[800] text-gray-900">
-            Nuestros árboles
-          </h2>
+          <h2 className="text-3xl font-[800] text-gray-900">Nuestros árboles</h2>
         </div>
 
         {/* Cards de árboles */}
@@ -59,20 +65,20 @@ const Arboles: React.FC = () => {
               />
 
               {/* Contenido de la Tarjeta */}
-              <div className="relative -mt-8  py-6 bg-white rounded-t-xl text-center ">
+              <div className="relative -mt-8 py-6 bg-white rounded-t-xl text-center">
                 {/* Ícono en la parte superior */}
                 <div className="absolute top-0 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-orange-500 rounded-full p-3">
                   {arbol.icon}
                 </div>
 
                 {/* Título */}
-                <h3 className="mt-6 text-xl font-semibold text-gray-900">
-                  {' '}
-                  {arbol.name}{' '}
-                </h3>
+                <h3 className="mt-6 text-xl font-semibold text-gray-900">{arbol.name}</h3>
 
                 {/* Botón */}
-                <button className="lg:text-[.9rem] 2xl:text-base mt-4 text-white bg-gradient-to-r from-green-500 to-green-600 rounded-[10px] shadow-lg hover:from-green-600 hover:to-green-700 transition-all duration-300 transform">
+                <button 
+                  className="lg:text-[.9rem] 2xl:text-base mt-4 text-white bg-gradient-to-r from-green-500 to-green-600 rounded-[10px] shadow-lg hover:from-green-600 hover:to-green-700 transition-all duration-300 transform"
+                  onClick={() => handleAdoptar(arbol.name)} // Llamar a la función al hacer clic
+                >
                   Adoptar
                 </button>
               </div>
