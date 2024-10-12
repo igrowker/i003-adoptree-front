@@ -18,6 +18,7 @@ import AboutUs from '../pages/About/AboutUs';
 import AdoptarEsteArbol from '../components/AdoptarEsteArbol/AdoptarEsteArbol';
 import DescubreMas from '../components/Beneficios/DescubreMas/DescubreMas'; // Componente DescubreMas
 import Donar from '../pages/Donar/Donar'; // Componente Donar
+import Dashboard from '../pages/Dashboard/Dashboard';
 
 const AdoptreeRoutes = () => {
   return (
@@ -39,8 +40,9 @@ const AdoptreeRoutes = () => {
         <Route path="/donaciones" element={<DonacionesPatrocinios />} />
         <Route path="/about" element={<AboutUs />} />
         <Route path="/contacto" element={<Contacto />} />
-        <Route path="/privacy-policy" element={<PrivacyPolicy />} />
         <Route path="/beneficios" element={<DescubreMas />} />{' '}
+        <Route path="/dashboard" element={<Dashboard />} />
+        <Route path="/privacy-policy" element={<PrivacyPolicy />} />
         {/* Ruta DescubreMas */}
         <Route path="/donar" element={<Donar />} /> {/* Ruta Donar */}
       </Routes>
