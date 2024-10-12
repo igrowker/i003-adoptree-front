@@ -2,10 +2,10 @@ import React, { useState } from 'react';
 import backgroundImage from '../../assets/Mandarinas.jpg';
 import { useNavigate } from 'react-router-dom';
 import './Donar.css';
-import { useLanguage } from '../../LanguageContext/LanguageContext';  // Importar contexto de idioma
+import { useLanguage } from '../../LanguageContext/LanguageContext';  
 
 const Donar: React.FC = () => {
-  const { language } = useLanguage();  // Usar el idioma del contexto
+  const { language } = useLanguage();  
   const [formData, setFormData] = useState({
     nombre: '',
     email: '',
@@ -13,7 +13,7 @@ const Donar: React.FC = () => {
     mensaje: '',
   });
 
-  const [selectedMonto, setSelectedMonto] = useState<number | null>(100); // Para controlar el monto seleccionado
+  const [selectedMonto, setSelectedMonto] = useState<number | null>(100); 
   const [isCustom, setIsCustom] = useState(false);
 
   const navigate = useNavigate();

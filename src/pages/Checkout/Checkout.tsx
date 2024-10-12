@@ -11,7 +11,7 @@ import PaymentMethodSection from '../../components/PaymentMethodSection/PaymentM
 import { useLanguage } from '../../LanguageContext/LanguageContext';
 
 const Checkout = () => {
-  const { language } = useLanguage(); // Importamos useLanguage para obtener el idioma actual
+  const { language } = useLanguage(); 
 
   const [activeStep, setActiveStep] = useState(0);
   const [quantity, setQuantity] = useState(1);
