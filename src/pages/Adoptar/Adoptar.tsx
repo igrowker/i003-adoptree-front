@@ -6,28 +6,8 @@ import { useGetArbolesQuery } from '../../store/services/arbolApi';
 import { useSearchParams } from 'react-router-dom';
 import './Adoptar.css';
 
-interface FincaData {
-  id: number;
-  name: string;
-  ubication: string;
-  practicesSustainable: string;
-  productor: string;
-}
-
-interface ArbolData {
-  id: number;
-  name: string;
-  type: string;
-  location: string;
-  images: string[];
-  finca: FincaData;
-  productor: string;
-  price: number;
-}
-
 const Adoptar: React.FC = () => {
   const { data: arboles, error, isLoading } = useGetArbolesQuery();
-  console.log("ARBOLES RECIBIDOS: ",arboles);
   const [searchParams] = useSearchParams();
   const [searchTerm, setSearchTerm] = useState('');
 
@@ -50,12 +30,10 @@ const Adoptar: React.FC = () => {
                     break;
  }
 
- //filtra y encuentra coincidencias en lowercase -- !!SE AGREGO COMPROBACION PARA PASAR EL LINT
- const filteredArboles = arboles?.filter((arbol) => 
-  typeof arbol === 'object' && arbol !== null && 'type' in arbol &&
-  arbol.type.toLowerCase().includes(searchTerm.toLowerCase())
-);
-
+ //filtra y encuentra coincidencias en lowercase
+  const filteredArboles = arboles?.filter((arbol: any) =>
+    arbol.type.toLowerCase().includes(searchTerm.toLowerCase())
+  );
 
   if (isLoading) {
     return (
@@ -98,30 +76,11 @@ const Adoptar: React.FC = () => {
         }}
       />
 
- {/* !!SE AGREGO COMPROBACION PARA PASAR EL LINT */}
-<div className="grid gap-6 grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-4 mt-10 max-w-screen-lg">
-  {filteredArboles?.map((arbol) => {
-    // Comprobamos que arbol es del tipo ArbolData
-    const isArbolData = (obj: any): obj is ArbolData => {
-      return (
-        obj &&
-        typeof obj.id === 'number' &&
-        typeof obj.type === 'string' &&
-        Array.isArray(obj.images) &&
-       
-        obj.finca &&
-        typeof obj.finca.name === 'string' &&
-        typeof obj.price === 'string' // O número, dependiendo de tu definición
-      );
-    };
-
-    if (isArbolData(arbol)) {
-      return <AdoptarArbol key={arbol.id} datos={arbol} />;
-    }
-    return null; // Retornamos null si la validación falla
-  })}
-</div>
-
+      <div className="grid gap-6 grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-4 mt-10 max-w-screen-lg">
+        {filteredArboles?.map((arbol: any) => (
+          <AdoptarArbol key={arbol.id} datos={arbol} />
+        ))}
+      </div>
     </div>
   );
 };
