@@ -35,7 +35,7 @@ const Navbar: React.FC = () => {
 
   const navigate = useNavigate();
 
-  const BACK_URL = import.meta.env.VITE_BACK_URL
+  const BACK_URL = import.meta.env.VITE_BACK_URL;
 
   const handleShowNotifications = (event: React.MouseEvent<HTMLElement>) => {
     currentClickRef.current = event.target;
@@ -92,9 +92,9 @@ const Navbar: React.FC = () => {
   }, []);
 
   useEffect(() => {
-    const socket = io(`${BACK_URL}`, { 
+    const socket = io(`${BACK_URL}`, {
       withCredentials: true,
-      query: { userId: user?.id }  // Enviar el userId al conectar el socket
+      query: { userId: user?.id }, // Enviar el userId al conectar el socket
     });
 
     socket.on('new_adoption', (adoption) => {
@@ -199,30 +199,17 @@ const Navbar: React.FC = () => {
 
                 {showModal && (
                   <div
-                    className="absolute md:top-[3.8rem] desktop:top-[4.1rem] bg-white gap-4 md:right-[96px] lg:right-[235px] 2xl:right-[185px] p-5 rounded shadow-md"
+                    className="absolute w-[10rem] md:top-[3.8rem] desktop:top-[4.1rem] bg-white gap-4 md:right-[96px] lg:right-[235px] 2xl:right-[200px] p-5 rounded shadow-md"
                     ref={modalRef}
                   >
                     <div>
                       <ul className="flex flex-col gap-3">
                         <li
                           onClick={handleCloseModal}
-                          className="flex justify-between"
-                        >
-                          <Link
-                            to=""
-                            className="text-[#05264E] flex items-center gap-2"
-                          >
-                            <MdOutlineLightMode className="text-base text-[#05264E]" />{' '}
-                            Theme: Light mode
-                          </Link>
-                          <MdKeyboardArrowDown className="text-base text-[#05264E]" />
-                        </li>
-                        <li
-                          onClick={handleCloseModal}
                           className="flex items-center gap-2"
                         >
                           <MdOutlineSpaceDashboard className="text-[#05264E] text-base" />
-                          <Link to="" className="text-[#05264E]">
+                          <Link to="/dashboard" className="text-[#05264E]">
                             {user ? 'Dashboard' : 'Inicia sesión'}
                           </Link>
                         </li>

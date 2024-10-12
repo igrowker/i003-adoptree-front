@@ -60,8 +60,7 @@ const Adoptar: React.FC = () => {
         }}
       />
 
-<div className="grid gap-6 grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-4 mt-10 max-w-screen-lg">
-
+      <div className="grid gap-6 grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-4 mt-10 max-w-screen-lg">
         {arboles?.map((arbol: any) => (
           <AdoptarArbol key={arbol.id} datos={arbol} />
         ))}

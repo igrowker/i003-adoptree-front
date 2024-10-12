@@ -6,7 +6,7 @@ const Banner: React.FC = () => {
     <section className="banner">
       <div className="banner-overlay">
         <div className="banner-text">
-          <h1 className='lg:text-[45px] 2xl:text-[48px]'>
+          <h1 className="lg:text-[45px] 2xl:text-[48px]">
             Adopta un árbol cítrico
             <br />
             y sé parte de la agricultura

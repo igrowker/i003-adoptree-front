@@ -11,7 +11,7 @@ export interface Arbol {
   price: number;
 }
 
-const BACK_URL = import.meta.env.VITE_BACK_URL
+const BACK_URL = import.meta.env.VITE_BACK_URL;
 
 // Define la API para interactuar con el backend
 export const arbolApi = createApi({

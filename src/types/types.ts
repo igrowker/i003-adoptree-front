@@ -32,7 +32,7 @@ export interface RootState {
   user: {
     user: User;
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    shippingAddresses: any[]
+    shippingAddresses: any[];
   };
 }
 

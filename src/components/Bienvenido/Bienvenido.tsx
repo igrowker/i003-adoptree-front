@@ -27,7 +27,9 @@ const Bienvenido: React.FC = () => {
 
       {/* Contenido */}
       <div className="relative z-10 text-center text-white">
-        <p className="lg:text-[14px] 2xl:text-lg mb-5 flex">BIENVENIDO A ADOPTREE</p>
+        <p className="lg:text-[14px] 2xl:text-lg mb-5 flex">
+          BIENVENIDO A ADOPTREE
+        </p>
         <img
           className="lg:w-[370px] 2xl:w-[440px] 4xl:w-[700px]"
           src={tituloPrincipal}

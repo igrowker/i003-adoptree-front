@@ -11,7 +11,7 @@ const AdoptarEsteArbol: React.FC = () => {
   const { id } = useParams<{ id: string }>();
   const navigate = useNavigate();
 
-  const BACK_URL = import.meta.env.VITE_BACK_URL
+  const BACK_URL = import.meta.env.VITE_BACK_URL;
 
   useEffect(() => {
     const fetchArbol = async () => {
@@ -83,10 +83,13 @@ const AdoptarEsteArbol: React.FC = () => {
               >
                 <Heart className="mr-2 h-5 w-5" /> Adoptar
               </button>
-              <button
-                className="w-full flex items-center justify-center px-4 py-2 border border-gray-300 rounded-[10px] shadow-sm text-base font-medium text-gray-700 bg-white hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2"
-              >
-                <Link className='flex items-center justify-center' to={`/checkout/${arbol.id}`}><ArrowLeft className="mr-2 h-5 w-5" /> Volver</Link>
+              <button className="w-full flex items-center justify-center px-4 py-2 border border-gray-300 rounded-[10px] shadow-sm text-base font-medium text-gray-700 bg-white hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2">
+                <Link
+                  className="flex items-center justify-center"
+                  to={`/checkout/${arbol.id}`}
+                >
+                  <ArrowLeft className="mr-2 h-5 w-5" /> Volver
+                </Link>
               </button>
             </div>
           </div>
