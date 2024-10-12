@@ -1,16 +1,27 @@
-import React, { useState } from 'react';
+import React, { useState, ChangeEvent, FormEvent } from 'react';
 import axios from 'axios';
+import { User } from '../../types/types';
 
-const MiPerfil = ({ user }) => {
-  const [isEditing, setIsEditing] = useState(false);
-  const [formData, setFormData] = useState({
+interface MiPerfilProps {
+  user: User;
+}
+
+interface FormData {
+  name: string;
+  email: string;
+  role: string;
+}
+
+const MiPerfil: React.FC<MiPerfilProps> = ({ user }) => {
+  const [isEditing, setIsEditing] = useState<boolean>(false);
+  const [formData, setFormData] = useState<FormData>({
     name: user.name,
     email: user.email,
     role: user.role,
   });
 
   // Maneja el cambio en los campos del formulario
-  const handleChange = (e) => {
+  const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
     setFormData({
       ...formData,
@@ -19,7 +30,7 @@ const MiPerfil = ({ user }) => {
   };
 
   // Maneja el envío del formulario
-  const handleSubmit = async (e) => {
+  const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
     try {
@@ -93,14 +104,14 @@ const MiPerfil = ({ user }) => {
             <>
               <button
                 type="submit"
-                className="bg-blue-500 text-white px-4 py-2 rounded mr-2"
+                className="text-white bg-gradient-to-r from-green-500 to-green-600 rounded-[10px] shadow-lg hover:from-green-600 hover:to-green-700 transition-all duration-300 transform"
               >
                 Guardar
               </button>
               <button
                 type="button"
                 onClick={() => setIsEditing(false)}
-                className="bg-gray-300 text-black px-4 py-2 rounded"
+                className="ml-4 bg-gray-300 text-black px-4 py-2 rounded-[10px]"
               >
                 Cancelar
               </button>
