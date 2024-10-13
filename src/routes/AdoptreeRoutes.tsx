@@ -17,7 +17,7 @@ import DonacionesPatrocinios from '../components/DonacionesPatrocinios/Donacione
 import AboutUs from '../pages/About/AboutUs';
 import AdoptarEsteArbol from '../components/AdoptarEsteArbol/AdoptarEsteArbol';
 import DescubreMas from '../components/Beneficios/DescubreMas/DescubreMas'; // Componente DescubreMas
-import Donar from '../pages/Donar/Donar'; // Componente Donar
+import Donar from '../pages/Donar/Donar'; 
 
 const AdoptreeRoutes = () => {
   return (
