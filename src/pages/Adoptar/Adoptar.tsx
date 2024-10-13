@@ -1,13 +1,45 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import AdoptarArbol from '../../components/AdoptarArbol/AdoptarArbol';
 import { InputAdornment, TextField } from '@mui/material';
 import SearchIcon from '@mui/icons-material/Search';
 import { useGetArbolesQuery } from '../../store/services/arbolApi';
+import { useSearchParams } from 'react-router-dom';
 import './Adoptar.css';
+import { Arbol } from '../../store/services/arbolApi';
 
+// Eliminar 'ArbolD' y utilizar directamente 'Arbol' en el componente Adoptar
 const Adoptar: React.FC = () => {
   const { data: arboles, error, isLoading } = useGetArbolesQuery();
+  const [searchParams] = useSearchParams();
+  const [searchTerm, setSearchTerm] = useState('');
+
+  useEffect(() => {
+    const name = searchParams.get('search');
+    if (name) {
+      setSearchTerm(name);
+    }
+  }, [searchParams]);
+
+  // Ajustar los términos de búsqueda según sea necesario
+  switch (searchTerm) {
+    case "Naranjos":
+      setSearchTerm("Naranjo");
+      break;
+    case "Pomeleros":
+      setSearchTerm("Pomelero");
+      break;
+    case "Limoneros":
+      setSearchTerm("Limonero");
+      break;
+    case "Mandarinos":
+      setSearchTerm("Mandarino");
+      break;
+  }
+
+  // Aplicar el filtro solo sobre las propiedades disponibles en el tipo 'Arbol'
+  const filteredArboles = arboles?.filter((arbol: Arbol) =>
+    arbol.type.toLowerCase().includes(searchTerm.toLowerCase())
+  );
 
   if (isLoading) {
     return (
@@ -28,29 +60,17 @@ const Adoptar: React.FC = () => {
 
   return (
     <div className="px-4 sm:px-6 md:px-8 lg:px-[200px] 2xl:px-[165px] my-[116px]">
-      <h1 className="text-3xl sm:text-4xl font-[800] mb-2 mt-6 sm:mt-8">
-        Adopciones
-      </h1>
+      <h1 className="text-3xl sm:text-4xl font-bold mb-2 mt-6 sm:mt-8">Adopciones</h1>
       <p className="text-gray-500 mb-4 sm:mb-6 max-w-2xl">
-        Adopta un árbol para apoyar a un agricultor y recibe tu cosecha a lo
-        largo de la temporada.
+        Adopta un árbol para apoyar a un agricultor y recibe tu cosecha a lo largo de la temporada.
       </p>
       <TextField
         className="w-full max-w-2xl mb-8 sm:mb-12"
         id="outlined-basic"
         label="Busca un árbol"
         variant="outlined"
-        sx={{
-          '& .MuiFormLabel-root': {
-            color: '#8F8F8F',
-            '&:hover': { color: '#8F8F8F' },
-          },
-          '& .MuiOutlinedInput-root': {
-            '&:hover fieldset': { borderColor: '#4BAF47' },
-            '&.Mui-focused fieldset': { borderColor: '#4BAF47' },
-          },
-          '& .MuiInputBase-input': { color: '#4BAF47' },
-        }}
+        value={searchTerm}
+        onChange={(e) => setSearchTerm(e.target.value)}
         InputProps={{
           endAdornment: (
             <InputAdornment position="end">
@@ -59,10 +79,8 @@ const Adoptar: React.FC = () => {
           ),
         }}
       />
-
-<div className="grid gap-6 grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-4 mt-10 max-w-screen-lg">
-
-        {arboles?.map((arbol: any) => (
+      <div className="grid gap-6 grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-4 mt-10 max-w-screen-lg">
+        {filteredArboles?.map((arbol: Arbol) => (
           <AdoptarArbol key={arbol.id} datos={arbol} />
         ))}
       </div>
