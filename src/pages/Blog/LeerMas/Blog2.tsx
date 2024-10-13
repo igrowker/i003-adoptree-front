@@ -31,7 +31,7 @@ const Post2: React.FC = () => {
   const { title, text } = content[language];
 
   return (
-    <div className="px-[200px] py-[150px]">
+    <div className="lg:px-[200px] 2xl:px-[165px] py-[150px]">
       <div className="max-w-4xl mx-auto">
         <motion.div
           initial={{ opacity: 0, y: 20 }}

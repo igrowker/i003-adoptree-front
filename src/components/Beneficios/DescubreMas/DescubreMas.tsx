@@ -9,7 +9,7 @@ const DescubreMas: React.FC = () => {
   const { language } = useLanguage(); // Usamos el hook useLanguage para obtener el idioma
 
   return (
-    <section className="px-[200px] my-[150px]">
+    <section className="lg:px-[200px] 2xl:px-[165px] my-[150px]">
       <div className="max-w-6xl">
         <div className="text-center mb-16">
           <h2 className="text-[3rem] font-[900] mb-[1.3rem]">

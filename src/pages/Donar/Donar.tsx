@@ -18,6 +18,8 @@ const Donar: React.FC = () => {
 
   const navigate = useNavigate();
 
+  const BACK_URL = import.meta.env.VITE_BACK_URL
+
   const handleInputChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
   ) => {
@@ -59,7 +61,7 @@ const Donar: React.FC = () => {
       };
 
       const response = await fetch(
-        'http://localhost:3000/donaciones',
+        `${BACK_URL}/donaciones`,
         opciones
       );
       if (!response.ok) throw new Error('Error en la petición');

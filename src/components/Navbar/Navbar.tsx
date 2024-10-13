@@ -9,8 +9,13 @@ import { useSelector, useDispatch } from 'react-redux';
 import { Link, useNavigate } from 'react-router-dom';
 import { logout } from '../../store/features/userSlice';
 import { RootState } from '../../types/types';
-// import { io } from "socket.io-client"; // Comentado si no se usa
+import { io } from 'socket.io-client';
 import './Navbar.css';
+
+export interface AnchorProps
+  extends React.AnchorHTMLAttributes<HTMLAnchorElement> {
+  style?: React.CSSProperties & { '--i'?: number };
+}
 
 const Navbar: React.FC = () => {
   const { language } = useLanguage();
@@ -23,6 +28,8 @@ const Navbar: React.FC = () => {
   const user = useSelector((state: RootState) => state.user.user);
   const dispatch = useDispatch();
   const navigate = useNavigate();
+
+  const BACK_URL = import.meta.env.VITE_BACK_URL
 
   const handleShowNotifications = (event: React.MouseEvent<HTMLElement>) => {
     currentClickRef.current = event.target;
@@ -53,8 +60,47 @@ const Navbar: React.FC = () => {
     };
   }, []);
 
+  useEffect(() => {
+    const handleClickOutside = (event: MouseEvent) => {
+      if (
+        modalRef.current &&
+        !modalRef.current?.contains(event.target as Node) && // Operador de aserción de tipo as Node para asegurarnos de que event.target sea un nodo del DOM. Es necesario porque event.target puede ser null
+        event.target !== currentClickRef.current
+      ) {
+        handleCloseModal();
+        handleCloseNotifications();
+      }
+    };
+
+    document.addEventListener('mousedown', handleClickOutside);
+
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside);
+    };
+  }, []);
+
+  useEffect(() => {
+    const socket = io(`${BACK_URL}`, { 
+      withCredentials: true,
+      query: { userId: user?.id }  // Enviar el userId al conectar el socket
+    });
+
+    socket.on('new_adoption', (adoption) => {
+      console.log('Nueva adopción:', adoption);
+      // Aquí puedes mostrar la notificación al usuario
+    });
+
+    return () => {
+      socket.disconnect();
+    };
+  }, []);
+
   return (
-    <header className={`header py-4 xl:px-[200px] md:px-[60px] mobile:px-[30px] bg-white ${scrollPosition > 0 ? 'scrolled' : ''}`}>
+    <header
+      className={`header py-4 xl:px-[200px] 2xl:px-[165px] md:px-[60px] mobile:px-[30px] bg-white ${
+        scrollPosition > 0 ? 'scrolled' : ''
+      }`}
+    >
       <div className="flex items-center">
         <div>
           <a href="/">
@@ -93,7 +139,7 @@ const Navbar: React.FC = () => {
               </div>
             )}
             <button className="text-white bg-gradient-to-r from-green-500 to-green-600 rounded-[10px] shadow-lg hover:from-green-600 hover:to-green-700 transition-all duration-300 transform">
-              {language === 'es' ? 'Adopta ahora' : 'Adopt now'}
+              <a href="/adopta-un-arbol">{language === 'es' ? 'Adopta ahora</a>' : 'Adopt now'}
             </button>
 
             {user && (
@@ -101,11 +147,17 @@ const Navbar: React.FC = () => {
                 <div onClick={handleShowModal} className="p-[6px] bg-white border border-gray-300 rounded-full cursor-pointer">
                   <PersonIcon className="text-[#4BAF47] text[20px]" />
                 </div>
-                <div onClick={handleShowNotifications} className="p-[6px] bg-white border border-gray-300 rounded-full ml-2 cursor-pointer">
+                <div
+                  onClick={handleShowNotifications}
+                  className="p-[6px] bg-white border border-gray-300 rounded-full ml-2 cursor-pointer"
+                >
                   <NotificationsIcon className="text-[#4BAF47] text[20px]" />
                 </div>
                 {showModal && (
-                  <div className="absolute md:top-[3.8rem] desktop:top-[4.1rem] bg-white gap-4 md:right-[96px] desktop:right-[230px] p-5 rounded shadow-md" ref={modalRef}>
+                  <div
+                    className="absolute md:top-[3.8rem] desktop:top-[4.1rem] bg-white gap-4 md:right-[96px] lg:right-[235px] 2xl:right-[185px] p-5 rounded shadow-md"
+                    ref={modalRef}
+                  >
                     <div>
                       <ul className="flex flex-col gap-3">
                         <li onClick={handleCloseModal} className="flex justify-between">
@@ -128,6 +180,27 @@ const Navbar: React.FC = () => {
                           </li>
                         )}
                       </ul>
+                    </div>
+                  </div>
+                )}
+                {notificationsModal && (
+                  <div
+                    className="absolute md:top-[3.8rem] desktop:top-[4.1rem] w-[14rem] bg-white gap-4 md:right-[50px] lg:right-[185px] 2xl:right-[143px] px-1 min-h-[7.8rem] rounded shadow-md"
+                    ref={modalRef}
+                  >
+                    <div className="flex flex-col items-center">
+                      <h5 className="text-base font-medium text-[#05264E] mt-5">
+                        Your Notifications
+                      </h5>
+                      {/* {notifications && (
+                    <div className="w-full">
+                      <ul>
+                        {notifications.map((notification) => (
+                          <></>
+                        ))}
+                      </ul>
+                    </div>
+                  )} */}
                     </div>
                   </div>
                 )}

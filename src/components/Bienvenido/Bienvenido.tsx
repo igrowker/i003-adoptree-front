@@ -56,7 +56,7 @@ const Bienvenido: React.FC<BienvenidoProps> = ({ language }) => {
   } = content[language];
 
   return (
-    <section className="bg-cover bg-center h-screen md:mb-20 p-[220px] 4xl:p-[440px]">
+    <section className="bg-cover bg-center h-screen md:mb-20 lg:py-[180px] 2xl:py-[190px] px-[200px] 4xl:p-[440px]">
       <video
         autoPlay
         muted
@@ -70,21 +70,14 @@ const Bienvenido: React.FC<BienvenidoProps> = ({ language }) => {
       <div className="absolute inset-0 bg-black opacity-40"></div>
 
       <div className="relative z-10 text-center text-white">
-        <p className="text-lg mb-5 flex">{welcome}</p>
-        <h1 className="tipografiaCards text-left text-6xl 4xl:text-[60px] md:text-[40px] font-extrabold mb-8 w-[600px] 4xl:w-[800px]">
-          {language === 'es' ? (
-            <img
-              className="w-[400px] 4xl:w-[700px]"
-              src={tituloPrincipal}
-              alt="titulo"
-            />
-          ) : (
-            <span style={{ fontSize: '80px' }}>Sustainable AgroAdoption</span> // Cambiar el tamaño de fuente aquí
-          )}
-        </h1>
-
+        <p className="lg:text-[14px] 2xl:text-lg mb-5 flex">BIENVENIDO A ADOPTREE</p>
+        <img
+          className="lg:w-[370px] 2xl:w-[440px] 4xl:w-[700px]"
+          src={tituloPrincipal}
+          alt="titulo"
+        />
         <div className="w-1/2 flex flex-col">
-          <p className="text-lg 4xl:text-[30px] md:text-[18px] mb-6 anchoPersonalizado tipografiaPersonalizada w-[500px] 4xl:w-[700px]">
+          <p className="lg:text-[16px] 2xl:text-lg 4xl:text-[30px] md:text-[20px] mb-6 anchoPersonalizado tipografiaPersonalizada w-[500px] 4xl:w-[700px]">
             {description}
             <br />
             <span className="4xl:mt-[15px]">{join}</span>
@@ -95,7 +88,7 @@ const Bienvenido: React.FC<BienvenidoProps> = ({ language }) => {
                 .getElementById('como-adoptar')
                 ?.scrollIntoView({ behavior: 'smooth' })
             }
-            className="w-[220px] text-white bg-gradient-to-r from-green-500 to-green-600 rounded-[10px] shadow-lg hover:from-green-600 hover:to-green-700 transition-all duration-300 transform"
+            className="w-[220px] lg:text-[.9rem] 2xl:text-base text-white bg-gradient-to-r from-green-500 to-green-600 rounded-[10px] shadow-lg hover:from-green-600 hover:to-green-700 transition-all duration-300 transform"
           >
             {discoverHow}
           </button>
@@ -103,47 +96,47 @@ const Bienvenido: React.FC<BienvenidoProps> = ({ language }) => {
       </div>
 
       {/* SECCIÓN DE CARDS */}
-      <div className="absolute bottom-[-120px] left-0 right-0 hidden md:flex justify-center z-20">
+      <div className="absolute lg:bottom-[-105px] 2xl:bottom-[-110px] left-0 right-0 hidden md:flex justify-center z-20">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6 px-4 md:px-0">
-          <div className="bg-white shadow-lg rounded-lg p-6 text-center w-[250px] 4xl:w-[300px]">
-            <p className="text-orange-400 font-medium tipografiaCards 4xl:text-[35px]">
+          <div className="bg-white shadow-lg rounded-lg p-6 text-center lg:w-[230px] 2xl:w-[250px] 4xl:w-[300px]">
+            <p className="text-orange-400 font-medium tipografiaCards lg:text-[20px] 2xl:text-[24px] 4xl:text-[35px]">
               {adopt}
             </p>
-            <h3 className="text-[1.15rem] font-semibold mb-4 4xl:text-[22px]">
+            <h3 className="lg:text-[16px] 2xl:text-[1.15rem] font-semibold mb-4 4xl:text-[22px]">
               {adoptTitle}
             </h3>
             <img
               src={adoptionImage}
               alt="Naranjos en adopción"
-              className="h-24 w-24 mx-auto rounded-full mb-4"
+              className="lg:h-[4rem] lg:w-[4rem] 2xl:h-[6rem]  2xl:w-[6rem] mx-auto rounded-full mb-4"
             />
           </div>
 
-          <div className="bg-white shadow-lg rounded-lg p-6 text-center w-[250px] 4xl:w-[300px]">
-            <p className="text-orange-400 font-medium tipografiaCards 4xl:text-[35px]">
+          <div className="bg-white shadow-lg rounded-lg p-6 text-center lg:w-[230px] 2xl:w-[250px] 4xl:w-[300px]">
+            <p className="text-orange-400 font-medium tipografiaCards lg:text-[20px] 2xl:text-[24px] 4xl:text-[35px]">
               {buy}
             </p>
-            <h3 className="text-[1.15rem] font-semibold mb-4 4xl:text-[22px]">
+            <h3 className="lg:text-[16px] 2xl:text-[1.15rem] font-semibold mb-4 4xl:text-[22px]">
               {buyTitle}
             </h3>
             <img
               src={compraImage}
               alt="Compra directa"
-              className="h-24 w-24 mx-auto rounded-full mb-4"
+              className="lg:h-[4rem] lg:w-[4rem] 2xl:h-[6rem]  2xl:w-[6rem] mx-auto rounded-full mb-4"
             />
           </div>
 
-          <div className="bg-white shadow-lg rounded-lg p-6 text-center w-[250px] 4xl:w-[300px]">
-            <p className="text-orange-400 font-medium tipografiaCards 4xl:text-[35px]">
+          <div className="bg-white shadow-lg rounded-lg p-6 text-center lg:w-[230px] 2xl:w-[250px] 4xl:w-[300px]">
+            <p className="text-orange-400 font-medium tipografiaCards lg:text-[20px] 2xl:text-[24px] 4xl:text-[35px]">
               {enjoy}
             </p>
-            <h3 className="text-[1.15rem] font-semibold mb-4 4xl:text-[22px]">
+            <h3 className="lg:text-[16px] 2xl:text-[1.15rem] font-semibold mb-4 4xl:text-[22px]">
               {enjoyTitle}
             </h3>
             <img
               src={disfrutaImage}
               alt="Visita nuestras fincas"
-              className="h-24 w-24 mx-auto rounded-full mb-4"
+              className="lg:h-[4rem] lg:w-[4rem] 2xl:h-[6rem]  2xl:w-[6rem] mx-auto rounded-full mb-4"
             />
           </div>
         </div>

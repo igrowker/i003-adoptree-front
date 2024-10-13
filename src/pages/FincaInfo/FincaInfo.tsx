@@ -1,10 +1,9 @@
 import React from 'react';
-import { useGetFincaDataQuery } from '../../store/services/fincaApi'; 
+import { useGetFincaDataQuery } from '../../store/services/fincaApi';
 import './FincaInfo.css';
 import { Arbol, Hacienda } from '../../types/types';
 
 const FincaInfo: React.FC = () => {
-
   const { data: fincaData, isLoading, isError } = useGetFincaDataQuery(1);
 
   if (isLoading) {
@@ -14,7 +13,6 @@ const FincaInfo: React.FC = () => {
   if (isError) {
     return <div>Error al cargar los datos.</div>;
   }
-
 
   return (
     <div className="finca-info-container">
@@ -28,14 +26,18 @@ const FincaInfo: React.FC = () => {
           {/* Información de prácticas sostenibles */}
           <div className="finca-info-practices">
             <div className="finca-info-practice">
-              <span className="practice-icon" aria-hidden="true">♻️</span>
+              <span className="practice-icon" aria-hidden="true">
+                ♻️
+              </span>
               <h3>Prácticas</h3>
               <p>{finca.practicesSustainable}</p>
             </div>
 
             {/* Información sobre los tipos de árboles */}
             <div className="finca-info-practice">
-              <span className="practice-icon" aria-hidden="true">🌳</span>
+              <span className="practice-icon" aria-hidden="true">
+                🌳
+              </span>
               <h3>Árboles</h3>
               <ul>
                 {finca.arbol.map((tree: Arbol, index: number) => (
@@ -46,7 +48,9 @@ const FincaInfo: React.FC = () => {
 
             {/* Información sobre la ubicación */}
             <div className="finca-info-practice">
-              <span className="practice-icon" aria-hidden="true">📍</span>
+              <span className="practice-icon" aria-hidden="true">
+                📍
+              </span>
               <h3>Ubicación</h3>
               <p>{finca.ubication}</p>
             </div>

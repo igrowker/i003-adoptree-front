@@ -128,6 +128,7 @@ jobs:
       VITE_FIREBASE_MEASUREMENT_ID: ${{ secrets.VITE_FIREBASE_MEASUREMENT_ID }}
       VITE_FIREBASE_VAPID_KEY: ${{ secrets.VITE_FIREBASE_VAPID_KEY }}
       VITE_GOOGLE_CLIENT_ID: ${{ secrets.VITE_GOOGLE_CLIENT_ID }}
+      VITE_BACK_URL: ${{ secrets.VITE_BACK_URL }}
     needs: [build, lint]
     steps:
       - name: Checkout

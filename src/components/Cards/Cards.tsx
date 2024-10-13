@@ -35,7 +35,7 @@ const Cards: React.FC<CardsProps> = ({ language }) => {
   ];
 
   return (
-    <section className="w-full my-[70px] px-[200px]">
+    <section className="w-full my-[70px] lg:px-[200px] 2xl:px-[165px]">
       <div className="text-center">
         <span className="text-[#FF9900] font-facuFont text-[28px]">
           {directPurchase}
@@ -47,7 +47,7 @@ const Cards: React.FC<CardsProps> = ({ language }) => {
       <div className="flex justify-center items-center gap-6">
         {cards.map((card, index) => (
           <img
-            className="w-[260px]"
+            className="lg:w-[216px] 2xl:w-[260px]"
             key={index}
             src={card.thumbnail}
             alt={`Card ${index}`}

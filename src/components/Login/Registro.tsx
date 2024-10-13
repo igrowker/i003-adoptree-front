@@ -26,25 +26,10 @@ const Login: React.FC = () => {
     googleId: '', // Opcional
     avatar: null, // Opcional
   });
-  // const [success, setSuccess] = useState<boolean>(false);
-  // const [failed, setFailed] = useState<boolean>(false);
 
-  // const dispatch = useDispatch();
-  // const user = useSelector((state: any) => state.user.user);
   const navigate = useNavigate();
 
-  // const [userSession, setUserSession] = useState<any>(null);
-
-  // Efecto para obtener datos de localStorage al montar el componente
-  // useEffect(() => {
-
-  //   const session = localStorage.getItem("userSession");
-  //   setUserSession(session);
-
-  //   if (session) {
-  //     router.push("/");
-  //   }
-  // }, [router]);
+  const BACK_URL = import.meta.env.VITE_BACK_URL
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
@@ -100,7 +85,7 @@ const Login: React.FC = () => {
         };
 
         const response = await fetch(
-          'http://localhost:3000/auth/register',
+          `${BACK_URL}/auth/register`,
           opciones
         );
 

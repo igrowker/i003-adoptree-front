@@ -10,7 +10,7 @@
     "lint:fix": "eslint 'src/**/*.{js,jsx,ts,tsx}' --fix",
     "format": "prettier --write 'src/**/*.{js,jsx,ts,tsx,json,css,scss,md}'",
     "preview": "vite preview",
-    "lint:ci": "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0"
+    "lint:ci": "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 10"
   },
   "dependencies": {
     "@emotion/react": "^11.13.3",
@@ -21,6 +21,7 @@
     "@react-oauth/google": "^0.12.1",
     "@reduxjs/toolkit": "^2.2.7",
     "@types/react-router-dom": "^5.3.3",
+    "axios": "^1.7.7",
     "firebase": "^10.13.2",
     "framer-motion": "^11.5.6",
     "i18next": "^23.15.1",

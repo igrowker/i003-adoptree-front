@@ -54,7 +54,7 @@ const Agroadopcion: React.FC<AgroadopcionProps> = ({ language }) => {
   return (
     <section
       id="como-adoptar"
-      className="bg-[#f8f7f0] py-20 px-[200px] my-[70px] flex justify-center"
+      className="bg-[#f8f7f0] py-20 lg:px-[200px] 2xl:px-[165px] my-[70px] flex justify-center"
     >
       <div className="container flex flex-col items-center text-center">
         <p className="text-orange-500 mb-2 fuentePersonalizada text-[28px] mt-[15px]">
@@ -75,7 +75,7 @@ const Agroadopcion: React.FC<AgroadopcionProps> = ({ language }) => {
               <img
                 src={imgLimones}
                 alt="ImgLimones"
-                className="shadow-lg w-[294px]"
+                className="shadow-lg lg:w-[240px] 2xl:w-[294px]"
               />
             </div>
           </div>
@@ -85,7 +85,7 @@ const Agroadopcion: React.FC<AgroadopcionProps> = ({ language }) => {
               <img
                 src={imgNaranjero}
                 alt="imgNaranjero"
-                className="shadow-lg w-[294px] h-[454px]"
+                className="shadow-lg lg:w-[240px] 2xl:w-[294px] lg:h-[380px] 2xl:h-[454px]"
               />
             </div>
             <div className="md:col-span-9 mb-9 md:mb-0 text-gray-700 ml-[25px] w-[500px]">

@@ -34,7 +34,7 @@ const AdoptreeRoutes = () => {
         <Route path="/fincas" element={<FincaInfo />} />
         <Route path="/adopta-un-arbol" element={<Adoptar />} />
         <Route path="/adopta-un-arbol/:id" element={<AdoptarEsteArbol />} />
-        <Route path="/checkout" element={<Checkout />} />
+        <Route path="/checkout/:id" element={<Checkout />} />
         <Route path="/impacto-ambiental" element={<Impacto />} />
         <Route path="/blogs" element={<BlogPage />} />
         <Route path="/blog1" element={<Blog1 />} />

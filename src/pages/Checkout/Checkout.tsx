@@ -1,21 +1,26 @@
-import React, { useState } from 'react';
+/* eslint-disable @typescript-eslint/no-explicit-any */
+import React, { useEffect, useState } from 'react';
 import LocalMallIcon from '@mui/icons-material/LocalMall';
 import LocalShippingIcon from '@mui/icons-material/LocalShipping';
 import PaymentIcon from '@mui/icons-material/Payment';
 import KeyboardArrowRightIcon from '@mui/icons-material/KeyboardArrowRight';
 import DeleteIcon from '@mui/icons-material/Delete';
-import naranjas from '../../assets/naranjas.jpg';
 import farmerGirl from '../../assets/farmer-girl.svg';
 import ShippingSection from '../../components/ShippingSection/ShippingSection';
 import PaymentMethodSection from '../../components/PaymentMethodSection/PaymentMethodSection';
+import { useParams } from 'react-router-dom';
+import axios from 'axios';
+import { useDispatch, useSelector } from 'react-redux';
+import { setShippingAddresses } from '../../store/features/userSlice';
+import { RootState } from '../../types/types';
 import { useLanguage } from '../../LanguageContext/LanguageContext';
 
 const Checkout = () => {
+  const [url, setUrl] = useState("")
   const { language } = useLanguage(); 
 
   const [activeStep, setActiveStep] = useState(0);
   const [quantity, setQuantity] = useState(1);
-  const basePrice = 2000;
   const shippingCost = 2000;
 
   const steps = [
@@ -23,6 +28,46 @@ const Checkout = () => {
     { label: language === 'es' ? 'Envío' : 'Shipping', icon: LocalShippingIcon },
     { label: language === 'es' ? 'Método de pago' : 'Payment Method', icon: PaymentIcon },
   ];
+
+  const [arbol, setArbol] = useState<any>();
+
+  const { id } = useParams<{ id: string }>()
+
+  const user = useSelector((state: RootState) => state.user.user);
+  const shippingAddress = useSelector((state: RootState) => state.user.shippingAddresses);
+  const dispatch = useDispatch()
+
+  const BACK_URL = import.meta.env.VITE_BACK_URL
+
+  useEffect(() => {
+    const fetchArbol = async () => {
+      const response = await axios.get(`${BACK_URL}/arboles/${id}`);
+      setArbol(response.data);
+
+    };
+
+    fetchArbol();
+  }, []);
+
+  useEffect(() => {
+    if (!arbol) return; // Si arbol es null o undefined, no ejecuta el efecto
+  
+    const fetchUrlMp = async () => {
+      const data = {
+        id: String(arbol.id),
+        title: arbol.type,
+        quantity: 1,
+        unit_price: parseInt(arbol.price, 10),
+        description: `Arbol ${arbol.type}`,
+        currency_id: "ARS"
+      };
+  
+      const response = await axios.post(`${BACK_URL}/payments/create-order`, data);
+      setUrl(response.data.url)
+    };
+  
+    fetchUrlMp();
+  }, [arbol]);
 
   const handleNext = () => {
     setActiveStep((prevActiveStep) => prevActiveStep + 1);
@@ -32,7 +77,31 @@ const Checkout = () => {
     setQuantity((prev) => Math.max(1, prev + delta));
   };
 
-  const totalPrice = basePrice * quantity + shippingCost;
+  const totalPrice = (arbol?.price * quantity);
+
+  const handleShippingAddressComplete = (addressData: any) => {
+    dispatch(setShippingAddresses(addressData))
+
+    handleNext();
+  };
+
+  const handleAdoptionComplete = async () => {
+    const adoptionData = {
+      userId: user?.id,
+      treeId: arbol?.id,
+      shippingAddressId: shippingAddress.at(-1)?.id,
+    }
+
+    try {
+      const response = await axios.post(`${BACK_URL}/adoptions`, adoptionData);
+      console.log('Adopción creada:', response.data);
+
+      window.location.href = url
+
+    } catch (error) {
+      console.error('Error al crear la adopción:', error);
+    }
+  }
 
   const renderStepContent = () => {
     switch (activeStep) {
@@ -40,28 +109,32 @@ const Checkout = () => {
         return (
           <>
             <div className="flex gap-[32px]">
-              <img className="w-[200px] h-[170px] rounded-[8px]" src={naranjas} alt="Naranjas" />
+              <img
+                className="w-[200px] h-[170px] rounded-[8px]"
+                src={arbol.images[0]}
+                alt={arbol.type}
+              />
               <div>
-                <div className="flex justify-between bg-[#f9fafa] p-[20px] gap-[150px] items-center rounded-[4px] text-[#7e8591]">
+                <div className="flex justifyf-between bg-[#f9fafa] p-[20px] gap-[150px] items-center rounded-[4px] text-[#7e8591]">
                   <div>
-                    <p className="text-gray-700 font-[500]">
-                      {language === 'es' ? 'Adopción arbol de naranjas ecológicas' : 'Adoption of Organic Orange Tree'}
+                    <p className="text-gray-700 font-[500] lg:text-[.9rem] 2xl:text-base w-[156px]">
+                      Adopción de {arbol.type}
                     </p>
-                    <p>{language === 'es' ? 'Nombre del árbol' : 'Tree Name'}</p>
+                    <p className='lg:text-sm 2xl:text-base'>{language === 'es' ? 'Nombre del árbol' : 'Tree Name'}</p>
                   </div>
                   <DeleteIcon />
                 </div>
-                <p className="mt-4 mb-2">{language === 'es' ? 'Cantidad reservada' : 'Reserved Quantity'}</p>
+                <p className="mt-4 mb-2 lg:text-[.9rem] 2xl:text-base">{language === 'es' ? 'Cantidad reservada' : 'Reserved Quantity'}</p>
                 <div className="flex items-center gap-[20px]">
                   <button
-                    className="px-[14px] py-[4px] bg-[#e9ecf3] rounded-[4px] text-[#bfc1c4] font-[600]"
+                    className="px-[14px] py-[4px] bg-[#e9ecf3] rounded-[10px] text-[#bfc1c4] font-[600]"
                     onClick={() => handleQuantityChange(-1)}
                   >
                     -
                   </button>
-                  <span className="text-[#4BAF47] font-[600]">{quantity}</span>
+                  <span className="lg:text-[.9rem] 2xl:text-base text-[#4BAF47] font-[600]">{quantity}</span>
                   <button
-                    className="px-[14px] py-[4px] bg-[#4BAF47] rounded-[4px] text-white font-[600]"
+                    className="px-[14px] py-[4px] text-white bg-gradient-to-r from-green-500 to-green-600 rounded-[10px] shadow-lg hover:from-green-600 hover:to-green-700 transition-all duration-300 transform"
                     onClick={() => handleQuantityChange(1)}
                   >
                     +
@@ -71,7 +144,7 @@ const Checkout = () => {
             </div>
             <div className="flex justify-end mt-[20px]">
               <div>
-                <p className="flex justify-end mb-2 font-[600]">
+                <p className="lg:text-[.9rem] 2xl:text-base flex justify-end mb-2 font-[600]">
                   $ {totalPrice.toFixed(2)}
                 </p>
                 <p className="text-sm text-gray-500">
@@ -80,13 +153,13 @@ const Checkout = () => {
               </div>
             </div>
             <hr className="my-[20px]" />
-            <p className="text-gray-500">
+            <p className="text-gray-500 lg:text-[.9rem] 2xl:text-base">
               {language === 'es' ? 'Las fechas de envío pueden variar en función de variables climatológicas.' : 'Shipping dates may vary depending on weather conditions.'}
             </p>
           </>
         );
       case 1:
-        return <ShippingSection />;
+        return <ShippingSection onComplete={handleShippingAddressComplete} />
       case 2:
         return <PaymentMethodSection />;
       default:
@@ -96,10 +169,12 @@ const Checkout = () => {
 
   return (
     <section className="my-[92px]">
-      <div className="flex gap-[40px] px-[200px] py-[20px] bg-[#f9fafa]">
+      <div className="flex gap-[40px] lg:px-[200px] 2xl:px-[165px] py-[20px] bg-[#f9fafa]">
         {steps.map((step, index) => (
           <React.Fragment key={step.label}>
-            <div className={`flex items-center gap-[8px] ${index === activeStep ? 'text-[#4BAF47]' : 'text-[#b7bec7]'}`}>
+            <div
+              className={`flex items-center gap-[8px] lg:text-[15px] 2xl:text-base ${index === activeStep ? 'text-[#4BAF47]' : 'text-[#b7bec7]'}`}
+            >
               <step.icon />
               {step.label}
             </div>
@@ -110,46 +185,63 @@ const Checkout = () => {
         ))}
       </div>
 
-      <div className="flex justify-between px-[200px] mt-[50px]">
-        <div className={`${activeStep >= 1 && 'w-[64%]'}`}>
-          {renderStepContent()}
-        </div>
+      {arbol ? (
+        <>
+          <div className="flex justify-between lg:gap-[50px] 2xl:gap-[150px] lg:px-[200px] 2xl:px-[165px] mt-[50px]">
+            <div className={`${activeStep >= 1 && 'w-[64%]'} `}>
+              {renderStepContent()}
+            </div>
 
-        <div className="p-[20px] shadow rounded-[4px]">
-          <h3 className="text-xl font-semibold">{language === 'es' ? 'Resumen' : 'Summary'}</h3>
+            <div className="p-[20px] shadow rounded-[4px]">
+              <h3 className="w-[120px] lg:text-[1.12rem] 2xl:text-xl font-semibold">{language === 'es' ? 'Resumen' : 'Summary'}</h3>
 
-          <div className="mt-[20px] flex items-center gap-[150px]">
-            <span>{language === 'es' ? 'Precio final' : 'Final Price'}</span>
-            <span className="text-xl font-bold text-[#4BAF47]">
-              $ {totalPrice.toFixed(2)}
-            </span>
+              <div className="my-[20px] flex items-center lg:gap-[60px] 2xl:gap-[150px]">
+                <span className='w-[120px]'>{language === 'es' ? 'Precio final' : 'Final Price'}</span>
+                <span className="w-[120px] lg:text-[1.12rem] 2xl:text-xl font-bold text-[#4BAF47]">
+                  $ {(totalPrice + 2000).toFixed(2)}
+                </span>
+              </div>
+
+              <button
+                className="text-white bg-gradient-to-r from-green-500 to-green-600 rounded-[10px] shadow-lg hover:from-green-600 hover:to-green-700 transition-all duration-300 transform my-6 w-full"
+                onClick={activeStep === steps.length - 1 ? handleAdoptionComplete : handleNext}
+                // disabled={activeStep === steps.length - 1}
+              >
+                {activeStep === steps.length - 1 ? (language === 'es' ? 'Finalizar' : 'Finish') : (language === 'es' ? 'Avanzar' : 'Next')}
+              </button>
+
+              <div className="flex justify-center">
+                <a className="text-[#4BAF47] lg:text-[1.12rem] 2xl:text-xl text-center">
+                  {language === 'es' ? 'Seguir comprando' : 'Continue Shopping'}
+                </a>
+              </div>
+            </div>
           </div>
 
-          <button
-            className="rounded-[10px] bg-[#4BAF47] text-white hover:bg-[#3B8838] my-6 w-full"
-            onClick={handleNext}
-            disabled={activeStep === steps.length - 1}
-          >
-            {activeStep === steps.length - 1 ? (language === 'es' ? 'Finalizar' : 'Finish') : (language === 'es' ? 'Avanzar' : 'Next')}
-          </button>
-
-          <div className="flex justify-center">
-            <a className="text-[#4BAF47] text-xl text-center">
-              {language === 'es' ? 'Seguir comprando' : 'Continue Shopping'}
-            </a>
+          <div className="border border-gray-200 p-[30px] mt-[50px] lg:ml-[190px] 2xl:ml-[150px] lg:mr-[570px] 2xl:mr-[610px] rounded-[4px] flex items-center gap-[20px]">
+            <img className="w-[60px]" src={farmerGirl} alt="Farmer Girl" />
+            <div>
+              <h2 className="lg:text-base 2xl:text-[18px] font-semibold mb-1">
+                ¿Sabías que...?
+              </h2>
+              <p className='lg:text-[.9rem] 2xl:text-base'>
+                Nuestra comunidad apoya la transición de 3899 hectáreas de
+                Argentina hacia una agricultura más sostenible, ya sea ecológica
+                o regenerativa
+              </p>
+            </div>
+          </div>
+        </>
+      ) : (
+        <div className="w-full flex justify-center">
+          <div className="load-row my-[200px]">
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
           </div>
         </div>
-      </div>
-
-      <div className="border border-gray-200 p-[30px] mt-[50px] ml-[200px] mr-[570px] rounded-[4px] flex items-center gap-[20px]">
-        <img className="w-[60px]" src={farmerGirl} alt="Farmer Girl" />
-        <div>
-          <h2 className="text-[18px] font-semibold mb-1">{language === 'es' ? '¿Sabías que...?' : 'Did you know...?'}</h2>
-          <p>
-            {language === 'es' ? 'Nuestra comunidad apoya la transición de 3899 hectáreas de Argentina hacia una agricultura más sostenible, ya sea ecológica o regenerativa' : 'Our community supports the transition of 3899 hectares of Argentina towards more sustainable agriculture, whether organic or regenerative.'}
-          </p>
-        </div>
-      </div>
+      )}
     </section>
   );
 };

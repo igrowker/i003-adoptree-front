@@ -18,6 +18,8 @@ module.exports = {
         "2xl": "1440px",
         "3xl": "1536px",
         "4xl": "2560px",
+        '1366': '1366px',
+        '1920': '1920px',
         // Breakpoints personalizados
         tablet: "900px", // Dispositivos con un ancho de 900px o superior
         desktop: "1200px", // Dispositivos con un ancho de 1200px o superior

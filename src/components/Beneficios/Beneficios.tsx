@@ -58,7 +58,7 @@ const Beneficios: React.FC<BeneficiosProps> = ({ language }) => {
   } = content[language];
 
   return (
-    <section className="bg-white px-[200px] my-[70px] flex justify-center">
+    <section className="bg-white lg:px-[200px] 2xl:px-[165px] my-[70px] flex justify-center">
       <div className="container flex flex-col items-center text-center">
         <p className="text-orange-500 mb-2 fuentePersonalizada fuente">
           {benefitsTitle}
@@ -73,13 +73,13 @@ const Beneficios: React.FC<BeneficiosProps> = ({ language }) => {
             <img
               src={beneficiosImage}
               alt="BeneficiosProductor"
-              className="rounded-lg shadow-lg w-[400px] h-full"
+              className="rounded-lg shadow-lg lg:w-[370px] 2xl:w-[400px] h-full"
             />
           </div>
 
           {/* Texto y Beneficios */}
           <div className="md:w-1/2 text-left">
-            <p className="text-gray-700 mb-4">{description}</p>
+            <p className="text-gray-700 mb-4 lg:text-[.9rem] 2xl:text-base">{description}</p>
             <ul className="space-y-4">
               <li className="flex items-start">
                 <CheckCircleIcon
@@ -87,10 +87,10 @@ const Beneficios: React.FC<BeneficiosProps> = ({ language }) => {
                   fontSize="large"
                 />
                 <div className="ml-3">
-                  <h4 className="text-lg font-bold text-gray-900">
+                  <h4 className="lg:text-[1.10rem] 2xl:text-lg font-bold text-gray-900">
                     {freshnessTitle}
                   </h4>
-                  <p className="text-gray-600">{freshnessDescription}</p>
+                  <p className="text-gray-600 lg:text-[.9rem] 2xl:text-base">{freshnessDescription}</p>
                 </div>
               </li>
               <li className="flex items-start">
@@ -99,10 +99,10 @@ const Beneficios: React.FC<BeneficiosProps> = ({ language }) => {
                   fontSize="large"
                 />
                 <div className="ml-3">
-                  <h4 className="text-lg font-bold text-gray-900">
+                  <h4 className="lg:text-[1.10rem] 2xl:text-lg font-bold text-gray-900">
                     {supportTitle}
                   </h4>
-                  <p className="text-gray-600">{supportDescription}</p>
+                  <p className="text-gray-600 lg:text-[.9rem] 2xl:text-base">{supportDescription}</p>
                 </div>
               </li>
               <li className="flex items-start">
@@ -111,17 +111,17 @@ const Beneficios: React.FC<BeneficiosProps> = ({ language }) => {
                   fontSize="large"
                 />
                 <div className="ml-3">
-                  <h4 className="text-lg font-bold text-gray-900">
+                  <h4 className="lg:text-[1.10rem] 2xl:text-lg font-bold text-gray-900">
                     {sustainabilityTitle}
                   </h4>
-                  <p className="text-gray-600">{sustainabilityDescription}</p>
+                  <p className="text-gray-600 lg:text-[.9rem] 2xl:text-base">{sustainabilityDescription}</p>
                 </div>
               </li>
             </ul>
 
             {/* Botón para redirigir */}
             <Link to="/beneficios">
-              <button className="mt-6 text-white bg-gradient-to-r from-green-500 to-green-600 rounded-[10px] shadow-lg hover:from-green-600 hover:to-green-700 transition-all duration-300 transform">
+              <button className="mt-6 lg:text-[.9rem] 2xl:text-base text-white bg-gradient-to-r from-green-500 to-green-600 rounded-[10px] shadow-lg hover:from-green-600 hover:to-green-700 transition-all duration-300 transform">
                 {discoverMore}
               </button>
             </Link>

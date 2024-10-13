@@ -57,7 +57,7 @@ const Arboles: React.FC<ArbolesProps> = ({ language }) => {
   ];
 
   return (
-    <section className="py-14 bg-white px-[200px]">
+    <section className="py-14 bg-white lg:px-[200px] 2xl:px-[165px]">
       <div className="mx-auto">
         {/* HEADER o título */}
         <div className="text-center mb-8">
@@ -92,7 +92,7 @@ const Arboles: React.FC<ArbolesProps> = ({ language }) => {
                 </h3>
 
                 {/* Botón */}
-                <button className="mt-4 text-white bg-gradient-to-r from-green-500 to-green-600 rounded-[10px] shadow-lg hover:from-green-600 hover:to-green-700 transition-all duration-300 transform">
+                <button className="lg:text-[.9rem] 2xl:text-base mt-4 text-white bg-gradient-to-r from-green-500 to-green-600 rounded-[10px] shadow-lg hover:from-green-600 hover:to-green-700 transition-all duration-300 transform">
                   {adoptButton}
                 </button>
               </div>

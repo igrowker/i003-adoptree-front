@@ -52,7 +52,10 @@ const AboutUs: React.FC = () => {
               ? 'Nuestra plataforma facilita a los agricultores ingresos constantes, permitiendo mantener sus huertos de manera sostenible y mejorar las prácticas agrícolas responsables.'
               : 'Our platform provides farmers with steady income, allowing them to sustainably maintain their orchards and improve responsible farming practices.'
           ].map((text, index) => (
-            <div key={index} className="about-paragraph bg-white border border-gray-200 p-6 rounded-lg shadow-sm hover:shadow-md transition-shadow">
+            <div
+              key={index}
+              className="about-paragraph bg-white border border-gray-200 p-6 rounded-lg shadow-sm hover:shadow-md transition-shadow"
+            >
               <p className="text-base leading-relaxed text-gray-600">{text}</p>
             </div>
           ))}
@@ -125,14 +128,15 @@ const AboutUs: React.FC = () => {
                     : 'We strive to find new solutions to improve sustainability and efficiency in our projects.'
               }
             ].map((value, index) => (
-              <div key={index} className="value-card flex flex-col justify-center items-center">
+              <div
+                key={index}
+                className="value-card flex flex-col justify-center items-center"
+              >
                 <img src={value.icon} alt={value.title} className="value-icon" />
                 <h3 className="text-xl font-semibold mb-2 text-gray-800">
                   {value.title}
                 </h3>
-                <p className="value-text text-sm text-gray-600">
-                  {value.text}
-                </p>
+                <p className="value-text text-sm text-gray-600">{value.text}</p>
               </div>
             ))}
           </div>
@@ -143,3 +147,4 @@ const AboutUs: React.FC = () => {
 };
 
 export default AboutUs;
+
