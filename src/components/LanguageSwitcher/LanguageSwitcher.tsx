@@ -15,7 +15,8 @@ const LanguageSwitcher: React.FC = () => {
     const footer = document.querySelector('footer'); // Selecciona tu footer
     if (footer) {
       const footerRect = footer.getBoundingClientRect();
-      const isInView = footerRect.top <= window.innerHeight && footerRect.top >= 0;
+      const isInView =
+        footerRect.top <= window.innerHeight && footerRect.top >= 0;
       setIsAtFooter(isInView);
     }
   };
@@ -34,7 +35,10 @@ const LanguageSwitcher: React.FC = () => {
   }, [setLanguage]);
 
   return (
-    <div className="language-switcher" style={{ bottom: isAtFooter ? 'calc(20px + 100px)' : '20px' }}>
+    <div
+      className="language-switcher"
+      style={{ bottom: isAtFooter ? 'calc(20px + 100px)' : '20px' }}
+    >
       <button
         onClick={() => handleLanguageChange('es')}
         className={language === 'es' ? 'active' : ''}
@@ -52,4 +56,3 @@ const LanguageSwitcher: React.FC = () => {
 };
 
 export default LanguageSwitcher;
-

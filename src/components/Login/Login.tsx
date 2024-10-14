@@ -20,7 +20,7 @@ const Login: React.FC = () => {
     password: '',
   });
 
-  const BACK_URL = import.meta.env.VITE_BACK_URL
+  const BACK_URL = import.meta.env.VITE_BACK_URL;
 
   const dispatch = useDispatch();
   const navigate = useNavigate();
@@ -63,10 +63,7 @@ const Login: React.FC = () => {
           body: JSON.stringify(formData), // Convertimos los datos a formato JSON
         };
 
-        const response = await fetch(
-          `${BACK_URL}/auth/login`,
-          opciones
-        );
+        const response = await fetch(`${BACK_URL}/auth/login`, opciones);
 
         if (!response.ok) {
           // setFailed(true);

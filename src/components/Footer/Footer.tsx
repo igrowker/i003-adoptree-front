@@ -73,7 +73,9 @@ const Footer: React.FC = () => {
         <div className="footer-section">
           <div className="section-container">
             <div className="section-content">
-              <h2 className="font-semibold">{language === 'es' ? 'Explora' : 'Explore'}</h2>
+              <h2 className="font-semibold">
+                {language === 'es' ? 'Explora' : 'Explore'}
+              </h2>
               <div className="flex items-center gap-1 mt-[5px] mb-[15px]">
                 <div className="w-[45px] h-[4px] bg-[#4BAF47] rounded-[2px]"></div>
                 <div className="w-[4px] h-[4px] rounded-[2px] bg-[#4BAF47]"></div>
@@ -81,7 +83,8 @@ const Footer: React.FC = () => {
               <ul>
                 <li>
                   <a href="#" className="flex items-center gap-2">
-                    <GrassIcon /> {language === 'es' ? 'Sobre nosotros' : 'About Us'}
+                    <GrassIcon />{' '}
+                    {language === 'es' ? 'Sobre nosotros' : 'About Us'}
                   </a>
                 </li>
                 <li>
@@ -106,7 +109,9 @@ const Footer: React.FC = () => {
         <div className="footer-section">
           <div className="section-container">
             <div className="section-content">
-              <h2 className="font-semibold">{language === 'es' ? 'Contacto' : 'Contact'}</h2>
+              <h2 className="font-semibold">
+                {language === 'es' ? 'Contacto' : 'Contact'}
+              </h2>
               <div className="flex items-center gap-1 mt-[5px] mb-[15px]">
                 <div className="w-[45px] h-[4px] bg-[#4BAF47] rounded-[2px]"></div>
                 <div className="w-[4px] h-[4px] rounded-[2px] bg-[#4BAF47]"></div>
@@ -128,10 +133,20 @@ const Footer: React.FC = () => {
         </div>
       </div>
       <div className="footer-bottom">
-        <p>© Adoptree 2024 - {language === 'es' ? 'Todos los derechos reservados' : 'All rights reserved'}</p>
         <p>
-          <a href="#">{language === 'es' ? 'Términos de uso' : 'Terms of use'}</a> |{' '}
-          <a href="#">{language === 'es' ? 'Política de privacidad' : 'Privacy Policy'}</a>
+          © Adoptree 2024 -{' '}
+          {language === 'es'
+            ? 'Todos los derechos reservados'
+            : 'All rights reserved'}
+        </p>
+        <p>
+          <a href="#">
+            {language === 'es' ? 'Términos de uso' : 'Terms of use'}
+          </a>{' '}
+          |{' '}
+          <a href="#">
+            {language === 'es' ? 'Política de privacidad' : 'Privacy Policy'}
+          </a>
         </p>
       </div>
     </footer>

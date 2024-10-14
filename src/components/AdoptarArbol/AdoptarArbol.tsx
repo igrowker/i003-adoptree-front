@@ -4,28 +4,10 @@ import GiteIcon from '@mui/icons-material/Gite';
 import { GiFruitTree, GiFruitBowl } from 'react-icons/gi';
 import { useNavigate } from 'react-router-dom';
 import './AdoptarArbol.css';
-
-interface FincaData {
-  id: number;
-  name: string;
-  ubication: string;
-  practicesSustainable: string;
-  productor: string;
-}
-
-interface ArbolData {
-  id: number;
-  name: string;
-  type: string;
-  location: string;
-  images: string; // Cambié imageUrl a images
-  productor: string;
-  price: number;
-  finca: FincaData; // Agregamos finca aquí
-}
+import { ArbolInterface } from '../../store/services/arbolApi';
 
 interface AdoptarArbolProps {
-  datos: ArbolData;
+  datos: ArbolInterface;
 }
 
 const AdoptarArbol: React.FC<AdoptarArbolProps> = ({ datos }) => {
@@ -36,7 +18,7 @@ const AdoptarArbol: React.FC<AdoptarArbolProps> = ({ datos }) => {
       <div className="relative">
         <img
           src={datos.images[0]} // Cambié imageUrl a images
-          alt={`Árbol de ${datos.name}`}
+          alt={`Árbol de ${datos.type}`}
           className="w-full h-48 object-cover transition-all duration-300 group-hover:brightness-95"
         />
         <div className="absolute top-2 right-2 bg-white bg-opacity-90 rounded-full px-3 py-1 text-sm font-bold text-[#4BAF47]">
@@ -86,7 +68,10 @@ const AdoptarArbol: React.FC<AdoptarArbolProps> = ({ datos }) => {
               <span className="truncate">
                 Productor:{' '}
                 <span className="text-[#00BF62] font-medium">
-                  {datos.finca.productor} {/* Accedemos al productor desde finca */}
+                  {datos.finca.productor.nombre +
+                    ' ' +
+                    datos.finca.productor.apellido}{' '}
+                  {/* Accedemos al productor desde finca */}
                 </span>
               </span>
             </p>

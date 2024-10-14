@@ -5,13 +5,13 @@ export interface UserState {
   user: User | null;
   authenticated: boolean;
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  shippingAddresses: any[]
+  shippingAddresses: any[];
 }
 
 const initialState: UserState = {
   user: null,
   authenticated: false,
-  shippingAddresses: []
+  shippingAddresses: [],
 };
 
 export const userSlice = createSlice({
@@ -30,13 +30,14 @@ export const userSlice = createSlice({
       state.authenticated = false;
     },
     setShippingAddresses: (state, action) => {
-      state.shippingAddresses.push(action.payload)
-    }
+      state.shippingAddresses.push(action.payload);
+    },
   },
 });
 
 // Exportar las acciones
-export const { login, setAuthenticated, logout, setShippingAddresses } = userSlice.actions;
+export const { login, setAuthenticated, logout, setShippingAddresses } =
+  userSlice.actions;
 
 // Exportar el reducer
 export default userSlice.reducer;

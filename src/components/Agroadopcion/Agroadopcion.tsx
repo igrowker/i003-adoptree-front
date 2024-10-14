@@ -7,16 +7,18 @@ interface AgroadopcionProps {
 }
 
 const Agroadopcion: React.FC<AgroadopcionProps> = ({ language }) => {
-
-  const content: Record<'es' | 'en', { 
-    title: string; 
-    adoptionQuestion: string; 
-    adoptionDescription: string; 
-    currentProduction: string; 
-    ownershipQuestion: string; 
-    steps: string[]; 
-    clickHere: string; 
-  }> = {
+  const content: Record<
+    'es' | 'en',
+    {
+      title: string;
+      adoptionQuestion: string;
+      adoptionDescription: string;
+      currentProduction: string;
+      ownershipQuestion: string;
+      steps: string[];
+      clickHere: string;
+    }
+  > = {
     es: {
       title: 'Agroadopción ecológica',
       adoptionQuestion: '¿En qué consiste la adopción de un árbol?',
@@ -49,7 +51,8 @@ const Agroadopcion: React.FC<AgroadopcionProps> = ({ language }) => {
     },
   };
 
-  const { adoptionQuestion, currentProduction, ownershipQuestion, steps } = content[language];
+  const { adoptionQuestion, currentProduction, ownershipQuestion, steps } =
+    content[language];
 
   return (
     <section
@@ -69,35 +72,37 @@ const Agroadopcion: React.FC<AgroadopcionProps> = ({ language }) => {
             <div className="md:col-span-9 mb-9 md:mb-0 w-[500px]">
               <p className="text-left lg:text-[.9rem] 2xl:text-[16px] leading-[32px] text-gray-700">
                 {language === 'es' ? (
-                   <p className="text-left lg:text-[.9rem] 2xl:text-[16px] leading-[32px] text-gray-700">
-                   Adoptá un cítrico de nuestro huerto de Entre Ríos. Vas a poder
-                   verlo crecer a través de fotos en tu zona de usuario y recibir
-                   tu cosecha de naranjas en tu casa. <br />
-                   ¿Ya lo tenés decidido? Hacé{' '}
-                   <b>
-                     <a href="#!" className="text-gray-700">
-                       clic acá
-                     </a>
-                   </b>{' '}
-                   para comenzar la adopción de tu naranjo. <br />
-                   Gracias a las adopciones, podemos financiar las prácticas
-                   regenerativas que estamos implementando para preservar los
-                   ecosistemas locales.
-                 </p>
+                  <p className="text-left lg:text-[.9rem] 2xl:text-[16px] leading-[32px] text-gray-700">
+                    Adoptá un cítrico de nuestro huerto de Entre Ríos. Vas a
+                    poder verlo crecer a través de fotos en tu zona de usuario y
+                    recibir tu cosecha de naranjas en tu casa. <br />
+                    ¿Ya lo tenés decidido? Hacé{' '}
+                    <b>
+                      <a href="#!" className="text-gray-700">
+                        clic acá
+                      </a>
+                    </b>{' '}
+                    para comenzar la adopción de tu naranjo. <br />
+                    Gracias a las adopciones, podemos financiar las prácticas
+                    regenerativas que estamos implementando para preservar los
+                    ecosistemas locales.
+                  </p>
                 ) : (
                   <p className="text-left lg:text-[.9rem] 2xl:text-[16px] leading-[32px] text-gray-700">
-                  Adopt a citrus fruit from our farms. You will be able to see it grow through photos
-                  in your user area and receive your orange harvest at home. <br />
-                  Have you already decided? {' '}
-                  <b>
-                    <a href="#!" className="text-gray-700">
-                      click here
-                    </a>
-                  </b>{' '}
-                  to start the adoption of your orange tree.<br />
-                  Thanks to adoptions, we are able to finance the regenerative
-                  practices we are implementing to preserve local ecosystems.
-                </p>
+                    Adopt a citrus fruit from our farms. You will be able to see
+                    it grow through photos in your user area and receive your
+                    orange harvest at home. <br />
+                    Have you already decided?{' '}
+                    <b>
+                      <a href="#!" className="text-gray-700">
+                        click here
+                      </a>
+                    </b>{' '}
+                    to start the adoption of your orange tree.
+                    <br />
+                    Thanks to adoptions, we are able to finance the regenerative
+                    practices we are implementing to preserve local ecosystems.
+                  </p>
                 )}
               </p>
             </div>

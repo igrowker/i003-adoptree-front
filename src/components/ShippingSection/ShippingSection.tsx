@@ -3,12 +3,11 @@ import React, { useState } from 'react';
 import { useSelector } from 'react-redux';
 import { RootState } from '../../types/types';
 
-
 interface ShippingSectionProps {
   onComplete: (addressData: AddressData) => void;
 }
 
-interface AddressData {
+export interface AddressData {
   fullName: string;
   address: string;
   city: string;
@@ -17,6 +16,16 @@ interface AddressData {
   country: string;
   phoneNumber: string;
 }
+
+// address: string;
+// city: string;
+// country: string;
+// fullName: string;
+// id: number;
+// phoneNumber: string;
+// postalCode: string;
+// province: string;
+// userId: number;
 
 const ShippingSection: React.FC<ShippingSectionProps> = ({ onComplete }) => {
   const [shippingInfo, setShippingInfo] = useState({
@@ -28,10 +37,9 @@ const ShippingSection: React.FC<ShippingSectionProps> = ({ onComplete }) => {
     country: 'Argentina',
     phoneNumber: '',
   });
+  const BACK_URL = import.meta.env.VITE_BACK_URL;
 
   const user = useSelector((state: RootState) => state.user.user);
-
-  const BACK_URL = import.meta.env.VITE_BACK_URL
 
   const handleInputChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>
@@ -43,10 +51,12 @@ const ShippingSection: React.FC<ShippingSectionProps> = ({ onComplete }) => {
     }));
   };
 
-
   const createShippingAddress = async (addressData: AddressData) => {
     try {
-      const response = await axios.post(`${BACK_URL}/shipping-addresses`, addressData);
+      const response = await axios.post(
+        `${BACK_URL}/shipping-addresses`,
+        addressData
+      );
       console.log('Dirección de envío creada:', response.data);
       onComplete(response.data);
     } catch (error) {
@@ -54,12 +64,10 @@ const ShippingSection: React.FC<ShippingSectionProps> = ({ onComplete }) => {
     }
   };
 
-
-
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    const shippingData = {...shippingInfo, userId: user?.id}
-    console.log(shippingData)
+    const shippingData = { ...shippingInfo, userId: user?.id };
+    console.log(shippingData);
     createShippingAddress(shippingData);
   };
 

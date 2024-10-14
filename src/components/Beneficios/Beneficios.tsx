@@ -92,7 +92,9 @@ const Beneficios: React.FC<BeneficiosProps> = ({ language }) => {
 
           {/* Texto y Beneficios */}
           <div className="md:w-1/2 text-left">
-            <p className="text-gray-700 mb-4 lg:text-[.9rem] 2xl:text-base">{description}</p>
+            <p className="text-gray-700 mb-4 lg:text-[.9rem] 2xl:text-base">
+              {description}
+            </p>
             <ul className="space-y-4">
               <li className="flex items-start">
                 <CheckCircleIcon
@@ -103,7 +105,9 @@ const Beneficios: React.FC<BeneficiosProps> = ({ language }) => {
                   <h4 className="lg:text-[1.10rem] 2xl:text-lg font-bold text-gray-900">
                     {freshnessTitle}
                   </h4>
-                  <p className="text-gray-600 lg:text-[.9rem] 2xl:text-base">{freshnessDescription}</p>
+                  <p className="text-gray-600 lg:text-[.9rem] 2xl:text-base">
+                    {freshnessDescription}
+                  </p>
                 </div>
               </li>
               <li className="flex items-start">
@@ -115,7 +119,9 @@ const Beneficios: React.FC<BeneficiosProps> = ({ language }) => {
                   <h4 className="lg:text-[1.10rem] 2xl:text-lg font-bold text-gray-900">
                     {supportTitle}
                   </h4>
-                  <p className="text-gray-600 lg:text-[.9rem] 2xl:text-base">{supportDescription}</p>
+                  <p className="text-gray-600 lg:text-[.9rem] 2xl:text-base">
+                    {supportDescription}
+                  </p>
                 </div>
               </li>
               <li className="flex items-start">
@@ -127,7 +133,9 @@ const Beneficios: React.FC<BeneficiosProps> = ({ language }) => {
                   <h4 className="lg:text-[1.10rem] 2xl:text-lg font-bold text-gray-900">
                     {sustainabilityTitle}
                   </h4>
-                  <p className="text-gray-600 lg:text-[.9rem] 2xl:text-base">{sustainabilityDescription}</p>
+                  <p className="text-gray-600 lg:text-[.9rem] 2xl:text-base">
+                    {sustainabilityDescription}
+                  </p>
                 </div>
               </li>
             </ul>

@@ -25,14 +25,14 @@ export interface FormDataRegister {
   direccionEnvio: string;
   role: string;
   googleId: string; // Opcional
-  avatar: null; // Opcional
+  avatar: string | null; // Opcional
 }
 
 export interface RootState {
   user: {
     user: User;
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    shippingAddresses: any[]
+    shippingAddresses: any[];
   };
 }
 
@@ -41,7 +41,7 @@ export interface User {
   email: string;
   name: string;
   direccionEnvio: string;
-  role: string | null;
+  role: string;
   arbolId: string | null;
   password: string;
   googleId: string | null;

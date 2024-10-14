@@ -12,31 +12,39 @@ const sectionContent = 'text-lg text-gray-600 max-w-3xl text-center mb-10';
 // Language translations
 const translations = {
   es: {
-    title: "Regenerar la tierra que nos alimenta",
-    content: "Adoptree es una innovadora plataforma digital que fomenta la conexión entre las personas y la naturaleza, brindando la oportunidad de adoptar árboles y participar activamente en la reforestación de áreas degradadas.",
-    metricsTitle: "Los frutos de un movimiento sostenible",
-    metricsContent: "Adoptree busca conectar a personas con la naturaleza, permitiendo adoptar árboles y reforestar áreas deforestadas.",
-    impactTitle: "Nuestro impacto ambiental",
-    impactContent: "A base de combatir toda la biodiversidad que crecía alrededor de los cultivos, los suelos se volvieron inertes y el agricultor empezó a necesitar cada vez más nutrientes para ver crecer sus cosechas.",
-    potentialTitle: "El inmenso potencial de cambiar cómo cultivamos",
-    potentialContent: "El 50% de toda la tierra habitable de nuestro planeta está destinada a la agricultura. ¿Imaginas ponerla al servicio de regenerar nuestro ecosistema en lugar de destruirlo? La agricultura regenerativa lo hace posible.",
-    interestTitle: "También podría interesarte",
-    viewMoreBlogs: "Ver más blogs",
+    title: 'Regenerar la tierra que nos alimenta',
+    content:
+      'Adoptree es una innovadora plataforma digital que fomenta la conexión entre las personas y la naturaleza, brindando la oportunidad de adoptar árboles y participar activamente en la reforestación de áreas degradadas.',
+    metricsTitle: 'Los frutos de un movimiento sostenible',
+    metricsContent:
+      'Adoptree busca conectar a personas con la naturaleza, permitiendo adoptar árboles y reforestar áreas deforestadas.',
+    impactTitle: 'Nuestro impacto ambiental',
+    impactContent:
+      'A base de combatir toda la biodiversidad que crecía alrededor de los cultivos, los suelos se volvieron inertes y el agricultor empezó a necesitar cada vez más nutrientes para ver crecer sus cosechas.',
+    potentialTitle: 'El inmenso potencial de cambiar cómo cultivamos',
+    potentialContent:
+      'El 50% de toda la tierra habitable de nuestro planeta está destinada a la agricultura. ¿Imaginas ponerla al servicio de regenerar nuestro ecosistema en lugar de destruirlo? La agricultura regenerativa lo hace posible.',
+    interestTitle: 'También podría interesarte',
+    viewMoreBlogs: 'Ver más blogs',
     // Add more Spanish translations here
   },
   en: {
-    title: "Regenerate the land that feeds us",
-    content: "Adoptree is an innovative digital platform that fosters the connection between people and nature, providing the opportunity to adopt trees and actively participate in the reforestation of degraded areas.",
-    metricsTitle: "The fruits of a sustainable movement",
-    metricsContent: "Adoptree seeks to connect people with nature, allowing them to adopt trees and reforest deforested areas.",
-    impactTitle: "Our environmental impact",
-    impactContent: "By combating all the biodiversity that grew around crops, soils became inert and farmers began to need more and more nutrients to see their crops grow.",
-    potentialTitle: "The immense potential of changing how we cultivate",
-    potentialContent: "50% of all habitable land on our planet is destined for agriculture. Can you imagine putting it at the service of regenerating our ecosystem instead of destroying it? Regenerative agriculture makes it possible.",
-    interestTitle: "You might also be interested in",
-    viewMoreBlogs: "View more blogs",
+    title: 'Regenerate the land that feeds us',
+    content:
+      'Adoptree is an innovative digital platform that fosters the connection between people and nature, providing the opportunity to adopt trees and actively participate in the reforestation of degraded areas.',
+    metricsTitle: 'The fruits of a sustainable movement',
+    metricsContent:
+      'Adoptree seeks to connect people with nature, allowing them to adopt trees and reforest deforested areas.',
+    impactTitle: 'Our environmental impact',
+    impactContent:
+      'By combating all the biodiversity that grew around crops, soils became inert and farmers began to need more and more nutrients to see their crops grow.',
+    potentialTitle: 'The immense potential of changing how we cultivate',
+    potentialContent:
+      '50% of all habitable land on our planet is destined for agriculture. Can you imagine putting it at the service of regenerating our ecosystem instead of destroying it? Regenerative agriculture makes it possible.',
+    interestTitle: 'You might also be interested in',
+    viewMoreBlogs: 'View more blogs',
     // Add more English translations here
-  }
+  },
 };
 
 // Main component
@@ -50,7 +58,11 @@ const ImpactoAmbiental: React.FC = () => {
         title={t.title}
         content={t.content}
         imageSrc="./impacto.png"
-        imageAlt={language === 'es' ? "Agricultura Regenerativa" : "Regenerative Agriculture"}
+        imageAlt={
+          language === 'es'
+            ? 'Agricultura Regenerativa'
+            : 'Regenerative Agriculture'
+        }
       />
 
       <MetricSection
@@ -59,15 +71,24 @@ const ImpactoAmbiental: React.FC = () => {
         metrics={[
           {
             thumbnail: './productoresImg.webp',
-            value: language === 'es' ? '21 productores regenerando su entorno' : '21 producers regenerating their environment',
+            value:
+              language === 'es'
+                ? '21 productores regenerando su entorno'
+                : '21 producers regenerating their environment',
           },
           {
             thumbnail: './hectareasImg.webp',
-            value: language === 'es' ? '1490 hectáreas en proceso de regeneración' : '1490 hectares in the process of regeneration',
+            value:
+              language === 'es'
+                ? '1490 hectáreas en proceso de regeneración'
+                : '1490 hectares in the process of regeneration',
           },
           {
             thumbnail: './adopcionesImg.webp',
-            value: language === 'es' ? '38.596 adopciones apoyando la regeneración' : '38,596 adoptions supporting regeneration',
+            value:
+              language === 'es'
+                ? '38.596 adopciones apoyando la regeneración'
+                : '38,596 adoptions supporting regeneration',
           },
         ]}
       />
@@ -78,28 +99,32 @@ const ImpactoAmbiental: React.FC = () => {
         metrics={[
           {
             thumbnail: './suelosDegradados.webp',
-            value: language === 'es' 
-              ? 'Entre un 60% y 70% de los suelos de la Argentina están degradados'
-              : 'Between 60% and 70% of Argentina\'s soils are degraded',
+            value:
+              language === 'es'
+                ? 'Entre un 60% y 70% de los suelos de la Argentina están degradados'
+                : "Between 60% and 70% of Argentina's soils are degraded",
           },
           {
             thumbnail: './emisionesTotales.webp',
-            value: language === 'es'
-              ? 'El sistema alimentario es responsable de más del 30% de las emisiones totales del cambio climático'
-              : 'The food system is responsible for more than 30% of total climate change emissions',
+            value:
+              language === 'es'
+                ? 'El sistema alimentario es responsable de más del 30% de las emisiones totales del cambio climático'
+                : 'The food system is responsible for more than 30% of total climate change emissions',
           },
           {
             thumbnail: './biodiversidad.webp',
-            value: language === 'es'
-              ? 'El sistema alimentario es responsable de más del 30% de las emisiones totales del cambio climático'
-              : 'The food system is responsible for more than 30% of total climate change emissions',
+            value:
+              language === 'es'
+                ? 'El sistema alimentario es responsable de más del 30% de las emisiones totales del cambio climático'
+                : 'The food system is responsible for more than 30% of total climate change emissions',
           },
           {
             thumbnail: './aguaDulce.webp',
-            value: language === 'es'
-              ? 'El sistema alimentario es responsable de más del 30% de las emisiones totales del cambio climático'
-              : 'The food system is responsible for more than 30% of total climate change emissions',
-          }
+            value:
+              language === 'es'
+                ? 'El sistema alimentario es responsable de más del 30% de las emisiones totales del cambio climático'
+                : 'The food system is responsible for more than 30% of total climate change emissions',
+          },
         ]}
       />
 
@@ -111,32 +136,48 @@ const ImpactoAmbiental: React.FC = () => {
         metrics={[
           {
             thumbnail: './microorganismos.webp',
-            title: language === 'es' ? 'Mayor biodiversidad y captura de carbono' : 'Greater biodiversity and carbon capture',
-            value: language === 'es'
-              ? '¡Se podría absorber más del 100% de las emisiones actuales de CO₂!'
-              : 'More than 100% of current CO₂ emissions could be absorbed!',
+            title:
+              language === 'es'
+                ? 'Mayor biodiversidad y captura de carbono'
+                : 'Greater biodiversity and carbon capture',
+            value:
+              language === 'es'
+                ? '¡Se podría absorber más del 100% de las emisiones actuales de CO₂!'
+                : 'More than 100% of current CO₂ emissions could be absorbed!',
           },
           {
             thumbnail: './plagas.webp',
-            title: language === 'es' ? 'Mayor biodiversidad y captura de carbono' : 'Greater biodiversity and carbon capture',
-            value: language === 'es'
-              ? '¡Se podría absorber más del 100% de las emisiones actuales de CO₂!'
-              : 'More than 100% of current CO₂ emissions could be absorbed!',
+            title:
+              language === 'es'
+                ? 'Mayor biodiversidad y captura de carbono'
+                : 'Greater biodiversity and carbon capture',
+            value:
+              language === 'es'
+                ? '¡Se podría absorber más del 100% de las emisiones actuales de CO₂!'
+                : 'More than 100% of current CO₂ emissions could be absorbed!',
           },
           {
             thumbnail: './estabilidadFinanciera.webp',
-            title: language === 'es' ? 'Mayor biodiversidad y captura de carbono' : 'Greater biodiversity and carbon capture',
-            value: language === 'es'
-              ? '¡Se podría absorber más del 100% de las emisiones actuales de CO₂!'
-              : 'More than 100% of current CO₂ emissions could be absorbed!',
+            title:
+              language === 'es'
+                ? 'Mayor biodiversidad y captura de carbono'
+                : 'Greater biodiversity and carbon capture',
+            value:
+              language === 'es'
+                ? '¡Se podría absorber más del 100% de las emisiones actuales de CO₂!'
+                : 'More than 100% of current CO₂ emissions could be absorbed!',
           },
           {
             thumbnail: './alimentoNutritivo.webp',
-            title: language === 'es' ? 'Mayor biodiversidad y captura de carbono' : 'Greater biodiversity and carbon capture',
-            value: language === 'es'
-              ? '¡Se podría absorber más del 100% de las emisiones actuales de CO₂!'
-              : 'More than 100% of current CO₂ emissions could be absorbed!',
-          }
+            title:
+              language === 'es'
+                ? 'Mayor biodiversidad y captura de carbono'
+                : 'Greater biodiversity and carbon capture',
+            value:
+              language === 'es'
+                ? '¡Se podría absorber más del 100% de las emisiones actuales de CO₂!'
+                : 'More than 100% of current CO₂ emissions could be absorbed!',
+          },
         ]}
       />
 
@@ -222,11 +263,12 @@ const MetricItem: React.FC<{
 
 // SectionQuote component
 const SectionQuote: React.FC<{ language: 'es' | 'en' }> = ({ language }) => {
-  const quote = language === 'es'
-    ? "Vamos a iniciar la aventura de mejorar lo ecológico con prácticas regenerativas. Creemos que estas prácticas nos pueden ayudar económicamente en la finca y en la mejora del cultivo si conseguimos simbiosis entre animales, la hierba y los árboles."
-    : "We are going to start the adventure of improving the ecological with regenerative practices. We believe that these practices can help us economically on the farm and in improving the crop if we achieve symbiosis between animals, grass and trees.";
+  const quote =
+    language === 'es'
+      ? 'Vamos a iniciar la aventura de mejorar lo ecológico con prácticas regenerativas. Creemos que estas prácticas nos pueden ayudar económicamente en la finca y en la mejora del cultivo si conseguimos simbiosis entre animales, la hierba y los árboles.'
+      : 'We are going to start the adventure of improving the ecological with regenerative practices. We believe that these practices can help us economically on the farm and in improving the crop if we achieve symbiosis between animals, grass and trees.';
 
-  const author = "Paco Marín - Finca Refijo y Marroquino";
+  const author = 'Paco Marín - Finca Refijo y Marroquino';
 
   return (
     <section className="bg-green-50 py-20 px-8 rounded-lg shadow-md my-20">
@@ -257,15 +299,22 @@ const SectionInteres: React.FC<{ language: 'es' | 'en' }> = ({ language }) => {
   const items = [
     {
       imgSrc: './tallerAgro.png',
-      title: language === 'es' ? '¡Completamos el segundo taller del año!' : 'We completed the second workshop of the year!',
+      title:
+        language === 'es'
+          ? '¡Completamos el segundo taller del año!'
+          : 'We completed the second workshop of the year!',
     },
     {
       imgSrc: './radioAgro.png',
-      title: language === 'es' ? '¡Estuvimos en la radio!' : 'We were on the radio!',
+      title:
+        language === 'es' ? '¡Estuvimos en la radio!' : 'We were on the radio!',
     },
     {
       imgSrc: './pasantesAgro.png',
-      title: language === 'es' ? 'Regenerando el paisaje con árboles: Adoptree' : 'Regenerating the landscape with trees: Adoptree',
+      title:
+        language === 'es'
+          ? 'Regenerando el paisaje con árboles: Adoptree'
+          : 'Regenerating the landscape with trees: Adoptree',
     },
   ];
 
@@ -285,7 +334,9 @@ const SectionInteres: React.FC<{ language: 'es' | 'en' }> = ({ language }) => {
               src={item.imgSrc}
               alt={item.title}
             />
-            <h3 className="text-lg font-semibold text-gray-800">{item.title}</h3>
+            <h3 className="text-lg font-semibold text-gray-800">
+              {item.title}
+            </h3>
           </motion.div>
         ))}
       </div>

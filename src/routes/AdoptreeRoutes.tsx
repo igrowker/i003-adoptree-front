@@ -19,12 +19,13 @@ import DescubreMas from '../components/Beneficios/DescubreMas/DescubreMas'; // C
 import Donar from '../pages/Donar/Donar'; // Componente Donar
 import { LanguageProvider } from '../LanguageContext/LanguageContext'; // Importa el LanguageProvider
 
+import Dashboard from '../pages/Dashboard/Dashboard';
 
 const AdoptreeRoutes = () => {
   return (
     <LanguageProvider>
       <Navbar />
-    
+
       <div className="language-switcher-container">
         <LanguageSwitcher />
       </div>
@@ -42,6 +43,8 @@ const AdoptreeRoutes = () => {
         <Route path="/blog3" element={<Blog3 />} />
         <Route path="/about" element={<AboutUs />} />
         <Route path="/contacto" element={<Contacto />} />
+        <Route path="/beneficios" element={<DescubreMas />} />{' '}
+        <Route path="/dashboard" element={<Dashboard />} />
         <Route path="/privacy-policy" element={<PrivacyPolicy />} />
         <Route path="/beneficios" element={<DescubreMas />} />
         <Route path="/donar" element={<Donar />} />

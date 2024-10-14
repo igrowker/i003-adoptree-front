@@ -29,7 +29,7 @@ const Login: React.FC = () => {
 
   const navigate = useNavigate();
 
-  const BACK_URL = import.meta.env.VITE_BACK_URL
+  const BACK_URL = import.meta.env.VITE_BACK_URL;
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
@@ -84,10 +84,7 @@ const Login: React.FC = () => {
           body: JSON.stringify(formData), // Convertimos los datos a formato JSON
         };
 
-        const response = await fetch(
-          `${BACK_URL}/auth/register`,
-          opciones
-        );
+        const response = await fetch(`${BACK_URL}/auth/register`, opciones);
 
         if (!response.ok) {
           // setFailed(true);

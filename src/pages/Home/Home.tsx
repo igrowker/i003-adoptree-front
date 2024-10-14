@@ -14,13 +14,13 @@ const Home: React.FC = () => {
 
   return (
     <>
-      <Bienvenido language={language}/>
-      <Agriculture language={language}/>
-      <Arboles language={language}/>
-      <Banner language={language}/>
-      <Cards language={language}/>
-      <Agroadopcion language={language}/>
-      <Beneficios language={language}/>
+      <Bienvenido language={language} />
+      <Agriculture language={language} />
+      <Arboles language={language} />
+      <Banner language={language} />
+      <Cards language={language} />
+      <Agroadopcion language={language} />
+      <Beneficios language={language} />
       <Donaciones language={language} />
     </>
   );

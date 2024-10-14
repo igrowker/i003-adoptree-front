@@ -6,52 +6,49 @@ import PaymentIcon from '@mui/icons-material/Payment';
 import KeyboardArrowRightIcon from '@mui/icons-material/KeyboardArrowRight';
 import DeleteIcon from '@mui/icons-material/Delete';
 import farmerGirl from '../../assets/farmer-girl.svg';
-import ShippingSection from '../../components/ShippingSection/ShippingSection';
+import ShippingSection, { AddressData } from '../../components/ShippingSection/ShippingSection';
 import PaymentMethodSection from '../../components/PaymentMethodSection/PaymentMethodSection';
 import { useParams } from 'react-router-dom';
 import axios from 'axios';
 import { useDispatch, useSelector } from 'react-redux';
 import { setShippingAddresses } from '../../store/features/userSlice';
 import { RootState } from '../../types/types';
-import { useLanguage } from '../../LanguageContext/LanguageContext';
 
 const Checkout = () => {
-  const [url, setUrl] = useState("")
-  const { language } = useLanguage(); 
-
+  const [url, setUrl] = useState('');
   const [activeStep, setActiveStep] = useState(0);
   const [quantity, setQuantity] = useState(1);
   const shippingCost = 2000;
+  const BACK_URL = import.meta.env.VITE_BACK_URL;
 
   const steps = [
-    { label: language === 'es' ? 'Tu cesta' : 'Your Cart', icon: LocalMallIcon },
-    { label: language === 'es' ? 'Envío' : 'Shipping', icon: LocalShippingIcon },
-    { label: language === 'es' ? 'Método de pago' : 'Payment Method', icon: PaymentIcon },
+    { label: 'Tu cesta', icon: LocalMallIcon },
+    { label: 'Envío', icon: LocalShippingIcon },
+    { label: 'Método de pago', icon: PaymentIcon },
   ];
 
   const [arbol, setArbol] = useState<any>();
 
-  const { id } = useParams<{ id: string }>()
+  const { id } = useParams<{ id: string }>();
 
   const user = useSelector((state: RootState) => state.user.user);
-  const shippingAddress = useSelector((state: RootState) => state.user.shippingAddresses);
-  const dispatch = useDispatch()
-
-  const BACK_URL = import.meta.env.VITE_BACK_URL
+  const shippingAddress = useSelector(
+    (state: RootState) => state.user.shippingAddresses
+  );
+  const dispatch = useDispatch();
 
   useEffect(() => {
     const fetchArbol = async () => {
       const response = await axios.get(`${BACK_URL}/arboles/${id}`);
       setArbol(response.data);
-
     };
 
     fetchArbol();
-  }, []);
+  }, [BACK_URL, id]);
 
   useEffect(() => {
     if (!arbol) return; // Si arbol es null o undefined, no ejecuta el efecto
-  
+
     const fetchUrlMp = async () => {
       const data = {
         id: String(arbol.id),
@@ -59,15 +56,18 @@ const Checkout = () => {
         quantity: 1,
         unit_price: parseInt(arbol.price, 10),
         description: `Arbol ${arbol.type}`,
-        currency_id: "ARS"
+        currency_id: 'ARS',
       };
-  
-      const response = await axios.post(`${BACK_URL}/payments/create-order`, data);
-      setUrl(response.data.url)
+
+      const response = await axios.post(
+        `${BACK_URL}/payments/create-order`,
+        data
+      );
+      setUrl(response.data.url);
     };
-  
+
     fetchUrlMp();
-  }, [arbol]);
+  }, [BACK_URL, arbol]);
 
   const handleNext = () => {
     setActiveStep((prevActiveStep) => prevActiveStep + 1);
@@ -77,10 +77,11 @@ const Checkout = () => {
     setQuantity((prev) => Math.max(1, prev + delta));
   };
 
-  const totalPrice = (arbol?.price * quantity);
+  const totalPrice = arbol?.price * quantity;
 
-  const handleShippingAddressComplete = (addressData: any) => {
-    dispatch(setShippingAddresses(addressData))
+
+  const handleShippingAddressComplete = (addressData: AddressData) => {
+    dispatch(setShippingAddresses(addressData));
 
     handleNext();
   };
@@ -90,18 +91,20 @@ const Checkout = () => {
       userId: user?.id,
       treeId: arbol?.id,
       shippingAddressId: shippingAddress.at(-1)?.id,
-    }
+    };
 
     try {
-      const response = await axios.post(`${BACK_URL}/adoptions`, adoptionData);
+      const response = await axios.post(
+        `${BACK_URL}/adoptions`,
+        adoptionData
+      );
       console.log('Adopción creada:', response.data);
 
-      window.location.href = url
-
+      window.location.href = url;
     } catch (error) {
       console.error('Error al crear la adopción:', error);
     }
-  }
+  };
 
   const renderStepContent = () => {
     switch (activeStep) {
@@ -115,26 +118,26 @@ const Checkout = () => {
                 alt={arbol.type}
               />
               <div>
-                <div className="flex justifyf-between bg-[#f9fafa] p-[20px] gap-[150px] items-center rounded-[4px] text-[#7e8591]">
+                <div className="flex justify-between bg-[#f9fafa] p-[20px] gap-[150px] items-center rounded-[4px] text-[#7e8591]">
                   <div>
-                    <p className="text-gray-700 font-[500] lg:text-[.9rem] 2xl:text-base w-[156px]">
+                    <p className="text-gray-700 font-[500]">
                       Adopción de {arbol.type}
                     </p>
-                    <p className='lg:text-sm 2xl:text-base'>{language === 'es' ? 'Nombre del árbol' : 'Tree Name'}</p>
+                    <p>Nombre del árbol</p>
                   </div>
                   <DeleteIcon />
                 </div>
-                <p className="mt-4 mb-2 lg:text-[.9rem] 2xl:text-base">{language === 'es' ? 'Cantidad reservada' : 'Reserved Quantity'}</p>
+                <p className="mt-4 mb-2">Cantidad reservada</p>
                 <div className="flex items-center gap-[20px]">
                   <button
-                    className="px-[14px] py-[4px] bg-[#e9ecf3] rounded-[10px] text-[#bfc1c4] font-[600]"
+                    className="px-[14px] py-[4px] bg-[#e9ecf3] rounded-[4px] text-[#bfc1c4] font-[600]"
                     onClick={() => handleQuantityChange(-1)}
                   >
                     -
                   </button>
-                  <span className="lg:text-[.9rem] 2xl:text-base text-[#4BAF47] font-[600]">{quantity}</span>
+                  <span className="text-[#4BAF47] font-[600]">{quantity}</span>
                   <button
-                    className="px-[14px] py-[4px] text-white bg-gradient-to-r from-green-500 to-green-600 rounded-[10px] shadow-lg hover:from-green-600 hover:to-green-700 transition-all duration-300 transform"
+                    className="px-[14px] py-[4px] bg-[#4BAF47] rounded-[4px] text-white font-[600]"
                     onClick={() => handleQuantityChange(1)}
                   >
                     +
@@ -144,36 +147,37 @@ const Checkout = () => {
             </div>
             <div className="flex justify-end mt-[20px]">
               <div>
-                <p className="lg:text-[.9rem] 2xl:text-base flex justify-end mb-2 font-[600]">
+                <p className="flex justify-end mb-2 font-[600]">
                   $ {totalPrice.toFixed(2)}
                 </p>
                 <p className="text-sm text-gray-500">
-                  {language === 'es' ? `Coste de envío: $ ${shippingCost.toFixed(2)}` : `Shipping Cost: $ ${shippingCost.toFixed(2)}`}
+                  Coste de envío: $ {shippingCost.toFixed(2)}
                 </p>
               </div>
             </div>
             <hr className="my-[20px]" />
-            <p className="text-gray-500 lg:text-[.9rem] 2xl:text-base">
-              {language === 'es' ? 'Las fechas de envío pueden variar en función de variables climatológicas.' : 'Shipping dates may vary depending on weather conditions.'}
+            <p className="text-gray-500">
+              Las fechas de envío pueden variar en función de variables
+              climatológicas.
             </p>
           </>
         );
       case 1:
-        return <ShippingSection onComplete={handleShippingAddressComplete} />
+        return <ShippingSection onComplete={handleShippingAddressComplete} />;
       case 2:
         return <PaymentMethodSection />;
       default:
-        return <p>{language === 'es' ? 'Paso desconocido' : 'Unknown Step'}</p>;
+        return <p>Paso desconocido</p>;
     }
   };
 
   return (
     <section className="my-[92px]">
-      <div className="flex gap-[40px] lg:px-[200px] 2xl:px-[130px] py-[20px] bg-[#f9fafa]">
+      <div className="flex gap-[40px] lg:px-[200px] 2xl:px-[165px] py-[20px] bg-[#f9fafa]">
         {steps.map((step, index) => (
           <React.Fragment key={step.label}>
             <div
-              className={`flex items-center gap-[8px] lg:text-[15px] 2xl:text-base ${index === activeStep ? 'text-[#4BAF47]' : 'text-[#b7bec7]'}`}
+              className={`flex items-center gap-[8px] ${index === activeStep ? 'text-[#4BAF47]' : 'text-[#b7bec7]'}`}
             >
               <step.icon />
               {step.label}
@@ -187,44 +191,48 @@ const Checkout = () => {
 
       {arbol ? (
         <>
-          <div className="flex justify-between lg:gap-[50px] 2xl:gap-[150px] lg:px-[200px] 2xl:px-[130px] mt-[50px]">
+          <div className="flex justify-between lg:px-[200px] 2xl:px-[165px] mt-[50px]">
             <div className={`${activeStep >= 1 && 'w-[64%]'} `}>
               {renderStepContent()}
             </div>
 
             <div className="p-[20px] shadow rounded-[4px]">
-              <h3 className="w-[120px] lg:text-[1.12rem] 2xl:text-xl font-semibold">{language === 'es' ? 'Resumen' : 'Summary'}</h3>
+              <h3 className="text-xl font-semibold">Resumen</h3>
 
-              <div className="my-[20px] flex items-center lg:gap-[60px] 2xl:gap-[150px]">
-                <span className='w-[120px]'>{language === 'es' ? 'Precio final' : 'Final Price'}</span>
-                <span className="w-[120px] lg:text-[1.12rem] 2xl:text-xl font-bold text-[#4BAF47]">
+              <div className="mt-[20px] flex items-center gap-[150px]">
+                <span>Precio final</span>
+                <span className="text-xl font-bold text-[#4BAF47]">
                   $ {(totalPrice + 2000).toFixed(2)}
                 </span>
               </div>
 
               <button
-                className="text-white bg-gradient-to-r from-green-500 to-green-600 rounded-[10px] shadow-lg hover:from-green-600 hover:to-green-700 transition-all duration-300 transform my-6 w-full"
-                onClick={activeStep === steps.length - 1 ? handleAdoptionComplete : handleNext}
+                className="rounded-[10px] bg-[#4BAF47] text-white hover:bg-[#3B8838] my-6 w-full"
+                onClick={
+                  activeStep === steps.length - 1
+                    ? handleAdoptionComplete
+                    : handleNext
+                }
                 // disabled={activeStep === steps.length - 1}
               >
-                {activeStep === steps.length - 1 ? (language === 'es' ? 'Finalizar' : 'Finish') : (language === 'es' ? 'Avanzar' : 'Next')}
+                {activeStep === steps.length - 1 ? 'Finalizar' : 'Avanzar'}
               </button>
 
               <div className="flex justify-center">
-                <a className="text-[#4BAF47] lg:text-[1.12rem] 2xl:text-xl text-center">
-                  {language === 'es' ? 'Seguir comprando' : 'Continue Shopping'}
+                <a className="text-[#4BAF47] text-xl text-center">
+                  Seguir comprando
                 </a>
               </div>
             </div>
           </div>
 
-          <div className="border border-gray-200 p-[30px] mt-[50px] lg:ml-[190px] 2xl:ml-[150px] lg:mr-[570px] 2xl:mr-[610px] rounded-[4px] flex items-center gap-[20px]">
+          <div className="border border-gray-200 p-[30px] mt-[50px] ml-[150px] mr-[570px] rounded-[4px] flex items-center gap-[20px]">
             <img className="w-[60px]" src={farmerGirl} alt="Farmer Girl" />
             <div>
-              <h2 className="lg:text-base 2xl:text-[18px] font-semibold mb-1">
+              <h2 className="text-[18px] font-semibold mb-1">
                 ¿Sabías que...?
               </h2>
-              <p className='lg:text-[.9rem] 2xl:text-base'>
+              <p>
                 Nuestra comunidad apoya la transición de 3899 hectáreas de
                 Argentina hacia una agricultura más sostenible, ya sea ecológica
                 o regenerativa

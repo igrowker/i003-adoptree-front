@@ -34,7 +34,7 @@ const Banner: React.FC<BannerProps> = ({ language }) => {
     <section className="banner">
       <div className="banner-overlay">
         <div className="banner-text">
-          <h1 className='lg:text-[45px] 2xl:text-[48px]'>
+          <h1 className="lg:text-[45px] 2xl:text-[48px]">
             {titleLine1}
             <br />
             {titleLine2}
