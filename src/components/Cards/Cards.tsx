@@ -1,7 +1,24 @@
 import React from 'react';
 import './Cards.css';
 
-const Cards: React.FC = () => {
+interface CardsProps {
+  language: 'es' | 'en';
+}
+
+const Cards: React.FC<CardsProps> = ({ language }) => {
+  const content: Record<'es' | 'en', { directPurchase: string, title: string }> = {
+    es: {
+      directPurchase: 'Compra directa',
+      title: 'Agricultura de otros productores',
+    },
+    en: {
+      directPurchase: 'Direct Purchase',
+      title: 'Agriculture from other producers',
+    },
+  };
+
+  const { directPurchase, title } = content[language];
+
   const cards = [
     {
       thumbnail: '/cards/trigo.png',
@@ -18,13 +35,13 @@ const Cards: React.FC = () => {
   ];
 
   return (
-    <section className="w-full my-[70px] lg:px-[200px] 2xl:px-[165px]">
+    <section className="w-full my-[70px] lg:px-[200px] 2xl:px-[130px]">
       <div className="text-center">
         <span className="text-[#FF9900] font-facuFont text-[28px]">
-          Compra directa
+          {directPurchase}
         </span>
         <h2 className="text-3xl font-[800] mb-[40px]">
-          Agricultura de otros productores
+          {title}
         </h2>
       </div>
       <div className="flex justify-center items-center gap-6">

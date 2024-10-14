@@ -1,17 +1,83 @@
+import React from 'react';
 import beneficiosImage from '../../assets/beneficios.jpg'; // Importación de la imagen
 import CheckCircleIcon from '@mui/icons-material/CheckCircle'; // Iconos
 import './Beneficios.css'; // Importación del CSS
 import { Link } from 'react-router-dom'; // Link para la navegación
 
-const Beneficios: React.FC = () => {
+interface BeneficiosProps {
+  language: 'es' | 'en';
+}
+
+interface ContentText {
+  benefitsTitle: string;
+  whyBuyTitle: string;
+  description: string;
+  freshnessTitle: string;
+  freshnessDescription: string;
+  supportTitle: string;
+  supportDescription: string;
+  sustainabilityTitle: string;
+  sustainabilityDescription: string;
+  discoverMore: string;
+}
+
+const Beneficios: React.FC<BeneficiosProps> = ({ language }) => {
+  const content: Record<'es' | 'en', ContentText> = {
+    es: {
+      benefitsTitle: 'Beneficios',
+      whyBuyTitle: '¿Por qué comprar directo del productor?',
+      description:
+        'Comprar directo del productor te ofrece alimentos frescos, de calidad, y la oportunidad de apoyar a quienes cultivan de manera sostenible. Aquí te contamos por qué es la mejor opción:',
+      freshnessTitle: 'Frescura garantizada',
+      freshnessDescription:
+        'Al comprar directo del productor, recibís alimentos recién cosechados, sin largos procesos de almacenamiento o transporte.',
+      supportTitle: 'Apoyo a los agricultores locales',
+      supportDescription:
+        'Ayudás a los pequeños productores a obtener un precio justo por su trabajo, promoviendo la economía local.',
+      sustainabilityTitle: 'Sostenibilidad',
+      sustainabilityDescription:
+        'Reducís la huella de carbono al evitar intermediarios y grandes cadenas de distribución, apoyando prácticas agrícolas más responsables.',
+      discoverMore: 'Descubre más',
+    },
+    en: {
+      benefitsTitle: 'Benefits',
+      whyBuyTitle: 'Why buy directly from the producer?',
+      description:
+        "Buying directly from the producer offers you fresh, quality food and the opportunity to support those who farm sustainably. Here's why it's the best option:",
+      freshnessTitle: 'Guaranteed Freshness',
+      freshnessDescription:
+        'By buying directly from the producer, you get freshly harvested food without long storage or transport processes.',
+      supportTitle: 'Support for Local Farmers',
+      supportDescription:
+        'You help small producers get a fair price for their work, promoting the local economy.',
+      sustainabilityTitle: 'Sustainability',
+      sustainabilityDescription:
+        'You reduce the carbon footprint by avoiding intermediaries and large distribution chains, supporting more responsible agricultural practices.',
+      discoverMore: 'Discover more',
+    },
+  };
+
+  const {
+    benefitsTitle,
+    whyBuyTitle,
+    description,
+    freshnessTitle,
+    freshnessDescription,
+    supportTitle,
+    supportDescription,
+    sustainabilityTitle,
+    sustainabilityDescription,
+    discoverMore,
+  } = content[language];
+
   return (
-    <section className="bg-white lg:px-[200px] 2xl:px-[165px] my-[70px] flex justify-center">
+    <section className="bg-white lg:px-[200px] 2xl:px-[130px] my-[70px] flex justify-center">
       <div className="container flex flex-col items-center text-center">
         <p className="text-orange-500 mb-2 fuentePersonalizada fuente">
-          Beneficios
+          {benefitsTitle}
         </p>
         <h2 className="beneficios text-3xl font-[800] text-gray-900 mb-[40px]">
-          ¿Por qué comprar directo del productor?
+          {whyBuyTitle}
         </h2>
 
         <div className="flex flex-col md:flex-row items-center justify-center md:items-start md:space-x-8">
@@ -26,11 +92,7 @@ const Beneficios: React.FC = () => {
 
           {/* Texto y Beneficios */}
           <div className="md:w-1/2 text-left">
-            <p className="text-gray-700 mb-4 lg:text-[.9rem] 2xl:text-base">
-              Comprar directo del productor te ofrece alimentos frescos, de
-              calidad, y la oportunidad de apoyar a quienes cultivan de manera
-              sostenible. Aquí te contamos por qué es la mejor opción:
-            </p>
+            <p className="text-gray-700 mb-4 lg:text-[.9rem] 2xl:text-base">{description}</p>
             <ul className="space-y-4">
               <li className="flex items-start">
                 <CheckCircleIcon
@@ -39,13 +101,9 @@ const Beneficios: React.FC = () => {
                 />
                 <div className="ml-3">
                   <h4 className="lg:text-[1.10rem] 2xl:text-lg font-bold text-gray-900">
-                    Frescura garantizada
+                    {freshnessTitle}
                   </h4>
-                  <p className="text-gray-600 lg:text-[.9rem] 2xl:text-base">
-                    Al comprar directo del productor, recibís alimentos recién
-                    cosechados, sin largos procesos de almacenamiento o
-                    transporte.
-                  </p>
+                  <p className="text-gray-600 lg:text-[.9rem] 2xl:text-base">{freshnessDescription}</p>
                 </div>
               </li>
               <li className="flex items-start">
@@ -55,12 +113,9 @@ const Beneficios: React.FC = () => {
                 />
                 <div className="ml-3">
                   <h4 className="lg:text-[1.10rem] 2xl:text-lg font-bold text-gray-900">
-                    Apoyo a los agricultores locales
+                    {supportTitle}
                   </h4>
-                  <p className="text-gray-600 lg:text-[.9rem] 2xl:text-base">
-                    Ayudás a los pequeños productores a obtener un precio justo
-                    por su trabajo, promoviendo la economía local.
-                  </p>
+                  <p className="text-gray-600 lg:text-[.9rem] 2xl:text-base">{supportDescription}</p>
                 </div>
               </li>
               <li className="flex items-start">
@@ -70,13 +125,9 @@ const Beneficios: React.FC = () => {
                 />
                 <div className="ml-3">
                   <h4 className="lg:text-[1.10rem] 2xl:text-lg font-bold text-gray-900">
-                    Sostenibilidad
+                    {sustainabilityTitle}
                   </h4>
-                  <p className="text-gray-600 lg:text-[.9rem] 2xl:text-base">
-                    Reducís la huella de carbono al evitar intermediarios y
-                    grandes cadenas de distribución, apoyando prácticas
-                    agrícolas más responsables.
-                  </p>
+                  <p className="text-gray-600 lg:text-[.9rem] 2xl:text-base">{sustainabilityDescription}</p>
                 </div>
               </li>
             </ul>
@@ -84,7 +135,7 @@ const Beneficios: React.FC = () => {
             {/* Botón para redirigir */}
             <Link to="/beneficios">
               <button className="mt-6 lg:text-[.9rem] 2xl:text-base text-white bg-gradient-to-r from-green-500 to-green-600 rounded-[10px] shadow-lg hover:from-green-600 hover:to-green-700 transition-all duration-300 transform">
-                Descubre más
+                {discoverMore}
               </button>
             </Link>
           </div>

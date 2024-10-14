@@ -1,5 +1,6 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { motion } from 'framer-motion';
+import { useLanguage } from '../../../LanguageContext/LanguageContext';
 
 interface Content {
   title: string;
@@ -7,11 +8,7 @@ interface Content {
 }
 
 const Post3: React.FC = () => {
-  const [language, setLanguage] = useState<'es' | 'en'>('es');
-
-  const toggleLanguage = (lang: 'es' | 'en') => {
-    setLanguage(lang);
-  };
+  const { language } = useLanguage();
 
   const content: Record<'es' | 'en', Content> = {
     es: {
@@ -31,27 +28,8 @@ const Post3: React.FC = () => {
   const { title, text } = content[language];
 
   return (
-    <div className="lg:px-[200px] 2xl:px-[165px] py-[150px]">
+    <div className="lg:px-[200px] 2xl:px-[130px] py-[150px]">
       <div className="max-w-4xl mx-auto">
-        <div className="flex justify-center space-x-4 mb-8">
-          <button
-            onClick={() => toggleLanguage('es')}
-            className={`px-4 py-2 rounded-[10px] ${
-              language === 'es' ? 'bg-[#4BAF47] text-white' : 'bg-gray-200'
-            } transition-colors duration-300`}
-          >
-            Español
-          </button>
-          <button
-            onClick={() => toggleLanguage('en')}
-            className={`px-4 py-2 rounded-[10px] ${
-              language === 'en' ? 'bg-[#4BAF47] text-white' : 'bg-gray-200'
-            } transition-colors duration-300`}
-          >
-            English
-          </button>
-        </div>
-
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
