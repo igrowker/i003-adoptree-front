@@ -116,7 +116,7 @@ const AdoptarEsteArbol: React.FC = () => {
               <p>{arbol.finca.ubication}</p>
             </div>
             <p className="mt-4 text-3xl font-bold text-[#4BAF47]">
-              {arbol.price.toLocaleString('es-AR', {
+             $ {arbol.price.toLocaleString('es-AR', {
                 style: 'currency',
                 currency: 'ARS',
               })}
