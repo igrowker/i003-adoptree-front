@@ -1,4 +1,5 @@
 import React from 'react';
+import { motion } from 'framer-motion';
 import video from '../../assets/AdobeStock_812746937.mov';
 import adoptionImage from '../../assets/adopcion.jpg';
 import compraImage from '../../assets/compra.jpg';
@@ -56,7 +57,7 @@ const Bienvenido: React.FC<BienvenidoProps> = ({ language }) => {
     },
   };
 
-  const {
+   const {
     welcome,
     description,
     join,
@@ -70,7 +71,7 @@ const Bienvenido: React.FC<BienvenidoProps> = ({ language }) => {
   } = content[language];
 
   return (
-    <section className="bg-cover bg-center h-screen md:mb-20 lg:py-[180px] 2xl:py-[180px] px-[200px] 4xl:p-[440px]">
+    <section className="bg-cover bg-center h-screen md:mb-20 lg:py-[180px] 2xl:py-[180px] px-[200px] 4xl:p-[440px] relative">
       <video
         autoPlay
         muted
@@ -81,11 +82,27 @@ const Bienvenido: React.FC<BienvenidoProps> = ({ language }) => {
         Tu navegador no soporta la reproducción de video.
       </video>
 
-      <div className="absolute inset-0 bg-black opacity-40"></div>
+      <motion.div 
+        className="absolute inset-0 bg-black"
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 0.4 }}
+        transition={{ duration: 1 }}
+      ></motion.div>
 
       <div className="relative z-10 text-center text-white">
-        <p className="lg:text-[14px] 2xl:text-lg mb-5 flex">{welcome}</p>
-        <div>
+        <motion.p 
+          className="lg:text-[14px] 2xl:text-lg mb-5 flex"
+          initial={{ opacity: 0, y: -20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5 }}
+        >
+          {welcome}
+        </motion.p>
+        <motion.div
+          initial={{ opacity: 0, scale: 0.9 }}
+          animate={{ opacity: 1, scale: 1 }}
+          transition={{ duration: 0.5, delay: 0.2 }}
+        >
           {language === 'es' ? (
             <img
               className="lg:w-[370px] 2xl:w-[485px] 4xl:w-[700px]"
@@ -97,72 +114,71 @@ const Bienvenido: React.FC<BienvenidoProps> = ({ language }) => {
               Sustainable Agroadoption
             </h1>
           )}
-        </div>
-        <div className="w-1/2 flex flex-col">
+        </motion.div>
+        <motion.div 
+          className="w-1/2 flex flex-col"
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5, delay: 0.4 }}
+        >
           <p className="lg:text-[16px] 2xl:text-lg 4xl:text-[30px] md:text-[20px] mb-6 anchoPersonalizado tipografiaPersonalizada w-[500px] 4xl:w-[700px]">
             {description}
             <br />
             <span className="4xl:mt-[15px]">{join}</span>
           </p>
-          <button
+          <motion.button
             onClick={() =>
               document
                 .getElementById('como-adoptar')
                 ?.scrollIntoView({ behavior: 'smooth' })
             }
             className="w-[220px] lg:text-[.9rem] 2xl:text-base text-white bg-gradient-to-r from-green-500 to-green-600 rounded-[10px] shadow-lg hover:from-green-600 hover:to-green-700 transition-all duration-300 transform"
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.95 }}
           >
             {discoverHow}
-          </button>
-        </div>
+          </motion.button>
+        </motion.div>
       </div>
 
       {/* SECCIÓN DE CARDS */}
-      <div className="absolute lg:bottom-[-105px] 2xl:bottom-[-127px] left-0 right-0 hidden md:flex justify-center z-20">
+      <motion.div 
+        className="absolute lg:bottom-[-105px] 2xl:bottom-[-127px] left-0 right-0 hidden md:flex justify-center z-20"
+        initial={{ opacity: 0, y: 50 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.5, delay: 0.6 }}
+      >
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6 px-4 md:px-0">
-          <div className="bg-white shadow-lg rounded-lg p-6 text-center lg:w-[230px] 2xl:w-[250px] 4xl:w-[300px]">
-            <p className="text-orange-400 font-medium tipografiaCards lg:text-[20px] 2xl:text-[24px] 4xl:text-[35px]">
-              {adopt}
-            </p>
-            <h3 className="lg:text-[16px] 2xl:text-[1.15rem] font-semibold mb-4 4xl:text-[22px]">
-              {adoptTitle}
-            </h3>
-            <img
-              src={adoptionImage}
-              alt="Naranjos en adopción"
-              className="lg:h-[4rem] lg:w-[4rem] 2xl:h-[6rem]  2xl:w-[6rem] mx-auto rounded-full mb-4"
-            />
-          </div>
-
-          <div className="bg-white shadow-lg rounded-lg p-6 text-center lg:w-[230px] 2xl:w-[250px] 4xl:w-[300px]">
-            <p className="text-orange-400 font-medium tipografiaCards lg:text-[20px] 2xl:text-[24px] 4xl:text-[35px]">
-              {buy}
-            </p>
-            <h3 className="lg:text-[16px] 2xl:text-[1.15rem] font-semibold mb-4 4xl:text-[22px]">
-              {buyTitle}
-            </h3>
-            <img
-              src={compraImage}
-              alt="Compra directa"
-              className="lg:h-[4rem] lg:w-[4rem] 2xl:h-[6rem]  2xl:w-[6rem] mx-auto rounded-full mb-4"
-            />
-          </div>
-
-          <div className="bg-white shadow-lg rounded-lg p-6 text-center lg:w-[230px] 2xl:w-[250px] 4xl:w-[300px]">
-            <p className="text-orange-400 font-medium tipografiaCards lg:text-[20px] 2xl:text-[24px] 4xl:text-[35px]">
-              {enjoy}
-            </p>
-            <h3 className="lg:text-[16px] 2xl:text-[1.15rem] font-semibold mb-4 4xl:text-[22px]">
-              {enjoyTitle}
-            </h3>
-            <img
-              src={disfrutaImage}
-              alt="Visita nuestras fincas"
-              className="lg:h-[4rem] lg:w-[4rem] 2xl:h-[6rem]  2xl:w-[6rem] mx-auto rounded-full mb-4"
-            />
-          </div>
+          {[
+            { title: adopt, subtitle: adoptTitle, image: adoptionImage },
+            { title: buy, subtitle: buyTitle, image: compraImage },
+            { title: enjoy, subtitle: enjoyTitle, image: disfrutaImage },
+          ].map((card, index) => (
+            <motion.div
+              key={index}
+              className="bg-white shadow-lg rounded-lg p-6 text-center lg:w-[230px] 2xl:w-[250px] 4xl:w-[300px]"
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, delay: 0.8 + index * 0.1 }}
+              whileHover={{ scale: 1.05, transition: { duration: 0.2 } }}
+            >
+              <p className="text-orange-400 font-medium tipografiaCards lg:text-[20px] 2xl:text-[24px] 4xl:text-[35px]">
+                {card.title}
+              </p>
+              <h3 className="lg:text-[16px] 2xl:text-[1.15rem] font-semibold mb-4 4xl:text-[22px]">
+                {card.subtitle}
+              </h3>
+              <motion.img
+                src={card.image}
+                alt={card.subtitle}
+                className="lg:h-[4rem] lg:w-[4rem] 2xl:h-[6rem] 2xl:w-[6rem] mx-auto rounded-full mb-4"
+                whileHover={{ rotate: 360 }}
+                transition={{ duration: 0.5 }}
+              />
+            </motion.div>
+          ))}
         </div>
-      </div>
+      </motion.div>
     </section>
   );
 };

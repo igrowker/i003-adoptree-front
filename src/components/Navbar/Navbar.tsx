@@ -201,32 +201,17 @@ const Navbar: React.FC = () => {
 
                 {showModal && (
                   <div
-                    className="absolute w-[10rem] md:top-[3.8rem] desktop:top-[4.1rem] bg-white gap-4 md:right-[96px] lg:right-[235px] 2xl:right-[200px] p-5 rounded shadow-md"
+                    className="absolute w-[11rem] md:top-[3.8rem] desktop:top-[4.1rem] bg-white gap-4 md:right-[96px] lg:right-[235px] 2xl:right-[166px] p-5 rounded shadow-md"
                     ref={modalRef}
                   >
                     <div>
                       <ul className="flex flex-col gap-3">
                         <li
                           onClick={handleCloseModal}
-                          className="flex justify-between"
-                        >
-                          <Link
-                            to=""
-                            className="text-[#05264E] flex items-center gap-2"
-                          >
-                            <MdOutlineLightMode className="text-base text-[#05264E]" />{' '}
-                            {language === 'es'
-                              ? 'Tema: Modo claro'
-                              : 'Theme: Light mode'}
-                          </Link>
-                          <MdKeyboardArrowDown className="text-base text-[#05264E]" />
-                        </li>
-                        <li
-                          onClick={handleCloseModal}
                           className="flex items-center gap-2"
                         >
                           <MdOutlineSpaceDashboard className="text-[#05264E] text-base" />
-                          <Link to="" className="text-[#05264E]">
+                          <Link to="/dashboard" className="text-[#05264E]">
                             {language === 'es'
                               ? 'Panel de control'
                               : 'Dashboard'}
@@ -235,7 +220,7 @@ const Navbar: React.FC = () => {
                         {user && (
                           <li
                             onClick={handleLogout}
-                            className="flex items-center gap-2"
+                            className="flex items-center gap-2 cursor-pointer"
                           >
                             <MdOutlineLogout className="text-[#05264E] text-base" />
                             <span className="text-[#05264E]">
@@ -249,12 +234,12 @@ const Navbar: React.FC = () => {
                 )}
                 {notificationsModal && (
                   <div
-                    className="absolute md:top-[3.8rem] desktop:top-[4.1rem] w-[14rem] bg-white gap-4 md:right-[50px] lg:right-[185px] 2xl:right-[143px] px-1 min-h-[7.8rem] rounded shadow-md"
+                    className="absolute md:top-[3.8rem] desktop:top-[4.1rem] w-[14rem] bg-white gap-4 md:right-[50px] lg:right-[185px] 2xl:right-[122px] px-1 min-h-[7.8rem] rounded shadow-md"
                     ref={modalRef}
                   >
                     <div className="flex flex-col items-center">
                       <h5 className="text-base font-medium text-[#05264E] mt-5">
-                        Your Notifications
+                        {language === 'es' ? 'Tus notificaciones' : 'Your Notifications'}
                       </h5>
                       {/* {notifications && (
                     <div className="w-full">
