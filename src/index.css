@@ -90,3 +90,19 @@ input {
     background-color: #f9f9f9;
   }
 }
+
+/* Estilo personalizado para el contenedor del botón */
+.google-login-button-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  margin-top: 1rem;
+}
+
+/* Estilo para personalizar aún más el botón si es necesario */
+.google-login-button-wrapper .abcRioButton {
+  border-radius: 10px; /* Cambia el borde para que sea redondeado */
+  padding: 0.5rem 1rem;
+  background-color: #fff; /* Personaliza el fondo */
+}
