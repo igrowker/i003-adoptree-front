@@ -58,7 +58,7 @@ const Beneficios: React.FC<BeneficiosProps> = ({ language }) => {
   } = content[language];
 
   return (
-    <section className="bg-white lg:px-[200px] 2xl:px-[165px] my-[70px] flex justify-center">
+    <section className="bg-white lg:px-[200px] 2xl:px-[130px] my-[70px] flex justify-center">
       <div className="container flex flex-col items-center text-center">
         <p className="text-orange-500 mb-2 fuentePersonalizada fuente">
           {benefitsTitle}

@@ -28,7 +28,7 @@ const Bienvenido: React.FC<BienvenidoProps> = ({ language }) => {
     },
     en: {
       welcome: 'WELCOME TO ADOPTREE',
-      mainTitle: 'Sustainable AgroAdoption',
+      mainTitle: 'Sustainable Agroadoption',
       description:
         'Discover how you can adopt a citrus tree, support local farmers, and receive fresh fruit at home.',
       join: 'Join Adoptree!',
@@ -36,7 +36,7 @@ const Bienvenido: React.FC<BienvenidoProps> = ({ language }) => {
       adopt: 'Adopt',
       buy: 'Buy',
       enjoy: 'Enjoy',
-      adoptTitle: 'Orange trees for adoption',
+      adoptTitle: 'Orange trees available',
       buyTitle: 'Direct from the supplier',
       enjoyTitle: 'Visit our farms',
     },
@@ -56,7 +56,7 @@ const Bienvenido: React.FC<BienvenidoProps> = ({ language }) => {
   } = content[language];
 
   return (
-    <section className="bg-cover bg-center h-screen md:mb-20 lg:py-[180px] 2xl:py-[190px] px-[200px] 4xl:p-[440px]">
+    <section className="bg-cover bg-center h-screen md:mb-20 lg:py-[180px] 2xl:py-[180px] px-[200px] 4xl:p-[440px]">
       <video
         autoPlay
         muted
@@ -70,12 +70,18 @@ const Bienvenido: React.FC<BienvenidoProps> = ({ language }) => {
       <div className="absolute inset-0 bg-black opacity-40"></div>
 
       <div className="relative z-10 text-center text-white">
-        <p className="lg:text-[14px] 2xl:text-lg mb-5 flex">BIENVENIDO A ADOPTREE</p>
-        <img
-          className="lg:w-[370px] 2xl:w-[440px] 4xl:w-[700px]"
-          src={tituloPrincipal}
-          alt="titulo"
-        />
+        <p className="lg:text-[14px] 2xl:text-lg mb-5 flex">{welcome}</p>
+        <div>
+          {language === 'es' ? (
+              <img
+              className="lg:w-[370px] 2xl:w-[485px] 4xl:w-[700px]"
+              src={tituloPrincipal}
+              alt="titulo"
+            />
+          ) : (
+            <h1 className='tipografiaCards leading-[0.8] text-left text-[105px] 4xl:text-[140px] font-[500] mb-8 w-[600px] 4xl:w-[800px]'>Sustainable Agroadoption</h1>
+          )}
+        </div>
         <div className="w-1/2 flex flex-col">
           <p className="lg:text-[16px] 2xl:text-lg 4xl:text-[30px] md:text-[20px] mb-6 anchoPersonalizado tipografiaPersonalizada w-[500px] 4xl:w-[700px]">
             {description}
@@ -96,7 +102,7 @@ const Bienvenido: React.FC<BienvenidoProps> = ({ language }) => {
       </div>
 
       {/* SECCIÓN DE CARDS */}
-      <div className="absolute lg:bottom-[-105px] 2xl:bottom-[-110px] left-0 right-0 hidden md:flex justify-center z-20">
+      <div className="absolute lg:bottom-[-105px] 2xl:bottom-[-127px] left-0 right-0 hidden md:flex justify-center z-20">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6 px-4 md:px-0">
           <div className="bg-white shadow-lg rounded-lg p-6 text-center lg:w-[230px] 2xl:w-[250px] 4xl:w-[300px]">
             <p className="text-orange-400 font-medium tipografiaCards lg:text-[20px] 2xl:text-[24px] 4xl:text-[35px]">

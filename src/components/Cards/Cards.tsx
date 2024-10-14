@@ -13,7 +13,7 @@ const Cards: React.FC<CardsProps> = ({ language }) => {
     },
     en: {
       directPurchase: 'Direct Purchase',
-      title: 'Agriculture from Other Producers',
+      title: 'Agriculture from other producers',
     },
   };
 
@@ -35,7 +35,7 @@ const Cards: React.FC<CardsProps> = ({ language }) => {
   ];
 
   return (
-    <section className="w-full my-[70px] lg:px-[200px] 2xl:px-[165px]">
+    <section className="w-full my-[70px] lg:px-[200px] 2xl:px-[130px]">
       <div className="text-center">
         <span className="text-[#FF9900] font-facuFont text-[28px]">
           {directPurchase}

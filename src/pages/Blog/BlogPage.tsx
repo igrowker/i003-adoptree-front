@@ -56,7 +56,7 @@ const BlogPage: React.FC = () => {
   ];
 
   return (
-    <div className="min-h-screen py-40 px-4 sm:px-6 lg:px-[200px] 2xl:px-[165px]">
+    <div className="min-h-screen py-40 px-4 sm:px-6 lg:px-[200px] 2xl:px-[130px]">
       <div className="max-w-7xl mx-auto">
         <div className="mb-16 space-y-16">
           <div className="flex flex-col md:flex-row items-center gap-8">

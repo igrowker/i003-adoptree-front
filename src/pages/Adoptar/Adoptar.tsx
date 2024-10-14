@@ -27,7 +27,7 @@ const Adoptar: React.FC = () => {
   }
 
   return (
-    <div className="px-4 sm:px-6 md:px-8 lg:px-[200px] 2xl:px-[165px] my-[116px]">
+    <div className="px-4 sm:px-6 md:px-8 lg:px-[200px] 2xl:px-[130px] my-[116px]">
       <h1 className="text-3xl sm:text-4xl font-[800] mb-2 mt-6 sm:mt-8">
         Adopciones
       </h1>

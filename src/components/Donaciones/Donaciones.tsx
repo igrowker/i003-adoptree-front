@@ -41,10 +41,10 @@ const Donaciones: React.FC<DonacionesProps> = ({ language }) => {
     <section className="bg-[#f8f7f0] px-[200px] py-[75px]">
       <div className="container mx-auto px-8 max-w-5xl bg-[#f8f7f0]">
         <div className="text-center mb-12">
-          <span className="text-orange-500 font-semibold tracking-wide">
+          <span className="text-orange-500 fuentePersonalizada fuente tracking-wide">
             {donations}
           </span>
-          <h2 className="text-3xl font-bold text-gray-900 mb-4">{title}</h2>
+          <h2 className="text-3xl font-[800] text-gray-900 mb-4">{title}</h2>
         </div>
 
         <div className="flex flex-col md:flex-row items-center justify-start gap-8 md:gap-12">

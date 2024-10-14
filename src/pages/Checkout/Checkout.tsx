@@ -169,7 +169,7 @@ const Checkout = () => {
 
   return (
     <section className="my-[92px]">
-      <div className="flex gap-[40px] lg:px-[200px] 2xl:px-[165px] py-[20px] bg-[#f9fafa]">
+      <div className="flex gap-[40px] lg:px-[200px] 2xl:px-[130px] py-[20px] bg-[#f9fafa]">
         {steps.map((step, index) => (
           <React.Fragment key={step.label}>
             <div
@@ -187,7 +187,7 @@ const Checkout = () => {
 
       {arbol ? (
         <>
-          <div className="flex justify-between lg:gap-[50px] 2xl:gap-[150px] lg:px-[200px] 2xl:px-[165px] mt-[50px]">
+          <div className="flex justify-between lg:gap-[50px] 2xl:gap-[150px] lg:px-[200px] 2xl:px-[130px] mt-[50px]">
             <div className={`${activeStep >= 1 && 'w-[64%]'} `}>
               {renderStepContent()}
             </div>

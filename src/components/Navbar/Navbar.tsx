@@ -9,7 +9,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import { Link, useNavigate } from 'react-router-dom';
 import { logout } from '../../store/features/userSlice';
 import { RootState } from '../../types/types';
-import { io } from 'socket.io-client';
+import { io } from "socket.io-client"; 
 import './Navbar.css';
 
 export interface AnchorProps
@@ -18,9 +18,10 @@ export interface AnchorProps
 }
 
 const Navbar: React.FC = () => {
-  const { language } = useLanguage();
   const [scrollPosition, setScrollPosition] = useState(0);
   const [showModal, setShowModal] = useState<boolean>(false);
+  const [notificationsModal, setNotificationsModal] = useState<boolean>(false);
+  // const [notifications, setNotifications] = useState<any[]>([])
 
   const modalRef = useRef<HTMLDivElement | null>(null);
   const currentClickRef = useRef<EventTarget | null>(null);
@@ -28,25 +29,31 @@ const Navbar: React.FC = () => {
   const user = useSelector((state: RootState) => state.user.user);
   const dispatch = useDispatch();
   const navigate = useNavigate();
+  const { language } = useLanguage();
 
   const BACK_URL = import.meta.env.VITE_BACK_URL
 
   const handleShowNotifications = (event: React.MouseEvent<HTMLElement>) => {
     currentClickRef.current = event.target;
-    // Puedes implementar la lógica para mostrar las notificaciones aquí
+    setNotificationsModal((prevShowNotification) => !prevShowNotification);
   };
 
-  const handleLogout = () => {
-    dispatch(logout());
-    navigate('/auth/login');
+  const handleCloseNotifications = () => {
+    setNotificationsModal(false);
+  };
+
+  const handleShowModal = (event: React.MouseEvent<HTMLElement>) => {
+    currentClickRef.current = event.target;
+    setShowModal((prevShowModal) => !prevShowModal);
   };
 
   const handleCloseModal = () => {
     setShowModal(false);
   };
 
-  const handleShowModal = () => {
-    setShowModal(prevShowModal => !prevShowModal);
+  const handleLogout = () => {
+    dispatch(logout());
+    navigate('/auth/login');
   };
 
   useEffect(() => {
@@ -55,6 +62,7 @@ const Navbar: React.FC = () => {
     };
 
     window.addEventListener('scroll', handleScroll);
+
     return () => {
       window.removeEventListener('scroll', handleScroll);
     };
@@ -97,39 +105,63 @@ const Navbar: React.FC = () => {
 
   return (
     <header
-      className={`header py-4 xl:px-[200px] 2xl:px-[165px] md:px-[60px] mobile:px-[30px] bg-white ${
+      className={`header py-4 xl:px-[200px] 2xl:px-[130px] md:px-[60px] mobile:px-[30px] bg-white ${
         scrollPosition > 0 ? 'scrolled' : ''
       }`}
     >
       <div className="flex items-center">
-        <div>
+        <div className="">
           <a href="/">
-            <img className="w-[60px] 4xl:w-[80px]" src={Logo} alt="Logo de Adoptree" />
+            <img
+              className="w-[60px] 4xl:w-[80px]"
+              src={Logo}
+              alt="Logo de Adoptree"
+            />
           </a>
         </div>
         <input type="checkbox" id="check" />
         <label htmlFor="check" className="icons">
-          <i id="menu-icon" className="icon">&#9776;</i>
-          <i id="close-icon" className="icon">&#10005;</i>
+          <i id="menu-icon" className="icon">
+            &#9776;
+          </i>
+          <i id="close-icon" className="icon">
+            &#10005;
+          </i>
         </label>
         <nav className="navbar">
-          <a className="text-sm 4xl:text-[20px]" href="/about">
+          <a
+            className="text-sm 4xl:text-[20px]"
+            href="/about"
+            style={{ '--i': 1 } as AnchorProps}
+          >
             {language === 'es' ? 'Sobre nosotros' : 'About Us'}
           </a>
-          <a className="text-sm 4xl:text-[20px]" href="/adopta-un-arbol">
+          <a
+            className="text-sm 4xl:text-[20px]"
+            href="/adopta-un-arbol"
+            style={{ '--i': 3 } as AnchorProps}
+          >
             {language === 'es' ? 'Adoptar' : 'Adopt'}
           </a>
-          <a className="text-sm 4xl:text-[20px]" href="/impacto-ambiental">
+          <a
+            className="text-sm 4xl:text-[20px]"
+            href="/impacto-ambiental"
+            style={{ '--i': 4 } as AnchorProps}
+          >
             {language === 'es' ? 'Impacto' : 'Impact'}
           </a>
-          <a className="text-sm 4xl:text-[20px]" href="/fincas">
+          <a
+            className="text-sm 4xl:text-[20px]"
+            href="/fincas"
+            style={{ '--i': 4 } as AnchorProps}
+          >
             {language === 'es' ? 'Fincas' : 'Farms'}
           </a>
         </nav>
       </div>
       <div className="flex items-center gap-3 text-sm">
         <div className="hidden md:flex md:items-center active:text-[#00bf62]">
-          <div className="flex items-center gap-[5px]">
+          <div className="flex items-center gap-3">
             {!user && (
               <div className="flex items-center gap-[5px]">
                 <LoginIcon className="text-[#05264ebf] text-base font-light" />
@@ -139,12 +171,15 @@ const Navbar: React.FC = () => {
               </div>
             )}
             <button className="text-white bg-gradient-to-r from-green-500 to-green-600 rounded-[10px] shadow-lg hover:from-green-600 hover:to-green-700 transition-all duration-300 transform">
-              <a href="/adopta-un-arbol">{language === 'es' ? 'Adopta ahora</a>' : 'Adopt now'}
+              <a href="/adopta-un-arbol">{language === 'es' ? 'Adopta ahora' : 'Adopt now'}</a>
             </button>
 
             {user && (
               <div className="md:flex items-center mobile:hidden ">
-                <div onClick={handleShowModal} className="p-[6px] bg-white border border-gray-300 rounded-full cursor-pointer">
+                <div
+                  onClick={handleShowModal}
+                  className="p-[6px] bg-white border border-gray-300 rounded-full cursor-pointer"
+                >
                   <PersonIcon className="text-[#4BAF47] text[20px]" />
                 </div>
                 <div
@@ -153,13 +188,14 @@ const Navbar: React.FC = () => {
                 >
                   <NotificationsIcon className="text-[#4BAF47] text[20px]" />
                 </div>
+
                 {showModal && (
                   <div
                     className="absolute md:top-[3.8rem] desktop:top-[4.1rem] bg-white gap-4 md:right-[96px] lg:right-[235px] 2xl:right-[185px] p-5 rounded shadow-md"
                     ref={modalRef}
                   >
                     <div>
-                      <ul className="flex flex-col gap-3">
+                    <ul className="flex flex-col gap-3">
                         <li onClick={handleCloseModal} className="flex justify-between">
                           <Link to="" className="text-[#05264E] flex items-center gap-2">
                             <MdOutlineLightMode className="text-base text-[#05264E]" />{' '}
@@ -214,4 +250,3 @@ const Navbar: React.FC = () => {
 };
 
 export default Navbar;
-

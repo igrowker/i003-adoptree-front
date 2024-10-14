@@ -57,7 +57,7 @@ const Arboles: React.FC<ArbolesProps> = ({ language }) => {
   ];
 
   return (
-    <section className="py-14 bg-white lg:px-[200px] 2xl:px-[165px]">
+    <section className="py-14 bg-white lg:px-[200px] 2xl:px-[130px]">
       <div className="mx-auto">
         {/* HEADER o título */}
         <div className="text-center mb-8">

@@ -1,4 +1,3 @@
-import React from 'react';
 import imgLimones from '../../assets/img-limones.png';
 import imgNaranjero from '../../assets/img-naranjero.png';
 import './Agroadopcion.css';
@@ -8,6 +7,7 @@ interface AgroadopcionProps {
 }
 
 const Agroadopcion: React.FC<AgroadopcionProps> = ({ language }) => {
+
   const content: Record<'es' | 'en', { 
     title: string; 
     adoptionQuestion: string; 
@@ -19,7 +19,7 @@ const Agroadopcion: React.FC<AgroadopcionProps> = ({ language }) => {
   }> = {
     es: {
       title: 'Agroadopción ecológica',
-      adoptionQuestion: '¿En qué consistió la adopción de un árbol?',
+      adoptionQuestion: '¿En qué consiste la adopción de un árbol?',
       adoptionDescription:
         'Adoptá un cítrico de nuestro huerto de Entre Ríos. Vas a poder verlo crecer a través de fotos en tu zona de usuario y recibir tu cosecha de naranjas en tu casa. ¿Ya lo tenés decidido? Hacé clic acá para comenzar la adopción de tu naranjo. Gracias a las adopciones, podemos financiar las prácticas regenerativas que estamos implementando para preservar los ecosistemas locales.',
       currentProduction:
@@ -54,9 +54,9 @@ const Agroadopcion: React.FC<AgroadopcionProps> = ({ language }) => {
   return (
     <section
       id="como-adoptar"
-      className="bg-[#f8f7f0] py-20 lg:px-[200px] 2xl:px-[165px] my-[70px] flex justify-center"
+      className="bg-[#f8f7f0] py-20 lg:px-[200px] 2xl:px-[130px] my-[70px] flex justify-center"
     >
-      <div className="container flex flex-col items-center text-center">
+      <div className="flex flex-col items-center text-center">
         <p className="text-orange-500 mb-2 fuentePersonalizada text-[28px] mt-[15px]">
           {content[language].title}
         </p>
@@ -67,8 +67,38 @@ const Agroadopcion: React.FC<AgroadopcionProps> = ({ language }) => {
         <div className="bg-white rounded px-[60px] py-[40px] max-w-7xl">
           <div className="flex justify-between mb-[35px]">
             <div className="md:col-span-9 mb-9 md:mb-0 w-[500px]">
-              <p className="text-left text-base leading-[32px] text-gray-700">
-                {adoptionDescription.replace('clic acá', `<b><a href="#!" className="text-gray-700">${clickHere}</a></b>`)}
+              <p className="text-left lg:text-[.9rem] 2xl:text-[16px] leading-[32px] text-gray-700">
+                {language === 'es' ? (
+                   <p className="text-left lg:text-[.9rem] 2xl:text-[16px] leading-[32px] text-gray-700">
+                   Adoptá un cítrico de nuestro huerto de Entre Ríos. Vas a poder
+                   verlo crecer a través de fotos en tu zona de usuario y recibir
+                   tu cosecha de naranjas en tu casa. <br />
+                   ¿Ya lo tenés decidido? Hacé{' '}
+                   <b>
+                     <a href="#!" className="text-gray-700">
+                       clic acá
+                     </a>
+                   </b>{' '}
+                   para comenzar la adopción de tu naranjo. <br />
+                   Gracias a las adopciones, podemos financiar las prácticas
+                   regenerativas que estamos implementando para preservar los
+                   ecosistemas locales.
+                 </p>
+                ) : (
+                  <p className="text-left lg:text-[.9rem] 2xl:text-[16px] leading-[32px] text-gray-700">
+                  Adopt a citrus fruit from our farms. You will be able to see it grow through photos
+                  in your user area and receive your orange harvest at home. <br />
+                  Have you already decided? {' '}
+                  <b>
+                    <a href="#!" className="text-gray-700">
+                      click here
+                    </a>
+                  </b>{' '}
+                  to start the adoption of your orange tree.<br />
+                  Thanks to adoptions, we are able to finance the regenerative
+                  practices we are implementing to preserve local ecosystems.
+                </p>
+                )}
               </p>
             </div>
             <div className="md:col-span-3 mb-3 md:mb-0">
@@ -89,11 +119,11 @@ const Agroadopcion: React.FC<AgroadopcionProps> = ({ language }) => {
               />
             </div>
             <div className="md:col-span-9 mb-9 md:mb-0 text-gray-700 ml-[25px] w-[500px]">
-              <p className="text-left text-gray-700 text-base leading-[32px]">
+              <p className="text-left text-gray-700 lg:text-[.9rem] 2xl:text-[16px] leading-[32px]">
                 {currentProduction}
               </p>
 
-              <p className="text-left text-gray-900 leading-[32px] mt-6 font-bold">
+              <p className="text-left text-gray-900   leading-[32px] mt-6 font-bold">
                 {ownershipQuestion}
               </p>
 
