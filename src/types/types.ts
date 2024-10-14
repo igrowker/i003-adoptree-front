@@ -70,9 +70,25 @@ export interface UserFinca {
 
 export interface Arbol {
   active: boolean;
-  statusTree: 'ARBOL_JOVEN' | string; // Puedes agregar más valores si los conoces
+  statusTree: string;
   type: string;
-  user: UserFinca;
+  price: string;
+  user: {
+    name: string;
+  };
+}
+
+interface Productor {
+  id: number;
+  nombre: string;
+  apellido: string;
+  telefono: string;
+  email: string;
+  direccion: string | null;
+  experiencia: number;
+  especialidad: string;
+  certificaciones: string[];
+  fincaId: number;
 }
 
 export interface Hacienda {
@@ -80,5 +96,8 @@ export interface Hacienda {
   name: string;
   ubication: string;
   practicesSustainable: string;
+  images: string[];
   arbol: Arbol[];
+  productor: Productor;
 }
+
