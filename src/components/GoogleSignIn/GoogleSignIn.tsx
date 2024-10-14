@@ -11,7 +11,7 @@ const GoogleSignIn: React.FC<GoogleSignInProps> = ({
   onFailure,
 }) => {
   return (
-    <div className="w-full mt-4">
+    <div className="flex justify-center w-full mt-4">
       <GoogleLogin
         onSuccess={(credentialResponse: CredentialResponse) => {
           onSuccess(credentialResponse);
