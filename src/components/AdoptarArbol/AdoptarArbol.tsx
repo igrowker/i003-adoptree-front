@@ -10,18 +10,26 @@ interface FincaData {
   name: string;
   ubication: string;
   practicesSustainable: string;
-  productor: string;
+  productor: {
+    nombre: string;
+    apellido: string;
+    telefono: string;
+    email: string;
+    experiencia: number;
+    especialidad: string;
+    certificaciones: string[];
+  };
 }
 
-interface ArbolData {
+export interface ArbolData {
   id: number;
-  name: string;
+  name: string; // Corresponde a "type" en el backend
   type: string;
-  location: string;
-  images: string; // Cambié imageUrl a images
-  productor: string;
-  price: number;
-  finca: FincaData; // Agregamos finca aquí
+  location: string; // Corresponde a "finca.ubication"
+  images: string[];
+  productor: string; // Deberás mapear nombre y apellido de productor
+  price: number; // Necesitarás convertir este valor
+  finca: FincaData;
 }
 
 interface AdoptarArbolProps {
@@ -86,7 +94,7 @@ const AdoptarArbol: React.FC<AdoptarArbolProps> = ({ datos }) => {
               <span className="truncate">
                 Productor:{' '}
                 <span className="text-[#00BF62] font-medium">
-                  {datos.finca.productor} {/* Accedemos al productor desde finca */}
+                  {`${datos.finca.productor.nombre} ${datos.finca.productor.apellido}`} {/* Accedemos al productor desde finca */}
                 </span>
               </span>
             </p>
