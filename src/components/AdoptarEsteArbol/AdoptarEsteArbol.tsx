@@ -11,7 +11,7 @@ type Cosecha = {
   estadoDeEnvio: "EN_PREPARACION" | "ENVIADO" | "ENTREGADO"; // Agrega más estados si es necesario
 };
 
-type Productor = {
+export type Productor = {
   id: number;
   nombre: string;
   apellido: string;
@@ -32,11 +32,9 @@ type Tree = {
   active: boolean;
   cosecha: Cosecha[];
   finca: Finca;
-  fincaId: number;
   id: number;
   images: string[];
   price: number;
-  statusTree: string;
   type: string;
   user: {
     email: string;
