@@ -11,16 +11,21 @@ const GoogleSignIn: React.FC<GoogleSignInProps> = ({
   onFailure,
 }) => {
   return (
-    <GoogleLogin
-      onSuccess={(credentialResponse: CredentialResponse) => {
-        onSuccess(credentialResponse);
-      }}
-      onError={() => {
-        onFailure('Error de inicio de sesión con Google');
-      }}
-      useOneTap
-      text="signin_with"
-    />
+    <div className="w-full mt-4">
+      <GoogleLogin
+        onSuccess={(credentialResponse: CredentialResponse) => {
+          onSuccess(credentialResponse);
+        }}
+        onError={() => {
+          onFailure('Error de inicio de sesión con Google');
+        }}
+        useOneTap
+        text="signin_with"
+        // Aplica el tema claro para mantener la consistencia visual
+        theme="outline"
+        size="large"
+      />
+    </div>
   );
 };
 
