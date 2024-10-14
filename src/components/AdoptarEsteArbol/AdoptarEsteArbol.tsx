@@ -3,10 +3,11 @@ import { useNavigate, useParams } from 'react-router-dom';
 import { ArrowLeft, Heart, MapPin } from 'lucide-react';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
+import { ArbolData } from '../AdoptarArbol/AdoptarArbol';
 
 const AdoptarEsteArbol: React.FC = () => {
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  const [arbol, setArbol] = useState<any>();
+  
+  const [arbol, setArbol] = useState<ArbolData>();
 
   const { id } = useParams<{ id: string }>();
   const navigate = useNavigate();
@@ -63,14 +64,14 @@ const AdoptarEsteArbol: React.FC = () => {
               Adopta un {arbol.type}
             </h2>
             <p className="mt-2 text-gray-500">
-              Gracias a: {arbol.finca.productor}
+              Gracias a: {`${arbol.finca.productor.nombre} ${arbol.finca.productor.apellido}`}
             </p>
             <div className="mt-3 flex items-center text-sm text-gray-500">
               <MapPin className="flex-shrink-0 mr-1.5 h-5 w-5 text-gray-400" />
               <p>{arbol.finca.ubication}</p>
             </div>
             <p className="mt-4 text-3xl font-bold text-[#4BAF47]">
-              {arbol.price.toLocaleString('es-AR', {
+             $ {arbol.price.toLocaleString('es-AR', {
                 style: 'currency',
                 currency: 'ARS',
               })}
@@ -86,7 +87,7 @@ const AdoptarEsteArbol: React.FC = () => {
               <button
                 className="w-full flex items-center justify-center px-4 py-2 border border-gray-300 rounded-[10px] shadow-sm text-base font-medium text-gray-700 bg-white hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2"
               >
-                <Link className='flex items-center justify-center' to={`/checkout/${arbol.id}`}><ArrowLeft className="mr-2 h-5 w-5" /> Volver</Link>
+                <Link className='flex items-center justify-center' to={`/adopta-un-arbol`}><ArrowLeft className="mr-2 h-5 w-5" /> Volver</Link>
               </button>
             </div>
           </div>
