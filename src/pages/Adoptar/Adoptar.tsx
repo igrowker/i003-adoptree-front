@@ -4,10 +4,10 @@ import { InputAdornment, TextField } from '@mui/material';
 import SearchIcon from '@mui/icons-material/Search';
 import { useGetArbolesQuery } from '../../store/services/arbolApi';
 import { useSearchParams } from 'react-router-dom';
-import './Adoptar.css';
 import { ArbolInterface } from '../../store/services/arbolApi';
+import { motion } from 'framer-motion';
+import './Adoptar.css';
 
-// Eliminar 'ArbolD' y utilizar directamente 'Arbol' en el componente Adoptar
 const Adoptar: React.FC = () => {
   const { data: arboles, error, isLoading } = useGetArbolesQuery();
   const [searchParams] = useSearchParams();
@@ -41,17 +41,19 @@ const Adoptar: React.FC = () => {
     arbol.type.toLowerCase().includes(searchTerm.toLowerCase())
   );
 
-  console.log(filteredArboles)
-
   if (isLoading) {
     return (
       <div className="w-full flex justify-center">
-        <div className="load-row my-[200px]">
+        <motion.div
+          className="load-row my-[200px]"
+          animate={{ scale: [1, 1.2, 1], opacity: [0.8, 1, 0.8] }}
+          transition={{ duration: 0.8, repeat: Infinity }}
+        >
           <span></span>
           <span></span>
           <span></span>
           <span></span>
-        </div>
+        </motion.div>
       </div>
     );
   }
@@ -62,33 +64,89 @@ const Adoptar: React.FC = () => {
 
   return (
     <div className="px-4 sm:px-6 md:px-8 lg:px-[200px] 2xl:px-[130px] my-[116px]">
-      <h1 className="text-3xl sm:text-4xl font-bold mb-2 mt-6 sm:mt-8">
+      <motion.h1
+        className="text-3xl sm:text-4xl font-bold mb-2 mt-6 sm:mt-8"
+        initial={{ opacity: 0, y: -20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.5 }}
+      >
         Adopciones
-      </h1>
-      <p className="text-gray-500 mb-4 sm:mb-6 max-w-2xl">
-        Adopta un árbol para apoyar a un agricultor y recibe tu cosecha a lo
-        largo de la temporada.
-      </p>
-      <TextField
-        className="w-full max-w-2xl mb-8 sm:mb-12"
-        id="outlined-basic"
-        label="Busca un árbol"
-        variant="outlined"
-        value={searchTerm}
-        onChange={(e) => setSearchTerm(e.target.value)}
-        InputProps={{
-          endAdornment: (
-            <InputAdornment position="end">
-              <SearchIcon />
-            </InputAdornment>
-          ),
+      </motion.h1>
+      <motion.p
+        className="text-gray-500 mb-4 sm:mb-6 max-w-2xl"
+        initial={{ opacity: 0, y: -20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.6 }}
+      >
+        Adopta un árbol para apoyar a un agricultor y recibe tu cosecha a lo largo de la temporada.
+      </motion.p>
+      <motion.div
+        initial={{ opacity: 0, x: -20 }}
+        animate={{ opacity: 1, x: 0 }}
+        transition={{ duration: 0.5 }}
+      >
+        <TextField
+          className="w-full max-w-2xl mb-8 sm:mb-12"
+          id="outlined-basic"
+          sx={{
+            '& .MuiOutlinedInput-root': {
+              '& fieldset': {
+                borderColor: 'green', // Color del borde normal
+              },
+              '&:hover fieldset': {
+                borderColor: '#909590', // Color del borde cuando se pasa el mouse
+              },
+              '&.Mui-focused fieldset': {
+                borderColor: 'green', // Color del borde cuando está enfocado
+              },
+            },
+            '& .MuiInputLabel-root': {
+              color: 'gray', // Color del label
+            },
+            '& .MuiInputLabel-root.Mui-focused': {
+              color: 'green', // Color del label cuando está enfocado
+            },
+          }}
+          label="Busca un árbol"
+          variant="outlined"
+          value={searchTerm}
+          onChange={(e) => setSearchTerm(e.target.value)}
+          InputProps={{
+            endAdornment: (
+              <InputAdornment position="end">
+                <SearchIcon />
+              </InputAdornment>
+            ),
+          }}
+        />
+      </motion.div>
+      <motion.div
+        className="grid gap-6 grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-4 mt-10 max-w-screen-lg"
+        initial="hidden"
+        animate="visible"
+        variants={{
+          hidden: { opacity: 0, y: 20 },
+          visible: {
+            opacity: 1,
+            y: 0,
+            transition: {
+              staggerChildren: 0.2,
+            },
+          },
         }}
-      />
-      <div className="grid gap-6 grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-4 mt-10 max-w-screen-lg">
+      >
         {filteredArboles?.map((arbol: ArbolInterface) => (
-          <AdoptarArbol key={arbol.id} datos={arbol} />
+          <motion.div
+            key={arbol.id}
+            variants={{
+              hidden: { opacity: 0, y: 20 },
+              visible: { opacity: 1, y: 0 },
+            }}
+          >
+            <AdoptarArbol datos={arbol} />
+          </motion.div>
         ))}
-      </div>
+      </motion.div>
     </div>
   );
 };

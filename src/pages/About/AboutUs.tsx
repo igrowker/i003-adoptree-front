@@ -1,4 +1,6 @@
-import React from 'react';
+import React, { useEffect } from 'react';
+import { motion, useAnimation } from 'framer-motion';
+import { useInView } from 'react-intersection-observer';
 import img1 from '../../assets/img1.jpg';
 import img2 from '../../assets/img2.jpg';
 import img3 from '../../assets/img3.jpg';
@@ -10,32 +12,85 @@ import innovacionIcon from '../../assets/innovacion.png';
 import { useLanguage } from '../../LanguageContext/LanguageContext';
 import './AboutUsSection.css';
 
-const AboutUs: React.FC = () => {
+interface Image {
+  images: string[]
+}
+
+interface AnimatedTextProps {
+  children: React.ReactNode;
+  className?: string;
+  delay?: number;
+}
+
+const AnimatedImageGrid = ({ images }: Image) => {
+  return (
+    <div className="grid grid-cols-1 md:grid-cols-4 gap-4 mb-12 about-image-container">
+      {images.map((img, index) => (
+        <motion.div
+          key={index}
+          className="about-image h-80 overflow-hidden"
+          initial={{ opacity: 0, y: 50 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5, delay: index * 0.1 }}
+        >
+          <img
+            src={img}
+            alt={`Image ${index + 1}`}
+            className="w-full h-full object-cover"
+          />
+        </motion.div>
+      ))}
+    </div>
+  );
+};
+
+const AnimatedText = ({ children, className = "", delay = 0 }: AnimatedTextProps) => {
+  const controls = useAnimation();
+  const [ref, inView] = useInView({
+    triggerOnce: true,
+    threshold: 0.1,
+  });
+
+  useEffect(() => {
+    if (inView) {
+      controls.start('visible');
+    }
+  }, [controls, inView]);
+
+  return (
+    <motion.div
+      ref={ref}
+      initial="hidden"
+      animate={controls}
+      variants={{
+        visible: { opacity: 1, y: 0 },
+        hidden: { opacity: 0, y: 20 }
+      }}
+      transition={{ duration: 0.5, delay }}
+      className={className}
+    >
+      {children}
+    </motion.div>
+  );
+};
+
+const AboutUs = () => {
   const { language } = useLanguage();
 
   return (
     <section className="about-section">
       <div className="max-w-6xl mx-auto">
-        <h2 className="about-header font-[900]">
+        <AnimatedText className="about-header font-[900]" delay={0.2}>
           {language === 'es' ? 'Sobre Nosotros' : 'About Us'}
-        </h2>
-        <p className="about-text text-center">
+        </AnimatedText>
+        
+        <AnimatedText className="about-text text-center" delay={0.4}>
           {language === 'es'
             ? 'Adoptree es una plataforma que conecta a los consumidores directamente con los productores de cítricos en Argentina, promoviendo la agricultura sostenible.'
             : 'Adoptree is a platform that connects consumers directly with citrus producers in Argentina, promoting sustainable agriculture.'}
-        </p>
+        </AnimatedText>
 
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-4 mb-12 about-image-container">
-          {[img1, img2, img3, img4].map((img, index) => (
-            <div key={index} className="about-image h-80 overflow-hidden">
-              <img
-                src={img}
-                alt={`Image ${index + 1}`}
-                className="w-full h-full object-cover"
-              />
-            </div>
-          ))}
-        </div>
+        <AnimatedImageGrid images={[img1, img2, img3, img4]} />
 
         <h3 className="text-[30px] font-[800] text-center mb-4">
           {language === 'es'
@@ -61,7 +116,6 @@ const AboutUs: React.FC = () => {
           ))}
         </div>
       </div>
-
       <div className="bg-[#F7FAFC] flex flex-col items-center pt-[4rem] pb-12 px-6 gap-[4rem]">
         <div className="w-full max-w-4xl">
           <h3 className="text-[30px] font-[800] text-center">
