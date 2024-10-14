@@ -11,6 +11,7 @@ interface BienvenidoProps {
 }
 
 const Bienvenido: React.FC<BienvenidoProps> = ({ language }) => {
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const content: Record<'es' | 'en', any> = {
     es: {
       welcome: 'BIENVENIDO A ADOPTREE',

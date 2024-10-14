@@ -9,6 +9,7 @@ interface BeneficiosProps {
 }
 
 const Beneficios: React.FC<BeneficiosProps> = ({ language }) => {
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const content: Record<'es' | 'en', any> = {
     es: {
       benefitsTitle: 'Beneficios',

@@ -1,4 +1,3 @@
-import { useNavigate } from 'react-router-dom';
 import React from 'react';
 import { Spa, LocalFlorist, Yard } from '@mui/icons-material';
 import naranjosImg from '../../assets/naranjos.jpg';
@@ -13,6 +12,7 @@ interface ArbolesProps {
 
 const Arboles: React.FC<ArbolesProps> = ({ language }) => {
 
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const content: Record<'es' | 'en', any> = {
     es: {
       adopt: 'Adopta',

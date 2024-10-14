@@ -10,6 +10,7 @@ interface AgricultureProps {
 }
 
 const Agriculture: React.FC<AgricultureProps> = ({ language }) => {
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const content: Record<'es' | 'en', any> = {
     es: {
       crowdfarming: 'Crowdfarming',

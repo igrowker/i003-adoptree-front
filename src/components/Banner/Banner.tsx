@@ -6,6 +6,7 @@ interface BannerProps {
 }
 
 const Banner: React.FC<BannerProps> = ({ language }) => {
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const content: Record<'es' | 'en', any> = {
     es: {
       titleLine1: 'Adopta un árbol cítrico',
