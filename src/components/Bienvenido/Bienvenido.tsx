@@ -87,13 +87,15 @@ const Bienvenido: React.FC<BienvenidoProps> = ({ language }) => {
         <p className="lg:text-[14px] 2xl:text-lg mb-5 flex">{welcome}</p>
         <div>
           {language === 'es' ? (
-              <img
+            <img
               className="lg:w-[370px] 2xl:w-[485px] 4xl:w-[700px]"
               src={tituloPrincipal}
               alt="titulo"
             />
           ) : (
-            <h1 className='tipografiaCards leading-[0.8] text-left text-[105px] 4xl:text-[140px] font-[500] mb-8 w-[600px] 4xl:w-[800px]'>Sustainable Agroadoption</h1>
+            <h1 className="tipografiaCards leading-[0.8] text-left text-[105px] 4xl:text-[140px] font-[500] mb-8 w-[600px] 4xl:w-[800px]">
+              Sustainable Agroadoption
+            </h1>
           )}
         </div>
         <div className="w-1/2 flex flex-col">

@@ -25,12 +25,12 @@ interface Arbol {
 }
 
 const Arboles: React.FC<ArbolesProps> = ({ language }) => {
-
   const content: Record<'es' | 'en', ContentText> = {
     es: {
       adopt: 'Adopta',
       treesTitle: 'Nuestros árboles',
-      adoptTree: 'Adopta un árbol cítrico y sé parte de la agricultura sostenible.',
+      adoptTree:
+        'Adopta un árbol cítrico y sé parte de la agricultura sostenible.',
       adoptButton: 'Adoptar',
     },
     en: {
@@ -114,9 +114,7 @@ const Arboles: React.FC<ArbolesProps> = ({ language }) => {
           ))}
         </div>
 
-        <h3 className="text-4xl font-bold text-white mb-4">
-          {adoptTree}
-        </h3>
+        <h3 className="text-4xl font-bold text-white mb-4">{adoptTree}</h3>
       </div>
     </section>
   );

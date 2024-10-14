@@ -22,17 +22,17 @@ const Adoptar: React.FC = () => {
 
   // Ajustar los términos de búsqueda según sea necesario
   switch (searchTerm) {
-    case "Naranjos":
-      setSearchTerm("Naranjo");
+    case 'Naranjos':
+      setSearchTerm('Naranjo');
       break;
-    case "Pomeleros":
-      setSearchTerm("Pomelero");
+    case 'Pomeleros':
+      setSearchTerm('Pomelero');
       break;
-    case "Limoneros":
-      setSearchTerm("Limonero");
+    case 'Limoneros':
+      setSearchTerm('Limonero');
       break;
-    case "Mandarinos":
-      setSearchTerm("Mandarino");
+    case 'Mandarinos':
+      setSearchTerm('Mandarino');
       break;
   }
 
@@ -60,9 +60,12 @@ const Adoptar: React.FC = () => {
 
   return (
     <div className="px-4 sm:px-6 md:px-8 lg:px-[200px] 2xl:px-[130px] my-[116px]">
-      <h1 className="text-3xl sm:text-4xl font-bold mb-2 mt-6 sm:mt-8">Adopciones</h1>
+      <h1 className="text-3xl sm:text-4xl font-bold mb-2 mt-6 sm:mt-8">
+        Adopciones
+      </h1>
       <p className="text-gray-500 mb-4 sm:mb-6 max-w-2xl">
-        Adopta un árbol para apoyar a un agricultor y recibe tu cosecha a lo largo de la temporada.
+        Adopta un árbol para apoyar a un agricultor y recibe tu cosecha a lo
+        largo de la temporada.
       </p>
       <TextField
         className="w-full max-w-2xl mb-8 sm:mb-12"

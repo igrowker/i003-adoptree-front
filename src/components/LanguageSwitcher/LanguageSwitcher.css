@@ -18,7 +18,7 @@
   margin: 3px 0; /* Espacio vertical entre botones */
   cursor: pointer; /* Cambiar cursor al pasar por encima */
   transition: all 0.3s ease; /* Transición suave */
-  z-index: 999; 
+  z-index: 999;
 }
 
 .language-switcher button:hover {

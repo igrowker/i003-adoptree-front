@@ -50,7 +50,7 @@ const AboutUs: React.FC = () => {
               : 'Adoptree offers a direct connection with citrus producers in Argentina. By adopting a tree, you receive a share of the harvest, supporting agricultural sustainability.',
             language === 'es'
               ? 'Nuestra plataforma facilita a los agricultores ingresos constantes, permitiendo mantener sus huertos de manera sostenible y mejorar las prácticas agrícolas responsables.'
-              : 'Our platform provides farmers with steady income, allowing them to sustainably maintain their orchards and improve responsible farming practices.'
+              : 'Our platform provides farmers with steady income, allowing them to sustainably maintain their orchards and improve responsible farming practices.',
           ].map((text, index) => (
             <div
               key={index}
@@ -109,7 +109,7 @@ const AboutUs: React.FC = () => {
                 text:
                   language === 'es'
                     ? 'Cuidamos el medio ambiente y buscamos siempre reducir nuestra huella de carbono en cada proyecto.'
-                    : 'We care for the environment and always strive to reduce our carbon footprint in every project.'
+                    : 'We care for the environment and always strive to reduce our carbon footprint in every project.',
               },
               {
                 icon: compromisoIcon,
@@ -117,7 +117,7 @@ const AboutUs: React.FC = () => {
                 text:
                   language === 'es'
                     ? 'Estamos comprometidos con nuestros clientes y con la sociedad para lograr un impacto positivo.'
-                    : 'We are committed to our clients and society to achieve a positive impact.'
+                    : 'We are committed to our clients and society to achieve a positive impact.',
               },
               {
                 icon: innovacionIcon,
@@ -125,14 +125,18 @@ const AboutUs: React.FC = () => {
                 text:
                   language === 'es'
                     ? 'Nos esforzamos en buscar nuevas soluciones para mejorar la sostenibilidad y la eficiencia de nuestros proyectos.'
-                    : 'We strive to find new solutions to improve sustainability and efficiency in our projects.'
-              }
+                    : 'We strive to find new solutions to improve sustainability and efficiency in our projects.',
+              },
             ].map((value, index) => (
               <div
                 key={index}
                 className="value-card flex flex-col justify-center items-center"
               >
-                <img src={value.icon} alt={value.title} className="value-icon" />
+                <img
+                  src={value.icon}
+                  alt={value.title}
+                  className="value-icon"
+                />
                 <h3 className="text-xl font-semibold mb-2 text-gray-800">
                   {value.title}
                 </h3>
@@ -147,4 +151,3 @@ const AboutUs: React.FC = () => {
 };
 
 export default AboutUs;
-

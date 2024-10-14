@@ -1,13 +1,27 @@
 import { useEffect, useState } from 'react';
-import { Bell, HomeIcon, TreePineIcon,User2Icon } from 'lucide-react';
+import { Bell, HomeIcon, TreePineIcon, User2Icon } from 'lucide-react';
 import axios from 'axios';
 import { RootState } from '../../types/types';
 import { useSelector } from 'react-redux';
 import MiArbol from '../../components/MiArbol/MiArbol';
 import MiPerfil from '../../components/MiPerfil/MiPerfil';
 
+interface Tree {
+  images: string[];
+  type: string;
+  statusTree: 'ARBOL_JOVEN' | 'ADULTO';
+}
+
+interface ArbolAdoptado {
+  tree: Tree;
+  tipo: string;
+  purchaseDate: string;
+}
+
 const Dashboard = () => {
-  const [arbolAdoptado, setArbolAdoptado] = useState<any | null>(null);
+  const [arbolAdoptado, setArbolAdoptado] = useState<ArbolAdoptado | null>(
+    null
+  );
 
   const [activeSection, setActiveSection] = useState('home');
 
@@ -26,7 +40,7 @@ const Dashboard = () => {
     },
   ];
 
-  const fotosRecientes: any[] = []; // Fotos simuladas
+  const fotosRecientes: string[] = [];
 
   const user = useSelector((state: RootState) => state.user.user);
   const BACK_URL = import.meta.env.VITE_BACK_URL;

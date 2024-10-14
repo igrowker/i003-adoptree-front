@@ -4,11 +4,56 @@ import { ArrowLeft, Heart, MapPin } from 'lucide-react';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
 
+type Cosecha = {
+  id: number;
+  cantidad: number;
+  fechaDeEnvio: string; // ISO 8601 format
+  estadoDeEnvio: "EN_PREPARACION" | "ENVIADO" | "ENTREGADO"; // Agrega más estados si es necesario
+};
+
+type Productor = {
+  id: number;
+  nombre: string;
+  apellido: string;
+  telefono: string;
+  email: string;
+  // Agrega otras propiedades si es necesario
+};
+
+type Finca = {
+  id: number;
+  name: string;
+  practicesSustainable: string;
+  productor: Productor;
+  ubication: string;
+};
+
+type Tree = {
+  active: boolean;
+  cosecha: Cosecha[];
+  finca: Finca;
+  fincaId: number;
+  id: number;
+  images: string[];
+  price: number;
+  statusTree: string;
+  type: string;
+  user: {
+    email: string;
+    id: number;
+    name: string;
+  };
+  userId: number;
+};
+
+
 const AdoptarEsteArbol: React.FC = () => {
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  const [arbol, setArbol] = useState<any>();
+  const [arbol, setArbol] = useState<Tree>();
+
+  console.log(arbol)
 
   const { id } = useParams<{ id: string }>();
+  console.log(id);
   const navigate = useNavigate();
 
   const BACK_URL = import.meta.env.VITE_BACK_URL;
@@ -63,7 +108,10 @@ const AdoptarEsteArbol: React.FC = () => {
               Adopta un {arbol.type}
             </h2>
             <p className="mt-2 text-gray-500">
-              Gracias a: {arbol.finca.productor}
+              Gracias a:{' '}
+              {arbol.finca.productor.nombre +
+                ' ' +
+                arbol.finca.productor.apellido}
             </p>
             <div className="mt-3 flex items-center text-sm text-gray-500">
               <MapPin className="flex-shrink-0 mr-1.5 h-5 w-5 text-gray-400" />

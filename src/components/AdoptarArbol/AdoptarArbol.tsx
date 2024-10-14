@@ -5,12 +5,25 @@ import { GiFruitTree, GiFruitBowl } from 'react-icons/gi';
 import { useNavigate } from 'react-router-dom';
 import './AdoptarArbol.css';
 
+type Productor = {
+  id: number;
+  nombre: string;
+  apellido: string;
+  telefono: string;
+  email: string;
+  direccion: string | null;
+  experiencia: number;
+  especialidad: string;
+  certificaciones: string[];
+  fincaId: number;
+};
+
 interface FincaData {
   id: number;
   name: string;
   ubication: string;
   practicesSustainable: string;
-  productor: string;
+  productor: Productor;
 }
 
 interface ArbolData {
@@ -86,7 +99,10 @@ const AdoptarArbol: React.FC<AdoptarArbolProps> = ({ datos }) => {
               <span className="truncate">
                 Productor:{' '}
                 <span className="text-[#00BF62] font-medium">
-                  {datos.finca.productor} {/* Accedemos al productor desde finca */}
+                  {datos.finca.productor.nombre +
+                    ' ' +
+                    datos.finca.productor.apellido}{' '}
+                  {/* Accedemos al productor desde finca */}
                 </span>
               </span>
             </p>

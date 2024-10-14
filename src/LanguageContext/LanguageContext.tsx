@@ -7,10 +7,14 @@ interface LanguageContextType {
 }
 
 // Crea el contexto con un valor por defecto
-const LanguageContext = createContext<LanguageContextType | undefined>(undefined);
+const LanguageContext = createContext<LanguageContextType | undefined>(
+  undefined
+);
 
 // Componente proveedor para envolver tu aplicación
-export const LanguageProvider: React.FC<{ children: ReactNode }> = ({ children }) => {
+export const LanguageProvider: React.FC<{ children: ReactNode }> = ({
+  children,
+}) => {
   const [language, setLanguage] = useState<'es' | 'en'>('es'); // Establece el valor por defecto aquí
 
   return (

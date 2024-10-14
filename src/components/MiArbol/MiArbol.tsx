@@ -5,8 +5,38 @@ import axios from 'axios';
 import { useSelector } from 'react-redux';
 import { RootState } from '../../types/types';
 
+type ArbolAdoptado = {
+  id: number;
+  purchaseDate: string; 
+  shippingAddressId: number;
+  status: "PENDING" | "COMPLETED" | "CANCELLED"; 
+  tree: {
+    active: boolean;
+    fincaId: number;
+    id: number;
+    images: string[];
+    price: number; 
+    statusTree: string;
+    type: string;
+    userId: number;
+    treeId: number;
+  };
+  user: {
+    avatar: string | null;
+    email: string;
+    googleId: string | null;
+    id: number;
+    name: string;
+    password: string;
+    role: "USER" | "ADMIN"; 
+    userId: number;
+  };
+};
+
+
 const MiArbol = () => {
-  const [arbolAdoptado, setArbolAdoptado] = useState<any | null>(null);
+  const [arbolAdoptado, setArbolAdoptado] = useState<ArbolAdoptado | null>();
+  console.log(arbolAdoptado);
   const user = useSelector((state: RootState) => state.user.user);
   const BACK_URL = import.meta.env.VITE_BACK_URL;
 
@@ -44,7 +74,7 @@ const MiArbol = () => {
               autoPlay
               className="w-full rounded-lg shadow-md"
             >
-              {arbolAdoptado.tree.images.map((image: any, index: any) => (
+              {arbolAdoptado.tree.images.map((image: string, index: number) => (
                 <div key={index}>
                   <img
                     src={image}

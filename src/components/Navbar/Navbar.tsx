@@ -2,14 +2,19 @@ import { useEffect, useRef, useState } from 'react';
 import LoginIcon from '@mui/icons-material/Login';
 import PersonIcon from '@mui/icons-material/Person';
 import NotificationsIcon from '@mui/icons-material/Notifications';
-import { MdOutlineLightMode, MdKeyboardArrowDown, MdOutlineLogout, MdOutlineSpaceDashboard } from 'react-icons/md';
+import {
+  MdOutlineLightMode,
+  MdKeyboardArrowDown,
+  MdOutlineLogout,
+  MdOutlineSpaceDashboard,
+} from 'react-icons/md';
 import { useLanguage } from '../../LanguageContext/LanguageContext';
 import Logo from '../../assets/adoptree 1.png';
 import { useSelector, useDispatch } from 'react-redux';
 import { Link, useNavigate } from 'react-router-dom';
 import { logout } from '../../store/features/userSlice';
 import { RootState } from '../../types/types';
-import { io } from "socket.io-client"; 
+import { io } from 'socket.io-client';
 import './Navbar.css';
 
 export interface AnchorProps
@@ -165,13 +170,18 @@ const Navbar: React.FC = () => {
             {!user && (
               <div className="flex items-center gap-[5px]">
                 <LoginIcon className="text-[#05264ebf] text-base font-light" />
-                <Link to="/auth/login" className="text-[#05264E] mobile:font-[500] mobile:text-[1.1rem] desktop:font-normal desktop:text-base 4xl:text-[20px]">
+                <Link
+                  to="/auth/login"
+                  className="text-[#05264E] mobile:font-[500] mobile:text-[1.1rem] desktop:font-normal desktop:text-base 4xl:text-[20px]"
+                >
                   {language === 'es' ? 'Inicia sesión' : 'Login'}
                 </Link>
               </div>
             )}
             <button className="text-white bg-gradient-to-r from-green-500 to-green-600 rounded-[10px] shadow-lg hover:from-green-600 hover:to-green-700 transition-all duration-300 transform">
-              <a href="/adopta-un-arbol">{language === 'es' ? 'Adopta ahora' : 'Adopt now'}</a>
+              <a href="/adopta-un-arbol">
+                {language === 'es' ? 'Adopta ahora' : 'Adopt now'}
+              </a>
             </button>
 
             {user && (
@@ -195,24 +205,42 @@ const Navbar: React.FC = () => {
                     ref={modalRef}
                   >
                     <div>
-                    <ul className="flex flex-col gap-3">
-                        <li onClick={handleCloseModal} className="flex justify-between">
-                          <Link to="" className="text-[#05264E] flex items-center gap-2">
+                      <ul className="flex flex-col gap-3">
+                        <li
+                          onClick={handleCloseModal}
+                          className="flex justify-between"
+                        >
+                          <Link
+                            to=""
+                            className="text-[#05264E] flex items-center gap-2"
+                          >
                             <MdOutlineLightMode className="text-base text-[#05264E]" />{' '}
-                            {language === 'es' ? 'Tema: Modo claro' : 'Theme: Light mode'}
+                            {language === 'es'
+                              ? 'Tema: Modo claro'
+                              : 'Theme: Light mode'}
                           </Link>
                           <MdKeyboardArrowDown className="text-base text-[#05264E]" />
                         </li>
-                        <li onClick={handleCloseModal} className="flex items-center gap-2">
+                        <li
+                          onClick={handleCloseModal}
+                          className="flex items-center gap-2"
+                        >
                           <MdOutlineSpaceDashboard className="text-[#05264E] text-base" />
                           <Link to="" className="text-[#05264E]">
-                            {language === 'es' ? 'Panel de control' : 'Dashboard'}
+                            {language === 'es'
+                              ? 'Panel de control'
+                              : 'Dashboard'}
                           </Link>
                         </li>
                         {user && (
-                          <li onClick={handleLogout} className="flex items-center gap-2">
+                          <li
+                            onClick={handleLogout}
+                            className="flex items-center gap-2"
+                          >
                             <MdOutlineLogout className="text-[#05264E] text-base" />
-                            <span className="text-[#05264E]">{language === 'es' ? 'Cerrar sesión' : 'Logout'}</span>
+                            <span className="text-[#05264E]">
+                              {language === 'es' ? 'Cerrar sesión' : 'Logout'}
+                            </span>
                           </li>
                         )}
                       </ul>

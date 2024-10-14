@@ -2,10 +2,10 @@ import React, { useState } from 'react';
 import backgroundImage from '../../assets/Mandarinas.jpg';
 import { useNavigate } from 'react-router-dom';
 import './Donar.css';
-import { useLanguage } from '../../LanguageContext/LanguageContext';  
+import { useLanguage } from '../../LanguageContext/LanguageContext';
 
 const Donar: React.FC = () => {
-  const { language } = useLanguage();  
+  const { language } = useLanguage();
   const [formData, setFormData] = useState({
     nombre: '',
     email: '',
@@ -13,7 +13,7 @@ const Donar: React.FC = () => {
     mensaje: '',
   });
 
-  const [selectedMonto, setSelectedMonto] = useState<number | null>(100); 
+  const [selectedMonto, setSelectedMonto] = useState<number | null>(100);
   const [isCustom, setIsCustom] = useState(false);
 
   const navigate = useNavigate();
@@ -64,10 +64,18 @@ const Donar: React.FC = () => {
       if (!response.ok) throw new Error('Error en la petición');
 
       navigate('/');
-      alert(language === 'es' ? '¡Gracias por tu donación!' : 'Thank you for your donation!');
+      alert(
+        language === 'es'
+          ? '¡Gracias por tu donación!'
+          : 'Thank you for your donation!'
+      );
     } catch (err) {
       console.error(err);
-      alert(language === 'es' ? 'Hubo un error al procesar tu donación.' : 'There was an error processing your donation.');
+      alert(
+        language === 'es'
+          ? 'Hubo un error al procesar tu donación.'
+          : 'There was an error processing your donation.'
+      );
     }
   };
 
@@ -81,7 +89,9 @@ const Donar: React.FC = () => {
           {language === 'es' ? 'Haz tu donación 🌱' : 'Make your donation 🌱'}
         </h2>
         <p className="text-[14px]">
-          {language === 'es' ? 'Tu apoyo es muy valioso para nosotros.' : 'Your support is very valuable to us.'}
+          {language === 'es'
+            ? 'Tu apoyo es muy valioso para nosotros.'
+            : 'Your support is very valuable to us.'}
         </p>
         <form onSubmit={handleSubmit}>
           <input
@@ -101,7 +111,11 @@ const Donar: React.FC = () => {
             required
           />
           <div className="monto-options">
-            <label>{language === 'es' ? 'Me gustaría donar:' : 'I would like to donate:'}</label>
+            <label>
+              {language === 'es'
+                ? 'Me gustaría donar:'
+                : 'I would like to donate:'}
+            </label>
             <div className="monto-buttons">
               <button
                 type="button"
@@ -138,7 +152,9 @@ const Donar: React.FC = () => {
             <input
               type="number"
               name="monto"
-              placeholder={language === 'es' ? 'Ingresa un monto' : 'Enter an amount'}
+              placeholder={
+                language === 'es' ? 'Ingresa un monto' : 'Enter an amount'
+              }
               value={formData.monto}
               onChange={handleCustomMontoChange}
               required
@@ -147,7 +163,9 @@ const Donar: React.FC = () => {
 
           <textarea
             name="mensaje"
-            placeholder={language === 'es' ? 'Mensaje opcional' : 'Optional message'}
+            placeholder={
+              language === 'es' ? 'Mensaje opcional' : 'Optional message'
+            }
             value={formData.mensaje}
             onChange={handleInputChange}
           />

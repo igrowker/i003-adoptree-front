@@ -25,7 +25,10 @@ const DescubreMas: React.FC = () => {
         <div className="grid md:grid-cols-3 gap-10 mb-16">
           {[
             {
-              title: language === 'es' ? 'Frescura Garantizada' : 'Guaranteed Freshness',
+              title:
+                language === 'es'
+                  ? 'Frescura Garantizada'
+                  : 'Guaranteed Freshness',
               image: refrescanteImg,
               description:
                 language === 'es'
@@ -33,7 +36,10 @@ const DescubreMas: React.FC = () => {
                   : 'By adopting or buying one of our citrus trees, you are supporting local production and enjoying freshly harvested fruits full of freshness and essential nutrients.',
             },
             {
-              title: language === 'es' ? 'Apoyo a los Agricultores Locales' : 'Support for Local Farmers',
+              title:
+                language === 'es'
+                  ? 'Apoyo a los Agricultores Locales'
+                  : 'Support for Local Farmers',
               image: soporteImg,
               description:
                 language === 'es'

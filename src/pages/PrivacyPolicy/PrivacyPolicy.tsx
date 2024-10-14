@@ -10,7 +10,9 @@ const PrivacyPolicy = () => {
           {language === 'es' ? 'Política de Privacidad' : 'Privacy Policy'}
         </h1>
         <p className="text-gray-600 text-sm mb-8">
-          {language === 'es' ? 'Última actualización: Septiembre 2024' : 'Last updated: September 2024'}
+          {language === 'es'
+            ? 'Última actualización: Septiembre 2024'
+            : 'Last updated: September 2024'}
         </p>
 
         <section className="mb-8">
@@ -31,7 +33,9 @@ const PrivacyPolicy = () => {
 
         <section className="mb-8">
           <h2 className="text-2xl font-semibold text-gray-800 mb-4">
-            {language === 'es' ? '2. Información que Recopilamos' : '2. Information We Collect'}
+            {language === 'es'
+              ? '2. Información que Recopilamos'
+              : '2. Information We Collect'}
           </h2>
           <p className="text-gray-600">
             {language === 'es'
@@ -40,15 +44,31 @@ const PrivacyPolicy = () => {
           </p>
           <ul className="list-disc list-inside mt-4 text-gray-600">
             <li>
-              {language === 'es' ? <strong>Información Personal:</strong> : <strong>Personal Information:</strong>}
-              {language === 'es' ? ' nombre, dirección de correo electrónico, número de teléfono.' : ' name, email address, phone number.'}
+              {language === 'es' ? (
+                <strong>Información Personal:</strong>
+              ) : (
+                <strong>Personal Information:</strong>
+              )}
+              {language === 'es'
+                ? ' nombre, dirección de correo electrónico, número de teléfono.'
+                : ' name, email address, phone number.'}
             </li>
             <li>
-              {language === 'es' ? <strong>Datos de Uso:</strong> : <strong>Usage Data:</strong>}
-              {language === 'es' ? ' información sobre tu interacción con la aplicación.' : ' information about your interaction with the app.'}
+              {language === 'es' ? (
+                <strong>Datos de Uso:</strong>
+              ) : (
+                <strong>Usage Data:</strong>
+              )}
+              {language === 'es'
+                ? ' información sobre tu interacción con la aplicación.'
+                : ' information about your interaction with the app.'}
             </li>
             <li>
-              {language === 'es' ? <strong>Cookies:</strong> : <strong>Cookies:</strong>}
+              {language === 'es' ? (
+                <strong>Cookies:</strong>
+              ) : (
+                <strong>Cookies:</strong>
+              )}
               {language === 'es'
                 ? ' tecnologías para rastrear la actividad en nuestra aplicación.'
                 : ' technologies to track activity on our app.'}
@@ -58,7 +78,9 @@ const PrivacyPolicy = () => {
 
         <section className="mb-8">
           <h2 className="text-2xl font-semibold text-gray-800 mb-4">
-            {language === 'es' ? '3. Cómo Usamos tu Información' : '3. How We Use Your Information'}
+            {language === 'es'
+              ? '3. Cómo Usamos tu Información'
+              : '3. How We Use Your Information'}
           </h2>
           <p className="text-gray-600">
             {language === 'es'
@@ -69,7 +91,9 @@ const PrivacyPolicy = () => {
 
         <section className="mb-8">
           <h2 className="text-2xl font-semibold text-gray-800 mb-4">
-            {language === 'es' ? '4. Compartir tu Información' : '4. Sharing Your Information'}
+            {language === 'es'
+              ? '4. Compartir tu Información'
+              : '4. Sharing Your Information'}
           </h2>
           <p className="text-gray-600">
             {language === 'es'
@@ -80,7 +104,9 @@ const PrivacyPolicy = () => {
 
         <section className="mb-8">
           <h2 className="text-2xl font-semibold text-gray-800 mb-4">
-            {language === 'es' ? '5. Seguridad de tus Datos' : '5. Data Security'}
+            {language === 'es'
+              ? '5. Seguridad de tus Datos'
+              : '5. Data Security'}
           </h2>
           <p className="text-gray-600">
             {language === 'es'
@@ -102,7 +128,9 @@ const PrivacyPolicy = () => {
 
         <section className="mb-8">
           <h2 className="text-2xl font-semibold text-gray-800 mb-4">
-            {language === 'es' ? '7. Enlaces a Otros Sitios' : '7. Links to Other Sites'}
+            {language === 'es'
+              ? '7. Enlaces a Otros Sitios'
+              : '7. Links to Other Sites'}
           </h2>
           <p className="text-gray-600">
             {language === 'es'
@@ -113,7 +141,9 @@ const PrivacyPolicy = () => {
 
         <section className="mb-8">
           <h2 className="text-2xl font-semibold text-gray-800 mb-4">
-            {language === 'es' ? '8. Cambios en esta Política de Privacidad' : '8. Changes to this Privacy Policy'}
+            {language === 'es'
+              ? '8. Cambios en esta Política de Privacidad'
+              : '8. Changes to this Privacy Policy'}
           </h2>
           <p className="text-gray-600">
             {language === 'es'

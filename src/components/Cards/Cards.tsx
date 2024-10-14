@@ -6,7 +6,10 @@ interface CardsProps {
 }
 
 const Cards: React.FC<CardsProps> = ({ language }) => {
-  const content: Record<'es' | 'en', { directPurchase: string, title: string }> = {
+  const content: Record<
+    'es' | 'en',
+    { directPurchase: string; title: string }
+  > = {
     es: {
       directPurchase: 'Compra directa',
       title: 'Agricultura de otros productores',
@@ -40,9 +43,7 @@ const Cards: React.FC<CardsProps> = ({ language }) => {
         <span className="text-[#FF9900] font-facuFont text-[28px]">
           {directPurchase}
         </span>
-        <h2 className="text-3xl font-[800] mb-[40px]">
-          {title}
-        </h2>
+        <h2 className="text-3xl font-[800] mb-[40px]">{title}</h2>
       </div>
       <div className="flex justify-center items-center gap-6">
         {cards.map((card, index) => (

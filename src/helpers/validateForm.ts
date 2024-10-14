@@ -8,7 +8,7 @@ export const validateForm = (fieldName: string, value: string) => {
     case 'name':
       if (!value.trim()) {
         error = 'Full name is required';
-      }else if (!fullNameRegex.test(value)) {
+      } else if (!fullNameRegex.test(value)) {
         error = 'Invalid full name';
       }
       break;

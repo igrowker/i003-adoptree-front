@@ -31,7 +31,8 @@ const Donaciones: React.FC<DonacionesProps> = ({ language }) => {
     },
   };
 
-  const { donations, title, description1, description2, donateHere } = content[language];
+  const { donations, title, description1, description2, donateHere } =
+    content[language];
 
   const handleDonationClick = () => {
     navigate('/donar');

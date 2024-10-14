@@ -25,7 +25,7 @@ const AdoptreeRoutes = () => {
   return (
     <LanguageProvider>
       <Navbar />
-    
+
       <div className="language-switcher-container">
         <LanguageSwitcher />
       </div>
