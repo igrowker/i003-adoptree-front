@@ -6,7 +6,7 @@ export interface Arbol {
   name: string;
   type: string;
   location: string;
-  images: string;
+  images: string[]; // Esto es un array en el backend, fue cambiado para evitar errores
   productor: string;
   price: number;
   finca: FincaData;
@@ -17,7 +17,16 @@ export interface FincaData {
   name: string;
   ubication: string;
   practicesSustainable: string;
-  productor: string;
+  // Se agrego la data del productor segun la respuesta del back 👇
+  productor: {
+    nombre: string;
+    apellido: string;
+    telefono: string;
+    email: string;
+    experiencia: number;
+    especialidad: string;
+    certificaciones: string[];
+  };
 }
 
 const BACK_URL = import.meta.env.VITE_BACK_URL
