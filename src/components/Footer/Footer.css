@@ -1,0 +1,93 @@
+.footer {
+  background-color: #2d2d2d;
+  color: white;
+  padding: 2rem 0;
+  width: 100%;
+}
+
+.footer-content {
+  display: flex;
+  justify-content: space-around;
+  width: 100%;
+  max-width: 75rem;
+  margin: 0 auto;
+  padding: 0 1rem;
+}
+
+.footer-section {
+  flex-basis: 20%;
+}
+
+.section-container {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+}
+
+.section-content {
+  text-align: left;
+  max-width: 100%;
+}
+
+.footer-section h3,
+.footer-section p,
+.footer-section ul,
+.footer-section li,
+.footer-section a {
+  margin: 0.5rem 0;
+  font-size: 14px;
+  color: rgba(255, 255, 255, 0.694);
+}
+
+.footer-section ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+.footer-bottom {
+  text-align: center;
+  margin-top: 2rem;
+  border-top: 0.0625rem solid rgba(255, 255, 255, 0.1);
+  padding-top: 1rem;
+  font-size: 14px;
+}
+
+.footer-bottom p {
+  margin: 0.5rem 0;
+}
+
+.footer-bottom a {
+  color: white;
+  text-decoration: none;
+}
+
+.footer-bottom a:hover {
+  text-decoration: underline;
+}
+
+.logo-container {
+  display: flex;
+  align-items: baseline;
+  margin-bottom: 1rem;
+}
+
+.logo-image {
+  width: auto;
+  height: 3rem;
+  /* margin-right: 1rem; */
+}
+
+.footer-section h2 {
+  line-height: 2rem;
+}
+
+.social-icons {
+  display: flex;
+  gap: 1rem;
+}
+
+.social-icons div {
+  margin-top: 1rem;
+  width: 1rem;
+  height: 1rem;
+}

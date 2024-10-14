@@ -1,0 +1,139 @@
+/* AboutUsSection.css */
+
+.about-section {
+  padding: 0 200px;
+  padding-top: 150px;
+  background-color: #f9fafb;
+  /* font-family: 'Nunito', sans-serif; */
+}
+
+.about-header {
+  font-size: 3rem;
+  text-align: center;
+  font-weight: 700;
+  margin-bottom: 1.3rem;
+  color: #1f2937;
+}
+
+.about-subheader {
+  font-size: 1.5rem;
+  text-align: center;
+  font-weight: 700;
+  color: #ff9e2f;
+  margin-bottom: 1.5rem;
+}
+
+.about-text {
+  font-size: 1.125rem;
+  line-height: 1.75rem;
+  text-align: left;
+  color: #4b5563;
+  max-width: 45rem;
+  margin: 0 auto;
+  margin-bottom: 1.5rem;
+}
+
+.about-paragraphs-container {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  max-width: 50rem;
+  margin: 0 auto;
+}
+
+.about-paragraph {
+  font-size: 1.125rem;
+  line-height: 1.75rem;
+  color: #4b5563;
+}
+
+.about-image-container {
+  max-width: 70rem;
+  margin: 0 auto;
+  padding: 2rem 0;
+}
+
+.about-image img {
+  transition: transform 0.4s ease-in-out;
+  border-radius: 1rem;
+  object-fit: cover;
+}
+
+.about-values {
+  margin-top: 3rem;
+  display: flex;
+  gap: 1.5rem;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.value-card {
+  flex: 1 1 300px;
+  max-width: 350px;
+  padding: 2rem;
+  background-color: #fff;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  border-radius: 1rem;
+  transition:
+    transform 0.3s ease,
+    box-shadow 0.3s ease;
+  text-align: center;
+}
+
+.value-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.2);
+}
+
+.value-icon {
+  width: 4rem;
+  height: 4rem;
+  margin-bottom: 1rem;
+}
+
+.value-text {
+  font-size: 1rem;
+  color: #374151;
+}
+
+.commitment-section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2rem;
+  margin-top: 3rem;
+}
+
+.commitment-text {
+  text-align: center;
+  max-width: 40rem;
+  color: #4b5563;
+  font-size: 1rem;
+}
+
+@media (min-width: 768px) {
+  .commitment-section {
+    flex-direction: row;
+  }
+
+  .about-text {
+    text-align: left;
+  }
+
+  .about-paragraphs-container {
+    flex-direction: row;
+    gap: 2rem;
+  }
+
+  .value-card {
+    flex-basis: calc(33.33% - 1rem);
+  }
+
+  .about-header {
+    font-size: 3.5rem;
+  }
+
+  .about-subheader {
+    font-size: 1.75rem;
+  }
+}

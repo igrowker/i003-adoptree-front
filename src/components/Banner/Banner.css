@@ -1,0 +1,47 @@
+.banner {
+  position: relative;
+  width: 100%;
+  height: 500px;
+  background: url('/Banner/sections.jpg') no-repeat center center;
+  background-size: cover;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 100px;
+  margin-top: 50px;
+}
+.banner-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.4);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.banner-text {
+  text-align: center;
+  color: white;
+  max-width: 800px;
+  padding: 0 20px;
+}
+.banner h1 {
+  font-weight: 800;
+  line-height: 1.3;
+  margin-bottom: 24px;
+}
+.banner-cta {
+  background-color: #4caf50;
+  color: white;
+  border: none;
+  padding: 12px 24px;
+  font-size: 16px;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+.banner-cta:hover {
+  background-color: #45a049;
+}

@@ -1,0 +1,66 @@
+.container {
+  background-color: white;
+  color: #333;
+  padding: 20px;
+  /* font-family: Arial, sans-serif; */
+}
+
+.beneficios {
+  color: #ff7f00; /* Subtítulos en color naranja */
+  text-align: center;
+  font-size: 28px;
+  margin-bottom: 20px;
+}
+
+.benefits {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 30px;
+}
+
+.benefit {
+  flex: 1;
+  margin: 0 10px;
+  text-align: center;
+}
+
+.benefit img {
+  width: 100%;
+  height: auto;
+  border-radius: 10px;
+  margin-bottom: 15px;
+}
+
+.benefit h3 {
+  color: #ff7f00;
+  font-size: 22px;
+  margin-bottom: 10px;
+}
+
+.benefit p {
+  font-size: 16px;
+  color: #333;
+}
+
+.call-to-action {
+  text-align: center;
+}
+
+.call-to-action button {
+  background-color: #32cd32; /* Botón verde */
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  font-size: 18px;
+  cursor: pointer;
+}
+
+.call-to-action button:hover {
+  background-color: #28a428; /* Más oscuro al pasar el mouse */
+}
+
+.call-to-action p {
+  font-size: 18px;
+  margin-bottom: 20px;
+}

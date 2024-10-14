@@ -1,0 +1,130 @@
+.header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  /* padding: 1.3rem; */
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  z-index: 100;
+}
+
+.header::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  transition: all 300ms ease-in-out;
+  z-index: -1;
+}
+
+.logo {
+  font-size: 1.4rem;
+  color: #05264e;
+  text-decoration: none;
+  font-weight: 700;
+  /* margin: 1rem 1rem 1rem 2.5rem; */
+}
+
+.navbar {
+  transform-style: preserve-3d;
+}
+
+.header.scrolled::before {
+  transition: all 300ms ease-in-out;
+  background-color: white;
+  backdrop-filter: none;
+}
+
+.navbar a {
+  color: #05264e;
+  text-decoration: none;
+  font-weight: 500;
+  margin-left: 2.5rem;
+  transition: transform 0.3s;
+}
+
+.navbar a:hover {
+  color: #00bf62;
+  transform: translateY(-1px) scale3d(1.03, 1.03, 1.03);
+}
+
+#check {
+  display: none;
+}
+
+.icons {
+  position: absolute;
+  right: 5%;
+  font-size: 2.8rem;
+  color: #fff;
+  cursor: pointer;
+  display: none;
+}
+
+.icon {
+  color: #05264e;
+  font-size: 20px;
+  font-style: normal;
+}
+
+@media (max-width: 992px) {
+  .header {
+    padding: 1.3rem 5%;
+  }
+}
+
+@media (max-width: 768px) {
+  .icons {
+    display: inline-flex;
+  }
+
+  #check:checked ~ .icons #menu-icon {
+    display: none;
+  }
+
+  .icons #close-icon {
+    display: none;
+  }
+
+  #check:checked ~ .icons #close-icon {
+    display: block;
+  }
+
+  .navbar {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    height: 0;
+    background-color: hsla(0, 0%, 100%, 0.8);
+    background: hsla(0, 0%, 100%, 0.88);
+    backdrop-filter: blur(12px);
+    box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    transition: 0.3s ease;
+  }
+
+  #check:checked ~ .navbar {
+    height: 16rem;
+  }
+
+  .navbar a {
+    display: block;
+    font-size: 1.1rem;
+    margin: 1.5rem;
+    text-align: center;
+    transform: translateY(-50px);
+    opacity: 0;
+    transition: 0.3s ease;
+  }
+
+  #check:checked ~ .navbar a {
+    transform: translateY(0);
+    opacity: 1;
+    transition: calc(0.15s * var(--i));
+  }
+}

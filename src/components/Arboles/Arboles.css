@@ -1,0 +1,16 @@
+@import url('https://fonts.googleapis.com/css2?family=Covered+By+Your+Grace&display=swap');
+.ancho {
+  width: 60%;
+}
+
+.containerP {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-direction: column;
+}
+
+.fuente {
+  font-family: 'Covered By Your Grace', cursive;
+  font-size: 28px;
+}
