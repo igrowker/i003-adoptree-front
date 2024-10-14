@@ -22,7 +22,6 @@ interface ContentText {
 }
 
 const Agriculture: React.FC<AgricultureProps> = ({ language }) => {
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const content: Record<'es' | 'en', ContentText> = {
     es: {
       crowdfarming: 'Crowdfarming',
