@@ -8,16 +8,35 @@ import { ArbolInterface } from '../../store/services/arbolApi';
 
 interface AdoptarArbolProps {
   datos: ArbolInterface;
+  language: 'es' | 'en';  // Aquí añadimos el language
 }
 
-const AdoptarArbol: React.FC<AdoptarArbolProps> = ({ datos }) => {
+const AdoptarArbol: React.FC<AdoptarArbolProps> = ({ datos, language }) => {
   const navigate = useNavigate();
+
+  // Contenido traducido
+  const content: Record<'es' | 'en', any> = {
+    es: {
+      adoptButton: 'Adoptar este árbol',
+      type: 'Tipo',
+      finca: 'Finca',
+      productor: 'Productor',
+    },
+    en: {
+      adoptButton: 'Adopt this tree',
+      type: 'Type',
+      finca: 'Farm',
+      productor: 'Producer',
+    },
+  };
+
+  const { adoptButton, type, finca, productor } = content[language];
 
   return (
     <div className="bg-white rounded-xl overflow-hidden shadow-lg flex flex-col w-full max-w-[250px]">
       <div className="relative">
         <img
-          src={datos.images[0]} // Cambié imageUrl a images
+          src={datos.images[0]} 
           alt={`Árbol de ${datos.type}`}
           className="w-full h-48 object-cover transition-all duration-300 group-hover:brightness-95"
         />
@@ -44,8 +63,7 @@ const AdoptarArbol: React.FC<AdoptarArbolProps> = ({ datos }) => {
                 aria-hidden="true"
               />
               <span className="truncate">
-                Tipo:{' '}
-                <span className="text-[#00BF62] font-medium">{datos.type}</span>
+                {type}: <span className="text-[#00BF62] font-medium">{datos.type}</span>
               </span>
             </p>
             <p className="flex items-center text-gray-700 text-sm">
@@ -54,10 +72,7 @@ const AdoptarArbol: React.FC<AdoptarArbolProps> = ({ datos }) => {
                 aria-hidden="true"
               />
               <span className="truncate">
-                Finca:{' '}
-                <span className="text-[#00BF62] font-medium">
-                  {datos.finca.name} {/* Accedemos a la finca desde datos */}
-                </span>
+                {finca}: <span className="text-[#00BF62] font-medium">{datos.finca.name}</span>
               </span>
             </p>
             <p className="flex items-center text-gray-700 text-sm">
@@ -66,12 +81,8 @@ const AdoptarArbol: React.FC<AdoptarArbolProps> = ({ datos }) => {
                 aria-hidden="true"
               />
               <span className="truncate">
-                Productor:{' '}
-                <span className="text-[#00BF62] font-medium">
-                  {datos.finca.productor.nombre +
-                    ' ' +
-                    datos.finca.productor.apellido}{' '}
-                  {/* Accedemos al productor desde finca */}
+                {productor}: <span className="text-[#00BF62] font-medium">
+                  {datos.finca.productor.nombre} {datos.finca.productor.apellido}
                 </span>
               </span>
             </p>
@@ -82,7 +93,7 @@ const AdoptarArbol: React.FC<AdoptarArbolProps> = ({ datos }) => {
           onClick={() => navigate(`/adopta-un-arbol/${datos.id}`)}
           className="w-full mt-4 rounded-lg bg-[#4BAF47] text-white transition-all duration-300 hover:bg-[#3B8833] py-2 px-4 font-medium shadow-md hover:shadow-lg focus:outline-none focus:ring-2 focus:ring-[#4BAF47] focus:ring-opacity-50"
         >
-          Adoptar este árbol
+          {adoptButton}
         </button>
       </div>
     </div>

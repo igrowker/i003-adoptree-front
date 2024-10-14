@@ -6,12 +6,15 @@ import { useGetArbolesQuery } from '../../store/services/arbolApi';
 import { useSearchParams } from 'react-router-dom';
 import { ArbolInterface } from '../../store/services/arbolApi';
 import { motion } from 'framer-motion';
+import { useLanguage } from '../../LanguageContext/LanguageContext'; // Importar useLanguage
 import './Adoptar.css';
 
 const Adoptar: React.FC = () => {
   const { data: arboles, error, isLoading } = useGetArbolesQuery();
   const [searchParams] = useSearchParams();
   const [searchTerm, setSearchTerm] = useState('');
+  
+  const { language } = useLanguage(); // Usar useLanguage para obtener el idioma actual
 
   useEffect(() => {
     const name = searchParams.get('search');
@@ -59,7 +62,7 @@ const Adoptar: React.FC = () => {
   }
 
   if (error) {
-    return <p>Ocurrió un error al cargar los árboles.</p>;
+    return <p>{language === 'es' ? 'Ocurrió un error al cargar los árboles.' : 'An error occurred while loading the trees.'}</p>;
   }
 
   return (
@@ -70,7 +73,7 @@ const Adoptar: React.FC = () => {
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.5 }}
       >
-        Adopciones
+        {language === 'es' ? 'Adopciones' : 'Adoptions'}
       </motion.h1>
       <motion.p
         className="text-gray-500 mb-4 sm:mb-6 max-w-2xl"
@@ -78,7 +81,9 @@ const Adoptar: React.FC = () => {
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.6 }}
       >
-        Adopta un árbol para apoyar a un agricultor y recibe tu cosecha a lo largo de la temporada.
+        {language === 'es'
+          ? 'Adopta un árbol para apoyar a un agricultor y recibe tu cosecha a lo largo de la temporada.'
+          : 'Adopt a tree to support a farmer and receive your harvest throughout the season.'}
       </motion.p>
       <motion.div
         initial={{ opacity: 0, x: -20 }}
@@ -91,23 +96,23 @@ const Adoptar: React.FC = () => {
           sx={{
             '& .MuiOutlinedInput-root': {
               '& fieldset': {
-                borderColor: 'green', // Color del borde normal
+                borderColor: 'green',
               },
               '&:hover fieldset': {
-                borderColor: '#909590', // Color del borde cuando se pasa el mouse
+                borderColor: '#909590',
               },
               '&.Mui-focused fieldset': {
-                borderColor: 'green', // Color del borde cuando está enfocado
+                borderColor: 'green',
               },
             },
             '& .MuiInputLabel-root': {
-              color: 'gray', // Color del label
+              color: 'gray',
             },
             '& .MuiInputLabel-root.Mui-focused': {
-              color: 'green', // Color del label cuando está enfocado
+              color: 'green',
             },
           }}
-          label="Busca un árbol"
+          label={language === 'es' ? 'Busca un árbol' : 'Search for a tree'}
           variant="outlined"
           value={searchTerm}
           onChange={(e) => setSearchTerm(e.target.value)}
@@ -143,7 +148,7 @@ const Adoptar: React.FC = () => {
               visible: { opacity: 1, y: 0 },
             }}
           >
-            <AdoptarArbol datos={arbol} />
+            <AdoptarArbol datos={arbol} language={language}/>
           </motion.div>
         ))}
       </motion.div>

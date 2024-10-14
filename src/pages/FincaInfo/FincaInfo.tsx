@@ -5,8 +5,10 @@ import { Carousel } from 'react-responsive-carousel';
 import 'react-responsive-carousel/lib/styles/carousel.min.css';
 import { Arbol, Hacienda } from '../../types/types';
 import { Leaf, MapPin, User, Phone, Mail, Award } from 'lucide-react';
+import { useLanguage } from '../../LanguageContext/LanguageContext';
 
 const FincaInfo: React.FC = () => {
+  const { language } = useLanguage();  // Usar el idioma seleccionado
   const { data: fincaData, isLoading, isError } = useGetFincaDataQuery(1);
 
   if (isLoading) {
@@ -27,7 +29,7 @@ const FincaInfo: React.FC = () => {
   }
 
   if (isError) {
-    return <div className="text-center text-red-600 p-8">Error al cargar los datos. Por favor, intenta de nuevo más tarde.</div>;
+    return <div className="text-center text-red-600 p-8">{language === 'es' ? 'Error al cargar los datos. Por favor, intenta de nuevo más tarde.' : 'Error loading data. Please try again later.'}</div>;
   }
 
   return (
@@ -90,12 +92,12 @@ const FincaInfo: React.FC = () => {
               <motion.div className="bg-green-50 p-6 rounded-xl shadow-sm" variants={{ hidden: { opacity: 0 }, visible: { opacity: 1 } }}>
                 <h3 className="text-2xl font-semibold text-green-700 mb-4 flex items-center">
                   <Leaf className="mr-2" size={24} />
-                  Prácticas Sostenibles
+                  {language === 'es' ? 'Prácticas Sostenibles' : 'Sustainable Practices'}
                 </h3>
                 <p className="text-gray-700">{finca.practicesSustainable}</p>
               </motion.div>
               <motion.div className="bg-green-50 p-6 rounded-xl shadow-sm" variants={{ hidden: { opacity: 0 }, visible: { opacity: 1 } }}>
-                <h3 className="text-2xl font-semibold text-green-700 mb-4">Árboles Disponibles</h3>
+                <h3 className="text-2xl font-semibold text-green-700 mb-4">{language === 'es' ? 'Árboles Disponibles' : 'Available Trees'}</h3>
                 <ul className="space-y-2">
                   {finca.arbol.map((tree: Arbol, index: number) => (
                     <li key={index} className="flex justify-between items-center">
@@ -109,7 +111,7 @@ const FincaInfo: React.FC = () => {
               <motion.div className="bg-green-50 p-6 rounded-xl shadow-sm" variants={{ hidden: { opacity: 0 }, visible: { opacity: 1 } }}>
                 <h3 className="text-2xl font-semibold text-green-700 mb-4 flex items-center">
                   <User className="mr-2" size={24} />
-                  Productor
+                  {language === 'es' ? 'Productor' : 'Producer'}
                 </h3>
                 <p className="text-xl font-medium text-gray-800 mb-2">
                   {finca.productor.nombre} {finca.productor.apellido}
@@ -128,7 +130,7 @@ const FincaInfo: React.FC = () => {
                 <div className="mt-4">
                   <h4 className="font-semibold text-green-700 flex items-center mb-2">
                     <Award className="mr-2" size={18} />
-                    Certificaciones:
+                    {language === 'es' ? 'Certificaciones' : 'Certifications'}:
                   </h4>
                   <ul className="list-disc list-inside text-gray-700">
                     {finca.productor.certificaciones.map((cert, idx) => (
