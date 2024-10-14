@@ -64,7 +64,7 @@ const AdoptarEsteArbol: React.FC = () => {
     };
 
     fetchArbol();
-  }, []);
+  }, [BACK_URL, id]);
 
   if (!arbol) {
     return (

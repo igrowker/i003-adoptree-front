@@ -19,6 +19,7 @@ const Checkout = () => {
   const [activeStep, setActiveStep] = useState(0);
   const [quantity, setQuantity] = useState(1);
   const shippingCost = 2000;
+  const BACK_URL = import.meta.env.VITE_BACK_URL;
 
   const steps = [
     { label: 'Tu cesta', icon: LocalMallIcon },
@@ -38,12 +39,12 @@ const Checkout = () => {
 
   useEffect(() => {
     const fetchArbol = async () => {
-      const response = await axios.get(`http://localhost:3000/arboles/${id}`);
+      const response = await axios.get(`${BACK_URL}/arboles/${id}`);
       setArbol(response.data);
     };
 
     fetchArbol();
-  }, []);
+  }, [BACK_URL, id]);
 
   useEffect(() => {
     if (!arbol) return; // Si arbol es null o undefined, no ejecuta el efecto
@@ -59,14 +60,14 @@ const Checkout = () => {
       };
 
       const response = await axios.post(
-        `http://localhost:3000/payments/create-order`,
+        `${BACK_URL}/payments/create-order`,
         data
       );
       setUrl(response.data.url);
     };
 
     fetchUrlMp();
-  }, [arbol]);
+  }, [BACK_URL, arbol]);
 
   const handleNext = () => {
     setActiveStep((prevActiveStep) => prevActiveStep + 1);
@@ -94,7 +95,7 @@ const Checkout = () => {
 
     try {
       const response = await axios.post(
-        'http://localhost:3000/adoptions',
+        `${BACK_URL}/adoptions`,
         adoptionData
       );
       console.log('Adopción creada:', response.data);

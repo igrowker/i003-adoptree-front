@@ -37,6 +37,7 @@ const ShippingSection: React.FC<ShippingSectionProps> = ({ onComplete }) => {
     country: 'Argentina',
     phoneNumber: '',
   });
+  const BACK_URL = import.meta.env.VITE_BACK_URL;
 
   const user = useSelector((state: RootState) => state.user.user);
 
@@ -53,7 +54,7 @@ const ShippingSection: React.FC<ShippingSectionProps> = ({ onComplete }) => {
   const createShippingAddress = async (addressData: AddressData) => {
     try {
       const response = await axios.post(
-        'http://localhost:3000/shipping-addresses',
+        `${BACK_URL}/shipping-addresses`,
         addressData
       );
       console.log('Dirección de envío creada:', response.data);
