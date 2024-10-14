@@ -4,6 +4,7 @@ import './App.css';
 import { useEffect } from 'react';
 import requestNotificationPermission from './firebase/notification';
 import { firebaseConfig } from '../firebase-config';
+import { Analytics } from "@vercel/analytics/react"
 
 const clientId = import.meta.env.VITE_GOOGLE_CLIENT_ID;
 
@@ -26,6 +27,7 @@ const App: React.FC = () => {
   }
   return (
     <GoogleOAuthProvider clientId={clientId}>
+      <Analytics />
       <AppRouter />
     </GoogleOAuthProvider>
   );

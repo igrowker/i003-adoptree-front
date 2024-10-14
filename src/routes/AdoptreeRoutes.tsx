@@ -11,19 +11,24 @@ import BlogPage from '../pages/Blog/BlogPage';
 import Blog1 from '../pages/Blog/LeerMas/Blog1';
 import Blog2 from '../pages/Blog/LeerMas/Blog2';
 import Blog3 from '../pages/Blog/LeerMas/Blog3';
-import LanguageSwitcher from '../pages/Blog/LeerMas/LanguageSwitcher';
+import LanguageSwitcher from '../components/LanguageSwitcher/LanguageSwitcher'; // Asegúrate de que la ruta sea correcta
 import FincaInfo from '../pages/FincaInfo/FincaInfo';
-import DonacionesPatrocinios from '../components/DonacionesPatrocinios/DonacionesPatrocinios';
 import AboutUs from '../pages/About/AboutUs';
 import AdoptarEsteArbol from '../components/AdoptarEsteArbol/AdoptarEsteArbol';
 import DescubreMas from '../components/Beneficios/DescubreMas/DescubreMas'; // Componente DescubreMas
 import Donar from '../pages/Donar/Donar'; // Componente Donar
+import { LanguageProvider } from '../LanguageContext/LanguageContext'; // Importa el LanguageProvider
+
 import Dashboard from '../pages/Dashboard/Dashboard';
 
 const AdoptreeRoutes = () => {
   return (
-    <>
+    <LanguageProvider>
       <Navbar />
+    
+      <div className="language-switcher-container">
+        <LanguageSwitcher />
+      </div>
 
       <Routes>
         <Route path="/" element={<Home />} />
@@ -36,19 +41,17 @@ const AdoptreeRoutes = () => {
         <Route path="/blog1" element={<Blog1 />} />
         <Route path="/blog2" element={<Blog2 />} />
         <Route path="/blog3" element={<Blog3 />} />
-        <Route path="/languageSwitcher" element={<LanguageSwitcher />} />
-        <Route path="/donaciones" element={<DonacionesPatrocinios />} />
         <Route path="/about" element={<AboutUs />} />
         <Route path="/contacto" element={<Contacto />} />
         <Route path="/beneficios" element={<DescubreMas />} />{' '}
         <Route path="/dashboard" element={<Dashboard />} />
         <Route path="/privacy-policy" element={<PrivacyPolicy />} />
-        {/* Ruta DescubreMas */}
-        <Route path="/donar" element={<Donar />} /> {/* Ruta Donar */}
+        <Route path="/beneficios" element={<DescubreMas />} />
+        <Route path="/donar" element={<Donar />} />
       </Routes>
 
       <Footer />
-    </>
+    </LanguageProvider>
   );
 };
 

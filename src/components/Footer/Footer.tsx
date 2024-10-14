@@ -8,9 +8,12 @@ import GrassIcon from '@mui/icons-material/Grass';
 import LocalPhoneIcon from '@mui/icons-material/LocalPhone';
 import EmailIcon from '@mui/icons-material/Email';
 import FmdGoodIcon from '@mui/icons-material/FmdGood';
+import { useLanguage } from '../../LanguageContext/LanguageContext'; // Importar el hook
 import './Footer.css';
 
 const Footer: React.FC = () => {
+  const { language } = useLanguage(); // Usar el hook para obtener el idioma
+
   return (
     <footer className="footer">
       <div className="footer-content">
@@ -22,9 +25,9 @@ const Footer: React.FC = () => {
                 <h2 className="text-[22px] font-[700]">Adoptree</h2>
               </div>
               <p>
-                Adopta un árbol cítrico y sé parte de la agricultura sostenible.
-                Recibe fruta fresca en tu casa mientras ayudas a regenerar
-                nuestros ecosistemas.
+                {language === 'es'
+                  ? 'Adopta un árbol cítrico y sé parte de la agricultura sostenible. Recibe fruta fresca en tu casa mientras ayudas a regenerar nuestros ecosistemas.'
+                  : 'Adopt a citrus tree and be part of sustainable agriculture. Receive fresh fruit at your home while helping to regenerate our ecosystems.'}
               </p>
               <div className="social-icons">
                 <div>
@@ -70,31 +73,30 @@ const Footer: React.FC = () => {
         <div className="footer-section">
           <div className="section-container">
             <div className="section-content">
-              <h2 className="font-semibold">Explora</h2>
+              <h2 className="font-semibold">{language === 'es' ? 'Explora' : 'Explore'}</h2>
               <div className="flex items-center gap-1 mt-[5px] mb-[15px]">
                 <div className="w-[45px] h-[4px] bg-[#4BAF47] rounded-[2px]"></div>
                 <div className="w-[4px] h-[4px] rounded-[2px] bg-[#4BAF47]"></div>
               </div>
               <ul>
                 <li>
-                  {' '}
                   <a href="#" className="flex items-center gap-2">
-                    <GrassIcon /> Sobre nosotros
+                    <GrassIcon /> {language === 'es' ? 'Sobre nosotros' : 'About Us'}
                   </a>
                 </li>
                 <li>
                   <a href="#" className="flex items-center gap-2">
-                    <GrassIcon /> Adoptar
+                    <GrassIcon /> {language === 'es' ? 'Adoptar' : 'Adopt'}
                   </a>
                 </li>
                 <li>
                   <a href="#" className="flex items-center gap-2">
-                    <GrassIcon /> Árboles
+                    <GrassIcon /> {language === 'es' ? 'Árboles' : 'Trees'}
                   </a>
                 </li>
                 <li>
                   <a href="#" className="flex items-center gap-2">
-                    <GrassIcon /> Comprar
+                    <GrassIcon /> {language === 'es' ? 'Comprar' : 'Shop'}
                   </a>
                 </li>
               </ul>
@@ -104,14 +106,14 @@ const Footer: React.FC = () => {
         <div className="footer-section">
           <div className="section-container">
             <div className="section-content">
-              <h2 className="font-semibold">Contacto</h2>
+              <h2 className="font-semibold">{language === 'es' ? 'Contacto' : 'Contact'}</h2>
               <div className="flex items-center gap-1 mt-[5px] mb-[15px]">
                 <div className="w-[45px] h-[4px] bg-[#4BAF47] rounded-[2px]"></div>
                 <div className="w-[4px] h-[4px] rounded-[2px] bg-[#4BAF47]"></div>
               </div>
               <p className="flex items-center gap-2">
                 <LocalPhoneIcon />
-                (+54) 46648585
+                {language === 'es' ? '(+54) 46648585' : '(+54) 46648585'}
               </p>
               <p className="flex items-center gap-2">
                 <EmailIcon />
@@ -119,17 +121,17 @@ const Footer: React.FC = () => {
               </p>
               <p className="flex items-center gap-2">
                 <FmdGoodIcon />
-                Entre Ríos
+                {language === 'es' ? 'Entre Ríos' : 'Entre Ríos'}
               </p>
             </div>
           </div>
         </div>
       </div>
       <div className="footer-bottom">
-        <p>© Adoptree 2024 - Todos los derechos reservados</p>
+        <p>© Adoptree 2024 - {language === 'es' ? 'Todos los derechos reservados' : 'All rights reserved'}</p>
         <p>
-          <a href="#">Términos de uso</a> |{' '}
-          <a href="#">Política de privacidad</a>
+          <a href="#">{language === 'es' ? 'Términos de uso' : 'Terms of use'}</a> |{' '}
+          <a href="#">{language === 'es' ? 'Política de privacidad' : 'Privacy Policy'}</a>
         </p>
       </div>
     </footer>

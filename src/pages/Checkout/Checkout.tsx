@@ -13,17 +13,20 @@ import axios from 'axios';
 import { useDispatch, useSelector } from 'react-redux';
 import { setShippingAddresses } from '../../store/features/userSlice';
 import { RootState } from '../../types/types';
+import { useLanguage } from '../../LanguageContext/LanguageContext';
 
 const Checkout = () => {
   const [url, setUrl] = useState('');
+  const { language } = useLanguage(); 
+
   const [activeStep, setActiveStep] = useState(0);
   const [quantity, setQuantity] = useState(1);
   const shippingCost = 2000;
 
   const steps = [
-    { label: 'Tu cesta', icon: LocalMallIcon },
-    { label: 'Envío', icon: LocalShippingIcon },
-    { label: 'Método de pago', icon: PaymentIcon },
+    { label: language === 'es' ? 'Tu cesta' : 'Your Cart', icon: LocalMallIcon },
+    { label: language === 'es' ? 'Envío' : 'Shipping', icon: LocalShippingIcon },
+    { label: language === 'es' ? 'Método de pago' : 'Payment Method', icon: PaymentIcon },
   ];
 
   const [arbol, setArbol] = useState<any>();
@@ -120,13 +123,11 @@ const Checkout = () => {
                     <p className="text-gray-700 font-[500] lg:text-[.9rem] 2xl:text-base w-[156px]">
                       Adopción de {arbol.type}
                     </p>
-                    <p className="lg:text-sm 2xl:text-base">Nombre del árbol</p>
+                    <p className='lg:text-sm 2xl:text-base'>{language === 'es' ? 'Nombre del árbol' : 'Tree Name'}</p>
                   </div>
                   <DeleteIcon />
                 </div>
-                <p className="mt-4 mb-2 lg:text-[.9rem] 2xl:text-base">
-                  Cantidad reservada
-                </p>
+                <p className="mt-4 mb-2 lg:text-[.9rem] 2xl:text-base">{language === 'es' ? 'Cantidad reservada' : 'Reserved Quantity'}</p>
                 <div className="flex items-center gap-[20px]">
                   <button
                     className="px-[14px] py-[4px] bg-[#e9ecf3] rounded-[10px] text-[#bfc1c4] font-[600]"
@@ -152,14 +153,13 @@ const Checkout = () => {
                   $ {totalPrice.toFixed(2)}
                 </p>
                 <p className="text-sm text-gray-500">
-                  Coste de envío: $ {shippingCost.toFixed(2)}
+                  {language === 'es' ? `Coste de envío: $ ${shippingCost.toFixed(2)}` : `Shipping Cost: $ ${shippingCost.toFixed(2)}`}
                 </p>
               </div>
             </div>
             <hr className="my-[20px]" />
             <p className="text-gray-500 lg:text-[.9rem] 2xl:text-base">
-              Las fechas de envío pueden variar en función de variables
-              climatológicas.
+              {language === 'es' ? 'Las fechas de envío pueden variar en función de variables climatológicas.' : 'Shipping dates may vary depending on weather conditions.'}
             </p>
           </>
         );
@@ -168,13 +168,13 @@ const Checkout = () => {
       case 2:
         return <PaymentMethodSection />;
       default:
-        return <p>Paso desconocido</p>;
+        return <p>{language === 'es' ? 'Paso desconocido' : 'Unknown Step'}</p>;
     }
   };
 
   return (
     <section className="my-[92px]">
-      <div className="flex gap-[40px] lg:px-[200px] 2xl:px-[165px] py-[20px] bg-[#f9fafa]">
+      <div className="flex gap-[40px] lg:px-[200px] 2xl:px-[130px] py-[20px] bg-[#f9fafa]">
         {steps.map((step, index) => (
           <React.Fragment key={step.label}>
             <div
@@ -192,18 +192,16 @@ const Checkout = () => {
 
       {arbol ? (
         <>
-          <div className="flex justify-between lg:gap-[50px] 2xl:gap-[150px] lg:px-[200px] 2xl:px-[165px] mt-[50px]">
+          <div className="flex justify-between lg:gap-[50px] 2xl:gap-[150px] lg:px-[200px] 2xl:px-[130px] mt-[50px]">
             <div className={`${activeStep >= 1 && 'w-[64%]'} `}>
               {renderStepContent()}
             </div>
 
             <div className="p-[20px] shadow rounded-[4px]">
-              <h3 className="w-[120px] lg:text-[1.12rem] 2xl:text-xl font-semibold">
-                Resumen
-              </h3>
+              <h3 className="w-[120px] lg:text-[1.12rem] 2xl:text-xl font-semibold">{language === 'es' ? 'Resumen' : 'Summary'}</h3>
 
               <div className="my-[20px] flex items-center lg:gap-[60px] 2xl:gap-[150px]">
-                <span className="w-[120px]">Precio final</span>
+                <span className='w-[120px]'>{language === 'es' ? 'Precio final' : 'Final Price'}</span>
                 <span className="w-[120px] lg:text-[1.12rem] 2xl:text-xl font-bold text-[#4BAF47]">
                   $ {(totalPrice + 2000).toFixed(2)}
                 </span>
@@ -218,12 +216,12 @@ const Checkout = () => {
                 }
                 // disabled={activeStep === steps.length - 1}
               >
-                {activeStep === steps.length - 1 ? 'Finalizar' : 'Avanzar'}
+                {activeStep === steps.length - 1 ? (language === 'es' ? 'Finalizar' : 'Finish') : (language === 'es' ? 'Avanzar' : 'Next')}
               </button>
 
               <div className="flex justify-center">
                 <a className="text-[#4BAF47] lg:text-[1.12rem] 2xl:text-xl text-center">
-                  Seguir comprando
+                  {language === 'es' ? 'Seguir comprando' : 'Continue Shopping'}
                 </a>
               </div>
             </div>

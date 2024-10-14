@@ -16,7 +16,7 @@ const DonacionesPatrocinios: React.FC = () => {
   };
 
   return (
-    <div className="min-h-screen flex flex-col items-center py-[150px] px-4 sm:px-6 lg:px-[200px] 2xl:px-[165px]">
+    <div className="min-h-screen flex flex-col items-center py-[150px] px-4 sm:px-6 lg:px-[200px] 2xl:px-[130px]">
       <h1 className="font-bold text-4xl md:text-5xl mb-12 text-center">
         Donaciones y Patrocinios
       </h1>

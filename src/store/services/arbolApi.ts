@@ -6,9 +6,18 @@ export interface Arbol {
   name: string;
   type: string;
   location: string;
-  imageUrl: string;
+  images: string;
   productor: string;
   price: number;
+  finca: FincaData;
+}
+
+export interface FincaData {
+  id: number;
+  name: string;
+  ubication: string;
+  practicesSustainable: string;
+  productor: string;
 }
 
 const BACK_URL = import.meta.env.VITE_BACK_URL;

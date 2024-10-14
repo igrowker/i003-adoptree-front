@@ -2,18 +2,14 @@ import { useEffect, useRef, useState } from 'react';
 import LoginIcon from '@mui/icons-material/Login';
 import PersonIcon from '@mui/icons-material/Person';
 import NotificationsIcon from '@mui/icons-material/Notifications';
-import { MdOutlineLightMode } from 'react-icons/md';
-import { MdKeyboardArrowDown } from 'react-icons/md';
-import { MdOutlineLogout } from 'react-icons/md';
-import { MdOutlineSpaceDashboard } from 'react-icons/md';
-
+import { MdOutlineLightMode, MdKeyboardArrowDown, MdOutlineLogout, MdOutlineSpaceDashboard } from 'react-icons/md';
+import { useLanguage } from '../../LanguageContext/LanguageContext';
 import Logo from '../../assets/adoptree 1.png';
-
 import { useSelector, useDispatch } from 'react-redux';
 import { Link, useNavigate } from 'react-router-dom';
 import { logout } from '../../store/features/userSlice';
 import { RootState } from '../../types/types';
-import { io } from 'socket.io-client';
+import { io } from "socket.io-client"; 
 import './Navbar.css';
 
 export interface AnchorProps
@@ -32,8 +28,8 @@ const Navbar: React.FC = () => {
 
   const user = useSelector((state: RootState) => state.user.user);
   const dispatch = useDispatch();
-
   const navigate = useNavigate();
+  const { language } = useLanguage();
 
   const BACK_URL = import.meta.env.VITE_BACK_URL;
 
@@ -109,7 +105,7 @@ const Navbar: React.FC = () => {
 
   return (
     <header
-      className={`header py-4 xl:px-[200px] 2xl:px-[165px] md:px-[60px] mobile:px-[30px] bg-white ${
+      className={`header py-4 xl:px-[200px] 2xl:px-[130px] md:px-[60px] mobile:px-[30px] bg-white ${
         scrollPosition > 0 ? 'scrolled' : ''
       }`}
     >
@@ -138,28 +134,28 @@ const Navbar: React.FC = () => {
             href="/about"
             style={{ '--i': 1 } as AnchorProps}
           >
-            Sobre nosotros
+            {language === 'es' ? 'Sobre nosotros' : 'About Us'}
           </a>
           <a
             className="text-sm 4xl:text-[20px]"
             href="/adopta-un-arbol"
             style={{ '--i': 3 } as AnchorProps}
           >
-            Adoptar
+            {language === 'es' ? 'Adoptar' : 'Adopt'}
           </a>
           <a
             className="text-sm 4xl:text-[20px]"
             href="/impacto-ambiental"
             style={{ '--i': 4 } as AnchorProps}
           >
-            Impacto
+            {language === 'es' ? 'Impacto' : 'Impact'}
           </a>
           <a
             className="text-sm 4xl:text-[20px]"
             href="/fincas"
             style={{ '--i': 4 } as AnchorProps}
           >
-            Fincas
+            {language === 'es' ? 'Fincas' : 'Farms'}
           </a>
         </nav>
       </div>
@@ -169,17 +165,13 @@ const Navbar: React.FC = () => {
             {!user && (
               <div className="flex items-center gap-[5px]">
                 <LoginIcon className="text-[#05264ebf] text-base font-light" />
-                <a
-                  href="auth/login"
-                  style={{ '--i': 6, margin: 0 } as AnchorProps}
-                  className="text-[#05264E] mobile:font-[500] mobile:text-[1.1rem] desktop:font-normal desktop:text-base 4xl:text-[20px]"
-                >
-                  Inicia sesión
-                </a>
+                <Link to="/auth/login" className="text-[#05264E] mobile:font-[500] mobile:text-[1.1rem] desktop:font-normal desktop:text-base 4xl:text-[20px]">
+                  {language === 'es' ? 'Inicia sesión' : 'Login'}
+                </Link>
               </div>
             )}
             <button className="text-white bg-gradient-to-r from-green-500 to-green-600 rounded-[10px] shadow-lg hover:from-green-600 hover:to-green-700 transition-all duration-300 transform">
-              <a href="/adopta-un-arbol">Adopta ahora</a>
+              <a href="/adopta-un-arbol">{language === 'es' ? 'Adopta ahora' : 'Adopt now'}</a>
             </button>
 
             {user && (
@@ -203,25 +195,24 @@ const Navbar: React.FC = () => {
                     ref={modalRef}
                   >
                     <div>
-                      <ul className="flex flex-col gap-3">
-                        <li
-                          onClick={handleCloseModal}
-                          className="flex items-center gap-2"
-                        >
+                    <ul className="flex flex-col gap-3">
+                        <li onClick={handleCloseModal} className="flex justify-between">
+                          <Link to="" className="text-[#05264E] flex items-center gap-2">
+                            <MdOutlineLightMode className="text-base text-[#05264E]" />{' '}
+                            {language === 'es' ? 'Tema: Modo claro' : 'Theme: Light mode'}
+                          </Link>
+                          <MdKeyboardArrowDown className="text-base text-[#05264E]" />
+                        </li>
+                        <li onClick={handleCloseModal} className="flex items-center gap-2">
                           <MdOutlineSpaceDashboard className="text-[#05264E] text-base" />
-                          <Link to="/dashboard" className="text-[#05264E]">
-                            {user ? 'Dashboard' : 'Inicia sesión'}
+                          <Link to="" className="text-[#05264E]">
+                            {language === 'es' ? 'Panel de control' : 'Dashboard'}
                           </Link>
                         </li>
                         {user && (
-                          <li onClick={handleLogout}>
-                            <Link
-                              to=""
-                              className="flex items-center gap-2 text-[#05264e]"
-                            >
-                              <MdOutlineLogout className="text-[#05264E] text-base" />
-                              Logout
-                            </Link>
+                          <li onClick={handleLogout} className="flex items-center gap-2">
+                            <MdOutlineLogout className="text-[#05264E] text-base" />
+                            <span className="text-[#05264E]">{language === 'es' ? 'Cerrar sesión' : 'Logout'}</span>
                           </li>
                         )}
                       </ul>
