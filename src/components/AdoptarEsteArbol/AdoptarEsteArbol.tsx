@@ -132,7 +132,7 @@ const AdoptarEsteArbol: React.FC = () => {
               <button className="w-full flex items-center justify-center px-4 py-2 border border-gray-300 rounded-[10px] shadow-sm text-base font-medium text-gray-700 bg-white hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2">
                 <Link
                   className="flex items-center justify-center"
-                  to={`/checkout/${arbol.id}`}
+                  to={`/adopta-un-arbol`}
                 >
                   <ArrowLeft className="mr-2 h-5 w-5" /> Volver
                 </Link>
