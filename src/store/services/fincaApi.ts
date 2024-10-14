@@ -1,6 +1,7 @@
 // src/services/fincaApi.ts
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
 
+
 const BACK_URL = import.meta.env.VITE_BACK_URL
 
 export const fincaApi = createApi({

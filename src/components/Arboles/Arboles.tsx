@@ -1,3 +1,4 @@
+import { useNavigate } from 'react-router-dom';
 import React from 'react';
 import { Spa, LocalFlorist, Yard } from '@mui/icons-material';
 import naranjosImg from '../../assets/naranjos.jpg';
@@ -80,7 +81,7 @@ const Arboles: React.FC<ArbolesProps> = ({ language }) => {
               />
 
               {/* Contenido de la Tarjeta */}
-              <div className="relative -mt-8  py-6 bg-white rounded-t-xl text-center ">
+              <div className="relative -mt-8 py-6 bg-white rounded-t-xl text-center">
                 {/* Ícono en la parte superior */}
                 <div className="absolute top-0 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-orange-500 rounded-full p-3">
                   {arbol.icon}
