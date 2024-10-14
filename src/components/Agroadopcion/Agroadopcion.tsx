@@ -49,7 +49,7 @@ const Agroadopcion: React.FC<AgroadopcionProps> = ({ language }) => {
     },
   };
 
-  const { adoptionQuestion, adoptionDescription, currentProduction, ownershipQuestion, steps, clickHere } = content[language];
+  const { adoptionQuestion, currentProduction, ownershipQuestion, steps } = content[language];
 
   return (
     <section

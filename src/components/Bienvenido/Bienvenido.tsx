@@ -10,8 +10,22 @@ interface BienvenidoProps {
   language: 'es' | 'en';
 }
 
+interface ContentText {
+  welcome: string;
+  mainTitle: string;
+  description: string;
+  join: string;
+  discoverHow: string;
+  adopt: string;
+  buy: string;
+  enjoy: string;
+  adoptTitle: string;
+  buyTitle: string;
+  enjoyTitle: string;
+}
+
 const Bienvenido: React.FC<BienvenidoProps> = ({ language }) => {
-  const content: Record<'es' | 'en', any> = {
+  const content: Record<'es' | 'en', ContentText> = {
     es: {
       welcome: 'BIENVENIDO A ADOPTREE',
       mainTitle: 'Agroadopción Sostenible',

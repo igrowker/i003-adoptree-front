@@ -9,8 +9,20 @@ interface AgricultureProps {
   language: 'es' | 'en';
 }
 
+interface ContentText {
+  crowdfarming: string;
+  title: string;
+  subtitle: string;
+  description: string;
+  buyFruit: string;
+  noAgrotoxics: string;
+  ecological: string;
+  regenerate: string;
+  discoverMore: string;
+}
+
 const Agriculture: React.FC<AgricultureProps> = ({ language }) => {
-  const content: Record<'es' | 'en', any> = {
+  const content: Record<'es' | 'en', ContentText> = {
     es: {
       crowdfarming: 'Crowdfarming',
       title: 'La agricultura del siglo XXI',

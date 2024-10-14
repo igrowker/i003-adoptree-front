@@ -8,8 +8,21 @@ interface BeneficiosProps {
   language: 'es' | 'en';
 }
 
+interface ContentText {
+  benefitsTitle: string;
+  whyBuyTitle: string;
+  description: string;
+  freshnessTitle: string;
+  freshnessDescription: string;
+  supportTitle: string;
+  supportDescription: string;
+  sustainabilityTitle: string;
+  sustainabilityDescription: string;
+  discoverMore: string;
+}
+
 const Beneficios: React.FC<BeneficiosProps> = ({ language }) => {
-  const content: Record<'es' | 'en', any> = {
+  const content: Record<'es' | 'en', ContentText> = {
     es: {
       benefitsTitle: 'Beneficios',
       whyBuyTitle: '¿Por qué comprar directo del productor?',
@@ -30,7 +43,7 @@ const Beneficios: React.FC<BeneficiosProps> = ({ language }) => {
       benefitsTitle: 'Benefits',
       whyBuyTitle: 'Why buy directly from the producer?',
       description:
-        'Buying directly from the producer offers you fresh, quality food and the opportunity to support those who farm sustainably. Here’s why it’s the best option:',
+        "Buying directly from the producer offers you fresh, quality food and the opportunity to support those who farm sustainably. Here's why it's the best option:",
       freshnessTitle: 'Guaranteed Freshness',
       freshnessDescription:
         'By buying directly from the producer, you get freshly harvested food without long storage or transport processes.',

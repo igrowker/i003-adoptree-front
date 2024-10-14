@@ -5,8 +5,15 @@ interface BannerProps {
   language: 'es' | 'en';
 }
 
+interface ContentText {
+  titleLine1: string;
+  titleLine2: string;
+  titleLine3: string;
+  button: string;
+}
+
 const Banner: React.FC<BannerProps> = ({ language }) => {
-  const content: Record<'es' | 'en', any> = {
+  const content: Record<'es' | 'en', ContentText> = {
     es: {
       titleLine1: 'Adopta un árbol cítrico',
       titleLine2: 'y sé parte de la agricultura',

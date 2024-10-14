@@ -1,4 +1,3 @@
-import { useNavigate } from 'react-router-dom';
 import React from 'react';
 import { Spa, LocalFlorist, Yard } from '@mui/icons-material';
 import naranjosImg from '../../assets/naranjos.jpg';
@@ -11,9 +10,23 @@ interface ArbolesProps {
   language: 'es' | 'en';
 }
 
+interface ContentText {
+  adopt: string;
+  treesTitle: string;
+  adoptTree: string;
+  adoptButton: string;
+}
+
+interface Arbol {
+  id: number;
+  name: string;
+  image: string;
+  icon: JSX.Element;
+}
+
 const Arboles: React.FC<ArbolesProps> = ({ language }) => {
 
-  const content: Record<'es' | 'en', any> = {
+  const content: Record<'es' | 'en', ContentText> = {
     es: {
       adopt: 'Adopta',
       treesTitle: 'Nuestros árboles',
@@ -30,7 +43,7 @@ const Arboles: React.FC<ArbolesProps> = ({ language }) => {
 
   const { adopt, treesTitle, adoptTree, adoptButton } = content[language];
 
-  const arboles = [
+  const arboles: Arbol[] = [
     {
       id: 1,
       name: language === 'es' ? 'Naranjos' : 'Orange Trees',
