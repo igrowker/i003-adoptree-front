@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import backgroundImage from '../../assets/citricos.jpg';
 import logo from '../../assets/Header.png';
 import { Link, useNavigate } from 'react-router-dom';
@@ -19,11 +19,42 @@ const Login: React.FC = () => {
     email: '',
     password: '',
   });
+  const [loginError, setLoginError] = useState<string>(''); // mensaje de error
+  const [attemptsLeft, setAttemptsLeft] = useState<number>(3); // intentos restantes
+  const [isBlocked, setIsBlocked] = useState<boolean>(false); // estado de bloqueo
+  const [timeLeft, setTimeLeft] = useState<number>(30); // temporizador de 30 segundos
 
-  const BACK_URL = import.meta.env.VITE_BACK_URL
+  const BACK_URL = import.meta.env.VITE_BACK_URL;
 
   const dispatch = useDispatch();
   const navigate = useNavigate();
+
+  // Temporizador para desbloquear el formulario
+  useEffect(() => {
+    if (isBlocked && timeLeft > 0) {
+      const timer = setInterval(() => {
+        setTimeLeft((prevTime) => prevTime - 1);
+      }, 1000);
+
+      if (timeLeft === 1) { // cambiado de 0 a 1 para evitar el problema
+        // al llegar el tiempo a 0 se desbloquea el login
+        setIsBlocked(false);
+        setAttemptsLeft(3); // Restablecer intentos a 3
+        setLoginError(''); // Limpiar mensaje de error
+        setTimeLeft(30); // Restablecer temporizador
+      }
+
+      return () => clearInterval(timer);
+    }
+  }, [isBlocked, timeLeft]);
+
+  // restablece el estado al desbloquear la cuenta
+  useEffect(() => {
+    if (!isBlocked) {
+      setLoginError(''); // Limpiar mensaje de error
+      setAttemptsLeft(3); // Restablecer intentos fallidos a 3
+    }
+  }, [isBlocked]);
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
@@ -37,7 +68,7 @@ const Login: React.FC = () => {
   };
 
   const validateAndUpdateErrors = (fieldName: string, value: string) => {
-    const fieldError = validateForm(fieldName, value); //* Mensaje de error
+    const fieldError = validateForm(fieldName, value);
 
     setErrors({
       ...errors,
@@ -48,47 +79,51 @@ const Login: React.FC = () => {
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
+    if (isBlocked) {
+      // muesta solo el mensaje si esta bloqueado
+      setLoginError(`La cuenta está bloqueada. Espera ${timeLeft} segundos para intentar nuevamente.`);
+      return;
+    }
+
     try {
-      //* Validar que todos los campos obligatorios estén llenos
-      const isFormValid = true;
+      const isFormValid = true; //logica segun las validaciones
 
       if (isFormValid) {
-        //* HAPPY PATH
-
         const opciones = {
           method: 'POST',
           headers: {
-            'Content-Type': 'application/json', // Tipo de contenido que estamos enviando
+            'Content-Type': 'application/json',
           },
-          body: JSON.stringify(formData), // Convertimos los datos a formato JSON
+          body: JSON.stringify(formData),
         };
 
-        const response = await fetch(
-          `${BACK_URL}/auth/login`,
-          opciones
-        );
+        const response = await fetch(`${BACK_URL}/auth/login`, opciones);
 
         if (!response.ok) {
-          // setFailed(true);
-          throw new Error('Error en la petición'); // Si la respuesta no es exitosa, lanzamos un error
+          const remainingAttempts = attemptsLeft - 1;
+          setAttemptsLeft(remainingAttempts);
+
+          if (remainingAttempts === 0) {
+            setIsBlocked(true); // Bloquear la cuenta si se agotaron los intentos
+            setLoginError('Cuenta bloqueada. Has alcanzado el número máximo de intentos fallidos.');
+          } else {
+            setLoginError(`Credenciales incorrectas. Te quedan ${remainingAttempts} intento(s).`);
+          }
+
+          throw new Error('Error en la petición');
         }
 
         const data = await response.json();
         localStorage.setItem('token', data.token);
 
-        // Redirige al usuario o actualiza el estado de la aplicación
         dispatch(login(data.user));
         dispatch(setAuthenticated());
         navigate('/');
-
+        setLoginError(''); // Limpiar el mensaje de error al iniciar sesión correctamente
         setFormData({
           email: '',
           password: '',
         });
-
-        setTimeout(() => {
-          // router.push("/");
-        }, 1000);
       } else {
         alert('Todos los campos son obligatorios');
       }
@@ -99,8 +134,6 @@ const Login: React.FC = () => {
 
   const handleSuccess = async (credentialResponse: CredentialResponse) => {
     const { credential } = credentialResponse;
-
-    console.log(credentialResponse);
 
     try {
       const res = await fetch(`${BACK_URL}/auth/google`, {
@@ -113,26 +146,21 @@ const Login: React.FC = () => {
 
       if (res.ok) {
         const data = await res.json();
-        console.log(data);
         localStorage.setItem('token', data.token);
-        // Redirige al usuario o actualiza el estado de la aplicación
         dispatch(login(data.user));
         dispatch(setAuthenticated());
         navigate('/');
       } else {
         const errorData = await res.json();
         console.error('Error de autenticación:', errorData);
-        // Muestra un mensaje de error al usuario
       }
     } catch (error) {
       console.error('Error durante la autenticación:', error);
-      // Muestra un mensaje de error al usuario
     }
   };
 
   const handleFailure = (error: string) => {
     console.error('Error de inicio de sesión con Google:', error);
-    // Muestra un mensaje de error al usuario
   };
 
   return (
@@ -170,9 +198,20 @@ const Login: React.FC = () => {
             required
           />
 
+          {loginError && !isBlocked && (
+            <p className="text-red-600 mt-2">{loginError}</p> // Mostrar error en rojo solo si no está bloqueado
+          )}
+
+          {isBlocked && timeLeft > 0 && (
+            <p className="text-red-600 mt-2">
+              Cuenta bloqueada. Espera {timeLeft} segundos antes de volver a intentar.
+            </p> // Mostrar contador si está bloqueado
+          )}
+
           <button
             type="submit"
             className="text-white bg-gradient-to-r from-green-500 to-green-600 rounded-[10px] shadow-lg hover:from-green-600 hover:to-green-700 transition-all duration-300 transform"
+            disabled={isBlocked} // Deshabilitar el botón si está bloqueado
           >
             Inicia sesión
           </button>
