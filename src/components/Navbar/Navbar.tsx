@@ -3,8 +3,6 @@ import LoginIcon from '@mui/icons-material/Login';
 import PersonIcon from '@mui/icons-material/Person';
 import NotificationsIcon from '@mui/icons-material/Notifications';
 import {
-  MdOutlineLightMode,
-  MdKeyboardArrowDown,
   MdOutlineLogout,
   MdOutlineSpaceDashboard,
 } from 'react-icons/md';
