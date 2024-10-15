@@ -41,7 +41,7 @@ const Arboles: React.FC<ArbolesProps> = ({ language }) => {
     },
   };
 
-  const { adopt, treesTitle, adoptTree, adoptButton } = content[language];
+  const { adopt, treesTitle, adoptButton } = content[language];
 
   const arboles: Arbol[] = [
     {
@@ -113,8 +113,6 @@ const Arboles: React.FC<ArbolesProps> = ({ language }) => {
             </div>
           ))}
         </div>
-
-        <h3 className="text-4xl font-bold text-white mb-4">{adoptTree}</h3>
       </div>
     </section>
   );

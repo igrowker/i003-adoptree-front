@@ -106,3 +106,25 @@ input {
   padding: 0.5rem 1rem;
   background-color: #fff; /* Personaliza el fondo */
 }
+
+/* Personaliza el fondo del scrollbar */
+::-webkit-scrollbar {
+  width: 12px; /* Ancho del scrollbar */
+  height: 12px; /* Altura del scrollbar horizontal */
+}
+
+/* Personaliza la pista (fondo) del scrollbar */
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+/* Personaliza el pulgar (la parte deslizante) del scrollbar */
+::-webkit-scrollbar-thumb {
+  background: #4BAF47;
+  border-radius: 10px;
+}
+
+/* Pulgar del scrollbar al hacer hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #44a040;
+}
