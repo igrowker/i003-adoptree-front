@@ -113,8 +113,6 @@ const Arboles: React.FC<ArbolesProps> = ({ language }) => {
             </div>
           ))}
         </div>
-
-        <h3 className="text-4xl font-bold text-white mb-4">{adoptTree}</h3>
       </div>
     </section>
   );

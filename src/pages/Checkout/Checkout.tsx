@@ -130,14 +130,14 @@ const Checkout = () => {
                 <p className="mt-4 mb-2">Cantidad reservada</p>
                 <div className="flex items-center gap-[20px]">
                   <button
-                    className="px-[14px] py-[4px] bg-[#e9ecf3] rounded-[4px] text-[#bfc1c4] font-[600]"
+                    className="px-[14px] py-[4px] bg-[#e9ecf3] rounded-[10px] text-[#bfc1c4] font-[600]"
                     onClick={() => handleQuantityChange(-1)}
                   >
                     -
                   </button>
                   <span className="text-[#4BAF47] font-[600]">{quantity}</span>
                   <button
-                    className="px-[14px] py-[4px] bg-[#4BAF47] rounded-[4px] text-white font-[600]"
+                    className="px-[14px] py-[4px] text-white bg-gradient-to-r from-green-500 to-green-600 rounded-[10px] shadow-lg hover:from-green-600 hover:to-green-700 transition-all duration-300 transform"
                     onClick={() => handleQuantityChange(1)}
                   >
                     +
@@ -207,7 +207,7 @@ const Checkout = () => {
               </div>
 
               <button
-                className="rounded-[10px] bg-[#4BAF47] text-white hover:bg-[#3B8838] my-6 w-full"
+                className="text-white bg-gradient-to-r from-green-500 to-green-600 rounded-[10px] shadow-lg hover:from-green-600 hover:to-green-700 transition-all duration-300 transform my-6 w-full"
                 onClick={
                   activeStep === steps.length - 1
                     ? handleAdoptionComplete

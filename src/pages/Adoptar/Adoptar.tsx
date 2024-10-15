@@ -63,7 +63,7 @@ const Adoptar: React.FC = () => {
   }
 
   return (
-    <div className="px-4 sm:px-6 md:px-8 lg:px-[200px] 2xl:px-[130px] my-[116px]">
+    <div className="px-4 sm:px-6 md:px-8 lg:px-12 xl:px-16 2xl:px-28 my-[116px] max-w-screen-2xl mx-auto">
       <motion.h1
         className="text-3xl sm:text-4xl font-bold mb-2 mt-6 sm:mt-8"
         initial={{ opacity: 0, y: -20 }}
@@ -91,20 +91,20 @@ const Adoptar: React.FC = () => {
           sx={{
             '& .MuiOutlinedInput-root': {
               '& fieldset': {
-                borderColor: 'green', // Color del borde normal
+                borderColor: 'green',
               },
               '&:hover fieldset': {
-                borderColor: '#909590', // Color del borde cuando se pasa el mouse
+                borderColor: '#909590',
               },
               '&.Mui-focused fieldset': {
-                borderColor: 'green', // Color del borde cuando está enfocado
+                borderColor: 'green',
               },
             },
             '& .MuiInputLabel-root': {
-              color: 'gray', // Color del label
+              color: 'gray',
             },
             '& .MuiInputLabel-root.Mui-focused': {
-              color: 'green', // Color del label cuando está enfocado
+              color: 'green',
             },
           }}
           label="Busca un árbol"
@@ -121,7 +121,7 @@ const Adoptar: React.FC = () => {
         />
       </motion.div>
       <motion.div
-        className="grid gap-6 grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-4 mt-10 max-w-screen-lg"
+        className="grid gap-6 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 mt-10"
         initial="hidden"
         animate="visible"
         variants={{
