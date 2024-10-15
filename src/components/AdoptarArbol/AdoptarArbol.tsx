@@ -14,10 +14,10 @@ const AdoptarArbol: React.FC<AdoptarArbolProps> = ({ datos }) => {
   const navigate = useNavigate();
 
   return (
-    <div className="bg-white rounded-xl overflow-hidden shadow-lg flex flex-col w-full max-w-[250px]">
+    <div className="bg-white rounded-xl overflow-hidden shadow-lg flex flex-col w-full h-full">
       <div className="relative">
         <img
-          src={datos.images[0]} // Cambié imageUrl a images
+          src={datos.images[0]}
           alt={`Árbol de ${datos.type}`}
           className="w-full h-48 object-cover transition-all duration-300 group-hover:brightness-95"
         />
@@ -80,7 +80,7 @@ const AdoptarArbol: React.FC<AdoptarArbolProps> = ({ datos }) => {
 
         <button
           onClick={() => navigate(`/adopta-un-arbol/${datos.id}`)}
-          className="w-full mt-4 rounded-lg bg-[#4BAF47] text-white transition-all duration-300 hover:bg-[#3B8833] py-2 px-4 font-medium shadow-md hover:shadow-lg focus:outline-none focus:ring-2 focus:ring-[#4BAF47] focus:ring-opacity-50"
+          className="w-full mt-4 text-white bg-gradient-to-r from-green-500 to-green-600 rounded-[10px] shadow-lg hover:from-green-600 hover:to-green-700 transition-all duration-300 transform"
         >
           Adoptar este árbol
         </button>
