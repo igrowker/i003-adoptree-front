@@ -41,7 +41,7 @@ const Arboles: React.FC<ArbolesProps> = ({ language }) => {
     },
   };
 
-  const { adopt, treesTitle, adoptTree, adoptButton } = content[language];
+  const { adopt, treesTitle, adoptButton } = content[language];
 
   const arboles: Arbol[] = [
     {
